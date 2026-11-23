@@ -1,0 +1,30 @@
+[
+  {
+    "workflow": "B1: Lead Creation & Atomic Conversion",
+    "targetId": "a01b152a-7c4a-4a14-bccd-3e71eb7dc67b",
+    "resultAccount": "621c0063-709b-4651-81e3-1026f81cf7f3",
+    "resultContact": "637dd5ea-ff7f-48b7-82e9-cd726a5a4c23",
+    "resultOpportunity": "d9a574f3-02e1-45b9-8677-f8c92ef01066",
+    "status": "PASS",
+    "evidence": "Lead converted atomically to Account, Contact, and Opportunity in 1 transaction; UI status updated to convert"
+  },
+  {
+    "workflow": "B2: Account Detail & Contact Association",
+    "targetId": "621c0063-709b-4651-81e3-1026f81cf7f3",
+    "status": "PASS",
+    "evidence": "Account detail view displays new account title and linked records cleanly"
+  },
+  {
+    "workflow": "B3: Opportunity & Quote Association",
+    "targetId": "d9a574f3-02e1-45b9-8677-f8c92ef01066",
+    "quoteId": "e3fa928c-e295-414b-bc4e-47e153e37180",
+    "status": "PASS",
+    "evidence": "Generated Quote QT-SYNTH-33240 linked to synthetic opportunity with verified grand total"
+  },
+  {
+    "workflow": "B5: Lead Assignment Rule Ingestion & UI Sync",
+    "ruleId": "d889c367-a5b8-416b-a40f-93f7903dd651",
+    "status": "PASS",
+    "evidence": "Rule \"Synthetic Routing Rule 1795438237585\" successfully persisted in PostgreSQL and displayed in routing pipeline"
+  }
+]

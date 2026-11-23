@@ -1,0 +1,26 @@
+{
+  "name": "finlonexa-crm-v3",
+  "version": "3.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm --workspace=apps/web run dev",
+    "build": "npm --workspace=apps/web run build",
+    "start": "npm --workspace=apps/web run start",
+    "lint": "npm --workspace=apps/web run lint",
+    "typecheck": "npm --workspace=apps/web run typecheck",
+    "test": "npm --workspace=apps/web run test",
+    "test:integration": "npx tsx scripts/verify-integration-phase2-5.ts",
+    "provision:test-accounts": "npx tsx scripts/provision-test-accounts.ts"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.23.1",
+    "pg": "^8.23.1",
+    "prettier": "^3.5.2",
+    "tsx": "^4.23.15",
+    "turbo": "^2.4.4"
+  }
+}

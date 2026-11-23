@@ -1,0 +1,45 @@
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Testing
+coverage
+.nyc_output
+
+# Next.js build output
+.next/
+out/
+build/
+dist/
+
+# Caches
+.turbo
+.eslintcache
+
+# Environment variables & secrets (NEVER COMMIT)
+.env
+.env*.local
+.env.development.local
+.env.test.local
+.env.production.local
+.test-credentials.local.json
+*.pem
+*.key
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# TypeScript declaration cache
+*.tsbuildinfo
+next-env.d.ts
+
+# Workers Python environments
+workers/python-worker/.venv
+workers/python-worker/__pycache__
+workers/python-worker/*.pyc
+
+# Supabase local generated state
+supabase/.branches
+supabase/.temp

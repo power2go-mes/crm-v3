@@ -1,0 +1,328 @@
+'use client';
+
+import React, { useState } from 'react';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { createClient } from '@/lib/supabase/client';
+import { useAuth } from '@/components/providers/auth-provider';
+import { Database, Plus, CheckCircle2, XCircle, Tag, Filter, Pencil, Trash2 } from 'lucide-react';
+import { putCustomField, archiveCustomField } from '@/lib/settings/custom-fields';
+
+interface FieldDefinition {
+  id: string;
+  module: string;
+  key: string;
+  label: string;
+  type: string;
+  required: boolean;
+  is_custom: boolean;
+  archived: boolean;
+  choices: string[];
+  position: number;
+}
+
+export function CustomFieldsManager() {
+  const { user, profile, permissions, isLoading: authLoading, hasPermission } = useAuth();
+  const supabase = createClient();
+  const queryClient = useQueryClient();
+
+  const [activeModule, setActiveModule] = useState<string>('all');
+  const [isCreating, setIsCreating] = useState(false);
+  const [module, setModule] = useState('leads');
+  const [key, setKey] = useState('');
+  const [label, setLabel] = useState('');
+  const [type, setType] = useState('small_text');
+  const [required, setRequired] = useState(false);
+  const [error, setError] = useState('');
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [choiceText, setChoiceText] = useState('');
+  const [position, setPosition] = useState(0);
+  const [notice, setNotice] = useState('');
+  const cacheKey = ['crm', user?.id, 'custom-fields'];
+
+  const { data: fields = [], isLoading, error: loadError, refetch } = useQuery<FieldDefinition[]>({
+    queryKey: [...cacheKey, [...permissions].sort().join('|')],
+    enabled: !authLoading && !!user && !!profile?.is_active && hasPermission('settings.view'),
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('crm_field_definitions')
+        .select('*')
+        .eq('archived', false)
+        .order('module', { ascending: true })
+        .order('position', { ascending: true })
+        .limit(501);
+
+      if (error) throw error;
+      if ((data?.length ?? 0) > 500) throw new Error('Field registry exceeds the current 500-field editor limit.');
+      return (data || []) as unknown as FieldDefinition[];
+    },
+  });
+
+  const createMutation = useMutation({
+    mutationFn: async () => {
+      const formattedKey = key.trim().toLowerCase().replace(/[^a-z0-9_]/g, '_');
+      return putCustomField(supabase, {
+          id: editingId ?? crypto.randomUUID(),
+          module,
+          key: formattedKey,
+          label: label.trim(),
+          type,
+          required,
+          order: position,
+          choices: ['choice', 'single_choice'].includes(type) ? choiceText.split(',').map(value => value.trim()).filter(Boolean) : [],
+        });
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['crm', user?.id] });
+      setKey('');
+      setLabel('');
+      setIsCreating(false);
+      setError('');
+      setEditingId(null);
+      setNotice('Custom Field saved.');
+    },
+    onError: (err: Error) => {
+      setError(err.message || 'Failed to create custom field definition');
+    },
+  });
+  const archive = useMutation({
+    mutationFn: (id: string) => archiveCustomField(supabase, id),
+    onSuccess: () => { void queryClient.invalidateQueries({ queryKey: ['crm', user?.id] }); setNotice('Custom Field deleted from active forms. Existing values and history are retained.'); },
+  });
+
+  const filteredFields =
+    activeModule === 'all' ? fields : fields.filter((f) => f.module === activeModule);
+
+  return (
+    <div className="space-y-6">
+      <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-slate-900/60 border border-slate-800 rounded-xl">
+        <div className="flex items-center gap-3">
+          <div className="p-2 rounded-lg bg-emerald-950/60 text-emerald-400 border border-emerald-800">
+            <Database className="h-5 w-5" />
+          </div>
+          <div>
+            <h3 className="text-sm font-bold text-white">Custom Fields & Schema Registry</h3>
+            <p className="text-xs text-slate-400">
+              Browse standard attributes and configure dynamic metadata fields across core CRM modules.
+            </p>
+          </div>
+        </div>
+
+        {hasPermission('settings.update') && (
+          <button
+            type="button"
+            onClick={() => { setEditingId(null); setKey(''); setLabel(''); setType('small_text'); setRequired(false); setPosition(0); setChoiceText(''); setError(''); setIsCreating(!isCreating); }}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-semibold transition"
+          >
+            <Plus className="h-3.5 w-3.5" />
+            <span>Add Custom Field</span>
+          </button>
+        )}
+      </div>
+
+      {/* Module Filter Tabs */}
+      <div className="flex flex-wrap items-center gap-1.5 border-b border-slate-800 pb-2">
+        {['all', 'leads', 'accounts', 'contacts', 'opportunities', 'campaigns'].map((m) => (
+          <button
+            key={m}
+            type="button"
+            onClick={() => setActiveModule(m)}
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wider transition ${
+              activeModule === m
+                ? 'bg-blue-600 text-white shadow-xs'
+                : 'text-slate-400 hover:text-white bg-slate-900 border border-slate-800'
+            }`}
+          >
+            {m === 'all' ? 'All Modules' : m}
+          </button>
+        ))}
+      </div>
+
+      {isCreating && (
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            createMutation.mutate();
+          }}
+          className="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-4"
+        >
+          <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+            <span className="text-xs font-bold text-white uppercase tracking-wider">New Custom Field</span>
+            <button
+              type="button"
+              onClick={() => setIsCreating(false)}
+              className="text-xs text-slate-500 hover:text-slate-300"
+            >
+              Cancel
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+            <div>
+              <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">
+                Target Module *
+              </label>
+              <select
+                value={module}
+                disabled={!!editingId}
+                onChange={(e) => setModule(e.target.value)}
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white capitalize focus:outline-hidden focus:border-blue-500"
+              >
+                <option value="leads">Leads</option>
+                <option value="accounts">Accounts</option>
+                <option value="contacts">Contacts</option>
+                <option value="opportunities">Opportunities</option>
+                <option value="campaigns">Campaigns</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">
+                Field Label *
+              </label>
+              <input
+                type="text"
+                required
+                value={label}
+                onChange={(e) => {
+                  setLabel(e.target.value);
+                  if (!key) {
+                    setKey(e.target.value.toLowerCase().replace(/[^a-z0-9_]/g, '_'));
+                  }
+                }}
+                placeholder="e.g. Contract Expiration Date"
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white focus:outline-hidden focus:border-blue-500"
+              />
+            </div>
+
+            <div>
+              <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">
+                Attribute Key (System ID) *
+              </label>
+              <input
+                type="text"
+                required
+                value={key}
+                disabled={!!editingId}
+                onChange={(e) => setKey(e.target.value)}
+                placeholder="e.g. contract_expiration_date"
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white font-mono focus:outline-hidden focus:border-blue-500"
+              />
+            </div>
+
+            <div>
+              <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">
+                Data Type *
+              </label>
+              <select
+                value={type}
+                onChange={(e) => setType(e.target.value)}
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white focus:outline-hidden focus:border-blue-500"
+              >
+                <option value="small_text">Short Text (255 chars)</option>
+                <option value="large_text">Long Text / Paragraph</option>
+                <option value="number">Numeric</option>
+                <option value="choice">Multiple Choice</option>
+                <option value="single_choice">Single Choice</option>
+                <option value="date">Date</option>
+                <option value="datetime">Date & Time</option>
+              </select>
+            </div>
+
+            <div className="flex items-center gap-2 pt-6">
+              <input
+                type="checkbox"
+                id="reqCheck"
+                checked={required}
+                onChange={(e) => setRequired(e.target.checked)}
+                className="h-4 w-4 rounded border-slate-700 bg-slate-950 text-blue-600 focus:ring-0"
+              />
+              <label htmlFor="reqCheck" className="text-xs text-slate-300 font-medium">
+                Mandatory Field
+              </label>
+            </div>
+          </div>
+
+          {['choice', 'single_choice'].includes(type) && <label className="block text-xs text-slate-300">Choices<textarea required value={choiceText} onChange={e => setChoiceText(e.target.value)} placeholder="Option 1, Option 2, Option 3" className="mt-1 block w-full rounded border border-slate-700 bg-slate-950 p-2 text-white" /></label>}
+          <label className="block text-xs text-slate-300">Display Order<input type="number" min={0} step={1} required value={position} onChange={e => setPosition(e.target.valueAsNumber)} className="mt-1 block rounded border border-slate-700 bg-slate-950 p-2 text-white" /></label>
+
+          {error && <p className="text-xs text-red-400">{error}</p>}
+
+          <div className="flex justify-end gap-2 pt-2">
+            <button
+              type="button"
+              onClick={() => setIsCreating(false)}
+              className="px-3 py-1.5 bg-slate-800 text-slate-300 text-xs rounded-lg"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              disabled={createMutation.isPending}
+              className="px-3 py-1.5 bg-blue-600 text-white text-xs font-semibold rounded-lg hover:bg-blue-500 disabled:opacity-50"
+            >
+              {createMutation.isPending ? 'Saving...' : editingId ? 'Save' : 'Register Field'}
+            </button>
+          </div>
+        </form>
+      )}
+
+      {/* Field Registry List */}
+      {notice && <p role="status" className="text-sm text-green-700">{notice}</p>}
+      {loadError && <p role="alert" className="text-sm text-red-700">{loadError.message} <button onClick={() => void refetch()}>Retry</button></p>}
+      {archive.error && <p role="alert" className="text-sm text-red-700">{archive.error.message}</p>}
+      <div className="bg-slate-900/60 border border-slate-800 rounded-xl overflow-hidden shadow-sm">
+        {isLoading && (
+          <div className="p-8 text-center text-xs text-slate-400 animate-pulse">
+            Loading field definitions...
+          </div>
+        )}
+
+        <div className="divide-y divide-slate-800/80">
+          {filteredFields.map((field) => (
+            <div
+              key={field.id}
+              className="p-4 flex flex-wrap items-center justify-between gap-3 hover:bg-slate-800/30 transition text-xs"
+            >
+              <div className="flex items-center gap-3">
+                <span className="font-mono text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">
+                  {field.module}
+                </span>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="font-bold text-white text-sm">{field.label}</span>
+                    <span className="font-mono text-[11px] text-slate-400">({field.key})</span>
+                  </div>
+                  <span className="text-[11px] text-slate-500">
+                    Type: <span className="text-blue-400 font-medium">{field.type}</span> •{' '}
+                    {field.is_custom ? 'Custom Dynamic Field' : 'Core System Field'}
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2">
+                {field.is_custom && hasPermission('settings.update') && <>
+                  <button type="button" aria-label={`Edit ${field.label}`} onClick={() => { setEditingId(field.id); setModule(field.module); setKey(field.key); setLabel(field.label); setType(field.type); setRequired(field.required); setChoiceText(field.choices.join(', ')); setPosition(field.position); setError(''); setIsCreating(true); }}><Pencil className="h-4 w-4" /></button>
+                  <button type="button" disabled={archive.isPending} aria-label={`Delete ${field.label}`} onClick={() => { if (window.confirm(`Delete ${field.label} from active forms? Its stored values and history will be retained.`)) archive.mutate(field.id); }}><Trash2 className="h-4 w-4" /></button>
+                </>}
+                {field.required && (
+                  <span className="text-[10px] font-bold uppercase px-1.5 py-0.5 rounded bg-amber-950/60 text-amber-400 border border-amber-800">
+                    Required
+                  </span>
+                )}
+                <span
+                  className={`text-[10px] font-bold uppercase px-1.5 py-0.5 rounded ${
+                    field.is_custom
+                      ? 'bg-purple-950/60 text-purple-400 border border-purple-800'
+                      : 'bg-slate-800 text-slate-400 border border-slate-700'
+                  }`}
+                >
+                  {field.is_custom ? 'Custom' : 'Standard'}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}

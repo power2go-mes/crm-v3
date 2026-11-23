@@ -1,0 +1,87 @@
+-- Refuse to exercise rebasing against existing configured currencies. All changes roll back.
+do $$ begin assert not exists(select 1 from public.crm_currencies),'Existing Currency catalog: fixture must not replace it';end $$;
+insert into auth.users(id,email) values('c0de0000-0000-4000-8000-000000001501','currency-fixture@example.invalid');
+insert into public.roles(id,name,is_canonical,hierarchy_rank) values('CODEX_CURRENCY_TEST','Currency fixture',false,100);
+insert into public.user_roles(user_id,role_id) values('c0de0000-0000-4000-8000-000000001501','CODEX_CURRENCY_TEST');
+select set_config('request.jwt.claim.sub','c0de0000-0000-4000-8000-000000001501',true);
+select set_config('request.jwt.claims','{"sub":"c0de0000-0000-4000-8000-000000001501","role":"authenticated"}',true);
+set local role authenticated;
+do $$ declare caught boolean=false;begin
+ begin perform public.company_currency_catalog();exception when insufficient_privilege then caught=true;end;assert caught,'Unpermitted catalog';caught=false;
+ begin perform public.set_multiple_currency_enabled(true);exception when insufficient_privilege then caught=true;end;assert caught,'Unpermitted activation';
+end $$;
+reset role;
+insert into public.role_permissions(role_id,permission_id,is_granted) select 'CODEX_CURRENCY_TEST',id,true from public.permissions where module in ('currencies','currency_rates') or id in ('settings.update','settings.view');
+set local role authenticated;
+do $$ declare base uuid;a uuid;b uuid;code_a text;code_b text;rates jsonb;old_code text;caught boolean=false;prior jsonb;begin
+ perform public.set_multiple_currency_enabled(true);select id,currency into base,old_code from public.crm_currencies where is_default;
+ assert base is not null and (select conversion_rate=1 and created_by_id=auth.uid() from public.crm_currencies where id=base),'Configured base/actor initialization';
+ select code into code_a from public.crm_currency_codes where code in ('USD','EUR','GBP') and code<>old_code order by code limit 1;
+ select code into code_b from public.crm_currency_codes where code in ('USD','EUR','GBP') and code not in (old_code,code_a) order by code limit 1;
+ a=public.save_company_currency(null,code_a,'0.8000',2);b=public.save_company_currency(null,code_b,'2.0000',3);
+ perform set_config('crm.currency_base',base::text,true);perform set_config('crm.currency_a',a::text,true);perform set_config('crm.currency_b',b::text,true);
+ begin perform public.save_company_currency(null,code_a,'1',2);exception when unique_violation then caught=true;end;assert caught,'Duplicate code';caught=false;
+ begin perform public.save_company_currency(a,old_code,'1',2);exception when check_violation then caught=true;end;assert caught,'Identity edited';caught=false;
+ begin perform public.delete_company_currency(base);exception when check_violation then caught=true;end;assert caught,'Default deleted';caught=false;
+ perform public.save_company_currency(base,old_code,'99',4);assert (select conversion_rate=1 and decimal_places=4 from public.crm_currencies where id=base),'Default precision-only edit';
+ rates=jsonb_build_object(a::text,'0.75',b::text,'2.5');perform public.save_company_exchange_rates(rates);
+ perform public.save_company_exchange_rates(jsonb_build_object(a::text,'0.750001',b::text,'2.500049'));
+ assert (select conversion_rate=.7500 from public.crm_currencies where id=a) and (select conversion_rate=2.5000 from public.crm_currencies where id=b),'Source batch six-place input/four-place storage rounding';
+ begin perform public.save_company_exchange_rates(jsonb_build_object(a::text,'0.8',b::text,'not a rate'));exception when check_violation then caught=true;end;assert caught,'Invalid batch';caught=false;
+ assert (select conversion_rate=.75 from public.crm_currencies where id=a) and (select conversion_rate=2.5 from public.crm_currencies where id=b),'Static batch partially persisted';
+ perform public.change_company_default_currency(a);
+ assert (select is_default and conversion_rate=1 from public.crm_currencies where id=a) and (select conversion_rate=1.3333 from public.crm_currencies where id=base) and (select conversion_rate=3.3333 from public.crm_currencies where id=b),'Source static rebasing';
+ assert (select currency=code_a from public.company_settings where id=1),'Company/default sync';
+ perform public.save_company_currency(base,old_code,'0',4);
+ begin perform public.change_company_default_currency(base);exception when check_violation then caught=true;end;assert caught,'Zero base promoted';caught=false;
+ perform public.save_company_currency(base,old_code,'1.3333',4);
+ rates=jsonb_build_object(base::text,'1.2000',b::text,'3.0000');perform public.save_company_exchange_rates(rates,'2026-01-01');
+ perform public.save_company_exchange_rates(jsonb_build_object(base::text,'1.1000',b::text,'2.8000'),'2026-06-01');
+ assert public.company_currency_rate(base,'2026-03-01')=1.2 and public.company_currency_rate(base,'2025-01-01')=1.3333,'Dated lookup/static fallback';
+ begin perform public.save_company_exchange_rates(rates,'2026-01-01');exception when unique_violation then caught=true;end;assert caught,'Duplicate dated batch';caught=false;
+ assert (select count(*) from public.crm_currency_rates)=4,'Dated duplicate partially persisted';
+ prior=public.company_currency_catalog('2026-01-01');assert jsonb_array_length(prior->'dated_rows')=2 and jsonb_array_length(prior->'date_ranges')=2,'Dated catalog';
+ perform public.save_company_currency(base,old_code,'0.0001',4);perform public.save_company_currency(b,code_b,'999999.9999',3);
+ begin perform public.change_company_default_currency(base);exception when numeric_value_out_of_range then caught=true;end;assert caught,'Overflowing rebase accepted';caught=false;
+ assert (select is_default from public.crm_currencies where id=a) and (select count(*) from public.crm_currency_rates)=4 and (select count(*) from public.crm_currency_rebases)=1,'Failed rebase leaked partial rates/audit';
+ perform public.save_company_currency(base,old_code,'1.3333',4);perform public.save_company_currency(b,code_b,'3.3333',3);
+ perform public.change_company_default_currency(base);
+ assert public.company_currency_rate(a,'2026-03-01')=.8333 and public.company_currency_rate(b,'2026-07-01')=2.5455,'Historical rebase values';
+ assert exists(select 1 from public.crm_currency_rebases where old_currency=code_a and new_currency=old_code and jsonb_array_length(previous_state->'dated_rates')=4),'Historical snapshot missing';
+ perform public.delete_company_currency(b);
+ perform public.save_company_exchange_rates(jsonb_build_object(a::text,'0.9000'));
+ perform public.save_company_exchange_rates(jsonb_build_object(a::text,'0.8000'),'2027-01-01');
+ perform public.change_company_default_currency(a);
+ assert public.company_currency_rate(base,'2027-02-01')=1.25 and (select conversion_rate=1.1111 from public.crm_currencies where id=base),'Two-currency dated history lost to static fallback';
+ assert (select count(*) from public.crm_currency_rates)=3,'Two-currency history boundaries lost';
+ begin update public.crm_currencies set conversion_rate=99 where id=a;exception when insufficient_privilege then caught=true;end;assert caught,'Raw write bypass';caught=false;
+ begin delete from public.crm_currency_rebases;exception when insufficient_privilege then caught=true;end;assert caught,'Rebase evidence mutable';
+ perform public.set_multiple_currency_enabled(false);assert (select count(*) from public.crm_currencies)=2 and (select count(*) from public.crm_currency_rates)=3,'Disable deleted data';
+end $$;
+reset role;
+update public.role_permissions set is_granted=false where role_id='CODEX_CURRENCY_TEST' and permission_id='currency_rates.view';
+set local role authenticated;
+do $$ declare caught boolean=false;begin
+ assert (select count(*) from public.crm_currency_rates)=0,'Dated raw REST read bypass';
+ assert (select count(*) from public.crm_currency_rebases)=0,'Rebase snapshot read bypass';
+ assert jsonb_array_length(public.company_currency_catalog()->'dated_rows')=0,'Catalog leaked dated values';
+ begin perform public.company_currency_rate(current_setting('crm.currency_base')::uuid,'2026-03-01');exception when insufficient_privilege then caught=true;end;assert caught,'Dated lookup read bypass';
+end $$;
+reset role;
+update public.role_permissions set is_granted=false where role_id='CODEX_CURRENCY_TEST' and permission_id in ('currencies.view','currencies.update');
+set local role authenticated;
+do $$ declare caught boolean=false;begin
+ assert (select count(*) from public.crm_currencies)=0,'Currency raw REST read bypass';
+ begin perform public.save_company_currency(current_setting('crm.currency_b')::uuid,'USD','1',2);exception when insufficient_privilege then caught=true;end;assert caught,'Revocation bypass';
+end $$;
+reset role;
+delete from public.user_roles where user_id='c0de0000-0000-4000-8000-000000001501';
+do $$ declare canonical text; expected boolean; actual boolean;begin
+ foreach canonical in array array['SUPER_ADMIN','HEAD_OF_SALES','RSM','SSM','ASM','BDO'] loop
+  insert into public.user_roles(user_id,role_id) values('c0de0000-0000-4000-8000-000000001501',canonical);
+  expected=public.has_effective_permission('c0de0000-0000-4000-8000-000000001501','currencies.view');
+  set local role authenticated;actual=true;begin perform public.company_currency_catalog();exception when insufficient_privilege then actual=false;end;assert actual=expected,'Canonical role bypassed editable Currency feature';reset role;
+  delete from public.user_roles where user_id='c0de0000-0000-4000-8000-000000001501';
+ end loop;
+end $$;
+do $$ begin assert not has_function_privilege('anon','public.save_company_exchange_rates(jsonb,date)','execute'),'Anonymous save';end $$;

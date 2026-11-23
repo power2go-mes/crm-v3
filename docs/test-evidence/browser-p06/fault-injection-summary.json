@@ -1,0 +1,16 @@
+[
+  {
+    "faultType": "Network Disconnection (Offline Emulation)",
+    "mechanism": "CDP Network.emulateNetworkConditions (offline: true)",
+    "expectedBehavior": "Application UI shell persists, no unhandled fatal crash, recovers cleanly when back online",
+    "observedBehavior": "UI shell preserved; error state boundaries held without unmounting app",
+    "status": "PASS"
+  },
+  {
+    "faultType": "API Endpoint Unavailability / 404/500 Fault",
+    "mechanism": "Injected non-existent endpoint request",
+    "expectedBehavior": "Graceful catch block in TanStack Query; no uncaught global promise rejection",
+    "observedBehavior": "Caught cleanly; UI components render standard error fallback state",
+    "status": "PASS"
+  }
+]

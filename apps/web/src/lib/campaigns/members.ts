@@ -1,0 +1,8 @@
+import {z} from 'zod';
+import type {SupabaseClient} from '@supabase/supabase-js';
+import type {Database} from '@finlonexa/database';
+const id=z.string().uuid();const status=z.enum(['planned','sent','recieved','responded']);
+async function authorize(client:SupabaseClient<Database>){const {data:{user},error}=await client.auth.getUser();if(error||!user)throw Error('Authentication required');const grant=await client.rpc('has_effective_permission',{p_user_id:user.id,p_permission_id:'campaigns.update'});if(grant.error||grant.data!==true)throw Error('Permission denied');}
+export async function addCampaignMember(client:SupabaseClient<Database>,campaignId:string,kind:'lead'|'contact',target:string,state:string){id.parse(campaignId);id.parse(target);const memberStatus=status.parse(state);z.enum(['lead','contact']).parse(kind);await authorize(client);return client.from('campaign_members').insert({campaign_id:campaignId,member_type:kind,lead_id:kind==='lead'?target:null,contact_id:kind==='contact'?target:null,member_status:memberStatus}).select('id').single();}
+export async function updateCampaignMember(client:SupabaseClient<Database>,campaignId:string,memberId:string,state:string){id.parse(campaignId);id.parse(memberId);const memberStatus=status.parse(state);await authorize(client);return client.from('campaign_members').update({member_status:memberStatus}).eq('id',memberId).eq('campaign_id',campaignId).select('id').single();}
+export async function removeCampaignMember(client:SupabaseClient<Database>,campaignId:string,memberId:string){id.parse(campaignId);id.parse(memberId);await authorize(client);return client.from('campaign_members').delete().eq('id',memberId).eq('campaign_id',campaignId).select('id').single();}
