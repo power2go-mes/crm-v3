@@ -100,9 +100,9 @@ export function AddMemberModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-      <div className="w-full max-w-lg rounded-xl bg-white p-6 shadow-xl dark:bg-slate-900">
-        <div className="flex items-center justify-between border-b pb-3 dark:border-slate-800">
-          <h2 className="text-lg font-semibold text-slate-900 dark:text-white">
+      <div className="w-full max-w-lg rounded-xl bg-white p-6 shadow-xl">
+        <div className="flex items-center justify-between border-b pb-3">
+          <h2 className="text-lg font-semibold text-slate-900">
             Add Campaign Member
           </h2>
           <button
@@ -169,7 +169,7 @@ export function AddMemberModal({
               placeholder={`Search by name or email...`}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-emerald-200 focus:outline-none focus:ring-1 focus:ring-emerald-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+              className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-emerald-200 focus:outline-none focus:ring-1 focus:ring-emerald-500 dark:border-slate-700 dark:bg-slate-800"
             />
           </div>
 
@@ -181,7 +181,7 @@ export function AddMemberModal({
               value={selectedId}
               onChange={(e) => setSelectedId(e.target.value)}
               required
-              className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-emerald-200 focus:outline-none focus:ring-1 focus:ring-emerald-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+              className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-emerald-200 focus:outline-none focus:ring-1 focus:ring-emerald-500 dark:border-slate-700 dark:bg-slate-800"
             >
               <option value="">-- Choose {memberType} --</option>
               {memberType === 'lead' &&
@@ -214,7 +214,7 @@ export function AddMemberModal({
             <select
               value={status}
               onChange={(e) => setStatus(e.target.value as CampaignMemberStatus)}
-              className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-emerald-200 focus:outline-none focus:ring-1 focus:ring-emerald-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+              className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-emerald-200 focus:outline-none focus:ring-1 focus:ring-emerald-500 dark:border-slate-700 dark:bg-slate-800"
             >
               <option value="planned">Planned</option>
               <option value="sent">Sent</option>
@@ -223,7 +223,7 @@ export function AddMemberModal({
             </select>
           </div>
 
-          <div className="flex justify-end gap-3 pt-3 border-t dark:border-slate-800">
+          <div className="flex justify-end gap-3 pt-3 border-t">
             <button
               type="button"
               onClick={onClose}

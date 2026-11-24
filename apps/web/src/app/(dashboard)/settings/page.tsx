@@ -205,14 +205,14 @@ function SettingsContent() {
               )}
 
               {/* Singleton Company Configuration Card */}
-              <div className="space-y-4 rounded-xl border border-slate-200 bg-white p-6 shadow-xs dark:border-slate-800 dark:bg-slate-900">
+              <div className="space-y-4 rounded-xl border border-slate-200 bg-white p-6 shadow-xs">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="rounded-lg bg-emerald-50 p-2.5 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-400">
                       <Building2 className="h-5 w-5" />
                     </div>
                     <div>
-                      <h3 className="text-sm font-bold text-slate-900 dark:text-white">
+                      <h3 className="text-sm font-bold text-slate-900">
                         Organization Parameters
                       </h3>
                       <p className="text-xs text-slate-500">
@@ -232,52 +232,52 @@ function SettingsContent() {
                   )}
                 </div>
 
-                <div className="grid grid-cols-1 gap-4 border-t border-slate-100 pt-4 text-xs sm:grid-cols-2 dark:border-slate-800">
-                  <div className="space-y-1 rounded-lg border border-slate-100 bg-slate-50 p-3 dark:border-slate-800 dark:bg-slate-800/50">
+                <div className="grid grid-cols-1 gap-4 border-t border-slate-100 pt-4 text-xs sm:grid-cols-2">
+                  <div className="space-y-1 rounded-lg border border-slate-100 bg-slate-50 p-3 dark:bg-slate-800/50">
                     <span className="font-medium text-slate-400">Company Name</span>
-                    <p className="text-sm font-bold text-slate-800 dark:text-white">
+                    <p className="text-sm font-bold text-slate-800">
                       {company.data?.company_name ?? 'Unavailable'}
                     </p>
                   </div>
-                  <div className="space-y-1 rounded-lg border border-slate-100 bg-slate-50 p-3 dark:border-slate-800 dark:bg-slate-800/50">
+                  <div className="space-y-1 rounded-lg border border-slate-100 bg-slate-50 p-3 dark:bg-slate-800/50">
                     <span className="font-medium text-slate-400">Multi-Tenancy Mode</span>
                     <p className="flex items-center gap-1.5 text-sm font-bold text-emerald-700 dark:text-emerald-400">
                       <CheckCircle2 className="h-4 w-4" /> Single-Company Architecture
                     </p>
                   </div>
-                  <div className="space-y-1 rounded-lg border border-slate-100 bg-slate-50 p-3 dark:border-slate-800 dark:bg-slate-800/50">
+                  <div className="space-y-1 rounded-lg border border-slate-100 bg-slate-50 p-3 dark:bg-slate-800/50">
                     <span className="font-medium text-slate-400">Operational Currency</span>
-                    <p className="font-mono text-sm font-bold text-slate-800 dark:text-white">
+                    <p className="font-mono text-sm font-bold text-slate-800">
                       {company.data?.currency ?? 'Unavailable'}
                     </p>
                   </div>
-                  <div className="space-y-1 rounded-lg border border-slate-100 bg-slate-50 p-3 dark:border-slate-800 dark:bg-slate-800/50">
+                  <div className="space-y-1 rounded-lg border border-slate-100 bg-slate-50 p-3 dark:bg-slate-800/50">
                     <span className="font-medium text-slate-400">Time Zone</span>
-                    <p className="font-mono text-sm font-bold text-slate-800 dark:text-white">
+                    <p className="font-mono text-sm font-bold text-slate-800">
                       {company.data?.time_zone ?? 'Unavailable'}
                     </p>
                   </div>
-                  <div className="space-y-1 rounded-lg border border-slate-100 bg-slate-50 p-3 dark:border-slate-800 dark:bg-slate-800/50">
+                  <div className="space-y-1 rounded-lg border border-slate-100 bg-slate-50 p-3 dark:bg-slate-800/50">
                     <span className="font-medium text-slate-400">Legal Name</span>
-                    <p className="text-sm font-medium text-slate-800 dark:text-white">
+                    <p className="text-sm font-medium text-slate-800">
                       {company.data?.legal_name || 'Not configured'}
                     </p>
                   </div>
-                  <div className="space-y-1 rounded-lg border border-slate-100 bg-slate-50 p-3 dark:border-slate-800 dark:bg-slate-800/50">
+                  <div className="space-y-1 rounded-lg border border-slate-100 bg-slate-50 p-3 dark:bg-slate-800/50">
                     <span className="font-medium text-slate-400">Corporate Domain</span>
-                    <p className="text-sm font-medium text-slate-800 dark:text-white">
+                    <p className="text-sm font-medium text-slate-800">
                       {company.data?.domain || 'Not configured'}
                     </p>
                   </div>
-                  <div className="space-y-1 rounded-lg border border-slate-100 bg-slate-50 p-3 dark:border-slate-800 dark:bg-slate-800/50">
+                  <div className="space-y-1 rounded-lg border border-slate-100 bg-slate-50 p-3 dark:bg-slate-800/50">
                     <span className="font-medium text-slate-400">Support Email</span>
-                    <p className="text-sm font-medium text-slate-800 dark:text-white">
+                    <p className="text-sm font-medium text-slate-800">
                       {company.data?.support_email || 'Not configured'}
                     </p>
                   </div>
-                  <div className="space-y-1 rounded-lg border border-slate-100 bg-slate-50 p-3 dark:border-slate-800 dark:bg-slate-800/50">
+                  <div className="space-y-1 rounded-lg border border-slate-100 bg-slate-50 p-3 dark:bg-slate-800/50">
                     <span className="font-medium text-slate-400">Phone Number</span>
-                    <p className="text-sm font-medium text-slate-800 dark:text-white">
+                    <p className="text-sm font-medium text-slate-800">
                       {company.data?.phone_number || 'Not configured'}
                     </p>
                   </div>

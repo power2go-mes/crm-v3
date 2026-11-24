@@ -93,12 +93,12 @@ export function OpportunityProductsTab({
   return (
     <div className="space-y-6">
       {/* Top Banner / Metrics & Sync Mode Card */}
-      <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs dark:border-slate-800 dark:bg-slate-900">
+      <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
               <Package className="h-5 w-5 text-emerald-800 dark:text-emerald-600" />
-              <h3 className="text-base font-bold text-slate-900 dark:text-white">
+              <h3 className="text-base font-bold text-slate-900">
                 Opportunity Line Items ({items.length})
               </h3>
             </div>
@@ -109,7 +109,7 @@ export function OpportunityProductsTab({
 
           <div className="flex items-center gap-3">
             {/* Sync Mode Toggle */}
-            <div className="flex items-center rounded-lg border border-slate-200 bg-slate-50 p-1 text-xs dark:border-slate-800 dark:bg-slate-800/60">
+            <div className="flex items-center rounded-lg border border-slate-200 bg-slate-50 p-1 text-xs dark:bg-slate-800/60">
               <span className="px-2 text-slate-500 font-medium">Deal Amount:</span>
               <button
                 type="button"
@@ -117,8 +117,8 @@ export function OpportunityProductsTab({
                 onClick={() => handleToggleSyncMode('manual')}
                 className={`rounded-md px-2.5 py-1 font-semibold transition ${
                   priceSyncMode === 'manual'
-                    ? 'bg-white text-slate-900 shadow-xs dark:bg-slate-700 dark:text-white'
-                    : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
+                    ? 'bg-white text-slate-900 shadow-xs dark:bg-slate-700 '
+                    : 'text-slate-600 hover:text-slate-900  dark:hover:text-white'
                 }`}
               >
                 Manual
@@ -130,7 +130,7 @@ export function OpportunityProductsTab({
                 className={`rounded-md px-2.5 py-1 font-semibold transition ${
                   priceSyncMode === 'synced'
                     ? 'bg-emerald-600 text-white shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
+                    : 'text-slate-600 hover:text-slate-900  dark:hover:text-white'
                 }`}
               >
                 Synced to Items
@@ -161,10 +161,10 @@ export function OpportunityProductsTab({
         )}
 
         {/* Pricing Summary KPIs */}
-        <div className="mt-5 grid grid-cols-2 gap-4 border-t border-slate-100 pt-4 text-xs sm:grid-cols-4 dark:border-slate-800">
+        <div className="mt-5 grid grid-cols-2 gap-4 border-t border-slate-100 pt-4 text-xs sm:grid-cols-4">
           <div className="space-y-1 rounded-lg bg-slate-50 p-3 dark:bg-slate-800/40">
             <span className="text-slate-400 font-medium">Items Subtotal</span>
-            <p className="font-mono text-sm font-bold text-slate-800 dark:text-white">
+            <p className="font-mono text-sm font-bold text-slate-800">
               {currency} {subtotal.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
             </p>
           </div>
@@ -178,7 +178,7 @@ export function OpportunityProductsTab({
 
           <div className="space-y-1 rounded-lg bg-slate-50 p-3 dark:bg-slate-800/40">
             <span className="text-slate-400 font-medium">Total Tax</span>
-            <p className="font-mono text-sm font-bold text-slate-800 dark:text-white">
+            <p className="font-mono text-sm font-bold text-slate-800">
               + {currency} {taxTotal.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
             </p>
           </div>
@@ -202,9 +202,9 @@ export function OpportunityProductsTab({
       </div>
 
       {/* Table of Line Items */}
-      <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-xs dark:border-slate-800 dark:bg-slate-900">
+      <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-xs">
         <table className="w-full text-left text-xs">
-          <thead className="border-b border-slate-200 bg-slate-50 font-semibold text-slate-600 dark:border-slate-800 dark:bg-slate-800/50 dark:text-slate-400">
+          <thead className="border-b border-slate-200 bg-slate-50 font-semibold text-slate-600 dark:bg-slate-800/50">
             <tr>
               <th className="px-4 py-3">Product / Description</th>
               <th className="px-4 py-3">SKU</th>
@@ -250,17 +250,17 @@ export function OpportunityProductsTab({
               items.map((item) => (
                 <tr key={item.id} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/40">
                   <td className="px-4 py-3">
-                    <p className="font-semibold text-slate-900 dark:text-white">
+                    <p className="font-semibold text-slate-900">
                       {item.product_name}
                     </p>
                     {item.description && (
                       <p className="text-[11px] text-slate-500 line-clamp-1">{item.description}</p>
                     )}
                   </td>
-                  <td className="px-4 py-3 font-mono text-slate-600 dark:text-slate-400">
+                  <td className="px-4 py-3 font-mono text-slate-600">
                     {item.product_sku || '—'}
                   </td>
-                  <td className="px-4 py-3 text-right font-mono font-medium text-slate-900 dark:text-white">
+                  <td className="px-4 py-3 text-right font-mono font-medium text-slate-900">
                     {Number(item.quantity).toLocaleString()} {item.product?.unit_of_measure || ''}
                   </td>
                   <td className="px-4 py-3 text-right font-mono text-slate-800 dark:text-slate-200">
@@ -275,7 +275,7 @@ export function OpportunityProductsTab({
                       '—'
                     )}
                   </td>
-                  <td className="px-4 py-3 text-right font-mono text-slate-600 dark:text-slate-400">
+                  <td className="px-4 py-3 text-right font-mono text-slate-600">
                     {item.tax_percent > 0 ? (
                       <span>
                         {item.tax_percent}% (+{currency} {Number(item.tax_amount).toFixed(2)})
@@ -284,7 +284,7 @@ export function OpportunityProductsTab({
                       '—'
                     )}
                   </td>
-                  <td className="px-4 py-3 text-right font-mono font-bold text-slate-900 dark:text-white">
+                  <td className="px-4 py-3 text-right font-mono font-bold text-slate-900">
                     {currency} {Number(item.line_total).toLocaleString('en-IN', { minimumFractionDigits: 2 })}
                   </td>
                   <td className="px-4 py-3 text-right">

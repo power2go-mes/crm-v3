@@ -102,13 +102,13 @@ export default function AutomationSettingsPage() {
 
       <PermissionGate action="automation.view" showAccessDenied>
         {/* Navigation Tabs */}
-        <div className="mb-6 flex border-b border-slate-200 dark:border-slate-800">
+        <div className="mb-6 flex border-b border-slate-200">
           <button
             onClick={() => setActiveTab('rules')}
             className={`flex items-center gap-2 border-b-2 px-5 py-3 text-xs font-semibold uppercase tracking-wider transition ${
               activeTab === 'rules'
                 ? 'border-emerald-200 text-emerald-800 dark:text-emerald-600'
-                : 'border-transparent text-slate-500 hover:text-slate-800 dark:text-slate-400'
+                : 'border-transparent text-slate-500 hover:text-slate-800 '
             }`}
           >
             <Zap className="h-4 w-4" />
@@ -119,7 +119,7 @@ export default function AutomationSettingsPage() {
             className={`flex items-center gap-2 border-b-2 px-5 py-3 text-xs font-semibold uppercase tracking-wider transition ${
               activeTab === 'logs'
                 ? 'border-emerald-200 text-emerald-800 dark:text-emerald-600'
-                : 'border-transparent text-slate-500 hover:text-slate-800 dark:text-slate-400'
+                : 'border-transparent text-slate-500 hover:text-slate-800 '
             }`}
           >
             <History className="h-4 w-4" />
@@ -131,9 +131,9 @@ export default function AutomationSettingsPage() {
         {activeTab === 'rules' && (
           <div className="space-y-4">
             {rules.length === 0 ? (
-              <div className="rounded-xl border border-dashed border-slate-300 bg-white p-12 text-center shadow-2xs dark:border-slate-800 dark:bg-slate-900">
+              <div className="rounded-xl border border-dashed border-slate-300 bg-white p-12 text-center shadow-2xs">
                 <Zap className="mx-auto h-8 w-8 text-slate-400" />
-                <h3 className="mt-3 text-sm font-bold text-slate-800 dark:text-white">No automation rules configured</h3>
+                <h3 className="mt-3 text-sm font-bold text-slate-800">No automation rules configured</h3>
                 <p className="mt-1 text-xs text-slate-500">
                   Create rules to automate task assignments and notifications based on deal progression.
                 </p>
@@ -152,16 +152,16 @@ export default function AutomationSettingsPage() {
                 {rules.map((rule) => (
                   <div
                     key={rule.id}
-                    className="flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-5 shadow-2xs transition sm:flex-row sm:items-center dark:border-slate-800 dark:bg-slate-900"
+                    className="flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-5 shadow-2xs transition sm:flex-row sm:items-center"
                   >
                     <div className="space-y-1">
                       <div className="flex items-center gap-2.5">
-                        <span className="text-sm font-bold text-slate-900 dark:text-white">{rule.name}</span>
+                        <span className="text-sm font-bold text-slate-900">{rule.name}</span>
                         <span
                           className={`rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
                             rule.is_active
                               ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-400'
-                              : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400'
+                              : 'bg-slate-100 text-slate-600 dark:bg-slate-800 '
                           }`}
                         >
                           {rule.is_active ? 'Active' : 'Paused'}
@@ -169,7 +169,7 @@ export default function AutomationSettingsPage() {
                       </div>
                       <p className="text-xs text-slate-500">{rule.description || 'No description provided.'}</p>
 
-                      <div className="flex flex-wrap items-center gap-3 pt-2 text-[11px] text-slate-600 dark:text-slate-400">
+                      <div className="flex flex-wrap items-center gap-3 pt-2 text-[11px] text-slate-600">
                         <span className="flex items-center gap-1 font-medium text-emerald-800 dark:text-emerald-600">
                           <Zap className="h-3 w-3" />
                           WHEN: {rule.trigger_event.replace(/_/g, ' ')}
@@ -216,8 +216,8 @@ export default function AutomationSettingsPage() {
 
         {/* Tab 2: Logs */}
         {activeTab === 'logs' && (
-          <div className="rounded-xl border border-slate-200 bg-white shadow-2xs dark:border-slate-800 dark:bg-slate-900">
-            <div className="border-b border-slate-200 px-6 py-4 dark:border-slate-800">
+          <div className="rounded-xl border border-slate-200 bg-white shadow-2xs">
+            <div className="border-b border-slate-200 px-6 py-4">
               <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500">
                 Workflow Execution History
               </h3>
@@ -233,10 +233,10 @@ export default function AutomationSettingsPage() {
                   <div key={log.id} className="flex items-center justify-between p-4 text-xs">
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-bold text-slate-900 dark:text-white">
+                        <span className="font-bold text-slate-900">
                           {log.rule?.name || 'Automation Rule'}
                         </span>
-                        <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-mono text-slate-600 dark:bg-slate-800 dark:text-slate-400">
+                        <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-mono text-slate-600 dark:bg-slate-800">
                           {log.trigger_event}
                         </span>
                       </div>
@@ -274,8 +274,8 @@ export default function AutomationSettingsPage() {
         {/* Create Workflow Modal */}
         {isModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-xs">
-            <div className="w-full max-w-xl rounded-2xl bg-white p-6 shadow-2xl dark:bg-slate-900">
-              <h3 className="text-base font-bold text-slate-900 dark:text-white">Configure Sales Workflow Rule</h3>
+            <div className="w-full max-w-xl rounded-2xl bg-white p-6 shadow-2xl">
+              <h3 className="text-base font-bold text-slate-900">Configure Sales Workflow Rule</h3>
 
               <form onSubmit={handleSaveRule} className="mt-4 space-y-4">
                 <div>
@@ -319,7 +319,7 @@ export default function AutomationSettingsPage() {
                 </div>
 
                 {/* Condition */}
-                <div className="rounded-xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-800 dark:bg-slate-800/50">
+                <div className="rounded-xl border border-slate-200 bg-slate-50 p-3 dark:bg-slate-800/50">
                   <span className="block text-[11px] font-bold text-slate-700 dark:text-slate-300">
                     IF Condition Matches:
                   </span>
@@ -331,14 +331,14 @@ export default function AutomationSettingsPage() {
                         setConditions([{ ...conditions[0], field: e.target.value } as any])
                       }
                       placeholder="Field (e.g. amount)"
-                      className="rounded border border-slate-300 bg-white px-2 py-1 text-xs dark:border-slate-700 dark:bg-slate-900"
+                      className="rounded border border-slate-300 bg-white px-2 py-1 text-xs dark:border-slate-700"
                     />
                     <select
                       value={conditions[0]?.operator || 'greater_than'}
                       onChange={(e) =>
                         setConditions([{ ...conditions[0], operator: e.target.value as any }])
                       }
-                      className="rounded border border-slate-300 bg-white px-2 py-1 text-xs dark:border-slate-700 dark:bg-slate-900"
+                      className="rounded border border-slate-300 bg-white px-2 py-1 text-xs dark:border-slate-700"
                     >
                       <option value="greater_than">greater than</option>
                       <option value="equals">equals</option>
@@ -351,13 +351,13 @@ export default function AutomationSettingsPage() {
                         setConditions([{ ...conditions[0], value: e.target.value } as any])
                       }
                       placeholder="Value"
-                      className="rounded border border-slate-300 bg-white px-2 py-1 text-xs dark:border-slate-700 dark:bg-slate-900"
+                      className="rounded border border-slate-300 bg-white px-2 py-1 text-xs dark:border-slate-700"
                     />
                   </div>
                 </div>
 
                 {/* Action */}
-                <div className="rounded-xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-800 dark:bg-slate-800/50">
+                <div className="rounded-xl border border-slate-200 bg-slate-50 p-3 dark:bg-slate-800/50">
                   <span className="block text-[11px] font-bold text-slate-700 dark:text-slate-300">
                     THEN Execute Action:
                   </span>
@@ -366,7 +366,7 @@ export default function AutomationSettingsPage() {
                       <select
                         value={actionType}
                         onChange={(e) => setActionType(e.target.value as WorkflowActionType)}
-                        className="rounded border border-slate-300 bg-white px-2 py-1.5 text-xs dark:border-slate-700 dark:bg-slate-900"
+                        className="rounded border border-slate-300 bg-white px-2 py-1.5 text-xs dark:border-slate-700"
                       >
                         <option value="create_task">Create Assigned Task</option>
                         <option value="create_notification">Send In-App Notification</option>
@@ -374,7 +374,7 @@ export default function AutomationSettingsPage() {
                       <select
                         value={actionPriority}
                         onChange={(e) => setActionPriority(e.target.value as any)}
-                        className="rounded border border-slate-300 bg-white px-2 py-1.5 text-xs dark:border-slate-700 dark:bg-slate-900"
+                        className="rounded border border-slate-300 bg-white px-2 py-1.5 text-xs dark:border-slate-700"
                       >
                         <option value="high">Priority: High</option>
                         <option value="medium">Priority: Medium</option>
@@ -386,16 +386,16 @@ export default function AutomationSettingsPage() {
                       value={actionTitle}
                       onChange={(e) => setActionTitle(e.target.value)}
                       placeholder="Task subject or alert message"
-                      className="w-full rounded border border-slate-300 bg-white px-2 py-1.5 text-xs dark:border-slate-700 dark:bg-slate-900"
+                      className="w-full rounded border border-slate-300 bg-white px-2 py-1.5 text-xs dark:border-slate-700"
                     />
                   </div>
                 </div>
 
-                <div className="flex justify-end gap-2 border-t border-slate-200 pt-4 dark:border-slate-800">
+                <div className="flex justify-end gap-2 border-t border-slate-200 pt-4">
                   <button
                     type="button"
                     onClick={() => setIsModalOpen(false)}
-                    className="rounded-lg px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 dark:text-slate-400"
+                    className="rounded-lg px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100"
                   >
                     Cancel
                   </button>

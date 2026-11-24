@@ -59,14 +59,14 @@ export function ClosedLostModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4">
-      <div className="w-full max-w-lg rounded-2xl bg-white shadow-2xl border border-slate-200 overflow-hidden dark:bg-slate-900 dark:border-slate-200">
+      <div className="w-full max-w-lg rounded-2xl bg-white shadow-2xl border border-slate-200 overflow-hidden dark:border-slate-200">
         <div className="flex items-center justify-between border-b border-slate-200 px-6 py-4 dark:border-slate-200 bg-red-50/50 dark:bg-red-950/20">
           <div className="flex items-center gap-2.5">
             <div className="p-2 bg-red-100 text-red-600 rounded-xl dark:bg-red-900/40 dark:text-red-400">
               <ShieldAlert className="h-5 w-5" />
             </div>
             <div>
-              <h2 className="text-base font-bold text-slate-900 dark:text-white">
+              <h2 className="text-base font-bold text-slate-900">
                 Close Opportunity as Lost
               </h2>
               <p className="text-xs text-slate-500 truncate max-w-xs">{opportunityName}</p>
@@ -99,7 +99,7 @@ export function ClosedLostModal({
                 setReason(e.target.value);
                 setError(null);
               }}
-              className="w-full text-sm rounded-xl border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-red-500 focus:outline-hidden dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+              className="w-full text-sm rounded-xl border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-red-500 focus:outline-hidden dark:border-slate-700 dark:bg-slate-800"
               required
             >
               <option value="">Select loss reason...</option>
@@ -121,7 +121,7 @@ export function ClosedLostModal({
                 value={competitor}
                 onChange={(e) => setCompetitor(e.target.value)}
                 placeholder="e.g. Acme Corp, Salesforce, HubSpot"
-                className="w-full text-sm rounded-xl border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-red-500 focus:outline-hidden dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                className="w-full text-sm rounded-xl border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-red-500 focus:outline-hidden dark:border-slate-700 dark:bg-slate-800"
                 required
               />
             </div>
@@ -136,7 +136,7 @@ export function ClosedLostModal({
               value={details}
               onChange={(e) => setDetails(e.target.value)}
               placeholder="Provide strategic context on why the deal was lost, key factors, or future re-engagement potential..."
-              className="w-full text-sm rounded-xl border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-red-500 focus:outline-hidden dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+              className="w-full text-sm rounded-xl border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-red-500 focus:outline-hidden dark:border-slate-700 dark:bg-slate-800"
             />
           </div>
 

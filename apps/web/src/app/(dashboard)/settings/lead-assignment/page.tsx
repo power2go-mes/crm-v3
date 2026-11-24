@@ -325,11 +325,11 @@ export default function LeadAssignmentPage() {
         )}
 
         <div className="space-y-4">
-          <div className="bg-white rounded-xl border border-slate-200 shadow-xs overflow-hidden dark:bg-slate-900 dark:border-slate-800">
-            <div className="p-4 border-b border-slate-200 bg-slate-50 flex items-center justify-between dark:bg-slate-950 dark:border-slate-800">
+          <div className="bg-white rounded-xl border border-slate-200 shadow-xs overflow-hidden">
+            <div className="p-4 border-b border-slate-200 bg-slate-50 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <GitFork className="h-4 w-4 text-emerald-800" />
-                <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider dark:text-white">
+                <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider">
                   Active Routing Pipeline ({rules.length})
                 </h3>
               </div>
@@ -344,7 +344,7 @@ export default function LeadAssignmentPage() {
               ) : rules.length === 0 ? (
                 <div className="p-12 text-center">
                   <GitFork className="h-10 w-10 text-slate-300 mx-auto mb-2 dark:text-slate-700" />
-                  <h4 className="text-sm font-semibold text-slate-800 dark:text-white">No Routing Rules Configured</h4>
+                  <h4 className="text-sm font-semibold text-slate-800">No Routing Rules Configured</h4>
                   <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
                     New leads currently default to the form owner or unassigned. Create a rule to automatically distribute incoming leads to your reps.
                   </p>
@@ -357,12 +357,12 @@ export default function LeadAssignmentPage() {
                         <span className="flex h-5 px-1.5 items-center justify-center rounded-md bg-emerald-50 text-[10px] font-bold text-emerald-800 border border-emerald-200 dark:bg-emerald-600/40 dark:text-emerald-600 dark:border-emerald-200">
                           Priority {rule.priority || idx + 1}
                         </span>
-                        <h4 className="text-xs font-bold text-slate-900 dark:text-white">{rule.name}</h4>
+                        <h4 className="text-xs font-bold text-slate-900">{rule.name}</h4>
                         <span
                           className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${
                             rule.is_active
                               ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900'
-                              : 'bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400 border border-slate-200 dark:border-slate-700'
+                              : 'bg-slate-100 text-slate-500 dark:bg-slate-800  border border-slate-200 dark:border-slate-700'
                           }`}
                         >
                           {rule.is_active ? 'Active' : 'Disabled'}
@@ -370,7 +370,7 @@ export default function LeadAssignmentPage() {
                       </div>
 
                       {rule.description && (
-                        <p className="text-[11px] text-slate-500 dark:text-slate-400">{rule.description}</p>
+                        <p className="text-[11px] text-slate-500">{rule.description}</p>
                       )}
 
                       {/* Criteria badges */}
@@ -393,7 +393,7 @@ export default function LeadAssignmentPage() {
                       </div>
 
                       {/* Assignee badge */}
-                      <div className="flex items-center gap-1.5 pt-0.5 text-[11px] text-slate-600 dark:text-slate-400">
+                      <div className="flex items-center gap-1.5 pt-0.5 text-[11px] text-slate-600">
                         <span className="text-slate-400">Route to:</span>
                         {rule.assign_to_type === 'round_robin' ? (
                           <span className="inline-flex items-center gap-1 font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200 dark:bg-emerald-600/40 dark:border-emerald-200 dark:text-emerald-600">
@@ -477,11 +477,11 @@ export default function LeadAssignmentPage() {
       {/* Create / Edit Rule Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 backdrop-blur-xs p-4">
-          <div className="w-full max-w-xl rounded-2xl bg-white shadow-2xl border border-slate-200 overflow-hidden flex flex-col max-h-[90vh] animate-in zoom-in-95 duration-150 dark:bg-slate-900 dark:border-slate-800">
-            <div className="p-4 border-b border-slate-200 flex items-center justify-between bg-slate-50 dark:bg-slate-950 dark:border-slate-800">
+          <div className="w-full max-w-xl rounded-2xl bg-white shadow-2xl border border-slate-200 overflow-hidden flex flex-col max-h-[90vh] animate-in zoom-in-95 duration-150">
+            <div className="p-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
               <div className="flex items-center gap-2">
                 <GitFork className="h-5 w-5 text-emerald-800" />
-                <h3 className="text-sm font-semibold text-slate-900 dark:text-white">
+                <h3 className="text-sm font-semibold text-slate-900">
                   {editingRuleId ? 'Edit Lead Routing Rule' : 'Create Lead Routing Rule'}
                 </h3>
               </div>
@@ -505,7 +505,7 @@ export default function LeadAssignmentPage() {
                     placeholder="e.g. Northeast Biotech Inquiries"
                     value={ruleName}
                     onChange={(e) => setRuleName(e.target.value)}
-                    className="w-full text-xs p-2 border border-slate-300 rounded-lg bg-white dark:bg-slate-800 dark:border-slate-700 dark:text-white"
+                    className="w-full text-xs p-2 border border-slate-300 rounded-lg bg-white dark:bg-slate-800 dark:border-slate-700"
                   />
                 </div>
                 <div>
@@ -517,7 +517,7 @@ export default function LeadAssignmentPage() {
                     min="1"
                     value={priority}
                     onChange={(e) => setPriority(Number(e.target.value) || 1)}
-                    className="w-full text-xs p-2 border border-slate-300 rounded-lg bg-white dark:bg-slate-800 dark:border-slate-700 dark:text-white font-mono"
+                    className="w-full text-xs p-2 border border-slate-300 rounded-lg bg-white dark:bg-slate-800 dark:border-slate-700 font-mono"
                   />
                 </div>
               </div>
@@ -531,7 +531,7 @@ export default function LeadAssignmentPage() {
                   placeholder="Optional context for this routing rule"
                   value={ruleDescription}
                   onChange={(e) => setRuleDescription(e.target.value)}
-                  className="w-full text-xs p-2 border border-slate-300 rounded-lg bg-white dark:bg-slate-800 dark:border-slate-700 dark:text-white"
+                  className="w-full text-xs p-2 border border-slate-300 rounded-lg bg-white dark:bg-slate-800 dark:border-slate-700"
                 />
               </div>
 
@@ -556,7 +556,7 @@ export default function LeadAssignmentPage() {
                       <select
                         value={c.field}
                         onChange={(e) => handleUpdateCriteriaRow(i, 'field', e.target.value)}
-                        className="text-xs p-2 border border-slate-300 rounded-lg bg-white dark:bg-slate-800 dark:border-slate-700 dark:text-white w-32"
+                        className="text-xs p-2 border border-slate-300 rounded-lg bg-white dark:bg-slate-800 dark:border-slate-700 w-32"
                       >
                         {CRITERIA_FIELDS.map((f) => (
                           <option key={f.id} value={f.id}>
@@ -568,7 +568,7 @@ export default function LeadAssignmentPage() {
                       <select
                         value={c.operator}
                         onChange={(e) => handleUpdateCriteriaRow(i, 'operator', e.target.value)}
-                        className="text-xs p-2 border border-slate-300 rounded-lg bg-white dark:bg-slate-800 dark:border-slate-700 dark:text-white w-36"
+                        className="text-xs p-2 border border-slate-300 rounded-lg bg-white dark:bg-slate-800 dark:border-slate-700 w-36"
                       >
                         {CRITERIA_OPERATORS.map((op) => (
                           <option key={op.id} value={op.id}>
@@ -582,7 +582,7 @@ export default function LeadAssignmentPage() {
                         placeholder="Value to match"
                         value={c.value}
                         onChange={(e) => handleUpdateCriteriaRow(i, 'value', e.target.value)}
-                        className="text-xs p-2 border border-slate-300 rounded-lg flex-1 bg-white dark:bg-slate-800 dark:border-slate-700 dark:text-white"
+                        className="text-xs p-2 border border-slate-300 rounded-lg flex-1 bg-white dark:bg-slate-800 dark:border-slate-700"
                       />
 
                       {criteria.length > 1 && (
@@ -600,7 +600,7 @@ export default function LeadAssignmentPage() {
               </div>
 
               {/* Assignment Target */}
-              <div className="pt-2 border-t border-slate-100 dark:border-slate-800">
+              <div className="pt-2 border-t border-slate-100">
                 <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
                   Assignment Target
                 </label>
@@ -631,7 +631,7 @@ export default function LeadAssignmentPage() {
                   <select
                     value={targetUserId}
                     onChange={(e) => setTargetUserId(e.target.value)}
-                    className="w-full text-xs p-2 border border-slate-300 rounded-lg bg-white dark:bg-slate-800 dark:border-slate-700 dark:text-white"
+                    className="w-full text-xs p-2 border border-slate-300 rounded-lg bg-white dark:bg-slate-800 dark:border-slate-700"
                   >
                     <option value="">Select Sales Rep...</option>
                     {(usersQuery.data || []).map((u: any) => (
@@ -645,7 +645,7 @@ export default function LeadAssignmentPage() {
                     <label className="block text-[11px] text-slate-500 mb-1">
                       Select Reps to rotate in Round-Robin order:
                     </label>
-                    <div className="grid grid-cols-2 gap-1.5 max-h-36 overflow-y-auto border border-slate-200 rounded-lg p-2 bg-slate-50 dark:bg-slate-950 dark:border-slate-800">
+                    <div className="grid grid-cols-2 gap-1.5 max-h-36 overflow-y-auto border border-slate-200 rounded-lg p-2 bg-slate-50">
                       {(usersQuery.data || []).map((u: any) => (
                         <label
                           key={u.id}
@@ -674,7 +674,7 @@ export default function LeadAssignmentPage() {
               </div>
 
               {/* Notification toggle */}
-              <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <div className="pt-2 border-t border-slate-100 flex items-center justify-between">
                 <div>
                   <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">
                     Notify Assigned Rep
@@ -692,11 +692,11 @@ export default function LeadAssignmentPage() {
               </div>
             </div>
 
-            <div className="p-4 border-t border-slate-200 bg-slate-50 flex items-center justify-end gap-2 dark:bg-slate-950 dark:border-slate-800">
+            <div className="p-4 border-t border-slate-200 bg-slate-50 flex items-center justify-end gap-2">
               <button
                 type="button"
                 onClick={() => setIsModalOpen(false)}
-                className="px-3 py-1.5 text-xs font-semibold text-slate-600 hover:text-slate-800 dark:text-slate-400"
+                className="px-3 py-1.5 text-xs font-semibold text-slate-600 hover:text-slate-800"
               >
                 Cancel
               </button>

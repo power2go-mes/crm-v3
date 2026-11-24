@@ -93,7 +93,7 @@ export default function LeadDetailPage({ params }: LeadDetailPageProps) {
   if (error || !lead) {
     return (
       <PageContainer>
-        <div className="p-12 text-center bg-slate-900/60 border border-slate-800 rounded-2xl space-y-4">
+        <div className="p-12 text-center bg-white border border-slate-200 rounded-2xl space-y-4">
           <AlertCircle className="h-10 w-10 text-red-400 mx-auto" />
           <h2 className="text-lg font-bold text-white">Lead Not Found</h2>
           <p className="text-sm text-slate-400">

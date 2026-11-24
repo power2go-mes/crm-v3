@@ -148,13 +148,13 @@ export default function PriceBooksPage() {
                       className={`cursor-pointer rounded-xl border p-4 transition ${
                         isSelected
                           ? 'border-emerald-200 bg-emerald-50/50 dark:border-emerald-200/50 dark:bg-emerald-600/20 shadow-xs'
-                          : 'border-slate-200 bg-white hover:border-slate-300 dark:border-slate-800 dark:bg-slate-900'
+                          : 'border-slate-200 bg-white hover:border-slate-300  '
                       }`}
                     >
                       <div className="flex items-start justify-between">
                         <div>
                           <div className="flex items-center gap-2">
-                            <h4 className="text-sm font-semibold text-slate-900 dark:text-white">
+                            <h4 className="text-sm font-semibold text-slate-900">
                               {book.name}
                             </h4>
                             {book.is_standard && (
@@ -201,11 +201,11 @@ export default function PriceBooksPage() {
             {currentBook ? (
               <>
                 {/* Header banner of current price book */}
-                <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs dark:border-slate-800 dark:bg-slate-900">
+                <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs">
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <div>
                       <div className="flex items-center gap-2">
-                        <h2 className="text-lg font-bold text-slate-900 dark:text-white">
+                        <h2 className="text-lg font-bold text-slate-900">
                           {currentBook.name}
                         </h2>
                         {currentBook.is_standard && (
@@ -217,7 +217,7 @@ export default function PriceBooksPage() {
                           className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${
                             currentBook.is_active
                               ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-400'
-                              : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400'
+                              : 'bg-slate-100 text-slate-600 dark:bg-slate-800 '
                           }`}
                         >
                           {currentBook.is_active ? 'Active' : 'Inactive'}
@@ -272,28 +272,28 @@ export default function PriceBooksPage() {
                     </div>
                   </div>
 
-                  <div className="mt-4 grid grid-cols-2 gap-4 border-t border-slate-100 pt-4 text-xs sm:grid-cols-4 dark:border-slate-800">
+                  <div className="mt-4 grid grid-cols-2 gap-4 border-t border-slate-100 pt-4 text-xs sm:grid-cols-4">
                     <div>
                       <span className="text-slate-400">Currency</span>
-                      <p className="font-mono font-bold text-slate-800 dark:text-white">
+                      <p className="font-mono font-bold text-slate-800">
                         {currentBook.currency}
                       </p>
                     </div>
                     <div>
                       <span className="text-slate-400">Total Entries</span>
-                      <p className="font-bold text-slate-800 dark:text-white">
+                      <p className="font-bold text-slate-800">
                         {entries.length} items
                       </p>
                     </div>
                     <div>
                       <span className="text-slate-400">Valid From</span>
-                      <p className="font-medium text-slate-800 dark:text-white">
+                      <p className="font-medium text-slate-800">
                         {currentBook.effective_from || 'Indefinite'}
                       </p>
                     </div>
                     <div>
                       <span className="text-slate-400">Valid To</span>
-                      <p className="font-medium text-slate-800 dark:text-white">
+                      <p className="font-medium text-slate-800">
                         {currentBook.effective_to || 'Indefinite'}
                       </p>
                     </div>
@@ -309,15 +309,15 @@ export default function PriceBooksPage() {
                       placeholder="Search entries in this price book..."
                       value={entrySearch}
                       onChange={(e) => setEntrySearch(e.target.value)}
-                      className="w-full rounded-lg border border-slate-300 bg-white py-1.5 pl-9 pr-3 text-xs text-slate-900 placeholder:text-slate-400 focus:border-emerald-200 focus:outline-none focus:ring-1 focus:ring-emerald-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                      className="w-full rounded-lg border border-slate-300 bg-white py-1.5 pl-9 pr-3 text-xs text-slate-900 placeholder:text-slate-400 focus:border-emerald-200 focus:outline-none focus:ring-1 focus:ring-emerald-500 dark:border-slate-700"
                     />
                   </div>
                 </div>
 
                 {/* Table of Entries */}
-                <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-xs dark:border-slate-800 dark:bg-slate-900">
+                <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-xs">
                   <table className="w-full text-left text-xs">
-                    <thead className="border-b border-slate-200 bg-slate-50 font-semibold text-slate-600 dark:border-slate-800 dark:bg-slate-800/50 dark:text-slate-400">
+                    <thead className="border-b border-slate-200 bg-slate-50 font-semibold text-slate-600 dark:bg-slate-800/50">
                       <tr>
                         <th className="px-4 py-3">Product Name</th>
                         <th className="px-4 py-3">SKU</th>
@@ -344,13 +344,13 @@ export default function PriceBooksPage() {
                       ) : (
                         filteredEntries.map((entry) => (
                           <tr key={entry.id} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/40">
-                            <td className="px-4 py-3 font-medium text-slate-900 dark:text-white">
+                            <td className="px-4 py-3 font-medium text-slate-900">
                               {entry.product?.name || 'Unknown Product'}
                             </td>
-                            <td className="px-4 py-3 font-mono text-slate-600 dark:text-slate-400">
+                            <td className="px-4 py-3 font-mono text-slate-600">
                               {entry.product?.sku}
                             </td>
-                            <td className="px-4 py-3 text-slate-600 dark:text-slate-400">
+                            <td className="px-4 py-3 text-slate-600">
                               {entry.product?.category}
                             </td>
                             <td className="px-4 py-3 text-right font-mono text-slate-500">
@@ -358,7 +358,7 @@ export default function PriceBooksPage() {
                                 ? `${currentBook.currency} ${Number(entry.product.default_price).toLocaleString('en-IN', { minimumFractionDigits: 2 })}`
                                 : '—'}
                             </td>
-                            <td className="px-4 py-3 text-right font-mono font-bold text-slate-900 dark:text-white">
+                            <td className="px-4 py-3 text-right font-mono font-bold text-slate-900">
                               {currentBook.currency} {Number(entry.unit_price).toLocaleString('en-IN', { minimumFractionDigits: 2 })}
                             </td>
                             <td className="px-4 py-3 text-center">
@@ -366,7 +366,7 @@ export default function PriceBooksPage() {
                                 className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold ${
                                   entry.is_active
                                     ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-400'
-                                    : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400'
+                                    : 'bg-slate-100 text-slate-600 dark:bg-slate-800 '
                                 }`}
                               >
                                 {entry.is_active ? 'Active' : 'Inactive'}
@@ -408,9 +408,9 @@ export default function PriceBooksPage() {
                 </div>
               </>
             ) : (
-              <div className="rounded-xl border border-dashed border-slate-300 p-12 text-center dark:border-slate-800">
+              <div className="rounded-xl border border-dashed border-slate-300 p-12 text-center">
                 <AlertCircle className="mx-auto h-8 w-8 text-slate-400" />
-                <h4 className="mt-2 text-sm font-semibold text-slate-800 dark:text-white">
+                <h4 className="mt-2 text-sm font-semibold text-slate-800">
                   No Price Book Selected
                 </h4>
                 <p className="text-xs text-slate-500">

@@ -288,7 +288,7 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
         {activeTab === 'details' && (
           <div className="space-y-6">
             <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
-              <div className="px-5 py-3.5 bg-slate-900/40 border-b border-slate-200 text-xs font-semibold text-slate-500 uppercase tracking-wider">
+              <div className="px-5 py-3.5 bg-slate-50 border-b border-slate-200 text-xs font-semibold text-slate-500 uppercase tracking-wider">
                 Account Information
               </div>
               <div className="p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
@@ -332,7 +332,7 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
             </div>
 
             <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
-              <div className="px-5 py-3.5 bg-slate-900/40 border-b border-slate-200 text-xs font-semibold text-slate-500 uppercase tracking-wider">
+              <div className="px-5 py-3.5 bg-slate-50 border-b border-slate-200 text-xs font-semibold text-slate-500 uppercase tracking-wider">
                 Address Information
               </div>
               <div className="p-5 grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">

@@ -58,7 +58,7 @@ export default function CalendarSettingsPage() {
 
   return (
     <PageContainer>
-      <div className="mb-6 flex flex-col gap-4 border-b border-slate-200 pb-4 dark:border-slate-800 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mb-6 flex flex-col gap-4 border-b border-slate-200 pb-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-3">
           <Link
             href="/calendar"
@@ -68,7 +68,7 @@ export default function CalendarSettingsPage() {
             Back to Calendar
           </Link>
           <div>
-            <h1 className="text-xl font-bold text-slate-900 dark:text-white">
+            <h1 className="text-xl font-bold text-slate-900">
               Calendar Integration Settings
             </h1>
             <p className="text-xs text-slate-500">
@@ -98,7 +98,7 @@ export default function CalendarSettingsPage() {
           {/* Providers Grid */}
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {/* Google Calendar Card */}
-            <div className="flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+            <div className="flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
               <div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
@@ -106,7 +106,7 @@ export default function CalendarSettingsPage() {
                       <CalendarIcon className="h-5 w-5 text-emerald-800 dark:text-emerald-600" />
                     </div>
                     <div>
-                      <h3 className="text-base font-bold text-slate-900 dark:text-white">
+                      <h3 className="text-base font-bold text-slate-900">
                         Google Calendar
                       </h3>
                       <p className="text-xs text-slate-500">Google Workspace & Personal</p>
@@ -118,7 +118,7 @@ export default function CalendarSettingsPage() {
                       googleConn?.sync_status === 'connected'
                         ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300'
                         : googleConn?.sync_status === 'disabled'
-                        ? 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400'
+                        ? 'bg-slate-100 text-slate-600 dark:bg-slate-800 '
                         : 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300'
                     }`}
                   >
@@ -126,7 +126,7 @@ export default function CalendarSettingsPage() {
                   </span>
                 </div>
 
-                <div className="mt-5 space-y-2 text-xs text-slate-600 dark:text-slate-400">
+                <div className="mt-5 space-y-2 text-xs text-slate-600">
                   <p>
                     • Bi-directional sync for Customer Meetings and Calls.
                   </p>
@@ -149,7 +149,7 @@ export default function CalendarSettingsPage() {
                 </div>
               </div>
 
-              <div className="mt-6 flex items-center justify-between border-t pt-4 dark:border-slate-800">
+              <div className="mt-6 flex items-center justify-between border-t pt-4">
                 <button
                   onClick={() => handleOpenConnect('google_calendar')}
                   className="rounded-lg bg-emerald-600 px-3.5 py-2 text-xs font-semibold text-white hover:bg-emerald-600"
@@ -173,7 +173,7 @@ export default function CalendarSettingsPage() {
             </div>
 
             {/* Microsoft Outlook Calendar Card */}
-            <div className="flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+            <div className="flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
               <div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
@@ -181,7 +181,7 @@ export default function CalendarSettingsPage() {
                       <CalendarIcon className="h-5 w-5 text-emerald-800 dark:text-emerald-600" />
                     </div>
                     <div>
-                      <h3 className="text-base font-bold text-slate-900 dark:text-white">
+                      <h3 className="text-base font-bold text-slate-900">
                         Microsoft Outlook
                       </h3>
                       <p className="text-xs text-slate-500">Office 365 & Exchange</p>
@@ -193,7 +193,7 @@ export default function CalendarSettingsPage() {
                       msConn?.sync_status === 'connected'
                         ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300'
                         : msConn?.sync_status === 'disabled'
-                        ? 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400'
+                        ? 'bg-slate-100 text-slate-600 dark:bg-slate-800 '
                         : 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300'
                     }`}
                   >
@@ -201,7 +201,7 @@ export default function CalendarSettingsPage() {
                   </span>
                 </div>
 
-                <div className="mt-5 space-y-2 text-xs text-slate-600 dark:text-slate-400">
+                <div className="mt-5 space-y-2 text-xs text-slate-600">
                   <p>
                     • Sync Outlook events with CRM sales meetings.
                   </p>
@@ -224,7 +224,7 @@ export default function CalendarSettingsPage() {
                 </div>
               </div>
 
-              <div className="mt-6 flex items-center justify-between border-t pt-4 dark:border-slate-800">
+              <div className="mt-6 flex items-center justify-between border-t pt-4">
                 <button
                   onClick={() => handleOpenConnect('microsoft_outlook')}
                   className="rounded-lg bg-emerald-600 px-3.5 py-2 text-xs font-semibold text-white hover:bg-emerald-600"
@@ -249,29 +249,29 @@ export default function CalendarSettingsPage() {
           </div>
 
           {/* Sync Preferences & Guidelines */}
-          <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
             <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-500">
               Calendar Integration Specifications
             </h3>
             <div className="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-3">
-              <div className="rounded-lg border border-slate-200 p-4 dark:border-slate-800">
-                <h4 className="text-xs font-bold text-slate-900 dark:text-white">
+              <div className="rounded-lg border border-slate-200 p-4">
+                <h4 className="text-xs font-bold text-slate-900">
                   Conflict Avoidance
                 </h4>
                 <p className="mt-1 text-xs text-slate-500">
                   External calendars verify CRM meetings and prevent double-booking sales reps during client demonstrations.
                 </p>
               </div>
-              <div className="rounded-lg border border-slate-200 p-4 dark:border-slate-800">
-                <h4 className="text-xs font-bold text-slate-900 dark:text-white">
+              <div className="rounded-lg border border-slate-200 p-4">
+                <h4 className="text-xs font-bold text-slate-900">
                   Private Event Shield
                 </h4>
                 <p className="mt-1 text-xs text-slate-500">
                   Events marked &quot;Private&quot; on external calendars are blocked as &quot;Busy&quot; without importing confidential personal descriptions.
                 </p>
               </div>
-              <div className="rounded-lg border border-slate-200 p-4 dark:border-slate-800">
-                <h4 className="text-xs font-bold text-slate-900 dark:text-white">
+              <div className="rounded-lg border border-slate-200 p-4">
+                <h4 className="text-xs font-bold text-slate-900">
                   Activity Linking
                 </h4>
                 <p className="mt-1 text-xs text-slate-500">
@@ -286,9 +286,9 @@ export default function CalendarSettingsPage() {
       {/* Connection Modal */}
       {showConfigModal && selectedProvider && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-xs">
-          <div className="w-full max-w-md rounded-xl border border-slate-200 bg-white p-6 shadow-2xl dark:border-slate-800 dark:bg-slate-900">
-            <div className="flex items-center justify-between border-b border-slate-200 pb-3 dark:border-slate-800">
-              <h3 className="text-base font-bold text-slate-900 dark:text-white">
+          <div className="w-full max-w-md rounded-xl border border-slate-200 bg-white p-6 shadow-2xl">
+            <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+              <h3 className="text-base font-bold text-slate-900">
                 Configure {selectedProvider === 'google_calendar' ? 'Google Calendar' : 'Outlook Calendar'}
               </h3>
               <button
@@ -312,7 +312,7 @@ export default function CalendarSettingsPage() {
                   type="text"
                   value={calendarName}
                   onChange={(e) => setCalendarName(e.target.value)}
-                  className="mt-1 w-full rounded-md border border-slate-300 px-3 py-1.5 text-xs focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                  className="mt-1 w-full rounded-md border border-slate-300 px-3 py-1.5 text-xs focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
                 />
               </div>
 
@@ -323,7 +323,7 @@ export default function CalendarSettingsPage() {
                 <select
                   value={syncDirection}
                   onChange={(e) => setSyncDirection(e.target.value as CalendarSyncDirection)}
-                  className="mt-1 w-full rounded-md border border-slate-300 px-3 py-1.5 text-xs focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                  className="mt-1 w-full rounded-md border border-slate-300 px-3 py-1.5 text-xs focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
                 >
                   <option value="both">Both Ways (CRM ↔ External Calendar)</option>
                   <option value="crm_to_external">CRM to External Calendar Only</option>
@@ -332,7 +332,7 @@ export default function CalendarSettingsPage() {
               </div>
             </div>
 
-            <div className="mt-6 flex items-center justify-end gap-2 border-t border-slate-200 pt-4 dark:border-slate-800">
+            <div className="mt-6 flex items-center justify-end gap-2 border-t border-slate-200 pt-4">
               <button
                 type="button"
                 onClick={() => setShowConfigModal(false)}

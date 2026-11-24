@@ -53,7 +53,7 @@ export default function ReportsPage() {
 
       <PermissionGate action="reports.view" showAccessDenied>
         {/* Main Section Navigation: Standard vs Custom */}
-        <div className="mb-6 flex gap-4 border-b border-slate-200 dark:border-slate-800">
+        <div className="mb-6 flex gap-4 border-b border-slate-200">
           <button
             onClick={() => {
               setMainTab('standard');
@@ -62,7 +62,7 @@ export default function ReportsPage() {
             className={`border-b-2 pb-3 text-sm font-semibold transition-colors ${
               mainTab === 'standard'
                 ? 'border-emerald-200 text-emerald-800 dark:border-emerald-200 dark:text-emerald-600'
-                : 'border-transparent text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200'
+                : 'border-transparent text-slate-500 hover:text-slate-800  dark:hover:text-slate-200'
             }`}
           >
             Standard Reports Catalog
@@ -75,12 +75,12 @@ export default function ReportsPage() {
             className={`flex items-center gap-2 border-b-2 pb-3 text-sm font-semibold transition-colors ${
               mainTab === 'custom'
                 ? 'border-emerald-200 text-emerald-800 dark:border-emerald-200 dark:text-emerald-600'
-                : 'border-transparent text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200'
+                : 'border-transparent text-slate-500 hover:text-slate-800  dark:hover:text-slate-200'
             }`}
           >
             Custom Reports
             {customReports.length > 0 && (
-              <span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-600 dark:bg-slate-800 dark:text-slate-400">
+              <span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-600 dark:bg-slate-800">
                 {customReports.length}
               </span>
             )}
@@ -90,9 +90,9 @@ export default function ReportsPage() {
         {/* CUSTOM REPORTS TAB */}
         {mainTab === 'custom' && (
           <div className="space-y-6">
-            <div className="flex flex-col gap-3 rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-col gap-3 rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <h3 className="text-base font-bold text-slate-900 dark:text-white">
+                <h3 className="text-base font-bold text-slate-900">
                   Sales Organization Custom Reports
                 </h3>
                 <p className="mt-1 text-xs text-slate-500">
@@ -117,7 +117,7 @@ export default function ReportsPage() {
             {!isLoadingCustom && customReports.length === 0 && (
               <div className="rounded-xl border border-dashed border-slate-300 py-16 text-center dark:border-slate-700">
                 <BarChart3 className="mx-auto h-10 w-10 text-slate-300 dark:text-slate-600" />
-                <h4 className="mt-3 text-sm font-semibold text-slate-900 dark:text-white">
+                <h4 className="mt-3 text-sm font-semibold text-slate-900">
                   No custom reports created yet
                 </h4>
                 <p className="mt-1 text-xs text-slate-500">
@@ -137,7 +137,7 @@ export default function ReportsPage() {
                 {customReports.map((report) => (
                   <div
                     key={report.id}
-                    className="flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition-all hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
+                    className="flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition-all hover:shadow-md"
                   >
                     <div>
                       <div className="flex items-center justify-between">
@@ -150,7 +150,7 @@ export default function ReportsPage() {
                           </span>
                         )}
                       </div>
-                      <h4 className="mt-3 text-base font-bold text-slate-900 dark:text-white">
+                      <h4 className="mt-3 text-base font-bold text-slate-900">
                         {report.name}
                       </h4>
                       <p className="mt-1 text-xs text-slate-500 line-clamp-2">
@@ -166,7 +166,7 @@ export default function ReportsPage() {
                       </div>
                     </div>
 
-                    <div className="mt-5 flex items-center justify-between border-t pt-3 dark:border-slate-800">
+                    <div className="mt-5 flex items-center justify-between border-t pt-3">
                       <Link
                         href={`/reports/builder?id=${report.id}`}
                         className="flex items-center gap-1 text-xs font-medium text-emerald-800 hover:text-emerald-800 dark:text-emerald-600"
@@ -201,7 +201,7 @@ export default function ReportsPage() {
             {!activeReportId && (
               <div>
                 {/* Category Filter Tabs */}
-                <div className="mb-6 flex flex-wrap gap-2 border-b border-slate-200 pb-3 dark:border-slate-800">
+                <div className="mb-6 flex flex-wrap gap-2 border-b border-slate-200 pb-3">
                   {(
                     [
                       { id: 'all', label: 'All Reports' },
@@ -230,7 +230,7 @@ export default function ReportsPage() {
                   {filteredCatalog.map((report) => (
                     <div
                       key={report.id}
-                      className="flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
+                      className="flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:shadow-md"
                     >
                       <div>
                         <div className="flex items-center justify-between">
@@ -238,15 +238,15 @@ export default function ReportsPage() {
                             {report.category}
                           </span>
                         </div>
-                        <h3 className="mt-3 text-lg font-semibold text-slate-900 dark:text-white">
+                        <h3 className="mt-3 text-lg font-semibold text-slate-900">
                           {report.title}
                         </h3>
-                        <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
+                        <p className="mt-2 text-sm text-slate-500">
                           {report.description}
                         </p>
                       </div>
 
-                      <div className="mt-6 border-t pt-4 dark:border-slate-800">
+                      <div className="mt-6 border-t pt-4">
                         <button
                           onClick={() => setActiveReportId(report.id)}
                           className="w-full rounded-lg bg-slate-900 px-4 py-2 text-center text-sm font-medium text-white transition-colors hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white"
@@ -270,7 +270,7 @@ export default function ReportsPage() {
                       setActiveReportId(null);
                       setSearchTable('');
                     }}
-                    className="flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
+                    className="flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-slate-900 dark:hover:text-white"
                   >
                     ← Back to Reports Catalog
                   </button>
@@ -314,19 +314,19 @@ export default function ReportsPage() {
                 {reportResult && (
                   <>
                     {/* Report Info & Summary KPI Cards */}
-                    <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+                    <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
                       <div>
-                        <h2 className="text-xl font-bold text-slate-900 dark:text-white">
+                        <h2 className="text-xl font-bold text-slate-900">
                           {reportResult.title}
                         </h2>
                         <p className="mt-1 text-sm text-slate-500">{reportResult.description}</p>
                       </div>
 
-                      <div className="mt-6 grid grid-cols-2 gap-4 border-t pt-4 sm:grid-cols-4 dark:border-slate-800">
+                      <div className="mt-6 grid grid-cols-2 gap-4 border-t pt-4 sm:grid-cols-4">
                         {reportResult.summaryMetrics.map((metric, idx) => (
                           <div key={idx}>
                             <span className="text-xs text-slate-500">{metric.label}</span>
-                            <p className="mt-1 text-xl font-bold text-slate-900 dark:text-white">
+                            <p className="mt-1 text-xl font-bold text-slate-900">
                               {metric.value}
                             </p>
                             {metric.subtext && (
@@ -339,7 +339,7 @@ export default function ReportsPage() {
 
                     {/* Visual Category Breakdown if available */}
                     {reportResult.breakdown.length > 0 && (
-                      <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+                      <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
                         <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-slate-500">
                           Segment Distribution
                         </h3>
@@ -367,9 +367,9 @@ export default function ReportsPage() {
                     )}
 
                     {/* Tabular Records Preview */}
-                    <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+                    <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
                       <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                        <h3 className="text-base font-semibold text-slate-900 dark:text-white">
+                        <h3 className="text-base font-semibold text-slate-900">
                           Report Dataset Records ({filteredRows.length})
                         </h3>
                         <input
@@ -377,7 +377,7 @@ export default function ReportsPage() {
                           placeholder="Search within report results..."
                           value={searchTable}
                           onChange={(e) => setSearchTable(e.target.value)}
-                          className="rounded-md border border-slate-300 px-3 py-1.5 text-xs shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white sm:w-64"
+                          className="rounded-md border border-slate-300 px-3 py-1.5 text-xs shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 sm:w-64"
                         />
                       </div>
 

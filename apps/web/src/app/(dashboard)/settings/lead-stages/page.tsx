@@ -147,8 +147,8 @@ export default function LeadStagesPage() {
           </div>
         )}
 
-        <div className="bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden dark:bg-slate-900 dark:border-slate-800">
-          <div className="px-5 py-3.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-slate-600 dark:bg-slate-950 dark:border-slate-800 dark:text-slate-400">
+        <div className="bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden">
+          <div className="px-5 py-3.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-slate-600">
             <div className="flex items-center gap-2">
               <Layers className="h-4 w-4 text-emerald-800" />
               <span>Configured Pipeline Stages ({stages.length})</span>
@@ -166,7 +166,7 @@ export default function LeadStagesPage() {
             <div className="overflow-x-auto">
               <table className="w-full text-xs">
                 <thead>
-                  <tr className="border-b border-slate-200 bg-slate-50/50 text-slate-500 uppercase tracking-wider dark:border-slate-800 dark:bg-slate-900/50">
+                  <tr className="border-b border-slate-200 bg-slate-50/50 text-slate-500 uppercase tracking-wider /50">
                     <th className="py-3 px-4 text-left font-semibold w-16">Seq</th>
                     <th className="py-3 px-4 text-left font-semibold">Stage Name</th>
                     <th className="py-3 px-4 text-left font-semibold">Color</th>
@@ -182,7 +182,7 @@ export default function LeadStagesPage() {
                         #{stage.order_index}
                       </td>
 
-                      <td className="py-3.5 px-4 font-semibold text-slate-900 dark:text-white">
+                      <td className="py-3.5 px-4 font-semibold text-slate-900">
                         <div className="flex items-center gap-2.5">
                           <span
                             className="w-3 h-3 rounded-full shrink-0 shadow-xs"
@@ -193,7 +193,7 @@ export default function LeadStagesPage() {
                         </div>
                       </td>
 
-                      <td className="py-3.5 px-4 font-mono text-slate-600 dark:text-slate-400">
+                      <td className="py-3.5 px-4 font-mono text-slate-600">
                         {stage.color}
                       </td>
 
@@ -268,11 +268,11 @@ export default function LeadStagesPage() {
         {/* Edit Stage Modal */}
         {editingStage && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-            <div className="w-full max-w-md bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200 dark:bg-slate-900 dark:border-slate-800">
-              <div className="flex items-center justify-between px-5 py-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950">
+            <div className="w-full max-w-md bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
+              <div className="flex items-center justify-between px-5 py-4 border-b border-slate-200 bg-slate-50">
                 <div className="flex items-center gap-2">
                   <Edit2 className="h-4 w-4 text-emerald-800" />
-                  <h3 className="font-semibold text-sm text-slate-900 dark:text-white">
+                  <h3 className="font-semibold text-sm text-slate-900">
                     Edit Lead Stage ({editingStage.id})
                   </h3>
                 </div>
@@ -294,7 +294,7 @@ export default function LeadStagesPage() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
-                    className="w-full px-3 py-1.5 text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
+                    className="w-full px-3 py-1.5 text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900"
                   />
                 </div>
 
@@ -332,7 +332,7 @@ export default function LeadStagesPage() {
                       value={color}
                       onChange={(e) => setColor(e.target.value)}
                       placeholder="#3b82f6"
-                      className="w-full px-3 py-1.5 text-xs font-mono rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
+                      className="w-full px-3 py-1.5 text-xs font-mono rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900"
                     />
                   </div>
                   <div className="flex flex-wrap gap-1.5">
@@ -350,14 +350,14 @@ export default function LeadStagesPage() {
                   </div>
                 </div>
 
-                <div className="p-3 bg-slate-50 dark:bg-slate-950/60 rounded-xl text-[11px] text-slate-500 flex items-start gap-2">
+                <div className="p-3 bg-slate-50 /60 rounded-xl text-[11px] text-slate-500 flex items-start gap-2">
                   <Lock className="h-3.5 w-3.5 shrink-0 mt-0.5 text-slate-400" />
                   <span>
                     Core system identifier <code className="font-mono text-slate-700 dark:text-slate-300">{editingStage.id}</code> is locked to preserve lead conversion workflows, audit history, and reporting calculations.
                   </span>
                 </div>
 
-                <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-100 dark:border-slate-800">
+                <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-100">
                   <button
                     type="button"
                     onClick={closeEditModal}

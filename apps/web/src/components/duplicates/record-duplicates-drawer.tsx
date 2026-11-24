@@ -52,15 +52,15 @@ export function RecordDuplicatesDrawer({
   return (
     <>
       <div className="fixed inset-0 z-40 bg-black/50 backdrop-blur-xs flex justify-end">
-        <div className="w-full max-w-md bg-white h-full shadow-2xl flex flex-col border-l border-slate-200 dark:bg-slate-900 dark:border-slate-800">
+        <div className="w-full max-w-md bg-white h-full shadow-2xl flex flex-col border-l border-slate-200">
           {/* Header */}
-          <div className="p-5 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-50 dark:bg-slate-950">
+          <div className="p-5 border-b border-slate-200 flex items-center justify-between bg-slate-50">
             <div className="flex items-center gap-2.5">
               <div className="p-2 bg-emerald-50 text-emerald-800 rounded-xl dark:bg-emerald-600/40 dark:text-emerald-600">
                 <GitMerge className="h-4 w-4" />
               </div>
               <div>
-                <h3 className="text-sm font-bold text-slate-900 dark:text-white">
+                <h3 className="text-sm font-bold text-slate-900">
                   Duplicate Search
                 </h3>
                 <p className="text-xs text-slate-500 truncate max-w-[240px]">
@@ -86,7 +86,7 @@ export function RecordDuplicatesDrawer({
             ) : candidates.length === 0 ? (
               <div className="py-12 text-center space-y-2">
                 <CheckCircle2 className="h-8 w-8 text-emerald-500 mx-auto" />
-                <h4 className="text-sm font-semibold text-slate-800 dark:text-white">
+                <h4 className="text-sm font-semibold text-slate-800">
                   No Potential Duplicates Found
                 </h4>
                 <p className="text-xs text-slate-500 max-w-xs mx-auto">
@@ -108,7 +108,7 @@ export function RecordDuplicatesDrawer({
                     className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2.5 dark:bg-slate-800/60 dark:border-slate-700"
                   >
                     <div className="flex items-center justify-between">
-                      <span className="font-semibold text-xs text-slate-900 dark:text-white">
+                      <span className="font-semibold text-xs text-slate-900">
                         {cand.name || `${cand.first_name || ''} ${cand.last_name || ''}`}
                       </span>
                       <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 dark:bg-amber-900/60 dark:text-amber-300">

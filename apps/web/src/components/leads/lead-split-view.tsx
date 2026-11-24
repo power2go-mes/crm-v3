@@ -52,19 +52,19 @@ export function LeadSplitView({
   if (isLoading) {
     return (
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 h-[700px] animate-pulse">
-        <div className="lg:col-span-5 bg-slate-900/50 border border-slate-800 rounded-xl p-4 space-y-3">
+        <div className="lg:col-span-5 bg-white border border-slate-200 rounded-xl p-4 space-y-3">
           {Array.from({ length: 6 }).map((_, i) => (
             <div key={i} className="h-16 bg-slate-800/60 rounded-lg" />
           ))}
         </div>
-        <div className="lg:col-span-7 bg-slate-900/50 border border-slate-800 rounded-xl p-6" />
+        <div className="lg:col-span-7 bg-white border border-slate-200 rounded-xl p-6" />
       </div>
     );
   }
 
   if (leads.length === 0) {
     return (
-      <div className="p-12 text-center bg-slate-900/40 border border-slate-800 rounded-xl text-slate-500">
+      <div className="p-12 text-center bg-white border border-slate-200 rounded-xl text-slate-500">
         No leads available for split preview.
       </div>
     );
@@ -73,7 +73,7 @@ export function LeadSplitView({
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 min-h-[650px]">
       {/* Left Pane: List */}
-      <div className="lg:col-span-5 bg-slate-900/60 border border-slate-800 rounded-xl overflow-hidden flex flex-col max-h-[720px]">
+      <div className="lg:col-span-5 bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col max-h-[720px]">
         <div className="p-3 bg-slate-950/70 border-b border-slate-800 flex items-center justify-between text-xs font-semibold text-slate-400 uppercase tracking-wider">
           <span>Leads ({leads.length})</span>
         </div>
@@ -114,7 +114,7 @@ export function LeadSplitView({
       </div>
 
       {/* Right Pane: Detail Quick Preview */}
-      <div className="lg:col-span-7 bg-slate-900/60 border border-slate-800 rounded-xl overflow-hidden flex flex-col">
+      <div className="lg:col-span-7 bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col">
         {activeLead ? (
           <div className="flex flex-col h-full">
             {/* Header */}

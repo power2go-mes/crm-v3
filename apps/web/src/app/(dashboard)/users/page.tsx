@@ -84,29 +84,29 @@ export default function UsersPage() {
       <PermissionGate action="users.view" showAccessDenied>
         {/* Top Summary Metrics */}
         <div className="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
-          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
             <span className="text-xs font-medium text-slate-500">Total Personnel</span>
-            <p className="mt-1 text-2xl font-bold text-slate-900 dark:text-white">{users.length}</p>
+            <p className="mt-1 text-2xl font-bold text-slate-900">{users.length}</p>
           </div>
-          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
             <span className="text-xs font-medium text-slate-500">Active Employees</span>
             <p className="mt-1 text-2xl font-bold text-emerald-600 dark:text-emerald-400">
               {activeCount}
             </p>
           </div>
-          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
             <span className="text-xs font-medium text-slate-500">Deactivated / Suspended</span>
             <p className="mt-1 text-2xl font-bold text-slate-400">{inactiveCount}</p>
           </div>
         </div>
 
         {/* Filter and Search Bar */}
-        <div className="mb-6 flex flex-col gap-4 rounded-xl border border-slate-200 bg-white p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between dark:border-slate-800 dark:bg-slate-900">
+        <div className="mb-6 flex flex-col gap-4 rounded-xl border border-slate-200 bg-white p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-wrap items-center gap-3">
             <select
               value={selectedRole}
               onChange={(e) => setSelectedRole(e.target.value)}
-              className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+              className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
             >
               <option value="all">All Roles</option>
               <option value="SUPER_ADMIN">Super Administrator</option>
@@ -120,7 +120,7 @@ export default function UsersPage() {
             <select
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value as any)}
-              className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+              className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
             >
               <option value="all">All Statuses</option>
               <option value="active">Active Only</option>
@@ -132,7 +132,7 @@ export default function UsersPage() {
               placeholder="Search by name, email, title..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="rounded-lg border border-slate-300 px-3 py-1.5 text-xs shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white sm:w-64"
+              className="rounded-lg border border-slate-300 px-3 py-1.5 text-xs shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 sm:w-64"
             />
           </div>
 
@@ -147,9 +147,9 @@ export default function UsersPage() {
         </div>
 
         {/* Directory DataGrid */}
-        <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+        <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
           <div className="mb-4 flex items-center justify-between">
-            <h3 className="text-base font-semibold text-slate-900 dark:text-white">
+            <h3 className="text-base font-semibold text-slate-900">
               Personnel Records ({filteredUsers.length})
             </h3>
           </div>
@@ -177,7 +177,7 @@ export default function UsersPage() {
                         {(u.last_name?.[0] || '').toUpperCase()}
                       </div>
                       <div>
-                        <p className="font-medium text-slate-900 dark:text-white">
+                        <p className="font-medium text-slate-900">
                           {u.first_name} {u.last_name}
                         </p>
                         <p className="text-xs text-slate-400">{u.designation || 'No Title'}</p>
@@ -190,7 +190,7 @@ export default function UsersPage() {
                   header: 'Email / Phone',
                   cell: (u) => (
                     <div>
-                      <p className="text-xs text-slate-900 dark:text-white">{u.email}</p>
+                      <p className="text-xs text-slate-900">{u.email}</p>
                       {u.phone && <p className="text-xs text-slate-400">{u.phone}</p>}
                     </div>
                   ),

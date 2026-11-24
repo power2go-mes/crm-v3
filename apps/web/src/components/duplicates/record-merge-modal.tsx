@@ -102,15 +102,15 @@ export function RecordMergeModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
-      <div className="w-full max-w-4xl bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] dark:bg-slate-900 dark:border-slate-800">
+      <div className="w-full max-w-4xl bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
         {/* Header */}
-        <div className="px-6 py-4 border-b border-slate-200 flex items-center justify-between bg-slate-50 dark:border-slate-800 dark:bg-slate-950">
+        <div className="px-6 py-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-emerald-50 text-emerald-800 rounded-xl dark:bg-emerald-600/40 dark:text-emerald-600">
               <GitMerge className="h-5 w-5" />
             </div>
             <div>
-              <h2 className="text-base font-bold text-slate-900 dark:text-white">
+              <h2 className="text-base font-bold text-slate-900">
                 Merge Duplicate {entityType === 'accounts' ? 'Accounts' : 'Contacts'}
               </h2>
               <p className="text-xs text-slate-500">
@@ -155,7 +155,7 @@ export function RecordMergeModal({
         <div className="p-6 flex-1 overflow-y-auto">
           <table className="w-full text-xs">
             <thead>
-              <tr className="border-b border-slate-200 text-slate-500 uppercase tracking-wider dark:border-slate-800">
+              <tr className="border-b border-slate-200 text-slate-500 uppercase tracking-wider">
                 <th className="pb-3 text-left w-1/4 font-semibold">Field Name</th>
                 <th className="pb-3 text-left w-3/8 font-bold text-emerald-600 dark:text-emerald-400">
                   Surviving Master (Keep Record)
@@ -227,7 +227,7 @@ export function RecordMergeModal({
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-4 border-t border-slate-200 bg-slate-50 flex items-center justify-between dark:border-slate-800 dark:bg-slate-950">
+        <div className="px-6 py-4 border-t border-slate-200 bg-slate-50 flex items-center justify-between">
           <div className="text-xs text-slate-500">
             Surviving Record ID: <code className="font-mono text-slate-700 dark:text-slate-300">{currentMaster.id}</code>
           </div>

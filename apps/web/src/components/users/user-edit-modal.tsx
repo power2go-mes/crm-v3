@@ -44,10 +44,10 @@ export function UserEditModal({ user, isOpen, onClose }: UserEditModalProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-      <div className="w-full max-w-lg rounded-xl bg-white p-6 shadow-xl dark:bg-slate-900">
-        <div className="flex items-center justify-between border-b pb-3 dark:border-slate-800">
+      <div className="w-full max-w-lg rounded-xl bg-white p-6 shadow-xl">
+        <div className="flex items-center justify-between border-b pb-3">
           <div>
-            <h2 className="text-lg font-semibold text-slate-900 dark:text-white">
+            <h2 className="text-lg font-semibold text-slate-900">
               Edit Employee Profile
             </h2>
             <p className="text-xs text-slate-500">{user.email}</p>
@@ -79,7 +79,7 @@ export function UserEditModal({ user, isOpen, onClose }: UserEditModalProps) {
                 required
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
-                className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
               />
             </div>
             <div>
@@ -91,7 +91,7 @@ export function UserEditModal({ user, isOpen, onClose }: UserEditModalProps) {
                 required
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
-                className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
               />
             </div>
           </div>
@@ -104,7 +104,7 @@ export function UserEditModal({ user, isOpen, onClose }: UserEditModalProps) {
               type="text"
               disabled
               value={user.roleName}
-              className="mt-1 block w-full rounded-md border border-slate-200 bg-slate-100 px-3 py-2 text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-800/60 dark:text-slate-400"
+              className="mt-1 block w-full rounded-md border border-slate-200 bg-slate-100 px-3 py-2 text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-800/60"
             />
           </div>
 
@@ -117,7 +117,7 @@ export function UserEditModal({ user, isOpen, onClose }: UserEditModalProps) {
               value={department}
               onChange={(e) => setDepartment(e.target.value)}
               placeholder="e.g. Sales, Commercial, Operations"
-              className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+              className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
             />
           </div>
 
@@ -130,7 +130,7 @@ export function UserEditModal({ user, isOpen, onClose }: UserEditModalProps) {
               value={designation}
               onChange={(e) => setDesignation(e.target.value)}
               placeholder="e.g. Senior Account Executive"
-              className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+              className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
             />
           </div>
 
@@ -143,11 +143,11 @@ export function UserEditModal({ user, isOpen, onClose }: UserEditModalProps) {
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="+1 (555) 000-0000"
-              className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+              className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
             />
           </div>
 
-          <div className="flex justify-end gap-3 pt-3 border-t dark:border-slate-800">
+          <div className="flex justify-end gap-3 pt-3 border-t">
             <button
               type="button"
               onClick={onClose}

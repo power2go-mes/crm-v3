@@ -19,7 +19,7 @@ export function EmailHistoryList({ relatedToType, relatedToId }: EmailHistoryLis
 
   if (emails.length === 0) {
     return (
-      <div className="rounded-xl border border-dashed border-slate-200 p-6 text-center text-xs text-slate-500 dark:border-slate-800">
+      <div className="rounded-xl border border-dashed border-slate-200 p-6 text-center text-xs text-slate-500">
         <Mail className="mx-auto mb-2 h-6 w-6 text-slate-400" />
         <p>No email communication logged for this record yet.</p>
       </div>
@@ -68,13 +68,13 @@ export function EmailHistoryList({ relatedToType, relatedToId }: EmailHistoryLis
       {emails.map((email) => (
         <div
           key={email.id}
-          className="rounded-xl border border-slate-200 bg-white p-4 shadow-2xs dark:border-slate-800 dark:bg-slate-900"
+          className="rounded-xl border border-slate-200 bg-white p-4 shadow-2xs"
         >
           <div className="flex items-start justify-between gap-3">
             <div>
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-slate-500" />
-                <h4 className="text-xs font-bold text-slate-900 dark:text-white">{email.subject}</h4>
+                <h4 className="text-xs font-bold text-slate-900">{email.subject}</h4>
               </div>
               <p className="mt-1 text-[11px] text-slate-500">
                 To: <span className="font-medium text-slate-700 dark:text-slate-300">{email.recipient_email}</span>

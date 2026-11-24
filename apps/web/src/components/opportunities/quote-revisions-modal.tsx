@@ -18,12 +18,12 @@ export function QuoteRevisionsModal({ isOpen, onClose, quote }: QuoteRevisionsMo
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 backdrop-blur-xs p-4">
-      <div className="relative w-full max-w-2xl rounded-2xl bg-white p-6 shadow-xl dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-        <div className="flex items-center justify-between border-b border-slate-100 pb-4 dark:border-slate-800">
+      <div className="relative w-full max-w-2xl rounded-2xl bg-white p-6 shadow-xl border border-slate-200">
+        <div className="flex items-center justify-between border-b border-slate-100 pb-4">
           <div className="flex items-center gap-2">
             <History className="h-5 w-5 text-emerald-800 dark:text-emerald-600" />
             <div>
-              <h3 className="text-base font-bold text-slate-900 dark:text-white">
+              <h3 className="text-base font-bold text-slate-900">
                 Revision History — {quote.quote_number}
               </h3>
               <p className="text-xs text-slate-500">
@@ -53,7 +53,7 @@ export function QuoteRevisionsModal({ isOpen, onClose, quote }: QuoteRevisionsMo
             revisions.map((rev) => (
               <div
                 key={rev.id}
-                className="rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-800/40"
+                className="rounded-xl border border-slate-200 bg-slate-50 p-4 dark:bg-slate-800/40"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
@@ -109,7 +109,7 @@ export function QuoteRevisionsModal({ isOpen, onClose, quote }: QuoteRevisionsMo
           )}
         </div>
 
-        <div className="mt-5 flex justify-end border-t border-slate-100 pt-3 dark:border-slate-800">
+        <div className="mt-5 flex justify-end border-t border-slate-100 pt-3">
           <button
             type="button"
             onClick={onClose}

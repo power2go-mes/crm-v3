@@ -154,17 +154,17 @@ export default function SalesTargetsPage() {
 
       <PermissionGate action="sales_targets.view" showAccessDenied>
         {/* Period Selector Controls */}
-        <div className="bg-white border border-slate-200 rounded-xl p-4 mb-6 shadow-xs dark:bg-slate-900 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4">
+        <div className="bg-white border border-slate-200 rounded-xl p-4 mb-6 shadow-xs flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             {/* Period Type Buttons */}
-            <div className="inline-flex rounded-lg border border-slate-200 dark:border-slate-800 p-0.5 bg-slate-50 dark:bg-slate-950">
+            <div className="inline-flex rounded-lg border border-slate-200 p-0.5 bg-slate-50">
               <button
                 type="button"
                 onClick={() => setPeriodType('monthly')}
                 className={`px-3 py-1.5 rounded-md text-xs font-semibold transition ${
                   periodType === 'monthly'
                     ? 'bg-white text-emerald-800 shadow-xs dark:bg-slate-800 dark:text-emerald-600'
-                    : 'text-slate-600 hover:text-slate-900 dark:text-slate-400'
+                    : 'text-slate-600 hover:text-slate-900 '
                 }`}
               >
                 Monthly
@@ -175,7 +175,7 @@ export default function SalesTargetsPage() {
                 className={`px-3 py-1.5 rounded-md text-xs font-semibold transition ${
                   periodType === 'quarterly'
                     ? 'bg-white text-emerald-800 shadow-xs dark:bg-slate-800 dark:text-emerald-600'
-                    : 'text-slate-600 hover:text-slate-900 dark:text-slate-400'
+                    : 'text-slate-600 hover:text-slate-900 '
                 }`}
               >
                 Quarterly
@@ -186,7 +186,7 @@ export default function SalesTargetsPage() {
             <select
               value={selectedYear}
               onChange={(e) => setSelectedYear(Number(e.target.value))}
-              className="text-xs rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-slate-800 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+              className="text-xs rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-slate-800 dark:border-slate-700 dark:bg-slate-800"
             >
               {[2025, 2026, 2027, 2028].map((y) => (
                 <option key={y} value={y}>
@@ -200,7 +200,7 @@ export default function SalesTargetsPage() {
               <select
                 value={selectedMonth}
                 onChange={(e) => setSelectedMonth(Number(e.target.value))}
-                className="text-xs rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-slate-800 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                className="text-xs rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-slate-800 dark:border-slate-700 dark:bg-slate-800"
               >
                 {[
                   'January', 'February', 'March', 'April', 'May', 'June',
@@ -215,7 +215,7 @@ export default function SalesTargetsPage() {
               <select
                 value={selectedQuarter}
                 onChange={(e) => setSelectedQuarter(Number(e.target.value))}
-                className="text-xs rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-slate-800 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                className="text-xs rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-slate-800 dark:border-slate-700 dark:bg-slate-800"
               >
                 <option value={1}>Q1 (Jan - Mar)</option>
                 <option value={2}>Q2 (Apr - Jun)</option>
@@ -233,7 +233,7 @@ export default function SalesTargetsPage() {
               placeholder="Search personnel or role..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full text-xs rounded-lg border border-slate-300 bg-white pl-9 pr-3 py-1.5 text-slate-800 placeholder-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+              className="w-full text-xs rounded-lg border border-slate-300 bg-white pl-9 pr-3 py-1.5 text-slate-800 placeholder-slate-400 dark:border-slate-700 dark:bg-slate-800"
             />
           </div>
         </div>
@@ -267,13 +267,13 @@ export default function SalesTargetsPage() {
         )}
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
-          <div className="p-4 bg-white border border-slate-200 rounded-xl shadow-xs dark:bg-slate-900 dark:border-slate-800">
+          <div className="p-4 bg-white border border-slate-200 rounded-xl shadow-xs">
             <span className="text-xs text-slate-500 font-medium">Selected Period</span>
-            <p className="mt-1 text-lg font-bold text-slate-900 dark:text-white">{periodLabel}</p>
+            <p className="mt-1 text-lg font-bold text-slate-900">{periodLabel}</p>
             <span className="text-[11px] text-slate-400">{periodStart} to {periodEnd}</span>
           </div>
 
-          <div className="p-4 bg-white border border-slate-200 rounded-xl shadow-xs dark:bg-slate-900 dark:border-slate-800">
+          <div className="p-4 bg-white border border-slate-200 rounded-xl shadow-xs">
             <span className="text-xs text-slate-500 font-medium">Total Team Quota</span>
             <p className="mt-1 text-lg font-bold text-emerald-800 dark:text-emerald-600">
               ${(performance?.totalTeamQuota || 0).toLocaleString()}
@@ -283,7 +283,7 @@ export default function SalesTargetsPage() {
             </span>
           </div>
 
-          <div className="p-4 bg-white border border-slate-200 rounded-xl shadow-xs dark:bg-slate-900 dark:border-slate-800">
+          <div className="p-4 bg-white border border-slate-200 rounded-xl shadow-xs">
             <span className="text-xs text-slate-500 font-medium">Closed Won Revenue</span>
             <p className="mt-1 text-lg font-bold text-emerald-600 dark:text-emerald-400">
               ${(performance?.totalTeamWon || 0).toLocaleString()}
@@ -291,7 +291,7 @@ export default function SalesTargetsPage() {
             <span className="text-[11px] text-slate-400">No double-counting splits</span>
           </div>
 
-          <div className="p-4 bg-white border border-slate-200 rounded-xl shadow-xs dark:bg-slate-900 dark:border-slate-800">
+          <div className="p-4 bg-white border border-slate-200 rounded-xl shadow-xs">
             <span className="text-xs text-slate-500 font-medium">Overall Attainment</span>
             <p className="mt-1 text-lg font-bold text-emerald-800 dark:text-emerald-600">
               {performance?.overallAttainment || 0}%
@@ -301,8 +301,8 @@ export default function SalesTargetsPage() {
         </div>
 
         {/* Reps Quota Grid */}
-        <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs dark:bg-slate-900 dark:border-slate-800">
-          <div className="px-5 py-3.5 bg-slate-50 border-b border-slate-200 text-xs font-semibold text-slate-600 uppercase tracking-wider dark:bg-slate-950 dark:border-slate-800 dark:text-slate-400 flex items-center justify-between">
+        <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
+          <div className="px-5 py-3.5 bg-slate-50 border-b border-slate-200 text-xs font-semibold text-slate-600 uppercase tracking-wider flex items-center justify-between">
             <span>Personnel Quota Allocations ({filteredReps.length})</span>
             <span className="text-[11px] font-normal lowercase text-slate-400">
               Changes auto-stage; click 'Save Changes' to commit to database.
@@ -321,7 +321,7 @@ export default function SalesTargetsPage() {
             <div className="overflow-x-auto">
               <table className="w-full text-xs">
                 <thead>
-                  <tr className="border-b border-slate-200 bg-slate-50/50 text-slate-500 uppercase tracking-wider dark:border-slate-800 dark:bg-slate-900/50">
+                  <tr className="border-b border-slate-200 bg-slate-50/50 text-slate-500 uppercase tracking-wider /50">
                     <th className="py-3 px-4 text-left font-semibold">Representative</th>
                     <th className="py-3 px-4 text-left font-semibold">Role &amp; Hierarchy</th>
                     <th className="py-3 px-4 text-left font-semibold">Manager</th>
@@ -346,7 +346,7 @@ export default function SalesTargetsPage() {
                         }`}
                       >
                         <td className="py-3 px-4">
-                          <div className="font-semibold text-slate-900 dark:text-white">{rep.name}</div>
+                          <div className="font-semibold text-slate-900">{rep.name}</div>
                           <div className="text-[11px] text-slate-500">{rep.email}</div>
                         </td>
 
@@ -365,7 +365,7 @@ export default function SalesTargetsPage() {
                           )}
                         </td>
 
-                        <td className="py-3 px-4 text-slate-600 dark:text-slate-400">
+                        <td className="py-3 px-4 text-slate-600">
                           {rep.managerName || <span className="text-slate-400 italic">None</span>}
                         </td>
 
@@ -378,7 +378,7 @@ export default function SalesTargetsPage() {
                             action="sales_targets.manage"
                             fallback={
                               <div className="flex items-center gap-2">
-                                <span className="font-semibold text-slate-900 dark:text-white">
+                                <span className="font-semibold text-slate-900">
                                   ${currentQuota.toLocaleString()}
                                 </span>
                                 {rep.quotaId ? (
@@ -404,7 +404,7 @@ export default function SalesTargetsPage() {
                                   onChange={(e) =>
                                     handleQuotaChange(rep.id, Number(e.target.value) || 0)
                                   }
-                                  className={`w-full px-2.5 py-1 text-xs rounded-lg border bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-medium focus:ring-1 focus:ring-emerald-500 ${
+                                  className={`w-full px-2.5 py-1 text-xs rounded-lg border bg-white dark:bg-slate-800 text-slate-900  font-medium focus:ring-1 focus:ring-emerald-500 ${
                                     isDirty
                                       ? 'border-emerald-200 ring-1 ring-blue-500'
                                       : 'border-slate-300 dark:border-slate-700'

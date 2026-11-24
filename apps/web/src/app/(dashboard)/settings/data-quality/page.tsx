@@ -164,7 +164,7 @@ export default function DataQualityPage() {
 
       <PermissionGate action="settings.view" showAccessDenied>
         {/* Navigation Tabs */}
-        <div className="flex border-b border-slate-200 dark:border-slate-800 space-x-1 mb-6">
+        <div className="flex border-b border-slate-200 space-x-1 mb-6">
           <button
             type="button"
             onClick={() => setActiveTab('accounts')}
@@ -222,9 +222,9 @@ export default function DataQualityPage() {
         {activeTab === 'accounts' && (
           <div className="space-y-4">
             {accountDuplicates.length === 0 ? (
-              <div className="p-12 text-center bg-white border border-slate-200 rounded-2xl shadow-xs dark:bg-slate-900 dark:border-slate-800">
+              <div className="p-12 text-center bg-white border border-slate-200 rounded-2xl shadow-xs">
                 <CheckCircle2 className="h-10 w-10 text-emerald-500 mx-auto mb-2" />
-                <h3 className="text-base font-bold text-slate-900 dark:text-white">
+                <h3 className="text-base font-bold text-slate-900">
                   Zero Account Duplicates Detected
                 </h3>
                 <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
@@ -236,7 +236,7 @@ export default function DataQualityPage() {
                 {accountDuplicates.map((dup, idx) => (
                   <div
                     key={idx}
-                    className="p-5 bg-white border border-slate-200 rounded-xl shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4 dark:bg-slate-900 dark:border-slate-800"
+                    className="p-5 bg-white border border-slate-200 rounded-xl shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
                   >
                     <div className="space-y-2 flex-1">
                       <div className="flex items-center gap-2 flex-wrap">
@@ -256,7 +256,7 @@ export default function DataQualityPage() {
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs pt-1">
                         <div className="p-3 bg-slate-50 rounded-lg dark:bg-slate-800/50">
                           <span className="text-[10px] uppercase font-bold text-slate-400 block">Candidate A</span>
-                          <span className="font-semibold text-slate-900 dark:text-white text-sm block">
+                          <span className="font-semibold text-slate-900 text-sm block">
                             {dup.master.name}
                           </span>
                           <span className="text-slate-500 block">{dup.master.website || 'No website'}</span>
@@ -265,7 +265,7 @@ export default function DataQualityPage() {
 
                         <div className="p-3 bg-slate-50 rounded-lg dark:bg-slate-800/50">
                           <span className="text-[10px] uppercase font-bold text-slate-400 block">Candidate B</span>
-                          <span className="font-semibold text-slate-900 dark:text-white text-sm block">
+                          <span className="font-semibold text-slate-900 text-sm block">
                             {dup.victim.name}
                           </span>
                           <span className="text-slate-500 block">{dup.victim.website || 'No website'}</span>
@@ -283,7 +283,7 @@ export default function DataQualityPage() {
                           victim: dup.victim,
                         })
                       }
-                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-semibold shadow-xs transition shrink-0 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold shadow-xs transition shrink-0 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white"
                     >
                       <GitMerge className="h-4 w-4" />
                       <span>Review &amp; Merge</span>
@@ -299,9 +299,9 @@ export default function DataQualityPage() {
         {activeTab === 'contacts' && (
           <div className="space-y-4">
             {contactDuplicates.length === 0 ? (
-              <div className="p-12 text-center bg-white border border-slate-200 rounded-2xl shadow-xs dark:bg-slate-900 dark:border-slate-800">
+              <div className="p-12 text-center bg-white border border-slate-200 rounded-2xl shadow-xs">
                 <CheckCircle2 className="h-10 w-10 text-emerald-500 mx-auto mb-2" />
-                <h3 className="text-base font-bold text-slate-900 dark:text-white">
+                <h3 className="text-base font-bold text-slate-900">
                   Zero Contact Duplicates Detected
                 </h3>
                 <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
@@ -313,7 +313,7 @@ export default function DataQualityPage() {
                 {contactDuplicates.map((dup, idx) => (
                   <div
                     key={idx}
-                    className="p-5 bg-white border border-slate-200 rounded-xl shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4 dark:bg-slate-900 dark:border-slate-800"
+                    className="p-5 bg-white border border-slate-200 rounded-xl shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
                   >
                     <div className="space-y-2 flex-1">
                       <div className="flex items-center gap-2 flex-wrap">
@@ -333,7 +333,7 @@ export default function DataQualityPage() {
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs pt-1">
                         <div className="p-3 bg-slate-50 rounded-lg dark:bg-slate-800/50">
                           <span className="text-[10px] uppercase font-bold text-slate-400 block">Candidate A</span>
-                          <span className="font-semibold text-slate-900 dark:text-white text-sm block">
+                          <span className="font-semibold text-slate-900 text-sm block">
                             {dup.master.first_name} {dup.master.last_name}
                           </span>
                           <span className="text-slate-500 block">{dup.master.email || 'No email'}</span>
@@ -342,7 +342,7 @@ export default function DataQualityPage() {
 
                         <div className="p-3 bg-slate-50 rounded-lg dark:bg-slate-800/50">
                           <span className="text-[10px] uppercase font-bold text-slate-400 block">Candidate B</span>
-                          <span className="font-semibold text-slate-900 dark:text-white text-sm block">
+                          <span className="font-semibold text-slate-900 text-sm block">
                             {dup.victim.first_name} {dup.victim.last_name}
                           </span>
                           <span className="text-slate-500 block">{dup.victim.email || 'No email'}</span>
@@ -360,7 +360,7 @@ export default function DataQualityPage() {
                           victim: dup.victim,
                         })
                       }
-                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-semibold shadow-xs transition shrink-0 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold shadow-xs transition shrink-0 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white"
                     >
                       <GitMerge className="h-4 w-4" />
                       <span>Review &amp; Merge</span>
@@ -374,8 +374,8 @@ export default function DataQualityPage() {
 
         {/* Tab 3: Merge Audit Logs */}
         {activeTab === 'logs' && (
-          <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs dark:bg-slate-900 dark:border-slate-800">
-            <div className="px-5 py-3.5 bg-slate-50 border-b border-slate-200 text-xs font-semibold text-slate-600 uppercase tracking-wider dark:bg-slate-950 dark:border-slate-800 dark:text-slate-400">
+          <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
+            <div className="px-5 py-3.5 bg-slate-50 border-b border-slate-200 text-xs font-semibold text-slate-600 uppercase tracking-wider">
               Historical Merge Audit Trail
             </div>
 
@@ -392,7 +392,7 @@ export default function DataQualityPage() {
                         <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-emerald-50 text-emerald-800 dark:bg-emerald-600/40 dark:text-emerald-600">
                           {log.entity_type}
                         </span>
-                        <span className="font-semibold text-slate-900 dark:text-white">
+                        <span className="font-semibold text-slate-900">
                           Merged into Master ID: {log.master_id.slice(0, 8)}...
                         </span>
                       </div>
@@ -401,7 +401,7 @@ export default function DataQualityPage() {
                       </span>
                     </div>
 
-                    <div className="text-slate-600 dark:text-slate-400 pl-2 border-l-2 border-slate-200 dark:border-slate-700 text-[11px]">
+                    <div className="text-slate-600 pl-2 border-l-2 border-slate-200 dark:border-slate-700 text-[11px]">
                       {log.merge_details?.victim_name && (
                         <p>Archived record: <strong>{log.merge_details.victim_name}</strong></p>
                       )}
@@ -421,8 +421,8 @@ export default function DataQualityPage() {
 
         {/* Tab 4: Deduplication Rules */}
         {activeTab === 'rules' && (
-          <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs dark:bg-slate-900 dark:border-slate-800">
-            <div className="px-5 py-3.5 bg-slate-50 border-b border-slate-200 text-xs font-semibold text-slate-600 uppercase tracking-wider dark:bg-slate-950 dark:border-slate-800 dark:text-slate-400">
+          <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
+            <div className="px-5 py-3.5 bg-slate-50 border-b border-slate-200 text-xs font-semibold text-slate-600 uppercase tracking-wider">
               Active Deduplication Matching Engine Rules
             </div>
 
@@ -431,7 +431,7 @@ export default function DataQualityPage() {
                 <div key={rule.id} className="p-4 flex items-center justify-between">
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
-                      <span className="font-semibold text-slate-900 dark:text-white">
+                      <span className="font-semibold text-slate-900">
                         {rule.rule_name}
                       </span>
                       <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300">

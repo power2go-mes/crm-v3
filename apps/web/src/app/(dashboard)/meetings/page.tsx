@@ -281,7 +281,7 @@ export default function MeetingsPage() {
             </div>
 
             {/* Status Pills */}
-            <div className="flex items-center bg-slate-900 border border-slate-800 rounded-lg p-1 text-xs">
+            <div className="flex items-center bg-white border border-slate-200 rounded-lg p-1 text-xs">
               <button
                 type="button"
                 onClick={() => setSelectedStatus('all')}

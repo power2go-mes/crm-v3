@@ -284,7 +284,7 @@ export default function MyJobsPage() {
                   onClick={() => { setFilter('completed'); setPage(1); }}
                   className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
                     filter === 'completed'
-                      ? 'bg-slate-900 text-white font-bold'
+                      ? 'bg-emerald-600 text-white font-bold shadow-xs'
                       : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                   }`}
                 >
@@ -295,7 +295,7 @@ export default function MyJobsPage() {
                   onClick={() => { setFilter('all'); setPage(1); }}
                   className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
                     filter === 'all'
-                      ? 'bg-slate-900 text-white font-bold'
+                      ? 'bg-emerald-600 text-white font-bold shadow-xs'
                     : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                 }`}
               >

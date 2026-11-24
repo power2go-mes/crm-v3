@@ -181,7 +181,7 @@ export function LeadActivityTimeline({ leadId }: LeadActivityTimelineProps) {
                   {getActivityIcon(act.activity_type)}
                 </div>
 
-                <div className="p-3.5 bg-slate-900/60 border border-slate-800/80 rounded-xl shadow-xs">
+                <div className="p-3.5 bg-white border border-slate-200/80 rounded-xl shadow-xs">
                   <div className="flex items-center justify-between gap-2">
                     <span className="font-semibold text-sm text-slate-100">{act.subject}</span>
                     <span className="text-[11px] text-slate-500 flex items-center gap-1">

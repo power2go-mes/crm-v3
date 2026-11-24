@@ -167,11 +167,11 @@ export function OpportunityQuotesTab({ opportunity }: OpportunityQuotesTabProps)
   return (
     <div className="space-y-6">
       {/* Banner / Header */}
-      <div className="flex flex-wrap items-center justify-between gap-4 rounded-xl border border-slate-200 bg-white p-5 shadow-xs dark:border-slate-800 dark:bg-slate-900">
+      <div className="flex flex-wrap items-center justify-between gap-4 rounded-xl border border-slate-200 bg-white p-5 shadow-xs">
         <div>
           <div className="flex items-center gap-2">
             <FileText className="h-5 w-5 text-emerald-800 dark:text-emerald-600" />
-            <h3 className="text-base font-bold text-slate-900 dark:text-white">
+            <h3 className="text-base font-bold text-slate-900">
               Official Quotations &amp; Proposals ({quotes.length})
             </h3>
           </div>
@@ -193,9 +193,9 @@ export function OpportunityQuotesTab({ opportunity }: OpportunityQuotesTabProps)
       </div>
 
       {/* Quotations List */}
-      <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-xs dark:border-slate-800 dark:bg-slate-900">
+      <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-xs">
         <table className="w-full text-left text-xs">
-          <thead className="border-b border-slate-200 bg-slate-50 font-semibold text-slate-600 dark:border-slate-800 dark:bg-slate-800/50 dark:text-slate-400">
+          <thead className="border-b border-slate-200 bg-slate-50 font-semibold text-slate-600 dark:bg-slate-800/50">
             <tr>
               <th className="px-4 py-3">Quote #</th>
               <th className="px-4 py-3">Subject</th>
@@ -236,22 +236,22 @@ export function OpportunityQuotesTab({ opportunity }: OpportunityQuotesTabProps)
             ) : (
               quotes.map((quote) => (
                 <tr key={quote.id} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/40">
-                  <td className="px-4 py-3 font-mono font-bold text-slate-900 dark:text-white">
+                  <td className="px-4 py-3 font-mono font-bold text-slate-900">
                     {quote.quote_number}
                   </td>
-                  <td className="px-4 py-3 font-medium text-slate-900 dark:text-white">
+                  <td className="px-4 py-3 font-medium text-slate-900">
                     {quote.subject}
                   </td>
                   <td className="px-4 py-3">
                     {getStatusBadge(quote.status as QuoteStatus)}
                   </td>
-                  <td className="px-4 py-3 text-slate-600 dark:text-slate-400">
+                  <td className="px-4 py-3 text-slate-600">
                     {quote.issue_date}
                   </td>
-                  <td className="px-4 py-3 text-slate-600 dark:text-slate-400">
+                  <td className="px-4 py-3 text-slate-600">
                     {quote.valid_until}
                   </td>
-                  <td className="px-4 py-3 text-right font-mono font-bold text-slate-900 dark:text-white">
+                  <td className="px-4 py-3 text-right font-mono font-bold text-slate-900">
                     {quote.currency} {Number(quote.grand_total).toLocaleString('en-IN', { minimumFractionDigits: 2 })}
                   </td>
                   <td className="px-4 py-3 text-right">

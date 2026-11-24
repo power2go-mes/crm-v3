@@ -260,7 +260,7 @@ function CustomReportBuilderContent() {
   return (
     <PageContainer>
       {/* Top Navigation & Action Bar */}
-      <div className="mb-6 flex flex-col gap-4 border-b border-slate-200 pb-4 dark:border-slate-800 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mb-6 flex flex-col gap-4 border-b border-slate-200 pb-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-3">
           <Link
             href="/reports"
@@ -270,7 +270,7 @@ function CustomReportBuilderContent() {
             Back to Reports
           </Link>
           <div>
-            <h1 className="text-xl font-bold text-slate-900 dark:text-white">
+            <h1 className="text-xl font-bold text-slate-900">
               {reportId ? 'Edit Custom Report' : 'Custom Report Builder'}
             </h1>
             <p className="text-xs text-slate-500">
@@ -313,7 +313,7 @@ function CustomReportBuilderContent() {
         {/* Left Side: Configuration Panel (4 cols) */}
         <div className="space-y-6 lg:col-span-4">
           {/* Metadata Card */}
-          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
             <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-500">
               Report Details
             </h2>
@@ -326,7 +326,7 @@ function CustomReportBuilderContent() {
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="mt-1 w-full rounded-md border border-slate-300 px-3 py-1.5 text-xs focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                  className="mt-1 w-full rounded-md border border-slate-300 px-3 py-1.5 text-xs focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
                   placeholder="e.g. Q4 Stalled Enterprise Pipeline"
                 />
               </div>
@@ -338,7 +338,7 @@ function CustomReportBuilderContent() {
                   rows={2}
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  className="mt-1 w-full rounded-md border border-slate-300 px-3 py-1.5 text-xs focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                  className="mt-1 w-full rounded-md border border-slate-300 px-3 py-1.5 text-xs focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
                   placeholder="Short description of report purpose..."
                 />
               </div>
@@ -359,7 +359,7 @@ function CustomReportBuilderContent() {
           </div>
 
           {/* Module Selector */}
-          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
             <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-500">
               Primary Sales Module
             </h2>
@@ -382,7 +382,7 @@ function CustomReportBuilderContent() {
           </div>
 
           {/* Field Selection */}
-          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
             <div className="mb-3 flex items-center justify-between">
               <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-500">
                 Display Columns ({selectedColumns.length})
@@ -417,7 +417,7 @@ function CustomReportBuilderContent() {
           </div>
 
           {/* Visualization & Grouping */}
-          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
             <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-500">
               Chart & Grouping
             </h2>
@@ -460,7 +460,7 @@ function CustomReportBuilderContent() {
                   <select
                     value={groupByField}
                     onChange={(e) => setGroupByField(e.target.value)}
-                    className="mt-1 w-full rounded-md border border-slate-300 px-3 py-1.5 text-xs focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                    className="mt-1 w-full rounded-md border border-slate-300 px-3 py-1.5 text-xs focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
                   >
                     <option value="">None</option>
                     {availableColumns.map((col) => (
@@ -480,7 +480,7 @@ function CustomReportBuilderContent() {
                   <select
                     value={sortField}
                     onChange={(e) => setSortField(e.target.value)}
-                    className="mt-1 w-full rounded-md border border-slate-300 px-2 py-1.5 text-xs focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                    className="mt-1 w-full rounded-md border border-slate-300 px-2 py-1.5 text-xs focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
                   >
                     {availableColumns.map((col) => (
                       <option key={col.key} value={col.key}>
@@ -496,7 +496,7 @@ function CustomReportBuilderContent() {
                   <select
                     value={sortDirection}
                     onChange={(e) => setSortDirection(e.target.value as 'asc' | 'desc')}
-                    className="mt-1 w-full rounded-md border border-slate-300 px-2 py-1.5 text-xs focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                    className="mt-1 w-full rounded-md border border-slate-300 px-2 py-1.5 text-xs focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
                   >
                     <option value="desc">Descending (Z-A / Newest)</option>
                     <option value="asc">Ascending (A-Z / Oldest)</option>
@@ -507,7 +507,7 @@ function CustomReportBuilderContent() {
           </div>
 
           {/* Filtering Conditions */}
-          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
             <div className="mb-3 flex items-center justify-between">
               <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-500">
                 Filter Criteria ({filters.length})
@@ -529,7 +529,7 @@ function CustomReportBuilderContent() {
                     <select
                       value={f.field}
                       onChange={(e) => updateFilter(idx, { field: e.target.value })}
-                      className="w-1/3 rounded border border-slate-300 px-1.5 py-1 text-[11px] dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                      className="w-1/3 rounded border border-slate-300 px-1.5 py-1 text-[11px] dark:border-slate-700 dark:bg-slate-800"
                     >
                       {availableColumns.map((c) => (
                         <option key={c.key} value={c.key}>
@@ -540,7 +540,7 @@ function CustomReportBuilderContent() {
                     <select
                       value={f.operator}
                       onChange={(e) => updateFilter(idx, { operator: e.target.value as any })}
-                      className="w-1/4 rounded border border-slate-300 px-1 py-1 text-[11px] dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                      className="w-1/4 rounded border border-slate-300 px-1 py-1 text-[11px] dark:border-slate-700 dark:bg-slate-800"
                     >
                       <option value="equals">=</option>
                       <option value="not_equals">≠</option>
@@ -553,7 +553,7 @@ function CustomReportBuilderContent() {
                       value={f.value}
                       placeholder="value"
                       onChange={(e) => updateFilter(idx, { value: e.target.value })}
-                      className="w-1/3 rounded border border-slate-300 px-1.5 py-1 text-[11px] dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                      className="w-1/3 rounded border border-slate-300 px-1.5 py-1 text-[11px] dark:border-slate-700 dark:bg-slate-800"
                     />
                     <button
                       type="button"
@@ -572,7 +572,7 @@ function CustomReportBuilderContent() {
         {/* Right Side: Live Report Preview (8 cols) */}
         <div className="space-y-6 lg:col-span-8">
           {/* Status & Preview Summary Header */}
-          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <div className="flex items-center gap-2">
@@ -583,7 +583,7 @@ function CustomReportBuilderContent() {
                     Target View: <code className="text-slate-700 dark:text-slate-300">{primaryModule}_readable</code>
                   </span>
                 </div>
-                <h3 className="mt-1 text-base font-bold text-slate-900 dark:text-white">
+                <h3 className="mt-1 text-base font-bold text-slate-900">
                   {name}
                 </h3>
               </div>
@@ -600,22 +600,22 @@ function CustomReportBuilderContent() {
               </div>
             </div>
 
-            <div className="mt-4 grid grid-cols-3 gap-3 border-t pt-3 dark:border-slate-800">
+            <div className="mt-4 grid grid-cols-3 gap-3 border-t pt-3">
               <div>
                 <span className="text-[11px] text-slate-400">Total Count</span>
-                <p className="text-lg font-bold text-slate-900 dark:text-white">
+                <p className="text-lg font-bold text-slate-900">
                   {execResult?.total_count ?? 0} records
                 </p>
               </div>
               <div>
                 <span className="text-[11px] text-slate-400">Returned Rows</span>
-                <p className="text-lg font-bold text-slate-900 dark:text-white">
+                <p className="text-lg font-bold text-slate-900">
                   {execResult?.rows?.length ?? 0} of {execResult?.limit ?? 250}
                 </p>
               </div>
               <div>
                 <span className="text-[11px] text-slate-400">Active Columns</span>
-                <p className="text-lg font-bold text-slate-900 dark:text-white">
+                <p className="text-lg font-bold text-slate-900">
                   {selectedColumns.length} fields
                 </p>
               </div>
@@ -624,7 +624,7 @@ function CustomReportBuilderContent() {
 
           {/* Chart Segment Distribution Preview */}
           {chartType !== 'table' && chartBreakdown.length > 0 && (
-            <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+            <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
               <h4 className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-500">
                 Segment Distribution by {groupByField}
               </h4>
@@ -652,7 +652,7 @@ function CustomReportBuilderContent() {
           )}
 
           {/* Dataset Table Preview */}
-          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
             <h4 className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-500">
               Tabular Dataset Preview
             </h4>

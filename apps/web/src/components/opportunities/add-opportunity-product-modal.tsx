@@ -119,10 +119,10 @@ export function AddOpportunityProductModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 backdrop-blur-xs p-4">
-      <div className="relative w-full max-w-lg rounded-2xl bg-white p-6 shadow-xl dark:bg-slate-900 border border-slate-200 dark:border-slate-200">
+      <div className="relative w-full max-w-lg rounded-2xl bg-white p-6 shadow-xl border border-slate-200 dark:border-slate-200">
         <div className="flex items-center justify-between border-b border-slate-100 pb-4 dark:border-slate-200">
           <div>
-            <h3 className="text-base font-bold text-slate-900 dark:text-white">
+            <h3 className="text-base font-bold text-slate-900">
               {item ? 'Edit Opportunity Product' : 'Add Product to Opportunity'}
             </h3>
             <p className="text-xs text-slate-500">
@@ -155,7 +155,7 @@ export function AddOpportunityProductModal({
               value={productId}
               onChange={(e) => handleProductSelect(e.target.value)}
               disabled={!!item}
-              className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+              className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
             >
               {allProducts.map((p: ProductRecord) => (
                 <option key={p.id} value={p.id}>
@@ -177,7 +177,7 @@ export function AddOpportunityProductModal({
                 required
                 value={quantity}
                 onChange={(e) => setQuantity(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
               />
             </div>
 
@@ -192,7 +192,7 @@ export function AddOpportunityProductModal({
                 required
                 value={unitPrice}
                 onChange={(e) => setUnitPrice(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
               />
             </div>
           </div>
@@ -209,7 +209,7 @@ export function AddOpportunityProductModal({
                 step="0.1"
                 value={discountPercent}
                 onChange={(e) => setDiscountPercent(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
               />
             </div>
 
@@ -224,7 +224,7 @@ export function AddOpportunityProductModal({
                 step="0.1"
                 value={taxPercent}
                 onChange={(e) => setTaxPercent(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
               />
             </div>
           </div>
@@ -238,7 +238,7 @@ export function AddOpportunityProductModal({
               placeholder="e.g. Annual renewal discount applied"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+              className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
             />
           </div>
 
@@ -248,16 +248,16 @@ export function AddOpportunityProductModal({
               Line Calculation Preview
             </h4>
             <div className="mt-2 grid grid-cols-2 gap-2 text-xs">
-              <div className="text-slate-600 dark:text-slate-400">
+              <div className="text-slate-600">
                 Subtotal ({qtyNum} × {currency} {priceNum.toFixed(2)}):
               </div>
-              <div className="text-right font-mono font-medium text-slate-900 dark:text-white">
+              <div className="text-right font-mono font-medium text-slate-900">
                 {currency} {preview.subtotal.toFixed(2)}
               </div>
 
               {preview.discountAmount > 0 && (
                 <>
-                  <div className="text-slate-600 dark:text-slate-400">
+                  <div className="text-slate-600">
                     Discount ({preview.discountPercent}%):
                   </div>
                   <div className="text-right font-mono font-medium text-red-600 dark:text-red-400">
@@ -268,7 +268,7 @@ export function AddOpportunityProductModal({
 
               {preview.taxAmount > 0 && (
                 <>
-                  <div className="text-slate-600 dark:text-slate-400">
+                  <div className="text-slate-600">
                     Tax ({preview.taxPercent}%):
                   </div>
                   <div className="text-right font-mono font-medium text-slate-700 dark:text-slate-300">
@@ -277,7 +277,7 @@ export function AddOpportunityProductModal({
                 </>
               )}
 
-              <div className="border-t border-slate-200 pt-1 font-bold text-slate-900 dark:border-slate-700 dark:text-white">
+              <div className="border-t border-slate-200 pt-1 font-bold text-slate-900 dark:border-slate-700">
                 Line Total:
               </div>
               <div className="border-t border-slate-200 pt-1 text-right font-mono font-bold text-emerald-600 dark:border-slate-700 dark:text-emerald-400">

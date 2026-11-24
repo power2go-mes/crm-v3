@@ -209,10 +209,10 @@ export function QuoteEditorModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 backdrop-blur-xs p-4 overflow-y-auto">
-      <div className="relative my-8 w-full max-w-4xl rounded-2xl bg-white p-6 shadow-xl dark:bg-slate-900 border border-slate-200 dark:border-slate-200">
+      <div className="relative my-8 w-full max-w-4xl rounded-2xl bg-white p-6 shadow-xl border border-slate-200 dark:border-slate-200">
         <div className="flex items-center justify-between border-b border-slate-100 pb-4 dark:border-slate-200">
           <div>
-            <h3 className="text-base font-bold text-slate-900 dark:text-white">
+            <h3 className="text-base font-bold text-slate-900">
               {quote ? `Edit Quotation — ${quote.quote_number}` : 'Generate Professional Quotation'}
             </h3>
             <p className="text-xs text-slate-500">
@@ -247,7 +247,7 @@ export function QuoteEditorModal({
                 required
                 value={subject}
                 onChange={(e) => setSubject(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
               />
             </div>
 
@@ -259,7 +259,7 @@ export function QuoteEditorModal({
                 type="text"
                 value={currency}
                 onChange={(e) => setCurrency(e.target.value.toUpperCase())}
-                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 font-mono text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 font-mono text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
               />
             </div>
           </div>
@@ -274,7 +274,7 @@ export function QuoteEditorModal({
                 required
                 value={issueDate}
                 onChange={(e) => setIssueDate(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
               />
             </div>
 
@@ -287,7 +287,7 @@ export function QuoteEditorModal({
                 required
                 value={validUntil}
                 onChange={(e) => setValidUntil(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
               />
             </div>
           </div>
@@ -295,7 +295,7 @@ export function QuoteEditorModal({
           {/* Line Items Editor */}
           <div>
             <div className="flex items-center justify-between pb-2">
-              <label className="font-bold text-slate-800 dark:text-white">
+              <label className="font-bold text-slate-800">
                 Quote Line Items ({items.length})
               </label>
               <button
@@ -323,7 +323,7 @@ export function QuoteEditorModal({
                         required
                         value={item.product_name}
                         onChange={(e) => handleItemChange(idx, 'product_name', e.target.value)}
-                        className="w-full rounded border border-slate-300 bg-white p-1.5 text-xs text-slate-900 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                        className="w-full rounded border border-slate-300 bg-white p-1.5 text-xs text-slate-900 dark:border-slate-700"
                       />
                     </div>
 
@@ -336,7 +336,7 @@ export function QuoteEditorModal({
                         required
                         value={item.quantity}
                         onChange={(e) => handleItemChange(idx, 'quantity', e.target.value)}
-                        className="w-full rounded border border-slate-300 bg-white p-1.5 text-right font-mono text-xs text-slate-900 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                        className="w-full rounded border border-slate-300 bg-white p-1.5 text-right font-mono text-xs text-slate-900 dark:border-slate-700"
                       />
                     </div>
 
@@ -349,7 +349,7 @@ export function QuoteEditorModal({
                         required
                         value={item.unit_price}
                         onChange={(e) => handleItemChange(idx, 'unit_price', e.target.value)}
-                        className="w-full rounded border border-slate-300 bg-white p-1.5 text-right font-mono text-xs text-slate-900 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                        className="w-full rounded border border-slate-300 bg-white p-1.5 text-right font-mono text-xs text-slate-900 dark:border-slate-700"
                       />
                     </div>
 
@@ -361,7 +361,7 @@ export function QuoteEditorModal({
                         max="100"
                         value={item.discount_percent}
                         onChange={(e) => handleItemChange(idx, 'discount_percent', e.target.value)}
-                        className="w-full rounded border border-slate-300 bg-white p-1.5 text-right font-mono text-xs text-slate-900 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                        className="w-full rounded border border-slate-300 bg-white p-1.5 text-right font-mono text-xs text-slate-900 dark:border-slate-700"
                       />
                     </div>
 
@@ -373,11 +373,11 @@ export function QuoteEditorModal({
                         max="100"
                         value={item.tax_percent}
                         onChange={(e) => handleItemChange(idx, 'tax_percent', e.target.value)}
-                        className="w-full rounded border border-slate-300 bg-white p-1.5 text-right font-mono text-xs text-slate-900 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                        className="w-full rounded border border-slate-300 bg-white p-1.5 text-right font-mono text-xs text-slate-900 dark:border-slate-700"
                       />
                     </div>
 
-                    <div className="w-28 text-right font-mono font-bold text-slate-900 dark:text-white">
+                    <div className="w-28 text-right font-mono font-bold text-slate-900">
                       {currency} {cItem ? cItem.lineTotal.toFixed(2) : '0.00'}
                     </div>
 
@@ -398,8 +398,8 @@ export function QuoteEditorModal({
           {/* Calculations Summary Box */}
           <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-200 dark:bg-slate-800/40">
             <div className="flex flex-wrap items-center justify-between gap-4">
-              <div className="space-y-1 text-slate-600 dark:text-slate-400">
-                <p>Items Subtotal: <span className="font-mono font-semibold text-slate-900 dark:text-white">{currency} {totals.subtotal.toFixed(2)}</span></p>
+              <div className="space-y-1 text-slate-600">
+                <p>Items Subtotal: <span className="font-mono font-semibold text-slate-900">{currency} {totals.subtotal.toFixed(2)}</span></p>
                 <p>Total Discount: <span className="font-mono font-semibold text-red-600 dark:text-red-400">- {currency} {totals.discountTotal.toFixed(2)}</span></p>
                 <p>Total Tax: <span className="font-mono font-semibold text-slate-800 dark:text-slate-200">+ {currency} {totals.taxTotal.toFixed(2)}</span></p>
               </div>
@@ -426,7 +426,7 @@ export function QuoteEditorModal({
                 value={billingAddress}
                 onChange={(e) => setBillingAddress(e.target.value)}
                 placeholder="Client billing address..."
-                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
               />
             </div>
 
@@ -439,7 +439,7 @@ export function QuoteEditorModal({
                 value={shippingAddress}
                 onChange={(e) => setShippingAddress(e.target.value)}
                 placeholder="Client shipping address (if applicable)..."
-                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
               />
             </div>
           </div>
@@ -452,7 +452,7 @@ export function QuoteEditorModal({
               rows={2}
               value={terms}
               onChange={(e) => setTerms(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+              className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
             />
           </div>
 

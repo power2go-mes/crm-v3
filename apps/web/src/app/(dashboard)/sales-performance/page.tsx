@@ -70,14 +70,14 @@ export default function SalesPerformancePage() {
         subtitle="Regional hierarchy attainment, team velocity, and quota pacing leaderboard."
         actions={
           <div className="flex items-center gap-2.5">
-            <div className="inline-flex rounded-lg border border-slate-200 dark:border-slate-800 p-0.5 bg-slate-50 dark:bg-slate-900 text-xs">
+            <div className="inline-flex rounded-lg border border-slate-200 p-0.5 bg-slate-50 text-xs">
               <button
                 type="button"
                 onClick={() => setPeriodType('monthly')}
                 className={`px-3 py-1.5 rounded-md font-semibold transition ${
                   periodType === 'monthly'
                     ? 'bg-white text-emerald-800 shadow-xs dark:bg-slate-800 dark:text-emerald-600'
-                    : 'text-slate-600 hover:text-slate-900 dark:text-slate-400'
+                    : 'text-slate-600 hover:text-slate-900 '
                 }`}
               >
                 Monthly
@@ -88,7 +88,7 @@ export default function SalesPerformancePage() {
                 className={`px-3 py-1.5 rounded-md font-semibold transition ${
                   periodType === 'quarterly'
                     ? 'bg-white text-emerald-800 shadow-xs dark:bg-slate-800 dark:text-emerald-600'
-                    : 'text-slate-600 hover:text-slate-900 dark:text-slate-400'
+                    : 'text-slate-600 hover:text-slate-900 '
                 }`}
               >
                 Quarterly
@@ -97,7 +97,7 @@ export default function SalesPerformancePage() {
 
             <Link
               href="/settings/sales-targets"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-white rounded-lg text-xs font-semibold shadow-xs transition dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-semibold shadow-xs transition dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white"
             >
               <Target className="h-3.5 w-3.5" />
               <span>Manage Quotas</span>
@@ -129,7 +129,7 @@ export default function SalesPerformancePage() {
           <div className="space-y-6">
             {/* Top KPI Metric Cards */}
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+              <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
                 <span className="text-xs font-medium text-slate-500">Total Closed Won</span>
                 <p className="mt-1 text-2xl font-bold text-emerald-600 dark:text-emerald-400">
                   ${performance.totalTeamWon.toLocaleString()}
@@ -139,15 +139,15 @@ export default function SalesPerformancePage() {
                 </span>
               </div>
 
-              <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+              <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
                 <span className="text-xs font-medium text-slate-500">Aggregate Team Quota</span>
-                <p className="mt-1 text-2xl font-bold text-slate-900 dark:text-white">
+                <p className="mt-1 text-2xl font-bold text-slate-900">
                   ${performance.totalTeamQuota.toLocaleString()}
                 </p>
                 <span className="text-xs text-slate-400">Current fiscal cycle</span>
               </div>
 
-              <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+              <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
                 <span className="text-xs font-medium text-slate-500">Overall Attainment</span>
                 <p className={`mt-1 text-2xl font-bold ${getAttainmentColor(performance.overallAttainment)}`}>
                   {performance.overallAttainment}%
@@ -160,7 +160,7 @@ export default function SalesPerformancePage() {
                 </div>
               </div>
 
-              <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+              <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
                 <span className="text-xs font-medium text-slate-500">Open Pipeline</span>
                 <p className="mt-1 text-2xl font-bold text-emerald-800 dark:text-emerald-600">
                   ${performance.totalOpenPipeline.toLocaleString()}
@@ -170,12 +170,12 @@ export default function SalesPerformancePage() {
             </div>
 
             {/* Filter & Search Bar */}
-            <div className="flex flex-col gap-4 rounded-xl border border-slate-200 bg-white p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between dark:border-slate-800 dark:bg-slate-900">
+            <div className="flex flex-col gap-4 rounded-xl border border-slate-200 bg-white p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between">
               <div className="flex flex-wrap items-center gap-3">
                 <select
                   value={selectedRole}
                   onChange={(e) => setSelectedRole(e.target.value)}
-                  className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                  className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
                 >
                   <option value="all">All Roles in Hierarchy</option>
                   <option value="HEAD_OF_SALES">Head of Sales</option>
@@ -190,7 +190,7 @@ export default function SalesPerformancePage() {
                   placeholder="Filter representative..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  className="rounded-lg border border-slate-300 px-3 py-1.5 text-xs shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white sm:w-64"
+                  className="rounded-lg border border-slate-300 px-3 py-1.5 text-xs shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 sm:w-64"
                 />
               </div>
 
@@ -211,9 +211,9 @@ export default function SalesPerformancePage() {
             </div>
 
             {/* Leaderboard Table */}
-            <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+            <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
               <div className="mb-4 flex items-center justify-between">
-                <h3 className="text-base font-semibold text-slate-900 dark:text-white">
+                <h3 className="text-base font-semibold text-slate-900">
                   Attainment Leaderboard ({filteredReps.length})
                 </h3>
               </div>
@@ -236,7 +236,7 @@ export default function SalesPerformancePage() {
                     header: 'Representative',
                     cell: (r) => (
                       <div>
-                        <p className="font-medium text-slate-900 dark:text-white">{r.name}</p>
+                        <p className="font-medium text-slate-900">{r.name}</p>
                         <p className="text-xs text-slate-400">{r.designation || r.email}</p>
                       </div>
                     ),
