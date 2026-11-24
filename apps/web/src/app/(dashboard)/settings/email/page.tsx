@@ -115,7 +115,7 @@ export default function EmailSettingsPage() {
             onClick={() => setActiveTab('accounts')}
             className={`flex items-center gap-2 border-b-2 px-5 py-3 text-xs font-semibold uppercase tracking-wider transition ${
               activeTab === 'accounts'
-                ? 'border-blue-600 text-blue-600 dark:text-blue-400'
+                ? 'border-emerald-200 text-emerald-800 dark:text-emerald-600'
                 : 'border-transparent text-slate-500 hover:text-slate-800 dark:text-slate-400'
             }`}
           >
@@ -126,7 +126,7 @@ export default function EmailSettingsPage() {
             onClick={() => setActiveTab('templates')}
             className={`flex items-center gap-2 border-b-2 px-5 py-3 text-xs font-semibold uppercase tracking-wider transition ${
               activeTab === 'templates'
-                ? 'border-blue-600 text-blue-600 dark:text-blue-400'
+                ? 'border-emerald-200 text-emerald-800 dark:text-emerald-600'
                 : 'border-transparent text-slate-500 hover:text-slate-800 dark:text-slate-400'
             }`}
           >
@@ -157,7 +157,7 @@ export default function EmailSettingsPage() {
                       setConnectProvider('google');
                       setAccountDisplayName('Google Workspace Mailbox');
                     }}
-                    className="w-full rounded-lg bg-blue-600 px-3 py-2 text-xs font-semibold text-white hover:bg-blue-700"
+                    className="w-full rounded-lg bg-emerald-600 px-3 py-2 text-xs font-semibold text-white hover:bg-emerald-600"
                   >
                     Connect Google Account
                   </button>
@@ -215,11 +215,11 @@ export default function EmailSettingsPage() {
 
             {/* Connection Modal */}
             {connectProvider && (
-              <div className="rounded-xl border border-blue-200 bg-blue-50/50 p-6 dark:border-blue-900 dark:bg-blue-950/20">
-                <h4 className="text-sm font-bold text-blue-950 dark:text-blue-200">
+              <div className="rounded-xl border border-emerald-200 bg-emerald-50/50 p-6 dark:border-emerald-200 dark:bg-emerald-600/20">
+                <h4 className="text-sm font-bold text-emerald-800 dark:text-emerald-600">
                   Link {connectProvider.toUpperCase()} Mailbox
                 </h4>
-                <p className="mt-1 text-xs text-blue-700 dark:text-blue-300">
+                <p className="mt-1 text-xs text-emerald-800 dark:text-emerald-600">
                   Enter your email address to register this account.
                 </p>
 
@@ -252,7 +252,7 @@ export default function EmailSettingsPage() {
                     <button
                       type="submit"
                       disabled={isSaving}
-                      className="rounded-lg bg-blue-600 px-4 py-2 text-xs font-semibold text-white hover:bg-blue-700"
+                      className="rounded-lg bg-emerald-600 px-4 py-2 text-xs font-semibold text-white hover:bg-emerald-600"
                     >
                       Save Account
                     </button>
@@ -285,7 +285,7 @@ export default function EmailSettingsPage() {
                   {accounts.map((acc) => (
                     <div key={acc.id} className="flex items-center justify-between p-4">
                       <div className="flex items-center gap-3">
-                        <div className="rounded-lg bg-blue-50 p-2 text-blue-600 dark:bg-blue-950 dark:text-blue-400">
+                        <div className="rounded-lg bg-emerald-50 p-2 text-emerald-800 dark:bg-emerald-600 dark:text-emerald-600">
                           <Mail className="h-4 w-4" />
                         </div>
                         <div>
@@ -343,7 +343,7 @@ export default function EmailSettingsPage() {
               </p>
               <button
                 onClick={handleOpenCreateTemplate}
-                className="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-3.5 py-2 text-xs font-semibold text-white shadow-xs hover:bg-blue-700"
+                className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3.5 py-2 text-xs font-semibold text-white shadow-xs hover:bg-emerald-600"
               >
                 <Plus className="h-4 w-4" />
                 <span>New Template</span>
@@ -359,7 +359,7 @@ export default function EmailSettingsPage() {
                 >
                   <div>
                     <div className="flex items-center justify-between">
-                      <span className="rounded-full bg-blue-50 px-2 py-0.5 text-[10px] font-semibold text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">
+                      <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold text-emerald-800 dark:bg-emerald-600/30 dark:text-emerald-600">
                         {tpl.category}
                       </span>
                       {tpl.is_shared && (
@@ -498,7 +498,7 @@ export default function EmailSettingsPage() {
                   <button
                     type="submit"
                     disabled={isSavingTemplate}
-                    className="rounded-lg bg-blue-600 px-4 py-2 text-xs font-semibold text-white hover:bg-blue-700"
+                    className="rounded-lg bg-emerald-600 px-4 py-2 text-xs font-semibold text-white hover:bg-emerald-600"
                   >
                     Save Template
                   </button>

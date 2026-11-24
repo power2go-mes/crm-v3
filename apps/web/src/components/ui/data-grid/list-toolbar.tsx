@@ -98,7 +98,7 @@ export function ListToolbar({
                     <select
                       value={viewType}
                       onChange={(e) => onViewTypeChange(e.target.value)}
-                      className="text-xs font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-md px-2.5 py-1 pr-7 focus:outline-none focus:ring-1 focus:ring-blue-500 cursor-pointer transition appearance-none"
+                      className="text-xs font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-md px-2.5 py-1 pr-7 focus:outline-none focus:ring-1 focus:ring-emerald-500 cursor-pointer transition appearance-none"
                     >
                       {viewTypeOptions ? (
                         viewTypeOptions.map((opt) => (
@@ -131,7 +131,7 @@ export function ListToolbar({
                     aria-pressed={pinned}
                     onClick={onPinClick}
                     disabled={pinPending}
-                    className="hidden sm:block p-1 text-slate-400 hover:text-blue-600 rounded transition disabled:opacity-50"
+                    className="hidden sm:block p-1 text-slate-400 hover:text-emerald-800 rounded transition disabled:opacity-50"
                   >
                     <Pin className="h-3.5 w-3.5" />
                   </button>
@@ -153,7 +153,7 @@ export function ListToolbar({
               value={localSearch}
               onChange={(e) => setLocalSearch(e.target.value)}
               placeholder={searchPlaceholder || 'Search'}
-              className="w-full pl-8 pr-3 py-1.5 text-xs text-slate-800 bg-slate-50 border border-slate-300 rounded-md placeholder-slate-400 focus:outline-none focus:bg-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
+              className="w-full pl-8 pr-3 py-1.5 text-xs text-slate-800 bg-slate-50 border border-slate-300 rounded-md placeholder-slate-400 focus:outline-none focus:bg-white focus:border-emerald-200 focus:ring-1 focus:ring-emerald-500 transition"
             />
             <button type="button" title="Search" aria-label="Search"
               onClick={() => onSearchChange?.(localSearch)}
@@ -189,7 +189,7 @@ export function ListToolbar({
               title="Toggle filters"
               className={`relative p-1.5 rounded-md transition ${
                 isFilterOpen || activeFilterCount > 0
-                  ? 'bg-blue-100 text-blue-700'
+                  ? 'bg-emerald-50 text-emerald-800'
                   : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
               }`}
             >
@@ -226,7 +226,7 @@ export function ListToolbar({
                       onClick={() => onViewModeChange?.('chart')}
                       className={`w-full flex items-center gap-2 px-3 py-1.5 text-xs text-left ${
                         viewMode === 'chart'
-                          ? 'bg-blue-50 text-blue-700 font-semibold'
+                          ? 'bg-emerald-50 text-emerald-800 font-semibold'
                           : 'text-slate-700 hover:bg-slate-50'
                       }`}
                     >
@@ -238,7 +238,7 @@ export function ListToolbar({
                     onClick={() => onViewModeChange?.('table')}
                     className={`w-full flex items-center gap-2 px-3 py-1.5 text-xs text-left ${
                       viewMode === 'table'
-                        ? 'bg-blue-50 text-blue-700 font-semibold'
+                        ? 'bg-emerald-50 text-emerald-800 font-semibold'
                         : 'text-slate-700 hover:bg-slate-50'
                     }`}
                   >
@@ -250,7 +250,7 @@ export function ListToolbar({
                       onClick={() => onViewModeChange?.('card')}
                       className={`w-full flex items-center gap-2 px-3 py-1.5 text-xs text-left ${
                         viewMode === 'card'
-                          ? 'bg-blue-50 text-blue-700 font-semibold'
+                          ? 'bg-emerald-50 text-emerald-800 font-semibold'
                           : 'text-slate-700 hover:bg-slate-50'
                       }`}
                     >
@@ -262,7 +262,7 @@ export function ListToolbar({
                     onClick={() => onViewModeChange?.('split')}
                     className={`w-full flex items-center gap-2 px-3 py-1.5 text-xs text-left ${
                       viewMode === 'split'
-                        ? 'bg-blue-50 text-blue-700 font-semibold'
+                        ? 'bg-emerald-50 text-emerald-800 font-semibold'
                         : 'text-slate-700 hover:bg-slate-50'
                     }`}
                   >
@@ -274,7 +274,7 @@ export function ListToolbar({
                       onClick={() => onViewModeChange?.('kanban')}
                       className={`w-full flex items-center gap-2 px-3 py-1.5 text-xs text-left ${
                         viewMode === 'kanban'
-                          ? 'bg-blue-50 text-blue-700 font-semibold'
+                          ? 'bg-emerald-50 text-emerald-800 font-semibold'
                           : 'text-slate-700 hover:bg-slate-50'
                       }`}
                     >
@@ -320,7 +320,7 @@ export function ListToolbar({
             <button
               type="button"
               onClick={onNewClick}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 active:bg-blue-800 rounded-md shadow-xs transition"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-600 active:bg-emerald-600 rounded-md shadow-xs transition"
             >
               <span>{newButtonLabel}</span>
             </button>

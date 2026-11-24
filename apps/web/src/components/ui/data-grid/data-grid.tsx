@@ -65,7 +65,7 @@ export function DataGrid<T>({
                       if (el) el.indeterminate = isIndeterminate;
                     }}
                     onChange={handleSelectAllChange}
-                    className="h-4 w-4 rounded border-slate-300 bg-slate-100 text-blue-600 focus:ring-blue-500 focus:ring-offset-white transition"
+                    className="h-4 w-4 rounded border-slate-300 bg-slate-100 text-emerald-800 focus:ring-emerald-500 focus:ring-offset-white transition"
                     aria-label="Select all rows"
                   />
                 </th>
@@ -89,9 +89,9 @@ export function DataGrid<T>({
                         <span>{col.header}</span>
                         {isSorted ? (
                           sortDirection === 'asc' ? (
-                            <ChevronUp className="h-3.5 w-3.5 text-blue-400" />
+                            <ChevronUp className="h-3.5 w-3.5 text-emerald-600" />
                           ) : (
-                            <ChevronDown className="h-3.5 w-3.5 text-blue-400" />
+                            <ChevronDown className="h-3.5 w-3.5 text-emerald-600" />
                           )
                         ) : (
                           <ChevronsUpDown className="h-3.5 w-3.5 text-slate-600 group-hover:text-slate-600 transition" />
@@ -140,7 +140,7 @@ export function DataGrid<T>({
                     key={id}
                     onClick={() => onRowClick?.(item)}
                     className={`group transition hover:bg-slate-50 ${
-                      isSelected ? 'bg-blue-50' : ''
+                      isSelected ? 'bg-emerald-50' : ''
                     } ${onRowClick ? 'cursor-pointer' : ''}`}
                   >
                     {onSelectRow && (
@@ -152,7 +152,7 @@ export function DataGrid<T>({
                           type="checkbox"
                           checked={isSelected}
                           onChange={(e) => onSelectRow(id, e.target.checked)}
-                          className="h-4 w-4 rounded border-slate-300 bg-slate-100 text-blue-600 focus:ring-blue-500 focus:ring-offset-white transition"
+                          className="h-4 w-4 rounded border-slate-300 bg-slate-100 text-emerald-800 focus:ring-emerald-500 focus:ring-offset-white transition"
                           aria-label={`Select row ${id}`}
                         />
                       </td>

@@ -16,24 +16,28 @@ export function OpportunityStageBadge({ stage, className = '' }: OpportunityStag
   const isWon = norm === 'closed_won';
   const isLost = norm === 'closed_lost';
 
-  let style = 'bg-blue-950/40 text-blue-300 border-blue-500/30';
+  // Strict Tri-Color Design: White base (60%) + Green (30%) + Orange (10%)
+  // Text remains dark slate/black for high contrast readability
+  let style = 'bg-white text-emerald-800 border-emerald-300';
   if (isWon) {
-    style = 'bg-emerald-950/40 text-emerald-300 border-emerald-500/30';
+    style = 'bg-emerald-600 text-white border-emerald-600 font-bold';
   } else if (isLost) {
-    style = 'bg-red-950/40 text-red-300 border-red-500/30';
+    style = 'bg-white text-orange-900 border-orange-400 font-medium';
   } else if (norm === 'qualification') {
-    style = 'bg-purple-950/40 text-purple-300 border-purple-500/30';
+    style = 'bg-emerald-50 text-emerald-800 border-emerald-300';
   } else if (norm === 'needs_analysis') {
-    style = 'bg-indigo-950/40 text-indigo-300 border-indigo-500/30';
+    style = 'bg-white text-slate-800 border-slate-300';
   } else if (norm === 'proposal_quote') {
-    style = 'bg-amber-950/40 text-amber-300 border-amber-500/30';
+    style = 'bg-orange-50 text-orange-800 border-orange-300';
   } else if (norm === 'negotiation') {
-    style = 'bg-pink-950/40 text-pink-300 border-pink-500/30';
+    style = 'bg-orange-500 text-white border-orange-500 font-bold';
+  } else if (norm === 'prospecting') {
+    style = 'bg-white text-emerald-700 border-emerald-200';
   }
 
   return (
     <span
-      className={`inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold border ${style} ${className}`}
+      className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold border ${style} ${className}`}
     >
       {label}
     </span>

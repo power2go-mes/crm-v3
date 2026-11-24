@@ -99,7 +99,7 @@ export function RecordHistoryAudit({ module, recordId }: RecordHistoryAuditProps
               ? 'bg-emerald-950/60 text-emerald-400 border-emerald-800'
               : item.action === 'delete'
                 ? 'bg-red-950/60 text-red-400 border-red-800'
-                : 'bg-blue-950/60 text-blue-400 border-blue-800';
+                : 'bg-emerald-600/60 text-emerald-600 border-emerald-200';
 
           return (
             <div
@@ -137,7 +137,7 @@ export function RecordHistoryAudit({ module, recordId }: RecordHistoryAuditProps
                         className="p-2.5 rounded-lg bg-slate-950/60 border border-slate-800/80 flex flex-wrap items-center justify-between gap-2 text-xs"
                       >
                         <div className="flex items-center gap-1.5 font-medium text-slate-300">
-                          <Tag className="h-3.5 w-3.5 text-blue-400" />
+                          <Tag className="h-3.5 w-3.5 text-emerald-600" />
                           <span>{ch.label || ch.field}</span>
                         </div>
                         <div className="flex items-center gap-2 text-xs">

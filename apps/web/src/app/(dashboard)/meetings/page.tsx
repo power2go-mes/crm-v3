@@ -128,14 +128,14 @@ export default function MeetingsPage() {
       accessorKey: 'subject',
       cell: (m) => (
         <div className="flex items-start gap-2.5">
-          <div className="mt-0.5 p-1 rounded bg-slate-800 text-blue-400">
+          <div className="mt-0.5 p-1 rounded bg-slate-800 text-emerald-600">
             <Video className="h-3.5 w-3.5" />
           </div>
           <div>
             <button
               type="button"
               onClick={() => setViewingMeeting(m)}
-              className="font-semibold text-slate-100 hover:text-blue-400 text-left transition"
+              className="font-semibold text-slate-100 hover:text-emerald-600 text-left transition"
             >
               {m.subject}
             </button>
@@ -202,7 +202,7 @@ export default function MeetingsPage() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
-            className="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 border border-blue-500/30 text-xs font-semibold transition"
+            className="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-600 border border-emerald-200/30 text-xs font-semibold transition"
           >
             <Video className="h-3 w-3" /> Join <ExternalLink className="h-2.5 w-2.5" />
           </a>
@@ -237,7 +237,7 @@ export default function MeetingsPage() {
             type="button"
             onClick={() => setViewingMeeting(m)}
             title="View Details"
-            className="p-1.5 rounded hover:bg-slate-800 text-slate-400 hover:text-blue-400 transition"
+            className="p-1.5 rounded hover:bg-slate-800 text-slate-400 hover:text-emerald-600 transition"
           >
             <Eye className="h-3.5 w-3.5" />
           </button>
@@ -270,7 +270,7 @@ export default function MeetingsPage() {
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>
               <h1 className="text-2xl font-bold tracking-tight text-white flex items-center gap-2.5">
-                <div className="p-2 bg-blue-600/10 text-blue-400 rounded-xl border border-blue-500/20">
+                <div className="p-2 bg-emerald-600/10 text-emerald-600 rounded-xl border border-emerald-200/20">
                   <Calendar className="h-6 w-6" />
                 </div>
                 Meetings & Product Demonstrations
@@ -286,7 +286,7 @@ export default function MeetingsPage() {
                 type="button"
                 onClick={() => setSelectedStatus('all')}
                 className={`px-3 py-1.5 rounded-md font-medium transition ${
-                  selectedStatus === 'all' ? 'bg-blue-600 text-white' : 'text-slate-400 hover:text-slate-200'
+                  selectedStatus === 'all' ? 'bg-emerald-600 text-white' : 'text-slate-400 hover:text-slate-200'
                 }`}
               >
                 All
@@ -295,7 +295,7 @@ export default function MeetingsPage() {
                 type="button"
                 onClick={() => setSelectedStatus('not_started')}
                 className={`px-3 py-1.5 rounded-md font-medium transition ${
-                  selectedStatus === 'not_started' ? 'bg-blue-600 text-white' : 'text-slate-400 hover:text-slate-200'
+                  selectedStatus === 'not_started' ? 'bg-emerald-600 text-white' : 'text-slate-400 hover:text-slate-200'
                 }`}
               >
                 Scheduled
@@ -304,7 +304,7 @@ export default function MeetingsPage() {
                 type="button"
                 onClick={() => setSelectedStatus('completed')}
                 className={`px-3 py-1.5 rounded-md font-medium transition ${
-                  selectedStatus === 'completed' ? 'bg-blue-600 text-white' : 'text-slate-400 hover:text-slate-200'
+                  selectedStatus === 'completed' ? 'bg-emerald-600 text-white' : 'text-slate-400 hover:text-slate-200'
                 }`}
               >
                 Completed

@@ -206,11 +206,11 @@ export default function CampaignDetailPage({ params }: CampaignDetailPageProps) 
       <div className="flex items-center justify-between mb-4 text-sm">
         <Link
           href="/campaigns"
-          className="inline-flex items-center gap-1.5 text-slate-600 hover:text-indigo-600 transition"
+          className="inline-flex items-center gap-1.5 text-slate-600 hover:text-emerald-800 transition"
         >
           <span>Campaigns</span>
           <span aria-hidden="true">›</span>
-          <span className="text-indigo-500 font-medium">{campaign.campaign_name}</span>
+          <span className="text-emerald-800 font-medium">{campaign.campaign_name}</span>
         </Link>
       </div>
 
@@ -302,7 +302,7 @@ export default function CampaignDetailPage({ params }: CampaignDetailPageProps) 
           onClick={() => setActiveTab('details')}
           className={`px-4 py-3 text-sm font-medium transition border-b-2 flex items-center gap-2 ${
             activeTab === 'details'
-              ? 'border-blue-500 text-blue-600'
+              ? 'border-emerald-200 text-emerald-800'
               : 'border-transparent text-slate-600 hover:text-slate-900'
           }`}
         >
@@ -315,7 +315,7 @@ export default function CampaignDetailPage({ params }: CampaignDetailPageProps) 
           onClick={() => setActiveTab('activity')}
           className={`px-4 py-3 text-sm font-medium transition border-b-2 flex items-center gap-2 ${
             activeTab === 'activity'
-              ? 'border-blue-500 text-blue-600'
+              ? 'border-emerald-200 text-emerald-800'
               : 'border-transparent text-slate-600 hover:text-slate-900'
           }`}
         >
@@ -328,7 +328,7 @@ export default function CampaignDetailPage({ params }: CampaignDetailPageProps) 
           onClick={() => setActiveTab('related')}
           className={`px-4 py-3 text-sm font-medium transition border-b-2 flex items-center gap-2 ${
             activeTab === 'related'
-              ? 'border-blue-500 text-blue-600'
+              ? 'border-emerald-200 text-emerald-800'
               : 'border-transparent text-slate-600 hover:text-slate-900'
           }`}
         >
@@ -344,7 +344,7 @@ export default function CampaignDetailPage({ params }: CampaignDetailPageProps) 
           onClick={() => setActiveTab('notes')}
           className={`px-4 py-3 text-sm font-medium transition border-b-2 flex items-center gap-2 ${
             activeTab === 'notes'
-              ? 'border-blue-500 text-blue-600'
+              ? 'border-emerald-200 text-emerald-800'
               : 'border-transparent text-slate-600 hover:text-slate-900'
           }`}
         >
@@ -356,7 +356,7 @@ export default function CampaignDetailPage({ params }: CampaignDetailPageProps) 
           onClick={() => setActiveTab('history')}
           className={`px-4 py-3 text-sm font-medium transition border-b-2 flex items-center gap-2 ${
             activeTab === 'history'
-              ? 'border-blue-500 text-blue-600'
+              ? 'border-emerald-200 text-emerald-800'
               : 'border-transparent text-slate-600 hover:text-slate-900'
           }`}
         >
@@ -399,7 +399,7 @@ export default function CampaignDetailPage({ params }: CampaignDetailPageProps) 
               </div>
               <div>
                 <span className="block text-slate-500 uppercase tracking-wider text-[10px]">Status</span>
-                <span className="font-semibold text-blue-600 text-sm mt-0.5 block capitalize">
+                <span className="font-semibold text-emerald-800 text-sm mt-0.5 block capitalize">
                   {campaign.status?.replace(/_/g, ' ')}
                 </span>
               </div>
@@ -407,7 +407,7 @@ export default function CampaignDetailPage({ params }: CampaignDetailPageProps) 
                 <span className="block text-slate-500 uppercase tracking-wider text-[10px]">Parent Campaign</span>
                 <span className="font-semibold text-slate-900 text-sm mt-0.5 block">
                   {campaign.parent ? (
-                    <Link href={`/campaigns/${campaign.parent.id}`} className="text-blue-600 hover:underline">
+                    <Link href={`/campaigns/${campaign.parent.id}`} className="text-emerald-800 hover:underline">
                       {campaign.parent.campaign_name}
                     </Link>
                   ) : (
@@ -503,7 +503,7 @@ export default function CampaignDetailPage({ params }: CampaignDetailPageProps) 
           </p>
           <div className="border border-slate-100 rounded-lg p-4 bg-slate-50 text-xs text-slate-600">
             <div className="flex items-center gap-2 text-slate-800 font-medium">
-              <Calendar className="h-4 w-4 text-blue-500" />
+              <Calendar className="h-4 w-4 text-emerald-800" />
               <span>Campaign created on {new Date(campaign.created_at).toLocaleDateString()}</span>
             </div>
           </div>
@@ -531,7 +531,7 @@ export default function CampaignDetailPage({ params }: CampaignDetailPageProps) 
                 {opportunities.map((opp) => (
                   <div key={opp.id} className="py-3 flex items-center justify-between text-sm">
                     <div>
-                      <Link href={`/opportunities/${opp.id}`} className="font-medium text-blue-600 hover:underline">
+                      <Link href={`/opportunities/${opp.id}`} className="font-medium text-emerald-800 hover:underline">
                         {opp.name}
                       </Link>
                       <span className="text-xs text-slate-500 ml-2">({opp.stage})</span>
@@ -554,7 +554,7 @@ export default function CampaignDetailPage({ params }: CampaignDetailPageProps) 
               value={noteContent}
               onChange={(e) => setNoteContent(e.target.value)}
               placeholder="Add a note to this campaign..."
-              className="flex-1 p-3 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="flex-1 p-3 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
               rows={3}
             />
           </div>
@@ -569,7 +569,7 @@ export default function CampaignDetailPage({ params }: CampaignDetailPageProps) 
                 ]);
                 setNoteContent('');
               }}
-              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-lg transition"
+              className="px-4 py-2 bg-emerald-600 hover:bg-emerald-600 text-white text-xs font-semibold rounded-lg transition"
             >
               Add Note
             </button>

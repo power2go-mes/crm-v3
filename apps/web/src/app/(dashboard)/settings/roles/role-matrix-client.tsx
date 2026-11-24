@@ -241,7 +241,7 @@ export function RoleMatrixClient({
                   </div>
                   <div className="flex items-center gap-1.5">
                     {r.is_canonical ? (
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-100 text-purple-700 border border-purple-200">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
                         <Lock className="h-2.5 w-2.5" /> CANONICAL
                       </span>
                     ) : (
@@ -271,7 +271,7 @@ export function RoleMatrixClient({
                 <div className="flex items-center gap-2">
                   <h2 className="text-lg font-bold text-slate-900">{selectedRole.name}</h2>
                   {selectedRole.is_canonical ? (
-                    <span className="px-2 py-0.5 text-[10px] font-bold rounded-full bg-purple-100 text-purple-700 border border-purple-200">
+                    <span className="px-2 py-0.5 text-[10px] font-bold rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
                       Protected Canonical
                     </span>
                   ) : (
@@ -404,7 +404,7 @@ export function RoleMatrixClient({
                   placeholder="e.g. MARKETING_LEAD"
                   value={newRoleId}
                   onChange={(e) => setNewRoleId(e.target.value.toUpperCase())}
-                  className="mt-1 w-full px-3 py-2 text-xs font-mono border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="mt-1 w-full px-3 py-2 text-xs font-mono border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 />
               </div>
 
@@ -418,7 +418,7 @@ export function RoleMatrixClient({
                   placeholder="e.g. Marketing Lead"
                   value={newRoleName}
                   onChange={(e) => setNewRoleName(e.target.value)}
-                  className="mt-1 w-full px-3 py-2 text-xs border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="mt-1 w-full px-3 py-2 text-xs border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 />
               </div>
 
@@ -431,7 +431,7 @@ export function RoleMatrixClient({
                   placeholder="Responsibilities and purpose..."
                   value={newRoleDesc}
                   onChange={(e) => setNewRoleDesc(e.target.value)}
-                  className="mt-1 w-full px-3 py-2 text-xs border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="mt-1 w-full px-3 py-2 text-xs border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 />
               </div>
 

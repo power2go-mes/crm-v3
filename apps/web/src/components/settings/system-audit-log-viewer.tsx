@@ -33,7 +33,7 @@ export function SystemAuditLogViewer() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-slate-900/60 border border-slate-800 rounded-xl">
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded-lg bg-blue-950/60 text-blue-400 border border-blue-800">
+          <div className="p-2 rounded-lg bg-emerald-600/60 text-emerald-600 border border-emerald-200">
             <History className="h-5 w-5" />
           </div>
           <div>
@@ -49,7 +49,7 @@ export function SystemAuditLogViewer() {
           <select
             value={selectedModule}
             onChange={(e) => { setSelectedModule(e.target.value); setPage(1); }}
-            className="px-3 py-1.5 bg-slate-950 border border-slate-800 rounded-lg text-xs text-white capitalize focus:outline-hidden focus:border-blue-500"
+            className="px-3 py-1.5 bg-slate-950 border border-slate-800 rounded-lg text-xs text-white capitalize focus:outline-hidden focus:border-emerald-200"
           >
             <option value="all">All Modules</option>
             <option value="leads">Leads</option>
@@ -82,7 +82,7 @@ export function SystemAuditLogViewer() {
                 ? 'bg-emerald-950/60 text-emerald-400 border-emerald-800'
                 : log.action === 'delete'
                   ? 'bg-red-950/60 text-red-400 border-red-800'
-                  : 'bg-blue-950/60 text-blue-400 border-blue-800';
+                  : 'bg-emerald-600/60 text-emerald-600 border-emerald-200';
 
             return (
               <div

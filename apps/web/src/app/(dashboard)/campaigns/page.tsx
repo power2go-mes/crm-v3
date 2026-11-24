@@ -157,7 +157,7 @@ export default function CampaignsPage() {
       case 'in_progress':
         return <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-800">In Progress</span>;
       case 'planned':
-        return <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800">Planned</span>;
+        return <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-emerald-50 text-emerald-800">Planned</span>;
       case 'aborted':
         return <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800">Aborted</span>;
       default:
@@ -173,12 +173,12 @@ export default function CampaignsPage() {
       accessorKey: 'campaign_name',
       cell: (c) => (
         <div className="flex items-center gap-2">
-          <div className="p-1.5 bg-blue-50 text-blue-600 rounded-lg">
+          <div className="p-1.5 bg-emerald-50 text-emerald-800 rounded-lg">
             <Megaphone className="h-4 w-4" />
           </div>
           <Link
             href={`/campaigns/${c.id}`}
-            className="font-medium text-slate-900 hover:text-blue-600 transition"
+            className="font-medium text-slate-900 hover:text-emerald-800 transition"
           >
             {c.campaign_name}
           </Link>
@@ -282,7 +282,7 @@ export default function CampaignsPage() {
               type="button"
               title="Edit Campaign"
               onClick={() => setEditingCampaign(c as unknown as CampaignRecord)}
-              className="p-1.5 rounded hover:bg-slate-100 text-slate-400 hover:text-blue-600 transition"
+              className="p-1.5 rounded hover:bg-slate-100 text-slate-400 hover:text-emerald-800 transition"
             >
               <Edit2 className="h-3.5 w-3.5" />
             </button>
@@ -383,7 +383,7 @@ export default function CampaignsPage() {
                 {campaigns.map((c) => (
                   <article key={c.id} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
                     <div className="flex items-start justify-between gap-2">
-                      <Link href={`/campaigns/${c.id}`} className="text-base font-semibold text-slate-900 hover:text-indigo-600 transition truncate">
+                      <Link href={`/campaigns/${c.id}`} className="text-base font-semibold text-slate-900 hover:text-emerald-800 transition truncate">
                         {c.campaign_name}
                       </Link>
                       {getStatusBadge(c.status)}
@@ -409,14 +409,14 @@ export default function CampaignsPage() {
                       </div>
                     </div>
                     <div className="mt-4 flex justify-end gap-3 border-t border-slate-100 pt-3 text-sm">
-                      <Link href={`/campaigns/${c.id}`} className="text-indigo-600 hover:text-indigo-800 font-medium">
+                      <Link href={`/campaigns/${c.id}`} className="text-emerald-800 hover:text-emerald-800 font-medium">
                         View
                       </Link>
                       {hasPermission('campaigns.update') && (
                         <button
                           type="button"
                           onClick={() => setEditingCampaign(c as unknown as CampaignRecord)}
-                          className="text-indigo-600 hover:text-indigo-800 font-medium"
+                          className="text-emerald-800 hover:text-emerald-800 font-medium"
                         >
                           Edit
                         </button>

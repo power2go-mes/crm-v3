@@ -102,8 +102,8 @@ export default function CalendarSettingsPage() {
               <div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 dark:bg-blue-900/40">
-                      <CalendarIcon className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-50 dark:bg-emerald-600/40">
+                      <CalendarIcon className="h-5 w-5 text-emerald-800 dark:text-emerald-600" />
                     </div>
                     <div>
                       <h3 className="text-base font-bold text-slate-900 dark:text-white">
@@ -152,7 +152,7 @@ export default function CalendarSettingsPage() {
               <div className="mt-6 flex items-center justify-between border-t pt-4 dark:border-slate-800">
                 <button
                   onClick={() => handleOpenConnect('google_calendar')}
-                  className="rounded-lg bg-blue-600 px-3.5 py-2 text-xs font-semibold text-white hover:bg-blue-700"
+                  className="rounded-lg bg-emerald-600 px-3.5 py-2 text-xs font-semibold text-white hover:bg-emerald-600"
                 >
                   {googleConn ? 'Manage Google Sync' : 'Connect Google Calendar'}
                 </button>
@@ -177,8 +177,8 @@ export default function CalendarSettingsPage() {
               <div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-100 dark:bg-indigo-900/40">
-                      <CalendarIcon className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-50 dark:bg-emerald-600/40">
+                      <CalendarIcon className="h-5 w-5 text-emerald-800 dark:text-emerald-600" />
                     </div>
                     <div>
                       <h3 className="text-base font-bold text-slate-900 dark:text-white">
@@ -227,7 +227,7 @@ export default function CalendarSettingsPage() {
               <div className="mt-6 flex items-center justify-between border-t pt-4 dark:border-slate-800">
                 <button
                   onClick={() => handleOpenConnect('microsoft_outlook')}
-                  className="rounded-lg bg-indigo-600 px-3.5 py-2 text-xs font-semibold text-white hover:bg-indigo-700"
+                  className="rounded-lg bg-emerald-600 px-3.5 py-2 text-xs font-semibold text-white hover:bg-emerald-600"
                 >
                   {msConn ? 'Manage Outlook Sync' : 'Connect Outlook Calendar'}
                 </button>
@@ -312,7 +312,7 @@ export default function CalendarSettingsPage() {
                   type="text"
                   value={calendarName}
                   onChange={(e) => setCalendarName(e.target.value)}
-                  className="mt-1 w-full rounded-md border border-slate-300 px-3 py-1.5 text-xs focus:border-blue-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                  className="mt-1 w-full rounded-md border border-slate-300 px-3 py-1.5 text-xs focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
                 />
               </div>
 
@@ -323,7 +323,7 @@ export default function CalendarSettingsPage() {
                 <select
                   value={syncDirection}
                   onChange={(e) => setSyncDirection(e.target.value as CalendarSyncDirection)}
-                  className="mt-1 w-full rounded-md border border-slate-300 px-3 py-1.5 text-xs focus:border-blue-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                  className="mt-1 w-full rounded-md border border-slate-300 px-3 py-1.5 text-xs focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
                 >
                   <option value="both">Both Ways (CRM ↔ External Calendar)</option>
                   <option value="crm_to_external">CRM to External Calendar Only</option>
@@ -344,7 +344,7 @@ export default function CalendarSettingsPage() {
                 type="button"
                 onClick={() => handleSaveConnection('unconfigured')}
                 disabled={isSaving}
-                className="rounded-lg bg-blue-600 px-4 py-1.5 text-xs font-semibold text-white hover:bg-blue-700 disabled:opacity-50"
+                className="rounded-lg bg-emerald-600 px-4 py-1.5 text-xs font-semibold text-white hover:bg-emerald-600 disabled:opacity-50"
               >
                 {isSaving ? 'Saving...' : 'Save Connection Profile'}
               </button>

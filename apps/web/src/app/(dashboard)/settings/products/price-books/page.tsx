@@ -112,7 +112,7 @@ export default function PriceBooksPage() {
                   setEditingBook(null);
                   setBookModalOpen(true);
                 }}
-                className="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-3.5 py-1.5 text-xs font-semibold text-white shadow-xs transition hover:bg-blue-700"
+                className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3.5 py-1.5 text-xs font-semibold text-white shadow-xs transition hover:bg-emerald-600"
               >
                 <Plus className="h-4 w-4" />
                 <span>New Price Book</span>
@@ -147,7 +147,7 @@ export default function PriceBooksPage() {
                       onClick={() => setSelectedBookId(book.id)}
                       className={`cursor-pointer rounded-xl border p-4 transition ${
                         isSelected
-                          ? 'border-blue-500 bg-blue-50/50 dark:border-blue-500/50 dark:bg-blue-950/20 shadow-xs'
+                          ? 'border-emerald-200 bg-emerald-50/50 dark:border-emerald-200/50 dark:bg-emerald-600/20 shadow-xs'
                           : 'border-slate-200 bg-white hover:border-slate-300 dark:border-slate-800 dark:bg-slate-900'
                       }`}
                     >
@@ -158,7 +158,7 @@ export default function PriceBooksPage() {
                               {book.name}
                             </h4>
                             {book.is_standard && (
-                              <span className="rounded bg-indigo-100 px-1.5 py-0.5 text-[10px] font-bold uppercase text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-400">
+                              <span className="rounded bg-emerald-50 px-1.5 py-0.5 text-[10px] font-bold uppercase text-emerald-800 dark:bg-emerald-600/40 dark:text-emerald-600">
                                 Standard
                               </span>
                             )}
@@ -209,7 +209,7 @@ export default function PriceBooksPage() {
                           {currentBook.name}
                         </h2>
                         {currentBook.is_standard && (
-                          <span className="rounded bg-indigo-100 px-2 py-0.5 text-xs font-semibold text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-400">
+                          <span className="rounded bg-emerald-50 px-2 py-0.5 text-xs font-semibold text-emerald-800 dark:bg-emerald-600/40 dark:text-emerald-600">
                             Base Catalog
                           </span>
                         )}
@@ -263,7 +263,7 @@ export default function PriceBooksPage() {
                             setEditingEntry(null);
                             setEntryModalOpen(true);
                           }}
-                          className="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-3.5 py-1.5 text-xs font-semibold text-white shadow-xs hover:bg-blue-700"
+                          className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3.5 py-1.5 text-xs font-semibold text-white shadow-xs hover:bg-emerald-600"
                         >
                           <Plus className="h-4 w-4" />
                           <span>Add Product Entry</span>
@@ -309,7 +309,7 @@ export default function PriceBooksPage() {
                       placeholder="Search entries in this price book..."
                       value={entrySearch}
                       onChange={(e) => setEntrySearch(e.target.value)}
-                      className="w-full rounded-lg border border-slate-300 bg-white py-1.5 pl-9 pr-3 text-xs text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                      className="w-full rounded-lg border border-slate-300 bg-white py-1.5 pl-9 pr-3 text-xs text-slate-900 placeholder:text-slate-400 focus:border-emerald-200 focus:outline-none focus:ring-1 focus:ring-emerald-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
                     />
                   </div>
                 </div>

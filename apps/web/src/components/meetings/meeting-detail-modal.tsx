@@ -75,7 +75,7 @@ export function MeetingDetailModal({
                 href={meeting.meeting_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-semibold bg-blue-600 hover:bg-blue-500 text-white transition shadow-sm shadow-blue-500/20"
+                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-semibold bg-emerald-600 hover:bg-emerald-600 text-white transition shadow-sm shadow-blue-500/20"
               >
                 <Video className="h-3.5 w-3.5" /> Join Meeting <ExternalLink className="h-3 w-3" />
               </a>
@@ -127,7 +127,7 @@ export function MeetingDetailModal({
               <select
                 value={meeting.status}
                 onChange={(e) => onStatusChange(meeting.id, e.target.value)}
-                className="text-xs font-medium px-2.5 py-1 bg-slate-950 border border-slate-700 rounded-md text-slate-200 focus:outline-none focus:ring-1 focus:ring-blue-500 cursor-pointer"
+                className="text-xs font-medium px-2.5 py-1 bg-slate-950 border border-slate-700 rounded-md text-slate-200 focus:outline-none focus:ring-1 focus:ring-emerald-500 cursor-pointer"
               >
                 {MEETING_STATUSES.map((s) => (
                   <option key={s.value} value={s.value}>
@@ -189,7 +189,7 @@ export function MeetingDetailModal({
                   relatedUrl ? (
                     <Link
                       href={relatedUrl}
-                      className="inline-flex items-center gap-1 text-blue-400 hover:text-blue-300 font-medium underline transition text-xs"
+                      className="inline-flex items-center gap-1 text-emerald-600 hover:text-emerald-600 font-medium underline transition text-xs"
                     >
                       <span className="capitalize">{meeting.related_to_type}</span> ({meeting.related_to_id.slice(0, 8)}...)
                       <ExternalLink className="h-3 w-3" />

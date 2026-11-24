@@ -44,7 +44,7 @@ export default function ReportsPage() {
         />
         <Link
           href="/reports/builder"
-          className="flex items-center gap-1.5 self-start rounded-lg bg-blue-600 px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-blue-700 sm:self-auto"
+          className="flex items-center gap-1.5 self-start rounded-lg bg-emerald-600 px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-emerald-600 sm:self-auto"
         >
           <Plus className="h-4 w-4" />
           Build Custom Report
@@ -61,7 +61,7 @@ export default function ReportsPage() {
             }}
             className={`border-b-2 pb-3 text-sm font-semibold transition-colors ${
               mainTab === 'standard'
-                ? 'border-blue-600 text-blue-600 dark:border-blue-500 dark:text-blue-400'
+                ? 'border-emerald-200 text-emerald-800 dark:border-emerald-200 dark:text-emerald-600'
                 : 'border-transparent text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200'
             }`}
           >
@@ -74,7 +74,7 @@ export default function ReportsPage() {
             }}
             className={`flex items-center gap-2 border-b-2 pb-3 text-sm font-semibold transition-colors ${
               mainTab === 'custom'
-                ? 'border-blue-600 text-blue-600 dark:border-blue-500 dark:text-blue-400'
+                ? 'border-emerald-200 text-emerald-800 dark:border-emerald-200 dark:text-emerald-600'
                 : 'border-transparent text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200'
             }`}
           >
@@ -110,7 +110,7 @@ export default function ReportsPage() {
 
             {isLoadingCustom && (
               <div className="flex h-48 items-center justify-center">
-                <div className="h-6 w-6 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" />
+                <div className="h-6 w-6 animate-spin rounded-full border-2 border-emerald-200 border-t-transparent" />
               </div>
             )}
 
@@ -125,7 +125,7 @@ export default function ReportsPage() {
                 </p>
                 <Link
                   href="/reports/builder"
-                  className="mt-4 inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2 text-xs font-semibold text-white hover:bg-blue-700"
+                  className="mt-4 inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-xs font-semibold text-white hover:bg-emerald-600"
                 >
                   <Plus className="h-4 w-4" /> Create Your First Custom Report
                 </Link>
@@ -141,7 +141,7 @@ export default function ReportsPage() {
                   >
                     <div>
                       <div className="flex items-center justify-between">
-                        <span className="rounded bg-blue-50 px-2 py-0.5 text-xs font-semibold uppercase tracking-wider text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">
+                        <span className="rounded bg-emerald-50 px-2 py-0.5 text-xs font-semibold uppercase tracking-wider text-emerald-800 dark:bg-emerald-600/30 dark:text-emerald-600">
                           {report.primary_module}
                         </span>
                         {report.is_shared && (
@@ -169,7 +169,7 @@ export default function ReportsPage() {
                     <div className="mt-5 flex items-center justify-between border-t pt-3 dark:border-slate-800">
                       <Link
                         href={`/reports/builder?id=${report.id}`}
-                        className="flex items-center gap-1 text-xs font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400"
+                        className="flex items-center gap-1 text-xs font-medium text-emerald-800 hover:text-emerald-800 dark:text-emerald-600"
                       >
                         <ExternalLink className="h-3.5 w-3.5" />
                         Run / Edit
@@ -216,7 +216,7 @@ export default function ReportsPage() {
                       onClick={() => setSelectedCategory(tab.id)}
                       className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
                         selectedCategory === tab.id
-                          ? 'bg-blue-600 text-white'
+                          ? 'bg-emerald-600 text-white'
                           : 'bg-white text-slate-600 hover:bg-slate-100 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700'
                       }`}
                     >
@@ -234,7 +234,7 @@ export default function ReportsPage() {
                     >
                       <div>
                         <div className="flex items-center justify-between">
-                          <span className="rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">
+                          <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider text-emerald-800 dark:bg-emerald-600/30 dark:text-emerald-600">
                             {report.category}
                           </span>
                         </div>
@@ -285,7 +285,7 @@ export default function ReportsPage() {
                     {reportResult && (
                       <button
                         onClick={() => exportReportToCSV(reportResult)}
-                        className="flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+                        className="flex items-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-600"
                       >
                         ↓ Export CSV
                       </button>
@@ -295,7 +295,7 @@ export default function ReportsPage() {
 
                 {isLoading && (
                   <div className="flex h-64 items-center justify-center">
-                    <div className="h-8 w-8 animate-spin rounded-full border-4 border-blue-600 border-t-transparent" />
+                    <div className="h-8 w-8 animate-spin rounded-full border-4 border-emerald-200 border-t-transparent" />
                   </div>
                 )}
 
@@ -356,7 +356,7 @@ export default function ReportsPage() {
                               </div>
                               <div className="mt-1 h-2 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
                                 <div
-                                  className="h-full bg-blue-600 dark:bg-blue-500"
+                                  className="h-full bg-emerald-600 dark:bg-emerald-600"
                                   style={{ width: `${Math.min(item.percent || 0, 100)}%` }}
                                 />
                               </div>
@@ -377,7 +377,7 @@ export default function ReportsPage() {
                           placeholder="Search within report results..."
                           value={searchTable}
                           onChange={(e) => setSearchTable(e.target.value)}
-                          className="rounded-md border border-slate-300 px-3 py-1.5 text-xs shadow-sm focus:border-blue-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white sm:w-64"
+                          className="rounded-md border border-slate-300 px-3 py-1.5 text-xs shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white sm:w-64"
                         />
                       </div>
 

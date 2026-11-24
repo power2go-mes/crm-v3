@@ -82,13 +82,13 @@ export function LeadKanbanBoard({
                     <div
                       key={lead.id}
                       onClick={() => onLeadClick?.(lead)}
-                      className="group p-3 bg-slate-800/80 hover:bg-slate-800 border border-slate-700/60 hover:border-blue-500/50 rounded-lg shadow-sm transition cursor-pointer flex flex-col gap-2"
+                      className="group p-3 bg-slate-800/80 hover:bg-slate-800 border border-slate-700/60 hover:border-emerald-200/50 rounded-lg shadow-sm transition cursor-pointer flex flex-col gap-2"
                     >
                       <div className="flex items-start justify-between gap-1">
                         <Link
                           href={`/leads/${lead.id}`}
                           onClick={(e) => e.stopPropagation()}
-                          className="font-semibold text-sm text-slate-100 group-hover:text-blue-400 transition line-clamp-1 flex items-center gap-1"
+                          className="font-semibold text-sm text-slate-100 group-hover:text-emerald-600 transition line-clamp-1 flex items-center gap-1"
                         >
                           {leadName}
                           <ArrowRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
@@ -129,7 +129,7 @@ export function LeadKanbanBoard({
 
                         {lead.sub_owner ? (
                           <span className="text-slate-400 flex items-center gap-1" title="Assigned BDO">
-                            <UserCheck className="h-3 w-3 text-blue-400" />
+                            <UserCheck className="h-3 w-3 text-emerald-600" />
                             <span className="truncate max-w-[80px]">
                               {lead.sub_owner.first_name || lead.sub_owner.email.split('@')[0]}
                             </span>

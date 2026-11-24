@@ -94,7 +94,7 @@ export function PriceBookModal({ isOpen, onClose, priceBook, onSuccess }: PriceB
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g. Enterprise Tier Q4, Partner Reseller"
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-hidden"
+              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-hidden"
             />
           </div>
 
@@ -103,7 +103,7 @@ export function PriceBookModal({ isOpen, onClose, priceBook, onSuccess }: PriceB
             <select
               value={currency}
               onChange={(e) => setCurrency(e.target.value)}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-hidden bg-white"
+              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-hidden bg-white"
             >
               <option value="INR">INR (₹)</option>
               <option value="USD">USD ($)</option>
@@ -119,7 +119,7 @@ export function PriceBookModal({ isOpen, onClose, priceBook, onSuccess }: PriceB
                 type="date"
                 value={effectiveFrom}
                 onChange={(e) => setEffectiveFrom(e.target.value)}
-                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-hidden"
+                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-hidden"
               />
             </div>
 
@@ -129,7 +129,7 @@ export function PriceBookModal({ isOpen, onClose, priceBook, onSuccess }: PriceB
                 type="date"
                 value={effectiveTo}
                 onChange={(e) => setEffectiveTo(e.target.value)}
-                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-hidden"
+                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-hidden"
               />
             </div>
           </div>
@@ -141,7 +141,7 @@ export function PriceBookModal({ isOpen, onClose, priceBook, onSuccess }: PriceB
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Target customer segment, eligibility criteria..."
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-hidden"
+              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-hidden"
             />
           </div>
 
@@ -151,7 +151,7 @@ export function PriceBookModal({ isOpen, onClose, priceBook, onSuccess }: PriceB
               id="isPriceBookActiveCheck"
               checked={isActive}
               onChange={(e) => setIsActive(e.target.checked)}
-              className="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+              className="h-4 w-4 rounded border-slate-300 text-emerald-800 focus:ring-emerald-500"
             />
             <label htmlFor="isPriceBookActiveCheck" className="text-xs font-medium text-slate-700 select-none">
               Active and selectable in opportunities and quotes
@@ -170,7 +170,7 @@ export function PriceBookModal({ isOpen, onClose, priceBook, onSuccess }: PriceB
             <button
               type="submit"
               disabled={isSubmitting}
-              className="rounded-lg bg-blue-600 px-4 py-2 text-xs font-semibold text-white shadow-xs hover:bg-blue-700 transition disabled:opacity-50"
+              className="rounded-lg bg-emerald-600 px-4 py-2 text-xs font-semibold text-white shadow-xs hover:bg-emerald-600 transition disabled:opacity-50"
             >
               {isSubmitting ? 'Saving...' : priceBook ? 'Update Price Book' : 'Create Price Book'}
             </button>

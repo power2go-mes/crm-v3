@@ -125,7 +125,7 @@ export default function MyJobsPage() {
             <Link
               href={`/tasks/${job.id}`}
               className={`font-semibold hover:underline ${
-                isDone ? 'line-through text-slate-400' : 'text-blue-600 hover:text-blue-800'
+                isDone ? 'line-through text-slate-400' : 'text-emerald-800 hover:text-emerald-800'
               }`}
             >
               {job.subject}
@@ -243,7 +243,7 @@ export default function MyJobsPage() {
             </div>
 
             <div className="p-4 bg-white rounded-xl border border-slate-200 shadow-xs flex items-center gap-3">
-              <div className="p-3 bg-blue-50 text-blue-600 rounded-xl">
+              <div className="p-3 bg-emerald-50 text-emerald-800 rounded-xl">
                 <Briefcase className="w-6 h-6" />
               </div>
               <div>

@@ -21,7 +21,7 @@ export function QuoteRevisionsModal({ isOpen, onClose, quote }: QuoteRevisionsMo
       <div className="relative w-full max-w-2xl rounded-2xl bg-white p-6 shadow-xl dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
         <div className="flex items-center justify-between border-b border-slate-100 pb-4 dark:border-slate-800">
           <div className="flex items-center gap-2">
-            <History className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+            <History className="h-5 w-5 text-emerald-800 dark:text-emerald-600" />
             <div>
               <h3 className="text-base font-bold text-slate-900 dark:text-white">
                 Revision History — {quote.quote_number}
@@ -57,7 +57,7 @@ export function QuoteRevisionsModal({ isOpen, onClose, quote }: QuoteRevisionsMo
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <span className="rounded bg-blue-100 px-2 py-0.5 text-xs font-bold text-blue-700 dark:bg-blue-950/60 dark:text-blue-300">
+                    <span className="rounded bg-emerald-50 px-2 py-0.5 text-xs font-bold text-emerald-800 dark:bg-emerald-600/60 dark:text-emerald-600">
                       Rev #{rev.revision_number}
                     </span>
                     <span className="rounded-full bg-slate-200 px-2 py-0.5 text-[11px] font-semibold text-slate-700 dark:bg-slate-700 dark:text-slate-200">

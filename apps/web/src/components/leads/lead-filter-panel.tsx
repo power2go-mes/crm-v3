@@ -78,7 +78,7 @@ export function LeadFilterPanel({
                   key={stage.id}
                   className={`flex items-center gap-2 px-2.5 py-1.5 rounded border text-xs cursor-pointer transition ${
                     isChecked
-                      ? 'bg-blue-50 border-blue-300 text-blue-700 font-medium'
+                      ? 'bg-emerald-50 border-emerald-200 text-emerald-800 font-medium'
                       : 'border-slate-200 hover:bg-slate-50 text-slate-600'
                   }`}
                 >
@@ -86,7 +86,7 @@ export function LeadFilterPanel({
                     type="checkbox"
                     checked={isChecked}
                     onChange={() => toggleStatus(stage.id)}
-                    className="rounded text-blue-600 focus:ring-blue-500 h-3.5 w-3.5"
+                    className="rounded text-emerald-800 focus:ring-emerald-500 h-3.5 w-3.5"
                   />
                   <span>{stage.name}</span>
                 </label>
@@ -106,7 +106,7 @@ export function LeadFilterPanel({
                   key={src.value}
                   className={`flex items-center gap-2 px-2.5 py-1.5 rounded border text-xs cursor-pointer transition ${
                     isChecked
-                      ? 'bg-blue-50 border-blue-300 text-blue-700 font-medium'
+                      ? 'bg-emerald-50 border-emerald-200 text-emerald-800 font-medium'
                       : 'border-slate-200 hover:bg-slate-50 text-slate-600'
                   }`}
                 >
@@ -114,7 +114,7 @@ export function LeadFilterPanel({
                     type="checkbox"
                     checked={isChecked}
                     onChange={() => toggleSource(src.value)}
-                    className="rounded text-blue-600 focus:ring-blue-500 h-3.5 w-3.5"
+                    className="rounded text-emerald-800 focus:ring-emerald-500 h-3.5 w-3.5"
                   />
                   <span>{src.label}</span>
                 </label>
@@ -134,7 +134,7 @@ export function LeadFilterPanel({
                   key={ind.value}
                   className={`flex items-center gap-2 px-2.5 py-1.5 rounded border text-xs cursor-pointer transition ${
                     isChecked
-                      ? 'bg-blue-50 border-blue-300 text-blue-700 font-medium'
+                      ? 'bg-emerald-50 border-emerald-200 text-emerald-800 font-medium'
                       : 'border-slate-200 hover:bg-slate-50 text-slate-600'
                   }`}
                 >
@@ -142,7 +142,7 @@ export function LeadFilterPanel({
                     type="checkbox"
                     checked={isChecked}
                     onChange={() => toggleIndustry(ind.value)}
-                    className="rounded text-blue-600 focus:ring-blue-500 h-3.5 w-3.5"
+                    className="rounded text-emerald-800 focus:ring-emerald-500 h-3.5 w-3.5"
                   />
                   <span>{ind.label}</span>
                 </label>
@@ -167,7 +167,7 @@ export function LeadFilterPanel({
                     minRevenue: e.target.value ? Number(e.target.value) : null,
                   })
                 }
-                className="w-full mt-0.5 px-2.5 py-1.5 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-blue-500"
+                className="w-full mt-0.5 px-2.5 py-1.5 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
               />
             </div>
             <div>
@@ -182,7 +182,7 @@ export function LeadFilterPanel({
                     maxRevenue: e.target.value ? Number(e.target.value) : null,
                   })
                 }
-                className="w-full mt-0.5 px-2.5 py-1.5 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-blue-500"
+                className="w-full mt-0.5 px-2.5 py-1.5 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
               />
             </div>
           </div>
@@ -200,7 +200,7 @@ export function LeadFilterPanel({
                 onChange={(e) =>
                   setLocalFilters({ ...localFilters, dateFrom: e.target.value || null })
                 }
-                className="w-full mt-0.5 px-2.5 py-1.5 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-blue-500"
+                className="w-full mt-0.5 px-2.5 py-1.5 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
               />
             </div>
             <div>
@@ -211,7 +211,7 @@ export function LeadFilterPanel({
                 onChange={(e) =>
                   setLocalFilters({ ...localFilters, dateTo: e.target.value || null })
                 }
-                className="w-full mt-0.5 px-2.5 py-1.5 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-blue-500"
+                className="w-full mt-0.5 px-2.5 py-1.5 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
               />
             </div>
           </div>
@@ -250,7 +250,7 @@ export function LeadFilterPanel({
             onApplyFilters(localFilters);
             onClose();
           }}
-          className="inline-flex items-center gap-1.5 px-4 py-1.5 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded transition shadow-xs"
+          className="inline-flex items-center gap-1.5 px-4 py-1.5 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-600 rounded transition shadow-xs"
         >
           <Check className="h-3.5 w-3.5" />
           <span>Apply Filters</span>

@@ -124,7 +124,7 @@ export function OpportunityCreateModal({
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 placeholder="Enterprise Cloud Modernization"
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500 text-sm"
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 text-sm"
               />
             </div>
 
@@ -136,7 +136,7 @@ export function OpportunityCreateModal({
                 required
                 value={formData.account_id}
                 onChange={(e) => setFormData({ ...formData, account_id: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               >
                 <option value="">Select an Account...</option>
                 {accounts.map((acc) => (
@@ -163,7 +163,7 @@ export function OpportunityCreateModal({
                     })
                   }
                   placeholder="250000"
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
                 />
               </div>
 
@@ -176,7 +176,7 @@ export function OpportunityCreateModal({
                   required
                   value={formData.close_date}
                   onChange={(e) => setFormData({ ...formData, close_date: e.target.value })}
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
                 />
               </div>
             </div>
@@ -189,7 +189,7 @@ export function OpportunityCreateModal({
                 <select
                   value={formData.stage}
                   onChange={(e) => handleStageChange(e.target.value)}
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
                 >
                   {APPROVED_OPPORTUNITY_STAGES.map((s) => (
                     <option key={s.id} value={s.id}>
@@ -211,7 +211,7 @@ export function OpportunityCreateModal({
                   onChange={(e) =>
                     setFormData({ ...formData, probability: Number(e.target.value) })
                   }
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
                 />
               </div>
             </div>
@@ -226,7 +226,7 @@ export function OpportunityCreateModal({
                   placeholder="e.g. Schedule discovery call"
                   value={formData.next_step || ''}
                   onChange={(e) => setFormData({ ...formData, next_step: e.target.value })}
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
                 />
               </div>
 
@@ -238,7 +238,7 @@ export function OpportunityCreateModal({
                   type="date"
                   value={formData.next_activity_date || ''}
                   onChange={(e) => setFormData({ ...formData, next_activity_date: e.target.value })}
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
                 />
               </div>
             </div>

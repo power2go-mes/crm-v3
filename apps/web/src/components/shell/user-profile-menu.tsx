@@ -51,9 +51,9 @@ export function UserProfileMenu() {
   const getRoleBadgeStyle = (code: string) => {
     switch (code) {
       case 'SUPER_ADMIN':
-        return 'bg-purple-50 text-purple-700 border-purple-200';
+        return 'bg-emerald-50 text-emerald-800 border-emerald-200';
       case 'HEAD_OF_SALES':
-        return 'bg-blue-50 text-blue-700 border-blue-200';
+        return 'bg-emerald-50 text-emerald-800 border-emerald-200';
       case 'RSM':
       case 'SSM':
       case 'ASM':

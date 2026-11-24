@@ -120,7 +120,7 @@ export function CompanySettingsModal({
               required
               value={companyName}
               onChange={(e) => setCompanyName(e.target.value)}
-              className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+              className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
             />
           </div>
 
@@ -132,7 +132,7 @@ export function CompanySettingsModal({
               <select
                 value={currency}
                 onChange={(e) => setCurrency(e.target.value)}
-                className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
               >
                 <option value="">Select Currency</option>
                 {currency && !currencyChoices.some(choice => choice.code === currency) && <option value={currency}>{currency}</option>}
@@ -147,7 +147,7 @@ export function CompanySettingsModal({
               <select
                 value={timeZone}
                 onChange={(e) => setTimeZone(e.target.value)}
-                className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
               >
                 <option value="">Select Time Zone</option>
                 {timeZone && !['UTC', 'America/New_York', 'America/Chicago', 'America/Denver', 'America/Los_Angeles', 'Europe/London', 'Asia/Kolkata'].includes(timeZone) && <option value={timeZone}>{timeZone}</option>}
@@ -172,7 +172,7 @@ export function CompanySettingsModal({
                 value={legalName}
                 onChange={(e) => setLegalName(e.target.value)}
                 placeholder="FINLONEXA Technologies Inc."
-                className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
               />
             </div>
 
@@ -185,7 +185,7 @@ export function CompanySettingsModal({
                 value={domain}
                 onChange={(e) => setDomain(e.target.value)}
                 placeholder="finlonexa.com"
-                className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
               />
             </div>
           </div>
@@ -200,7 +200,7 @@ export function CompanySettingsModal({
                 value={supportEmail}
                 onChange={(e) => setSupportEmail(e.target.value)}
                 placeholder="support@finlonexa.com"
-                className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
               />
             </div>
 
@@ -213,7 +213,7 @@ export function CompanySettingsModal({
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
                 placeholder="+1 (800) 555-0199"
-                className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
               />
             </div>
           </div>
@@ -227,7 +227,7 @@ export function CompanySettingsModal({
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               placeholder="100 Financial Plaza, Suite 400"
-              className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+              className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
             />
           </div>
 
@@ -243,7 +243,7 @@ export function CompanySettingsModal({
             <button
               type="submit"
               disabled={isPending || !companyName.trim()}
-              className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 disabled:opacity-50"
+              className="rounded-lg bg-emerald-600 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-600 disabled:opacity-50"
             >
               {isPending ? 'Saving...' : 'Save Settings'}
             </button>

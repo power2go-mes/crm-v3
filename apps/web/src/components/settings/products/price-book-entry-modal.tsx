@@ -104,7 +104,7 @@ export function PriceBookEntryModal({
               disabled={!!entry}
               value={productId}
               onChange={(e) => handleProductChange(e.target.value)}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-hidden bg-white disabled:bg-slate-100"
+              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-hidden bg-white disabled:bg-slate-100"
             >
               {products.map((p) => (
                 <option key={p.id} value={p.id}>
@@ -125,7 +125,7 @@ export function PriceBookEntryModal({
               required
               value={unitPrice}
               onChange={(e) => setUnitPrice(e.target.value)}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-hidden"
+              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-hidden"
             />
           </div>
 
@@ -135,7 +135,7 @@ export function PriceBookEntryModal({
               id="isPbeActiveCheck"
               checked={isActive}
               onChange={(e) => setIsActive(e.target.checked)}
-              className="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+              className="h-4 w-4 rounded border-slate-300 text-emerald-800 focus:ring-emerald-500"
             />
             <label htmlFor="isPbeActiveCheck" className="text-xs font-medium text-slate-700 select-none">
               Active pricing in this book
@@ -154,7 +154,7 @@ export function PriceBookEntryModal({
             <button
               type="submit"
               disabled={isSubmitting}
-              className="rounded-lg bg-blue-600 px-4 py-2 text-xs font-semibold text-white shadow-xs hover:bg-blue-700 transition disabled:opacity-50"
+              className="rounded-lg bg-emerald-600 px-4 py-2 text-xs font-semibold text-white shadow-xs hover:bg-emerald-600 transition disabled:opacity-50"
             >
               {isSubmitting ? 'Saving...' : entry ? 'Update Price' : 'Add to Price Book'}
             </button>

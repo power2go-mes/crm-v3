@@ -109,7 +109,7 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
       <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 shadow-sm mb-6">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div className="flex items-start gap-4">
-            <div className="p-3 bg-blue-500/10 text-blue-400 rounded-xl">
+            <div className="p-3 bg-emerald-600/10 text-emerald-600 rounded-xl">
               <Users className="h-8 w-8" />
             </div>
             <div>
@@ -124,13 +124,13 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
                 )}
               </div>
               {contact.title && (
-                <p className="text-sm text-blue-400 font-medium mt-0.5">{contact.title}</p>
+                <p className="text-sm text-emerald-600 font-medium mt-0.5">{contact.title}</p>
               )}
               <div className="flex flex-wrap items-center gap-4 mt-2 text-xs text-slate-400">
                 {contact.account && (
                   <Link
                     href={`/accounts/${contact.account.id}`}
-                    className="flex items-center gap-1.5 text-slate-300 hover:text-blue-400 transition"
+                    className="flex items-center gap-1.5 text-slate-300 hover:text-emerald-600 transition"
                   >
                     <Building2 className="h-3.5 w-3.5 text-slate-500" />
                     <span>{contact.account.name}</span>
@@ -157,7 +157,7 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
             <button
               type="button"
               onClick={() => setIsEmailModalOpen(true)}
-              className="px-3 py-2 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-lg transition inline-flex items-center gap-1.5 shadow-xs"
+              className="px-3 py-2 bg-emerald-600 hover:bg-emerald-600 text-white text-xs font-semibold rounded-lg transition inline-flex items-center gap-1.5 shadow-xs"
               title="Compose and log email to contact"
             >
               <Send className="h-3.5 w-3.5" />
@@ -171,7 +171,7 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
                 className="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-semibold rounded-lg transition inline-flex items-center gap-1.5"
                 title="Scan for potential duplicate contacts"
               >
-                <GitMerge className="h-3.5 w-3.5 text-blue-400" />
+                <GitMerge className="h-3.5 w-3.5 text-emerald-600" />
                 <span>Find Duplicates</span>
               </button>
             </PermissionGate>
@@ -209,7 +209,7 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
             onClick={() => setActiveTab('details')}
             className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
               activeTab === 'details'
-                ? 'border-blue-500 text-blue-400'
+                ? 'border-emerald-200 text-emerald-600'
                 : 'border-transparent text-slate-400 hover:text-slate-200'
             }`}
           >
@@ -222,7 +222,7 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
             onClick={() => setActiveTab('accounts')}
             className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
               activeTab === 'accounts'
-                ? 'border-blue-500 text-blue-400'
+                ? 'border-emerald-200 text-emerald-600'
                 : 'border-transparent text-slate-400 hover:text-slate-200'
             }`}
           >
@@ -235,7 +235,7 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
             onClick={() => setActiveTab('activity')}
             className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
               activeTab === 'activity'
-                ? 'border-blue-500 text-blue-400'
+                ? 'border-emerald-200 text-emerald-600'
                 : 'border-transparent text-slate-400 hover:text-slate-200'
             }`}
           >
@@ -248,7 +248,7 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
             onClick={() => setActiveTab('emails')}
             className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
               activeTab === 'emails'
-                ? 'border-blue-500 text-blue-400'
+                ? 'border-emerald-200 text-emerald-600'
                 : 'border-transparent text-slate-400 hover:text-slate-200'
             }`}
           >
@@ -261,7 +261,7 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
             onClick={() => setActiveTab('history')}
             className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
               activeTab === 'history'
-                ? 'border-blue-500 text-blue-400'
+                ? 'border-emerald-200 text-emerald-600'
                 : 'border-transparent text-slate-400 hover:text-slate-200'
             }`}
           >
@@ -275,7 +275,7 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
               onClick={() => setActiveTab('account_overview')}
               className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
                 activeTab === 'account_overview'
-                  ? 'border-blue-500 text-blue-400'
+                  ? 'border-emerald-200 text-emerald-600'
                   : 'border-transparent text-slate-400 hover:text-slate-200'
               }`}
             >
@@ -370,7 +370,7 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
               <button
                 type="button"
                 onClick={() => setIsEmailModalOpen(true)}
-                className="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-semibold inline-flex items-center gap-1.5 transition"
+                className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-600 text-white rounded-lg text-xs font-semibold inline-flex items-center gap-1.5 transition"
               >
                 <Send className="h-3.5 w-3.5" />
                 <span>Compose Email</span>
@@ -395,7 +395,7 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
               </div>
               <Link
                 href={`/accounts/${contact.account.id}`}
-                className="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-semibold inline-flex items-center gap-1.5 transition"
+                className="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-600 text-white rounded-lg text-xs font-semibold inline-flex items-center gap-1.5 transition"
               >
                 <span>View Full Account</span>
                 <ExternalLink className="h-3.5 w-3.5" />

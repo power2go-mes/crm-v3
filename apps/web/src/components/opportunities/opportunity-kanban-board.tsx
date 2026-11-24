@@ -78,11 +78,11 @@ export function OpportunityKanbanBoard({
                 stageOpps.map((opp) => (
                   <div
                     key={opp.id}
-                    className="group p-3 bg-slate-800/80 hover:bg-slate-800 border border-slate-700/60 hover:border-blue-500/50 rounded-lg shadow-sm transition flex flex-col gap-2"
+                    className="group p-3 bg-slate-800/80 hover:bg-slate-800 border border-slate-700/60 hover:border-emerald-200/50 rounded-lg shadow-sm transition flex flex-col gap-2"
                   >
                     <Link
                       href={`/opportunities/${opp.id}`}
-                      className="font-semibold text-sm text-slate-100 group-hover:text-blue-400 transition line-clamp-1 flex items-center justify-between"
+                      className="font-semibold text-sm text-slate-100 group-hover:text-emerald-600 transition line-clamp-1 flex items-center justify-between"
                     >
                       <span>{opp.name}</span>
                       <ArrowRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />

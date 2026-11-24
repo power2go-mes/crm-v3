@@ -111,10 +111,10 @@ export default function LeadStagesPage() {
   return (
     <PageContainer>
       <div className="flex items-center justify-between mb-2 text-xs">
-        <Link href="/settings" className="text-slate-500 hover:text-blue-600 transition flex items-center gap-1">
+        <Link href="/settings" className="text-slate-500 hover:text-emerald-800 transition flex items-center gap-1">
           <span>Settings</span>
           <span>›</span>
-          <span className="text-blue-600 font-medium">Lead Stage Configuration</span>
+          <span className="text-emerald-800 font-medium">Lead Stage Configuration</span>
         </Link>
       </div>
 
@@ -150,7 +150,7 @@ export default function LeadStagesPage() {
         <div className="bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden dark:bg-slate-900 dark:border-slate-800">
           <div className="px-5 py-3.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-slate-600 dark:bg-slate-950 dark:border-slate-800 dark:text-slate-400">
             <div className="flex items-center gap-2">
-              <Layers className="h-4 w-4 text-blue-600" />
+              <Layers className="h-4 w-4 text-emerald-800" />
               <span>Configured Pipeline Stages ({stages.length})</span>
             </div>
             <span className="text-[11px] normal-case font-normal text-slate-400">
@@ -202,7 +202,7 @@ export default function LeadStagesPage() {
                           <span>{stage.probability}%</span>
                           <div className="w-12 bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
                             <div
-                              className="h-full bg-blue-500 rounded-full"
+                              className="h-full bg-emerald-600 rounded-full"
                               style={{ width: `${Math.min(Number(stage.probability), 100)}%` }}
                             />
                           </div>
@@ -250,7 +250,7 @@ export default function LeadStagesPage() {
                               type="button"
                               onClick={() => openEditModal(stage)}
                               title="Edit stage properties"
-                              className="p-1 text-blue-600 hover:text-blue-800 rounded hover:bg-blue-50 dark:hover:bg-slate-800 ml-1"
+                              className="p-1 text-emerald-800 hover:text-emerald-800 rounded hover:bg-emerald-50 dark:hover:bg-slate-800 ml-1"
                             >
                               <Edit2 className="h-3.5 w-3.5" />
                             </button>
@@ -271,7 +271,7 @@ export default function LeadStagesPage() {
             <div className="w-full max-w-md bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200 dark:bg-slate-900 dark:border-slate-800">
               <div className="flex items-center justify-between px-5 py-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950">
                 <div className="flex items-center gap-2">
-                  <Edit2 className="h-4 w-4 text-blue-600" />
+                  <Edit2 className="h-4 w-4 text-emerald-800" />
                   <h3 className="font-semibold text-sm text-slate-900 dark:text-white">
                     Edit Lead Stage ({editingStage.id})
                   </h3>
@@ -312,7 +312,7 @@ export default function LeadStagesPage() {
                       onChange={(e) => setProbability(Number(e.target.value))}
                       className="flex-1 accent-blue-600"
                     />
-                    <span className="w-12 text-right font-mono font-bold text-xs text-blue-600 dark:text-blue-400">
+                    <span className="w-12 text-right font-mono font-bold text-xs text-emerald-800 dark:text-emerald-600">
                       {probability}%
                     </span>
                   </div>
@@ -368,7 +368,7 @@ export default function LeadStagesPage() {
                   <button
                     type="submit"
                     disabled={updateMutation.isPending}
-                    className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold shadow-xs disabled:opacity-50"
+                    className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-emerald-600 hover:bg-emerald-600 text-white rounded-lg text-xs font-semibold shadow-xs disabled:opacity-50"
                   >
                     <Save className="h-3.5 w-3.5" />
                     <span>{updateMutation.isPending ? 'Saving...' : 'Save Changes'}</span>

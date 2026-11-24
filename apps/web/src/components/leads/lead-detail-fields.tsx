@@ -78,8 +78,8 @@ export function LeadDetailFields({ lead, onEdit }: { lead: LeadWithRelations; on
     <div className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-600">
       <span>Last edited {new Date(lead.updated_at).toLocaleString()}</span>
       <div className="flex flex-wrap gap-2">
-        <button type="button" disabled={!registry || !preferences.isSuccess} onClick={() => { setMessage(''); save.reset(); setDraft(hidden); }} className="inline-flex items-center gap-2 rounded bg-indigo-100 px-3 py-2 text-indigo-700"><SlidersHorizontal size={14}/>Fields</button>
-        {hasPermission('leads.update') && <button type="button" onClick={onEdit} className="rounded bg-indigo-100 px-4 py-2 text-indigo-700">Edit Details</button>}
+        <button type="button" disabled={!registry || !preferences.isSuccess} onClick={() => { setMessage(''); save.reset(); setDraft(hidden); }} className="inline-flex items-center gap-2 rounded bg-emerald-50 px-3 py-2 text-emerald-800"><SlidersHorizontal size={14}/>Fields</button>
+        {hasPermission('leads.update') && <button type="button" onClick={onEdit} className="rounded bg-emerald-50 px-4 py-2 text-emerald-800">Edit Details</button>}
       </div>
     </div>
     {message && <p role="status">{message}</p>}
@@ -94,7 +94,7 @@ export function LeadDetailFields({ lead, onEdit }: { lead: LeadWithRelations; on
         </label>)}
       </div>
       <div className="flex flex-wrap gap-4 text-sm">
-        <button type="button" disabled={save.isPending} className="text-indigo-700" onClick={() => save.mutate(draft)}>Save</button>
+        <button type="button" disabled={save.isPending} className="text-emerald-800" onClick={() => save.mutate(draft)}>Save</button>
         <button type="button" disabled={save.isPending} onClick={() => setDraft([])}>Reset</button>
         <button type="button" disabled={save.isPending} onClick={() => setDraft(null)}>Cancel</button>
       </div>

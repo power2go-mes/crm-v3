@@ -91,7 +91,7 @@ export default function AutomationSettingsPage() {
           hasPermission('automation.manage') ? (
             <button
               onClick={handleOpenCreate}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-3.5 py-2 text-xs font-semibold text-white shadow-xs hover:bg-blue-700"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3.5 py-2 text-xs font-semibold text-white shadow-xs hover:bg-emerald-600"
             >
               <Plus className="h-4 w-4" />
               <span>Create Workflow</span>
@@ -107,7 +107,7 @@ export default function AutomationSettingsPage() {
             onClick={() => setActiveTab('rules')}
             className={`flex items-center gap-2 border-b-2 px-5 py-3 text-xs font-semibold uppercase tracking-wider transition ${
               activeTab === 'rules'
-                ? 'border-blue-600 text-blue-600 dark:text-blue-400'
+                ? 'border-emerald-200 text-emerald-800 dark:text-emerald-600'
                 : 'border-transparent text-slate-500 hover:text-slate-800 dark:text-slate-400'
             }`}
           >
@@ -118,7 +118,7 @@ export default function AutomationSettingsPage() {
             onClick={() => setActiveTab('logs')}
             className={`flex items-center gap-2 border-b-2 px-5 py-3 text-xs font-semibold uppercase tracking-wider transition ${
               activeTab === 'logs'
-                ? 'border-blue-600 text-blue-600 dark:text-blue-400'
+                ? 'border-emerald-200 text-emerald-800 dark:text-emerald-600'
                 : 'border-transparent text-slate-500 hover:text-slate-800 dark:text-slate-400'
             }`}
           >
@@ -140,7 +140,7 @@ export default function AutomationSettingsPage() {
                 {hasPermission('automation.manage') && (
                   <button
                     onClick={handleOpenCreate}
-                    className="mt-4 inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2 text-xs font-semibold text-white hover:bg-blue-700"
+                    className="mt-4 inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-xs font-semibold text-white hover:bg-emerald-600"
                   >
                     <Plus className="h-4 w-4" />
                     <span>Create Your First Workflow</span>
@@ -170,7 +170,7 @@ export default function AutomationSettingsPage() {
                       <p className="text-xs text-slate-500">{rule.description || 'No description provided.'}</p>
 
                       <div className="flex flex-wrap items-center gap-3 pt-2 text-[11px] text-slate-600 dark:text-slate-400">
-                        <span className="flex items-center gap-1 font-medium text-blue-600 dark:text-blue-400">
+                        <span className="flex items-center gap-1 font-medium text-emerald-800 dark:text-emerald-600">
                           <Zap className="h-3 w-3" />
                           WHEN: {rule.trigger_event.replace(/_/g, ' ')}
                         </span>
@@ -402,7 +402,7 @@ export default function AutomationSettingsPage() {
                   <button
                     type="submit"
                     disabled={isSaving}
-                    className="rounded-lg bg-blue-600 px-4 py-2 text-xs font-semibold text-white hover:bg-blue-700"
+                    className="rounded-lg bg-emerald-600 px-4 py-2 text-xs font-semibold text-white hover:bg-emerald-600"
                   >
                     Save Rule
                   </button>

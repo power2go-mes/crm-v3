@@ -72,8 +72,8 @@ function CatalogManager({ kind }: { kind: CatalogKind }) {
     </div> : null},
   ];
   return <PageContainer>
-    <Link href="/settings" className="text-sm text-blue-700">Settings</Link>
-    <PageHeader title={config.title} subtitle={config.description} actions={hasPermission('settings.update') ? <button className="rounded bg-blue-600 px-4 py-2 text-white" onClick={event => open(null,event.currentTarget)}><Plus className="mr-1 inline h-4 w-4" />New</button> : undefined} />
+    <Link href="/settings" className="text-sm text-emerald-800">Settings</Link>
+    <PageHeader title={config.title} subtitle={config.description} actions={hasPermission('settings.update') ? <button className="rounded bg-emerald-600 px-4 py-2 text-white" onClick={event => open(null,event.currentTarget)}><Plus className="mr-1 inline h-4 w-4" />New</button> : undefined} />
     <PermissionGate action="settings.view" showAccessDenied>
       <div className="mb-4 flex flex-wrap items-center gap-3">
         <label className="text-sm">Search <input type="search" maxLength={200} className="rounded border p-2" value={search} onChange={event => {setSearch(event.target.value);setPage(1);}} /></label>
@@ -90,7 +90,7 @@ function CatalogManager({ kind }: { kind: CatalogKind }) {
         <label className="mb-4 block text-sm">{config.singular} Name <span aria-hidden="true">*</span><input autoFocus required maxLength={50} value={name} onChange={event => setName(event.target.value)} className="mt-1 block w-full rounded border p-2" /></label>
         <label className="mb-4 block text-sm">Description<textarea value={description} onChange={event => setDescription(event.target.value)} className="mt-1 block w-full rounded border p-2" /></label>
         {save.error && <p role="alert" className="text-red-700">{save.error.message}</p>}
-        <div className="mt-5 flex justify-end gap-3"><button type="button" disabled={save.isPending} onClick={close}>Cancel</button>{kind!=='customer' && editing===null && <button type="submit" value="new" disabled={save.isPending||!name.trim()} className="rounded border border-blue-600 px-4 py-2 text-blue-700">Save &amp; New</button>}<button type="submit" value="save" disabled={save.isPending||!name.trim()} className="rounded bg-blue-600 px-4 py-2 text-white">{save.isPending?'Saving…':'Save'}</button></div>
+        <div className="mt-5 flex justify-end gap-3"><button type="button" disabled={save.isPending} onClick={close}>Cancel</button>{kind!=='customer' && editing===null && <button type="submit" value="new" disabled={save.isPending||!name.trim()} className="rounded border border-emerald-200 px-4 py-2 text-emerald-800">Save &amp; New</button>}<button type="submit" value="save" disabled={save.isPending||!name.trim()} className="rounded bg-emerald-600 px-4 py-2 text-white">{save.isPending?'Saving…':'Save'}</button></div>
       </form>
     </dialog>
     <dialog ref={deleteDialog} aria-labelledby="role-delete-title" onCancel={event => {if(deletion.isPending)event.preventDefault();else close();}} className="w-[calc(100%_-_2rem)] max-w-lg rounded-xl p-6 backdrop:bg-black/40">

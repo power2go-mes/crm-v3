@@ -40,7 +40,7 @@ export function ProductUsageModal({ isOpen, onClose, product }: ProductUsageModa
             <>
               <div className="grid grid-cols-2 gap-4">
                 <div className="rounded-xl border border-slate-200 p-4 bg-slate-50 text-center">
-                  <div className="flex justify-center mb-1 text-blue-600">
+                  <div className="flex justify-center mb-1 text-emerald-800">
                     <Layers className="h-5 w-5" />
                   </div>
                   <div className="text-xl font-bold text-slate-900">{usage?.lineItemsCount || 0}</div>

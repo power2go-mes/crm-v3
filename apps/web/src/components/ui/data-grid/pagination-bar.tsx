@@ -54,7 +54,7 @@ export function PaginationBar({
             id="pageSizeSelect"
             value={pageSize}
             onChange={(e) => onPageSizeChange(Number(e.target.value))}
-            className="text-xs font-medium text-slate-700 bg-slate-50 border border-slate-300 rounded px-2 py-1 focus:outline-none focus:ring-1 focus:ring-blue-500 cursor-pointer"
+            className="text-xs font-medium text-slate-700 bg-slate-50 border border-slate-300 rounded px-2 py-1 focus:outline-none focus:ring-1 focus:ring-emerald-500 cursor-pointer"
           >
             <option value={10}>10</option>
             <option value={25}>25</option>
@@ -84,7 +84,7 @@ export function PaginationBar({
               onClick={() => onPageChange(p)}
               className={`min-w-[28px] h-7 px-2 flex items-center justify-center rounded font-medium transition cursor-pointer ${
                 currentPage === p
-                  ? 'bg-blue-600 text-white font-semibold shadow-xs'
+                  ? 'bg-emerald-600 text-white font-semibold shadow-xs'
                   : 'text-slate-700 hover:bg-slate-100'
               }`}
             >

@@ -111,7 +111,7 @@ export function CustomFieldsManager() {
           <button
             type="button"
             onClick={() => { setEditingId(null); setKey(''); setLabel(''); setType('small_text'); setRequired(false); setPosition(0); setChoiceText(''); setError(''); setIsCreating(!isCreating); }}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-semibold transition"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-600 text-white rounded-lg text-xs font-semibold transition"
           >
             <Plus className="h-3.5 w-3.5" />
             <span>Add Custom Field</span>
@@ -128,7 +128,7 @@ export function CustomFieldsManager() {
             onClick={() => setActiveModule(m)}
             className={`px-3 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wider transition ${
               activeModule === m
-                ? 'bg-blue-600 text-white shadow-xs'
+                ? 'bg-emerald-600 text-white shadow-xs'
                 : 'text-slate-400 hover:text-white bg-slate-900 border border-slate-800'
             }`}
           >
@@ -165,7 +165,7 @@ export function CustomFieldsManager() {
                 value={module}
                 disabled={!!editingId}
                 onChange={(e) => setModule(e.target.value)}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white capitalize focus:outline-hidden focus:border-blue-500"
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white capitalize focus:outline-hidden focus:border-emerald-200"
               >
                 <option value="leads">Leads</option>
                 <option value="accounts">Accounts</option>
@@ -190,7 +190,7 @@ export function CustomFieldsManager() {
                   }
                 }}
                 placeholder="e.g. Contract Expiration Date"
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white focus:outline-hidden focus:border-blue-500"
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white focus:outline-hidden focus:border-emerald-200"
               />
             </div>
 
@@ -205,7 +205,7 @@ export function CustomFieldsManager() {
                 disabled={!!editingId}
                 onChange={(e) => setKey(e.target.value)}
                 placeholder="e.g. contract_expiration_date"
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white font-mono focus:outline-hidden focus:border-blue-500"
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white font-mono focus:outline-hidden focus:border-emerald-200"
               />
             </div>
 
@@ -216,7 +216,7 @@ export function CustomFieldsManager() {
               <select
                 value={type}
                 onChange={(e) => setType(e.target.value)}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white focus:outline-hidden focus:border-blue-500"
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white focus:outline-hidden focus:border-emerald-200"
               >
                 <option value="small_text">Short Text (255 chars)</option>
                 <option value="large_text">Long Text / Paragraph</option>
@@ -234,7 +234,7 @@ export function CustomFieldsManager() {
                 id="reqCheck"
                 checked={required}
                 onChange={(e) => setRequired(e.target.checked)}
-                className="h-4 w-4 rounded border-slate-700 bg-slate-950 text-blue-600 focus:ring-0"
+                className="h-4 w-4 rounded border-slate-700 bg-slate-950 text-emerald-800 focus:ring-0"
               />
               <label htmlFor="reqCheck" className="text-xs text-slate-300 font-medium">
                 Mandatory Field
@@ -258,7 +258,7 @@ export function CustomFieldsManager() {
             <button
               type="submit"
               disabled={createMutation.isPending}
-              className="px-3 py-1.5 bg-blue-600 text-white text-xs font-semibold rounded-lg hover:bg-blue-500 disabled:opacity-50"
+              className="px-3 py-1.5 bg-emerald-600 text-white text-xs font-semibold rounded-lg hover:bg-emerald-600 disabled:opacity-50"
             >
               {createMutation.isPending ? 'Saving...' : editingId ? 'Save' : 'Register Field'}
             </button>
@@ -293,7 +293,7 @@ export function CustomFieldsManager() {
                     <span className="font-mono text-[11px] text-slate-400">({field.key})</span>
                   </div>
                   <span className="text-[11px] text-slate-500">
-                    Type: <span className="text-blue-400 font-medium">{field.type}</span> •{' '}
+                    Type: <span className="text-emerald-600 font-medium">{field.type}</span> •{' '}
                     {field.is_custom ? 'Custom Dynamic Field' : 'Core System Field'}
                   </span>
                 </div>
@@ -312,7 +312,7 @@ export function CustomFieldsManager() {
                 <span
                   className={`text-[10px] font-bold uppercase px-1.5 py-0.5 rounded ${
                     field.is_custom
-                      ? 'bg-purple-950/60 text-purple-400 border border-purple-800'
+                      ? 'bg-emerald-600/60 text-emerald-600 border border-emerald-200'
                       : 'bg-slate-800 text-slate-400 border border-slate-700'
                   }`}
                 >

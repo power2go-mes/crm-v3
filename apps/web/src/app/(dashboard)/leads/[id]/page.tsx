@@ -120,9 +120,9 @@ export default function LeadDetailPage({ params }: LeadDetailPageProps) {
       <div className="flex items-center justify-between mb-4 text-sm">
         <Link
           href="/leads"
-          className="inline-flex items-center gap-1.5 text-slate-600 hover:text-indigo-600 transition"
+          className="inline-flex items-center gap-1.5 text-slate-600 hover:text-emerald-800 transition"
         >
-          <span>Leads</span><span aria-hidden="true">›</span><span className="text-indigo-500">{leadName}</span>
+          <span>Leads</span><span aria-hidden="true">›</span><span className="text-emerald-800">{leadName}</span>
         </Link>
       </div>
 
@@ -136,8 +136,8 @@ export default function LeadDetailPage({ params }: LeadDetailPageProps) {
               ['Previous', navigation.previous, ChevronLeft],
               ['Next', navigation.next, ChevronRight],
             ] as const).map(([label, href, Icon]) => href
-              ? <Link key={label} href={href} aria-label={label} className="rounded-full bg-indigo-100 p-2 text-indigo-700"><Icon className="h-4 w-4" /></Link>
-              : <button key={label} type="button" disabled aria-label={label} className="rounded-full bg-indigo-50 p-2 text-slate-400"><Icon className="h-4 w-4" /></button>
+              ? <Link key={label} href={href} aria-label={label} className="rounded-full bg-emerald-50 p-2 text-emerald-800"><Icon className="h-4 w-4" /></Link>
+              : <button key={label} type="button" disabled aria-label={label} className="rounded-full bg-emerald-50 p-2 text-slate-400"><Icon className="h-4 w-4" /></button>
             )}
             {(hasPermission('leads.update') || hasPermission('leads.delete')) &&
               <details className="relative">
@@ -149,7 +149,7 @@ export default function LeadDetailPage({ params }: LeadDetailPageProps) {
               <button
                 type="button"
                 onClick={() => setIsEditModalOpen(true)}
-                className="inline-flex items-center gap-2 rounded px-3 py-2 text-left text-sm text-slate-700 hover:bg-indigo-50"
+                className="inline-flex items-center gap-2 rounded px-3 py-2 text-left text-sm text-slate-700 hover:bg-emerald-50"
               >
                 <Edit2 className="h-3.5 w-3.5" />
                 <span>Edit Lead</span>
@@ -161,7 +161,7 @@ export default function LeadDetailPage({ params }: LeadDetailPageProps) {
                 <button
                   type="button"
                   onClick={() => setIsConvertModalOpen(true)}
-                  className="inline-flex items-center gap-2 rounded px-3 py-2 text-left text-sm text-slate-700 hover:bg-indigo-50"
+                  className="inline-flex items-center gap-2 rounded px-3 py-2 text-left text-sm text-slate-700 hover:bg-emerald-50"
                 >
                   <Shuffle className="h-3.5 w-3.5" />
                   <span>Convert Lead</span>

@@ -156,12 +156,12 @@ export default function AccountsPage() {
       accessorKey: 'name',
       cell: (acc) => (
         <div className="flex items-center gap-2">
-          <div className="p-1.5 bg-blue-500/10 text-blue-400 rounded-lg">
+          <div className="p-1.5 bg-emerald-600/10 text-emerald-600 rounded-lg">
             <Building2 className="h-4 w-4" />
           </div>
           <Link
             href={`/accounts/${acc.id}`}
-            className="font-medium text-slate-900 hover:text-blue-600 transition"
+            className="font-medium text-slate-900 hover:text-emerald-800 transition"
           >
             {acc.name}
           </Link>
@@ -233,7 +233,7 @@ export default function AccountsPage() {
                 href={acc.website.startsWith('http') ? acc.website : `https://${acc.website}`}
                 target="_blank"
                 rel="noreferrer"
-                className="hover:text-blue-600 truncate max-w-[150px]"
+                className="hover:text-emerald-800 truncate max-w-[150px]"
               >
                 {acc.website.replace(/^https?:\/\//, '')}
               </a>
@@ -279,7 +279,7 @@ export default function AccountsPage() {
               type="button"
               title="Edit Account"
               onClick={() => setEditingAccount(acc)}
-              className="p-1.5 rounded hover:bg-slate-100 text-slate-400 hover:text-blue-600 transition"
+              className="p-1.5 rounded hover:bg-slate-100 text-slate-400 hover:text-emerald-800 transition"
             >
               <Edit2 className="h-3.5 w-3.5" />
             </button>

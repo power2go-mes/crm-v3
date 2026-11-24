@@ -45,7 +45,7 @@ export function LeadExportModal({ onClose, onExport }: {
       {error && <p role="alert" className="mt-4 text-sm text-red-700">{error}</p>}
       <footer className="mt-5 flex justify-end">
         <button type="submit" disabled={pending || !selected.length}
-          className="rounded bg-blue-600 px-4 py-2 text-sm text-white disabled:opacity-50">
+          className="rounded bg-emerald-600 px-4 py-2 text-sm text-white disabled:opacity-50">
           {pending ? 'Exporting…' : 'Export'}
         </button>
       </footer>

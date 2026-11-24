@@ -106,7 +106,7 @@ export function RecordMergeModal({
         {/* Header */}
         <div className="px-6 py-4 border-b border-slate-200 flex items-center justify-between bg-slate-50 dark:border-slate-800 dark:bg-slate-950">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-blue-100 text-blue-600 rounded-xl dark:bg-blue-900/40 dark:text-blue-400">
+            <div className="p-2 bg-emerald-50 text-emerald-800 rounded-xl dark:bg-emerald-600/40 dark:text-emerald-600">
               <GitMerge className="h-5 w-5" />
             </div>
             <div>
@@ -188,7 +188,7 @@ export function RecordMergeModal({
                           name={`field_${field.key}`}
                           checked={activeValue === masterVal}
                           onChange={() => handleSelectFieldSource(field.key, currentMaster)}
-                          className="mt-0.5 text-blue-600 focus:ring-blue-500"
+                          className="mt-0.5 text-emerald-800 focus:ring-emerald-500"
                         />
                         <span
                           className={`text-slate-900 dark:text-slate-100 break-all ${
@@ -208,11 +208,11 @@ export function RecordMergeModal({
                           name={`field_${field.key}`}
                           checked={activeValue === victimVal}
                           onChange={() => handleSelectFieldSource(field.key, currentVictim)}
-                          className="mt-0.5 text-blue-600 focus:ring-blue-500"
+                          className="mt-0.5 text-emerald-800 focus:ring-emerald-500"
                         />
                         <span
                           className={`text-slate-900 dark:text-slate-100 break-all ${
-                            activeValue === victimVal ? 'font-semibold text-blue-600' : 'text-slate-500'
+                            activeValue === victimVal ? 'font-semibold text-emerald-800' : 'text-slate-500'
                           }`}
                         >
                           {victimVal ? String(victimVal) : <span className="text-slate-400 italic">Empty</span>}
@@ -244,7 +244,7 @@ export function RecordMergeModal({
               type="button"
               onClick={handleExecuteMerge}
               disabled={isSubmitting}
-              className="inline-flex items-center gap-1.5 px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-xs transition disabled:opacity-50"
+              className="inline-flex items-center gap-1.5 px-5 py-2 bg-emerald-600 hover:bg-emerald-600 text-white rounded-xl text-xs font-semibold shadow-xs transition disabled:opacity-50"
             >
               <GitMerge className="h-4 w-4" />
               <span>{isSubmitting ? 'Merging Records...' : 'Execute Merge'}</span>

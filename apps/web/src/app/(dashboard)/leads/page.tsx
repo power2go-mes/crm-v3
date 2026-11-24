@@ -234,7 +234,7 @@ export default function LeadsPage() {
   // Columns for DataGrid
   const columns: ColumnDef<LeadWithRelations>[] = [
     { id: 'title', header: 'Title', accessorKey: 'title', sortable: true,
-      cell: lead => <Link href={leadDetailHref(lead.id)} onClick={() => rememberLead(lead.id)} className="font-medium text-slate-900 hover:text-blue-600">{lead.title || 'â€”'}</Link> },
+      cell: lead => <Link href={leadDetailHref(lead.id)} onClick={() => rememberLead(lead.id)} className="font-medium text-slate-900 hover:text-emerald-800">{lead.title || 'â€”'}</Link> },
     { id: 'first_name', header: 'First Name', accessorKey: 'first_name', sortable: true },
     { id: 'last_name', header: 'Last Name', accessorKey: 'last_name', sortable: true },
     { id: 'email', header: 'Email', accessorKey: 'email', sortable: true },
@@ -264,7 +264,7 @@ export default function LeadsPage() {
               type="button"
               title="Edit Lead"
               onClick={() => setEditingLead(lead)}
-              className="p-1.5 rounded hover:bg-slate-800 text-slate-400 hover:text-blue-400 transition"
+              className="p-1.5 rounded hover:bg-slate-800 text-slate-400 hover:text-emerald-600 transition"
             >
               <Edit2 className="h-3.5 w-3.5" />
             </button>
@@ -272,7 +272,7 @@ export default function LeadsPage() {
 
           <PermissionGate action="leads.create">
             <button type="button" title="Duplicate" aria-label="Duplicate" disabled={duplicatePending}
-              onClick={() => void openDuplicate(lead)} className="rounded p-1.5 text-slate-500 hover:bg-indigo-50 hover:text-indigo-700">
+              onClick={() => void openDuplicate(lead)} className="rounded p-1.5 text-slate-500 hover:bg-emerald-50 hover:text-emerald-800">
               <Copy className="h-3.5 w-3.5" />
             </button>
           </PermissionGate>
@@ -410,7 +410,7 @@ export default function LeadsPage() {
                 </select> : <input className="rounded border px-3 py-2" type="number" min="0"
                   step={bulkField === 'annual_revenue' ? '0.01' : '1'} value={bulkValue} onChange={event => setBulkValue(event.target.value)} required />}
               </label>
-              <button type="submit" className="rounded bg-indigo-600 px-3 py-2 text-white disabled:opacity-50"
+              <button type="submit" className="rounded bg-emerald-600 px-3 py-2 text-white disabled:opacity-50"
                 disabled={!bulkValue || bulkUpdate.isPending}>Apply to selected</button>
             </form>
           )}
@@ -454,13 +454,13 @@ export default function LeadsPage() {
             <>
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
                 {leads.map(lead => <article key={lead.id} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-                  <Link href={leadDetailHref(lead.id)} onClick={() => rememberLead(lead.id)} className="text-base font-semibold text-slate-900 hover:text-indigo-600">{lead.title || `${lead.first_name ?? ''} ${lead.last_name ?? ''}`.trim() || 'Untitled Lead'}</Link>
+                  <Link href={leadDetailHref(lead.id)} onClick={() => rememberLead(lead.id)} className="text-base font-semibold text-slate-900 hover:text-emerald-800">{lead.title || `${lead.first_name ?? ''} ${lead.last_name ?? ''}`.trim() || 'Untitled Lead'}</Link>
                   <div className="mt-3 flex items-center justify-between"><LeadStatusBadge status={lead.status}/><span className="text-xs text-slate-500">{lead.lead_source || 'No source'}</span></div>
                   <p className="mt-3 text-sm text-slate-600">{lead.company_name || 'No company'}</p>
                   <p className="mt-1 text-sm text-slate-600">{lead.email || 'No email'}</p>
                   <div className="mt-4 flex justify-end gap-3 border-t border-slate-100 pt-3 text-sm">
-                    <Link href={leadDetailHref(lead.id)} onClick={() => rememberLead(lead.id)} className="text-indigo-600">View</Link>
-                    {hasPermission('leads.update') && <button onClick={() => setEditingLead(lead)} className="text-indigo-600">Edit</button>}
+                    <Link href={leadDetailHref(lead.id)} onClick={() => rememberLead(lead.id)} className="text-emerald-800">View</Link>
+                    {hasPermission('leads.update') && <button onClick={() => setEditingLead(lead)} className="text-emerald-800">Edit</button>}
                   </div>
                 </article>)}
               </div>

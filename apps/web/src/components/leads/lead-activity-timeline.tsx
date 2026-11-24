@@ -42,10 +42,10 @@ export function LeadActivityTimeline({ leadId }: LeadActivityTimelineProps) {
       case 'call':
         return <Phone className="h-4 w-4 text-emerald-400" />;
       case 'meeting':
-        return <Calendar className="h-4 w-4 text-purple-400" />;
+        return <Calendar className="h-4 w-4 text-emerald-600" />;
       case 'task':
       default:
-        return <CheckSquare className="h-4 w-4 text-blue-400" />;
+        return <CheckSquare className="h-4 w-4 text-emerald-600" />;
     }
   };
 
@@ -74,7 +74,7 @@ export function LeadActivityTimeline({ leadId }: LeadActivityTimelineProps) {
           onClick={() => setActiveForm(activeForm === 'task' ? null : 'task')}
           className={`px-3 py-1.5 rounded-lg text-xs font-medium transition inline-flex items-center gap-1.5 ${
             activeForm === 'task'
-              ? 'bg-blue-600 text-white'
+              ? 'bg-emerald-600 text-white'
               : 'bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700'
           }`}
         >
@@ -87,7 +87,7 @@ export function LeadActivityTimeline({ leadId }: LeadActivityTimelineProps) {
           onClick={() => setActiveForm(activeForm === 'meeting' ? null : 'meeting')}
           className={`px-3 py-1.5 rounded-lg text-xs font-medium transition inline-flex items-center gap-1.5 ${
             activeForm === 'meeting'
-              ? 'bg-purple-600 text-white'
+              ? 'bg-emerald-600 text-white'
               : 'bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700'
           }`}
         >
@@ -123,7 +123,7 @@ export function LeadActivityTimeline({ leadId }: LeadActivityTimelineProps) {
                 value={subject}
                 onChange={(e) => setSubject(e.target.value)}
                 placeholder="Subject or summary..."
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               />
             </div>
             <div>
@@ -131,7 +131,7 @@ export function LeadActivityTimeline({ leadId }: LeadActivityTimelineProps) {
                 type="date"
                 value={dueDate}
                 onChange={(e) => setDueDate(e.target.value)}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-sm text-slate-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-sm text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               />
             </div>
           </div>
@@ -142,7 +142,7 @@ export function LeadActivityTimeline({ leadId }: LeadActivityTimelineProps) {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Detailed notes or discussion points..."
-              className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500 resize-none"
+              className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 resize-none"
             />
           </div>
 
@@ -150,7 +150,7 @@ export function LeadActivityTimeline({ leadId }: LeadActivityTimelineProps) {
             <button
               type="submit"
               disabled={addActivityMutation.isPending}
-              className="px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white text-xs font-semibold rounded-lg shadow-sm transition"
+              className="px-4 py-2 bg-emerald-600 hover:bg-emerald-600 disabled:opacity-50 text-white text-xs font-semibold rounded-lg shadow-sm transition"
             >
               {addActivityMutation.isPending ? 'Saving...' : 'Save Activity'}
             </button>

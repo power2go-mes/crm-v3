@@ -139,7 +139,7 @@ export function OpportunityQuotesTab({ opportunity }: OpportunityQuotesTabProps)
         );
       case 'Sent':
         return (
-          <span className="inline-flex items-center gap-1 rounded-full bg-blue-100 px-2.5 py-0.5 text-[10px] font-bold uppercase text-blue-700 dark:bg-blue-950/40 dark:text-blue-300">
+          <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10px] font-bold uppercase text-emerald-800 dark:bg-emerald-600/40 dark:text-emerald-600">
             <Send className="h-3 w-3" /> Sent
           </span>
         );
@@ -170,7 +170,7 @@ export function OpportunityQuotesTab({ opportunity }: OpportunityQuotesTabProps)
       <div className="flex flex-wrap items-center justify-between gap-4 rounded-xl border border-slate-200 bg-white p-5 shadow-xs dark:border-slate-800 dark:bg-slate-900">
         <div>
           <div className="flex items-center gap-2">
-            <FileText className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
+            <FileText className="h-5 w-5 text-emerald-800 dark:text-emerald-600" />
             <h3 className="text-base font-bold text-slate-900 dark:text-white">
               Official Quotations &amp; Proposals ({quotes.length})
             </h3>
@@ -184,7 +184,7 @@ export function OpportunityQuotesTab({ opportunity }: OpportunityQuotesTabProps)
           <button
             type="button"
             onClick={handleCreateNewQuote}
-            className="inline-flex items-center gap-1.5 rounded-lg bg-indigo-600 px-3.5 py-2 text-xs font-semibold text-white shadow-xs transition hover:bg-indigo-700"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3.5 py-2 text-xs font-semibold text-white shadow-xs transition hover:bg-emerald-600"
           >
             <Plus className="h-4 w-4" />
             <span>Generate New Quote</span>
@@ -226,7 +226,7 @@ export function OpportunityQuotesTab({ opportunity }: OpportunityQuotesTabProps)
                   <button
                     type="button"
                     onClick={handleCreateNewQuote}
-                    className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-indigo-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-indigo-700"
+                    className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-emerald-600"
                   >
                     <Plus className="h-3.5 w-3.5" />
                     <span>Create First Quotation</span>
@@ -261,7 +261,7 @@ export function OpportunityQuotesTab({ opportunity }: OpportunityQuotesTabProps)
                         type="button"
                         disabled={isDownloadingPdf === quote.id}
                         onClick={() => handleDownloadPdf(quote)}
-                        className="rounded p-1 text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400"
+                        className="rounded p-1 text-slate-500 hover:text-emerald-800 dark:hover:text-emerald-600"
                         title="Download Vectorized PDF"
                       >
                         <Download className="h-4 w-4" />
@@ -271,7 +271,7 @@ export function OpportunityQuotesTab({ opportunity }: OpportunityQuotesTabProps)
                       <button
                         type="button"
                         onClick={() => setRevisionsQuote(quote)}
-                        className="rounded p-1 text-slate-500 hover:text-blue-600 dark:hover:text-blue-400"
+                        className="rounded p-1 text-slate-500 hover:text-emerald-800 dark:hover:text-emerald-600"
                         title="View Revision History"
                       >
                         <History className="h-4 w-4" />
@@ -297,7 +297,7 @@ export function OpportunityQuotesTab({ opportunity }: OpportunityQuotesTabProps)
                                 <>
                                   <button
                                     onClick={() => handleStatusChange(quote, 'Sent')}
-                                    className="w-full px-3 py-1.5 text-xs text-slate-700 hover:bg-blue-50 dark:text-slate-200 dark:hover:bg-slate-700 text-left"
+                                    className="w-full px-3 py-1.5 text-xs text-slate-700 hover:bg-emerald-50 dark:text-slate-200 dark:hover:bg-slate-700 text-left"
                                   >
                                     Mark as Sent
                                   </button>

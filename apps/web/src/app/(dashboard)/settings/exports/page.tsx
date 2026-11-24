@@ -53,7 +53,7 @@ export default function ExportPage() {
     onSuccess: count => setNotice(`Export completed successfully. ${count} records exported.`),
   });
   return <PageContainer>
-    <Link href="/settings" className="text-sm text-blue-700">Settings</Link>
+    <Link href="/settings" className="text-sm text-emerald-800">Settings</Link>
     <PageHeader title="Export Data" subtitle="Select modules, columns and an export format." />
     <PermissionGate action="exports.view" showAccessDenied>
       {catalog.isLoading && <p role="status">Loading export modules…</p>}
@@ -69,7 +69,7 @@ export default function ExportPage() {
         {selected.length > 1 && <p className="text-sm text-slate-600">Multiple module files will be downloaded together in a ZIP archive.</p>}
         {download.error && <p role="alert" className="text-red-700">{download.error.message}</p>}
         {notice && <p role="status" className="text-green-800">{notice}</p>}
-        <button disabled={download.isPending || !selected.length || fields.isFetching || fields.isError || selected.some(module => !columns[module]?.length)} className="rounded bg-blue-600 px-5 py-2 text-white">{download.isPending ? 'Exporting…' : 'Export'}</button>
+        <button disabled={download.isPending || !selected.length || fields.isFetching || fields.isError || selected.some(module => !columns[module]?.length)} className="rounded bg-emerald-600 px-5 py-2 text-white">{download.isPending ? 'Exporting…' : 'Export'}</button>
       </form>
     </PermissionGate>
   </PageContainer>;

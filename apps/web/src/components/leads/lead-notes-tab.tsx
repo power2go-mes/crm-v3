@@ -152,7 +152,7 @@ export function LeadNotesTab({ leadId }: { leadId: string }) {
       <label className="block">Notes<textarea ref={editor} maxLength={20000} value={draft.body}
         disabled={busy || Boolean(retry.current)} onChange={event => setDraft({ ...draft, body: event.target.value })} className="block w-full rounded border p-2" /></label>
       <NoteBody body={draft.body} />
-      <button disabled={busy || !draft.title.trim()} className="mr-4 rounded bg-indigo-600 px-3 py-2 text-white">Save Note</button>
+      <button disabled={busy || !draft.title.trim()} className="mr-4 rounded bg-emerald-600 px-3 py-2 text-white">Save Note</button>
       <button type="button" disabled={busy || Boolean(retry.current)} onClick={() => { setFile(undefined); setDraft(undefined); }}>Cancel</button>
     </form>}
     {error && <p role="alert">{error}</p>}

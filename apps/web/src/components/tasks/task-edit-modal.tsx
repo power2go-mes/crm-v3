@@ -69,7 +69,7 @@ export function TaskEditModal({
       <div className="relative w-full max-w-lg bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
         <div className="px-6 py-4 border-b border-slate-800 flex items-center justify-between bg-slate-950/60">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 bg-blue-500/10 text-blue-400 rounded-lg">
+            <div className="p-2 bg-emerald-600/10 text-emerald-600 rounded-lg">
               <CheckSquare className="h-5 w-5" />
             </div>
             <div>
@@ -102,7 +102,7 @@ export function TaskEditModal({
               required
               value={formData.subject}
               onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-              className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
             />
           </div>
 
@@ -114,7 +114,7 @@ export function TaskEditModal({
               <select
                 value={formData.priority}
                 onChange={(e) => setFormData({ ...formData, priority: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               >
                 {TASK_PRIORITIES.map((p) => (
                   <option key={p.value} value={p.value}>
@@ -131,7 +131,7 @@ export function TaskEditModal({
               <select
                 value={formData.status}
                 onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               >
                 {TASK_STATUSES.map((s) => (
                   <option key={s.value} value={s.value}>
@@ -149,7 +149,7 @@ export function TaskEditModal({
                 type="datetime-local"
                 value={formData.due_date}
                 onChange={(e) => setFormData({ ...formData, due_date: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               />
             </div>
 
@@ -160,7 +160,7 @@ export function TaskEditModal({
               <select
                 value={formData.assigned_to_id}
                 onChange={(e) => setFormData({ ...formData, assigned_to_id: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               >
                 <option value="">Unassigned</option>
                 {users.map((u) => (
@@ -178,7 +178,7 @@ export function TaskEditModal({
               <select
                 value={formData.related_to_type}
                 onChange={(e) => setFormData({ ...formData, related_to_type: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               >
                 <option value="">None (Independent Task)</option>
                 <option value="lead">Lead</option>
@@ -198,7 +198,7 @@ export function TaskEditModal({
                   value={formData.related_to_id}
                   onChange={(e) => setFormData({ ...formData, related_to_id: e.target.value })}
                   placeholder={`UUID of the related ${formData.related_to_type}`}
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500 font-mono text-xs"
+                  className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 font-mono text-xs"
                 />
               </div>
             )}
@@ -212,7 +212,7 @@ export function TaskEditModal({
               rows={3}
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-              className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
             />
           </div>
 
@@ -228,7 +228,7 @@ export function TaskEditModal({
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-5 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-semibold shadow-sm transition disabled:opacity-50"
+              className="px-5 py-2 bg-emerald-600 hover:bg-emerald-600 text-white rounded-lg font-semibold shadow-sm transition disabled:opacity-50"
             >
               {isSubmitting ? 'Saving...' : 'Update Task'}
             </button>

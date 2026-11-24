@@ -120,8 +120,8 @@ export default function ActivitiesHubPage() {
           icon = <PhoneCall className="w-3.5 h-3.5 text-emerald-700" />;
           label = 'Call';
         } else if (act.activity_type === 'meeting') {
-          badgeClass = 'bg-blue-100 text-blue-800 border-blue-200';
-          icon = <Video className="w-3.5 h-3.5 text-blue-700" />;
+          badgeClass = 'bg-emerald-50 text-emerald-800 border-emerald-200';
+          icon = <Video className="w-3.5 h-3.5 text-emerald-800" />;
           label = 'Meeting';
         }
 
@@ -143,7 +143,7 @@ export default function ActivitiesHubPage() {
 
         return (
           <div className="flex flex-col">
-            <Link href={detailHref} className="font-semibold text-blue-600 hover:text-blue-800 hover:underline">
+            <Link href={detailHref} className="font-semibold text-emerald-800 hover:text-emerald-800 hover:underline">
               {act.subject}
             </Link>
             {act.description && (
@@ -257,7 +257,7 @@ export default function ActivitiesHubPage() {
                 onClick={() => setIsMeetingModalOpen(true)}
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-white border border-slate-300 rounded-lg shadow-xs hover:bg-slate-50 transition"
               >
-                <Video className="w-3.5 h-3.5 text-blue-600" />
+                <Video className="w-3.5 h-3.5 text-emerald-800" />
                 Schedule Meeting
               </button>
               <button

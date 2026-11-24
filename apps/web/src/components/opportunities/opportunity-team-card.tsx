@@ -208,7 +208,7 @@ export function OpportunityTeamCard({
                     <span
                       className={`text-[10px] font-medium px-2 py-0.5 rounded-full ${
                         m.access_level === 'edit'
-                          ? 'bg-blue-50 text-blue-700 border border-blue-200'
+                          ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
                           : 'bg-slate-50 text-slate-500'
                       }`}
                     >

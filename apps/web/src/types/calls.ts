@@ -20,7 +20,7 @@ export interface CallWithRelations extends ActivityRow {
 }
 
 export const CALL_TYPES = [
-  { value: 'outbound', label: 'Outbound', color: 'text-blue-400 bg-blue-500/10 border-blue-500/20' },
+  { value: 'outbound', label: 'Outbound', color: 'text-emerald-600 bg-emerald-600/10 border-emerald-200/20' },
   { value: 'inbound', label: 'Inbound', color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20' },
 ] as const;
 

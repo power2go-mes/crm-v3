@@ -106,13 +106,13 @@ export default function SalesTargetsPage() {
   const getRoleBadgeColor = (roleId: string) => {
     switch (roleId) {
       case 'SUPER_ADMIN':
-        return 'bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300';
+        return 'bg-emerald-50 text-emerald-800 dark:bg-emerald-600/30 dark:text-emerald-600';
       case 'HEAD_OF_SALES':
-        return 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300';
+        return 'bg-emerald-50 text-emerald-800 dark:bg-emerald-600/30 dark:text-emerald-600';
       case 'RSM':
-        return 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300';
+        return 'bg-emerald-50 text-emerald-800 dark:bg-emerald-600/30 dark:text-emerald-600';
       case 'SSM':
-        return 'bg-cyan-100 text-cyan-800 dark:bg-cyan-900/30 dark:text-cyan-300';
+        return 'bg-emerald-50 text-emerald-800 dark:bg-emerald-600/30 dark:text-emerald-600';
       case 'ASM':
         return 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300';
       case 'BDO':
@@ -124,10 +124,10 @@ export default function SalesTargetsPage() {
   return (
     <PageContainer>
       <div className="flex items-center justify-between mb-2 text-xs">
-        <Link href="/settings" className="text-slate-500 hover:text-blue-600 transition flex items-center gap-1">
+        <Link href="/settings" className="text-slate-500 hover:text-emerald-800 transition flex items-center gap-1">
           <span>Settings</span>
           <span>›</span>
-          <span className="text-blue-600 font-medium">Sales Targets &amp; Quotas</span>
+          <span className="text-emerald-800 font-medium">Sales Targets &amp; Quotas</span>
         </Link>
       </div>
 
@@ -139,7 +139,7 @@ export default function SalesTargetsPage() {
             <button
               onClick={handleSaveAll}
               disabled={Object.keys(editingQuotas).length === 0 || upsertMutation.isPending}
-              className="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold shadow-xs transition disabled:opacity-50"
+              className="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-600 hover:bg-emerald-600 text-white rounded-lg text-xs font-semibold shadow-xs transition disabled:opacity-50"
             >
               <Save className="h-3.5 w-3.5" />
               <span>
@@ -163,7 +163,7 @@ export default function SalesTargetsPage() {
                 onClick={() => setPeriodType('monthly')}
                 className={`px-3 py-1.5 rounded-md text-xs font-semibold transition ${
                   periodType === 'monthly'
-                    ? 'bg-white text-blue-600 shadow-xs dark:bg-slate-800 dark:text-blue-400'
+                    ? 'bg-white text-emerald-800 shadow-xs dark:bg-slate-800 dark:text-emerald-600'
                     : 'text-slate-600 hover:text-slate-900 dark:text-slate-400'
                 }`}
               >
@@ -174,7 +174,7 @@ export default function SalesTargetsPage() {
                 onClick={() => setPeriodType('quarterly')}
                 className={`px-3 py-1.5 rounded-md text-xs font-semibold transition ${
                   periodType === 'quarterly'
-                    ? 'bg-white text-blue-600 shadow-xs dark:bg-slate-800 dark:text-blue-400'
+                    ? 'bg-white text-emerald-800 shadow-xs dark:bg-slate-800 dark:text-emerald-600'
                     : 'text-slate-600 hover:text-slate-900 dark:text-slate-400'
                 }`}
               >
@@ -275,7 +275,7 @@ export default function SalesTargetsPage() {
 
           <div className="p-4 bg-white border border-slate-200 rounded-xl shadow-xs dark:bg-slate-900 dark:border-slate-800">
             <span className="text-xs text-slate-500 font-medium">Total Team Quota</span>
-            <p className="mt-1 text-lg font-bold text-blue-600 dark:text-blue-400">
+            <p className="mt-1 text-lg font-bold text-emerald-800 dark:text-emerald-600">
               ${(performance?.totalTeamQuota || 0).toLocaleString()}
             </p>
             <span className="text-[11px] text-slate-400">
@@ -293,7 +293,7 @@ export default function SalesTargetsPage() {
 
           <div className="p-4 bg-white border border-slate-200 rounded-xl shadow-xs dark:bg-slate-900 dark:border-slate-800">
             <span className="text-xs text-slate-500 font-medium">Overall Attainment</span>
-            <p className="mt-1 text-lg font-bold text-indigo-600 dark:text-indigo-400">
+            <p className="mt-1 text-lg font-bold text-emerald-800 dark:text-emerald-600">
               {performance?.overallAttainment || 0}%
             </p>
             <span className="text-[11px] text-slate-400">Total won vs quota pacing</span>
@@ -342,7 +342,7 @@ export default function SalesTargetsPage() {
                       <tr
                         key={rep.id}
                         className={`hover:bg-slate-50/70 transition dark:hover:bg-slate-800/40 ${
-                          isDirty ? 'bg-blue-50/40 dark:bg-blue-950/20' : ''
+                          isDirty ? 'bg-emerald-50/40 dark:bg-emerald-600/20' : ''
                         }`}
                       >
                         <td className="py-3 px-4">
@@ -404,15 +404,15 @@ export default function SalesTargetsPage() {
                                   onChange={(e) =>
                                     handleQuotaChange(rep.id, Number(e.target.value) || 0)
                                   }
-                                  className={`w-full px-2.5 py-1 text-xs rounded-lg border bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-medium focus:ring-1 focus:ring-blue-500 ${
+                                  className={`w-full px-2.5 py-1 text-xs rounded-lg border bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-medium focus:ring-1 focus:ring-emerald-500 ${
                                     isDirty
-                                      ? 'border-blue-500 ring-1 ring-blue-500'
+                                      ? 'border-emerald-200 ring-1 ring-blue-500'
                                       : 'border-slate-300 dark:border-slate-700'
                                   }`}
                                 />
                               </div>
                               {isDirty ? (
-                                <span className="text-[10px] text-blue-600 bg-blue-50 dark:bg-blue-950/40 dark:text-blue-400 px-1.5 py-0.5 rounded border border-blue-200 dark:border-blue-900 font-medium shrink-0">
+                                <span className="text-[10px] text-emerald-800 bg-emerald-50 dark:bg-emerald-600/40 dark:text-emerald-600 px-1.5 py-0.5 rounded border border-emerald-200 dark:border-emerald-200 font-medium shrink-0">
                                   Staged
                                 </span>
                               ) : rep.quotaId ? (
@@ -435,7 +435,7 @@ export default function SalesTargetsPage() {
                                 calculatedAttainment >= 100
                                   ? 'text-emerald-600 dark:text-emerald-400'
                                   : calculatedAttainment >= 75
-                                  ? 'text-blue-600 dark:text-blue-400'
+                                  ? 'text-emerald-800 dark:text-emerald-600'
                                   : calculatedAttainment >= 50
                                   ? 'text-amber-600 dark:text-amber-400'
                                   : 'text-rose-600 dark:text-rose-400'
@@ -449,7 +449,7 @@ export default function SalesTargetsPage() {
                                   calculatedAttainment >= 100
                                     ? 'bg-emerald-500'
                                     : calculatedAttainment >= 75
-                                    ? 'bg-blue-500'
+                                    ? 'bg-emerald-600'
                                     : calculatedAttainment >= 50
                                     ? 'bg-amber-500'
                                     : 'bg-rose-500'

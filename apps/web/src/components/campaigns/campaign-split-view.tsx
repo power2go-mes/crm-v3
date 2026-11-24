@@ -46,7 +46,7 @@ export function CampaignSplitView({
       case 'in_progress':
         return <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-800">In Progress</span>;
       case 'planned':
-        return <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800">Planned</span>;
+        return <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-emerald-50 text-emerald-800">Planned</span>;
       case 'aborted':
         return <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800">Aborted</span>;
       default:
@@ -91,7 +91,7 @@ export function CampaignSplitView({
                 onClick={() => handleSelect(c)}
                 className={`p-3.5 cursor-pointer transition text-left ${
                   isSelected
-                    ? 'bg-blue-50/70 border-l-4 border-blue-600'
+                    ? 'bg-emerald-50/70 border-l-4 border-emerald-200'
                     : 'hover:bg-slate-50 border-l-4 border-transparent'
                 }`}
               >
@@ -152,7 +152,7 @@ export function CampaignSplitView({
                 )}
                 <Link
                   href={`/campaigns/${activeCampaign.id}`}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-lg shadow-xs transition"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-600 text-white text-xs font-semibold rounded-lg shadow-xs transition"
                 >
                   <span>Full View</span>
                   <ExternalLink className="h-3.5 w-3.5" />

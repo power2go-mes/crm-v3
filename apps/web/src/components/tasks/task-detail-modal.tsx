@@ -135,7 +135,7 @@ export function TaskDetailModal({
               <select
                 value={task.status}
                 onChange={(e) => onStatusChange(task.id, e.target.value)}
-                className="text-xs font-medium px-2.5 py-1 bg-slate-950 border border-slate-700 rounded-md text-slate-200 focus:outline-none focus:ring-1 focus:ring-blue-500 cursor-pointer"
+                className="text-xs font-medium px-2.5 py-1 bg-slate-950 border border-slate-700 rounded-md text-slate-200 focus:outline-none focus:ring-1 focus:ring-emerald-500 cursor-pointer"
               >
                 {TASK_STATUSES.map((s) => (
                   <option key={s.value} value={s.value}>
@@ -193,7 +193,7 @@ export function TaskDetailModal({
                   relatedUrl ? (
                     <Link
                       href={relatedUrl}
-                      className="inline-flex items-center gap-1 text-blue-400 hover:text-blue-300 font-medium underline transition"
+                      className="inline-flex items-center gap-1 text-emerald-600 hover:text-emerald-600 font-medium underline transition"
                     >
                       <span className="capitalize">{task.related_to_type}</span> ({task.related_to_id.slice(0, 8)}...)
                       <ExternalLink className="h-3 w-3" />

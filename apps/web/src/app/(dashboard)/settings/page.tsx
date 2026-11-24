@@ -58,7 +58,7 @@ function SettingsContent() {
             <button
               disabled={company.isPending || company.isError || !company.data}
               onClick={() => setIsEditModalOpen(true)}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-3.5 py-2 text-xs font-semibold text-white shadow-xs transition hover:bg-blue-700"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3.5 py-2 text-xs font-semibold text-white shadow-xs transition hover:bg-emerald-600"
             >
               <Settings className="h-4 w-4" />
               <span>Edit Company Settings</span>
@@ -145,7 +145,7 @@ function SettingsContent() {
               onClick={() => setActiveTab('company')}
               className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
                 activeTab === 'company'
-                  ? 'border-blue-500 text-blue-400'
+                  ? 'border-emerald-200 text-emerald-600'
                   : 'border-transparent text-slate-400 hover:text-slate-200'
               }`}
             >
@@ -158,7 +158,7 @@ function SettingsContent() {
               onClick={() => setActiveTab('regions')}
               className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
                 activeTab === 'regions'
-                  ? 'border-blue-500 text-blue-400'
+                  ? 'border-emerald-200 text-emerald-600'
                   : 'border-transparent text-slate-400 hover:text-slate-200'
               }`}
             >
@@ -171,7 +171,7 @@ function SettingsContent() {
               onClick={() => setActiveTab('fields')}
               className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
                 activeTab === 'fields'
-                  ? 'border-blue-500 text-blue-400'
+                  ? 'border-emerald-200 text-emerald-600'
                   : 'border-transparent text-slate-400 hover:text-slate-200'
               }`}
             >
@@ -184,7 +184,7 @@ function SettingsContent() {
               onClick={() => setActiveTab('audit')}
               className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
                 activeTab === 'audit'
-                  ? 'border-blue-500 text-blue-400'
+                  ? 'border-emerald-200 text-emerald-600'
                   : 'border-transparent text-slate-400 hover:text-slate-200'
               }`}
             >

@@ -160,13 +160,13 @@ export default function RecycleBinPage() {
         );
       case 'accounts':
         return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-50 text-indigo-700 border border-indigo-200">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-800 border border-emerald-200">
             <Building2 className="h-3 w-3" /> Account
           </span>
         );
       case 'contacts':
         return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-cyan-50 text-cyan-700 border border-cyan-200">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-800 border border-cyan-200">
             <Users className="h-3 w-3" /> Contact
           </span>
         );
@@ -178,13 +178,13 @@ export default function RecycleBinPage() {
         );
       case 'activities':
         return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-700 border border-blue-200">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-800 border border-emerald-200">
             <CheckSquare className="h-3 w-3" /> Activity
           </span>
         );
       case 'departments':
         return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-50 text-purple-700 border border-purple-200">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-800 border border-emerald-200">
             <Layers className="h-3 w-3" /> Department
           </span>
         );
@@ -250,9 +250,9 @@ export default function RecycleBinPage() {
 
           {/* Bulk Action Banner */}
           {selectedIds.length > 0 && (
-            <div className="flex items-center justify-between bg-blue-50 border border-blue-200 p-3.5 rounded-xl animate-in fade-in duration-150">
-              <div className="flex items-center gap-2 text-xs font-medium text-blue-900">
-                <CheckCircle2 className="h-4 w-4 text-blue-600" />
+            <div className="flex items-center justify-between bg-emerald-50 border border-emerald-200 p-3.5 rounded-xl animate-in fade-in duration-150">
+              <div className="flex items-center gap-2 text-xs font-medium text-emerald-800">
+                <CheckCircle2 className="h-4 w-4 text-emerald-800" />
                 <span>{selectedIds.length} records selected</span>
               </div>
               <div className="flex items-center gap-2">

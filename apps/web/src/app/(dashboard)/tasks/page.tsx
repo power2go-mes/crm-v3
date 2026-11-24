@@ -149,7 +149,7 @@ export default function TasksPage() {
             <button
               type="button"
               onClick={() => setViewingTask(t)}
-              className={`font-semibold hover:text-blue-400 text-left transition ${
+              className={`font-semibold hover:text-emerald-600 text-left transition ${
                 t.status === 'completed' ? 'line-through text-slate-500' : 'text-slate-100'
               }`}
             >
@@ -189,7 +189,7 @@ export default function TasksPage() {
             <select
               value={t.status}
               onChange={(e) => updateMutation.mutateAsync({ id: t.id, updates: { status: e.target.value } })}
-              className="text-[11px] font-medium px-2 py-0.5 bg-slate-900 border border-slate-700 rounded text-slate-200 focus:outline-none focus:ring-1 focus:ring-blue-500 cursor-pointer"
+              className="text-[11px] font-medium px-2 py-0.5 bg-slate-900 border border-slate-700 rounded text-slate-200 focus:outline-none focus:ring-1 focus:ring-emerald-500 cursor-pointer"
             >
               {TASK_STATUSES.map((s) => (
                 <option key={s.value} value={s.value}>
@@ -246,7 +246,7 @@ export default function TasksPage() {
             type="button"
             onClick={() => setViewingTask(t)}
             title="View Details"
-            className="p-1.5 rounded hover:bg-slate-800 text-slate-400 hover:text-blue-400 transition"
+            className="p-1.5 rounded hover:bg-slate-800 text-slate-400 hover:text-emerald-600 transition"
           >
             <Eye className="h-3.5 w-3.5" />
           </button>
@@ -279,7 +279,7 @@ export default function TasksPage() {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
               <h1 className="text-2xl font-bold tracking-tight text-white flex items-center gap-2.5">
-                <CheckSquare className="h-6 w-6 text-blue-500" />
+                <CheckSquare className="h-6 w-6 text-emerald-800" />
                 <span>Tasks & Follow-ups</span>
               </h1>
               <p className="text-xs text-slate-400 mt-1">
@@ -303,7 +303,7 @@ export default function TasksPage() {
                   }}
                   className={`px-3 py-1.5 rounded-lg font-medium transition ${
                     selectedStatus === tab.id
-                      ? 'bg-blue-600 text-white shadow-xs'
+                      ? 'bg-emerald-600 text-white shadow-xs'
                       : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >

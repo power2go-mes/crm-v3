@@ -173,7 +173,7 @@ export function CallDetailModal({
                   relatedUrl ? (
                     <Link
                       href={relatedUrl}
-                      className="inline-flex items-center gap-1 text-blue-400 hover:text-blue-300 font-medium underline transition"
+                      className="inline-flex items-center gap-1 text-emerald-600 hover:text-emerald-600 font-medium underline transition"
                     >
                       <span className="capitalize">{call.related_to_type}</span> ({call.related_to_id.slice(0, 8)}...)
                       <ExternalLink className="h-3 w-3" />

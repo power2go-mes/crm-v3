@@ -204,7 +204,7 @@ export function LeadCreateModal({
                   <div
                     className={`h-7 w-7 rounded-full flex items-center justify-center text-xs font-bold transition ${
                       isCurrent
-                        ? 'bg-blue-600 text-white ring-4 ring-blue-100 shadow-xs'
+                        ? 'bg-emerald-600 text-white ring-4 ring-blue-100 shadow-xs'
                         : isPast
                         ? 'bg-emerald-600 text-white'
                         : 'bg-slate-200 text-slate-500'
@@ -294,7 +294,7 @@ export function LeadCreateModal({
                   value={form.title}
                   onChange={(e) => setForm({ ...form, title: e.target.value })}
                   placeholder="e.g. Acme Corp Acquisition"
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-blue-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
                 />
               </div>
 
@@ -309,7 +309,7 @@ export function LeadCreateModal({
                   value={form.first_name}
                   onChange={(e) => setForm({ ...form, first_name: e.target.value })}
                   placeholder="John"
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-blue-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
                 />
               </div>
 
@@ -324,7 +324,7 @@ export function LeadCreateModal({
                   value={form.last_name}
                   onChange={(e) => setForm({ ...form, last_name: e.target.value })}
                   placeholder="Doe"
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-blue-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
                 />
               </div>
 
@@ -339,7 +339,7 @@ export function LeadCreateModal({
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   placeholder="john.doe@company.com"
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-blue-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
                 />
               </div>
 
@@ -353,7 +353,7 @@ export function LeadCreateModal({
                   value={form.phone}
                   onChange={(e) => setForm({ ...form, phone: e.target.value })}
                   placeholder="+91 98765 43210"
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-blue-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
                 />
               </div>
 
@@ -365,7 +365,7 @@ export function LeadCreateModal({
                 <select
                   value={form.lead_source}
                   onChange={(e) => setForm({ ...form, lead_source: e.target.value })}
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-blue-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
                 >
                   {LEAD_SOURCES.map((src) => (
                     <option key={src.value} value={src.value}>
@@ -383,7 +383,7 @@ export function LeadCreateModal({
                 <select
                   value={form.status}
                   onChange={(e) => setForm({ ...form, status: e.target.value })}
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-blue-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
                 >
                   {CANONICAL_LEAD_STAGES.filter((s) => !s.isFinal).map((stage) => (
                     <option key={stage.id} value={stage.id}>
@@ -403,7 +403,7 @@ export function LeadCreateModal({
                     disabled={assignees.isFetching || assignees.isError}
                     value={form.sub_owner_id}
                     onChange={(e) => setForm({ ...form, sub_owner_id: e.target.value })}
-                    className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-blue-500"
+                    className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
                   >
                     <option value="">-- No BDO Assigned --</option>
                     {bdoUsers.map((b) => (
@@ -430,7 +430,7 @@ export function LeadCreateModal({
                   value={form.company_name}
                   onChange={(e) => setForm({ ...form, company_name: e.target.value })}
                   placeholder="Acme Industrial Ltd."
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-blue-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
                 />
               </div>
 
@@ -444,7 +444,7 @@ export function LeadCreateModal({
                   value={form.no_of_employees}
                   onChange={(e) => setForm({ ...form, no_of_employees: e.target.value })}
                   placeholder="150"
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-blue-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
                 />
               </div>
 
@@ -455,7 +455,7 @@ export function LeadCreateModal({
                 <select
                   value={form.industry}
                   onChange={(e) => setForm({ ...form, industry: e.target.value })}
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-blue-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
                 >
                   {INDUSTRY_CHOICES.map((ind) => (
                     <option key={ind.value} value={ind.value}>
@@ -476,7 +476,7 @@ export function LeadCreateModal({
                   value={form.annual_revenue}
                   onChange={(e) => setForm({ ...form, annual_revenue: e.target.value })}
                   placeholder="2500000"
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-blue-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
                 />
               </div>
             </LeadFormGrid>
@@ -493,7 +493,7 @@ export function LeadCreateModal({
                   type="text"
                   value={form.country}
                   onChange={(e) => setForm({ ...form, country: e.target.value })}
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-blue-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
                 />
               </div>
 
@@ -506,7 +506,7 @@ export function LeadCreateModal({
                   value={form.state}
                   onChange={(e) => setForm({ ...form, state: e.target.value })}
                   placeholder="Maharashtra"
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-blue-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
                 />
               </div>
 
@@ -519,7 +519,7 @@ export function LeadCreateModal({
                   value={form.city}
                   onChange={(e) => setForm({ ...form, city: e.target.value })}
                   placeholder="Mumbai"
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-blue-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
                 />
               </div>
 
@@ -532,7 +532,7 @@ export function LeadCreateModal({
                   value={form.zip_code}
                   onChange={(e) => setForm({ ...form, zip_code: e.target.value })}
                   placeholder="400001"
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-blue-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
                 />
               </div>
             </LeadFormGrid>
@@ -549,7 +549,7 @@ export function LeadCreateModal({
                 value={form.requirements}
                 onChange={(e) => setForm({ ...form, requirements: e.target.value })}
                 placeholder="Describe deal size, technology specifications, decision timeframe, and initial discovery notes..."
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-blue-500 resize-y"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500 resize-y"
               />
             </div>
           )}
@@ -576,7 +576,7 @@ export function LeadCreateModal({
               <button
                 type="button"
                 onClick={handleNext}
-                className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-md transition shadow-xs"
+                className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-600 rounded-md transition shadow-xs"
               >
                 <span>Next</span>
                 <ArrowRight className="h-3.5 w-3.5" />
@@ -587,7 +587,7 @@ export function LeadCreateModal({
                   type="button"
                   onClick={() => handleSave(true)}
                   disabled={isSubmitting}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-blue-600 hover:bg-blue-50 border border-blue-600 rounded-md transition"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-emerald-800 hover:bg-emerald-50 border border-emerald-200 rounded-md transition"
                 >
                   <Plus className="h-3.5 w-3.5" />
                   <span>Save & New</span>
@@ -597,7 +597,7 @@ export function LeadCreateModal({
                   type="button"
                   onClick={() => handleSave(false)}
                   disabled={isSubmitting}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-md transition shadow-xs"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-600 rounded-md transition shadow-xs"
                 >
                   {isSubmitting ? (
                     <span>Saving...</span>

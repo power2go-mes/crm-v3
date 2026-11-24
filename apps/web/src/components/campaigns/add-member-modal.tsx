@@ -138,7 +138,7 @@ export function AddMemberModal({
                     setSelectedId('');
                     setSearchTerm('');
                   }}
-                  className="text-blue-600 focus:ring-blue-500"
+                  className="text-emerald-800 focus:ring-emerald-500"
                 />
                 Lead
               </label>
@@ -153,7 +153,7 @@ export function AddMemberModal({
                     setSelectedId('');
                     setSearchTerm('');
                   }}
-                  className="text-blue-600 focus:ring-blue-500"
+                  className="text-emerald-800 focus:ring-emerald-500"
                 />
                 Contact
               </label>
@@ -169,7 +169,7 @@ export function AddMemberModal({
               placeholder={`Search by name or email...`}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+              className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-emerald-200 focus:outline-none focus:ring-1 focus:ring-emerald-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
             />
           </div>
 
@@ -181,7 +181,7 @@ export function AddMemberModal({
               value={selectedId}
               onChange={(e) => setSelectedId(e.target.value)}
               required
-              className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+              className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-emerald-200 focus:outline-none focus:ring-1 focus:ring-emerald-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
             >
               <option value="">-- Choose {memberType} --</option>
               {memberType === 'lead' &&
@@ -214,7 +214,7 @@ export function AddMemberModal({
             <select
               value={status}
               onChange={(e) => setStatus(e.target.value as CampaignMemberStatus)}
-              className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+              className="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-emerald-200 focus:outline-none focus:ring-1 focus:ring-emerald-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
             >
               <option value="planned">Planned</option>
               <option value="sent">Sent</option>
@@ -235,7 +235,7 @@ export function AddMemberModal({
             <button
               type="submit"
               disabled={isPending || !selectedId}
-              className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 disabled:opacity-50"
+              className="rounded-lg bg-emerald-600 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-600 disabled:opacity-50"
             >
               {isPending ? 'Adding...' : 'Add Member'}
             </button>

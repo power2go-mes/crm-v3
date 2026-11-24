@@ -265,7 +265,7 @@ export default function ForecastPage() {
       cell: (opp) => (
         <Link
           href={`/opportunities/${opp.id}`}
-          className="font-medium text-slate-900 hover:text-blue-600 transition"
+          className="font-medium text-slate-900 hover:text-emerald-800 transition"
         >
           {opp.name}
         </Link>
@@ -308,13 +308,13 @@ export default function ForecastPage() {
           color = 'bg-amber-100 text-amber-800';
           label = 'Proposal/Quote';
         } else if (stageId === 'needs_analysis') {
-          color = 'bg-indigo-100 text-indigo-800';
+          color = 'bg-emerald-50 text-emerald-800';
           label = 'Needs Analysis';
         } else if (stageId === 'qualification') {
-          color = 'bg-purple-100 text-purple-800';
+          color = 'bg-emerald-50 text-emerald-800';
           label = 'Qualification';
         } else if (stageId === 'prospecting') {
-          color = 'bg-blue-100 text-blue-800';
+          color = 'bg-emerald-50 text-emerald-800';
           label = 'Prospecting';
         }
 
@@ -461,7 +461,7 @@ export default function ForecastPage() {
                   setSelectedStage(e.target.value);
                   setPage(1);
                 }}
-                className="px-2.5 py-1.5 text-xs bg-slate-50 border border-slate-300 rounded-lg text-slate-700 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="px-2.5 py-1.5 text-xs bg-slate-50 border border-slate-300 rounded-lg text-slate-700 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               >
                 <option value="all">Individual Stages...</option>
                 {APPROVED_FORECAST_STAGES.map((s) => (
@@ -493,7 +493,7 @@ export default function ForecastPage() {
                 </p>
                 <p className="text-[11px] text-slate-500 mt-0.5">{stats.openDealsCount} active open opportunities</p>
               </div>
-              <div className="p-3 bg-blue-50 text-blue-600 rounded-xl">
+              <div className="p-3 bg-emerald-50 text-emerald-800 rounded-xl">
                 <DollarSign className="w-6 h-6" />
               </div>
             </div>
@@ -523,7 +523,7 @@ export default function ForecastPage() {
                   {stats.wonDealsCount} won deals (100% attained)
                 </p>
               </div>
-              <div className="p-3 bg-purple-50 text-purple-600 rounded-xl">
+              <div className="p-3 bg-emerald-50 text-emerald-800 rounded-xl">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
             </div>
@@ -576,7 +576,7 @@ export default function ForecastPage() {
                       <div className="flex items-start justify-between gap-2">
                         <Link
                           href={`/opportunities/${opp.id}`}
-                          className="text-base font-semibold text-slate-900 hover:text-indigo-600 transition truncate"
+                          className="text-base font-semibold text-slate-900 hover:text-emerald-800 transition truncate"
                         >
                           {opp.name}
                         </Link>
@@ -635,7 +635,7 @@ export default function ForecastPage() {
                     <button
                       type="button"
                       onClick={() => setSelectedStage('all')}
-                      className="text-xs text-blue-600 hover:text-blue-800 font-medium"
+                      className="text-xs text-emerald-800 hover:text-emerald-800 font-medium"
                     >
                       Clear stage filter ({selectedStage})
                     </button>
@@ -655,12 +655,12 @@ export default function ForecastPage() {
                         }}
                         className={`p-3 rounded-lg border text-left transition flex flex-col justify-between cursor-pointer ${
                           isSelected
-                            ? 'bg-blue-50 border-blue-400 ring-2 ring-blue-400/20 shadow-xs'
+                            ? 'bg-emerald-50 border-emerald-200 ring-2 ring-blue-400/20 shadow-xs'
                             : 'bg-slate-50 hover:bg-slate-100 border-slate-200'
                         }`}
                       >
                         <div>
-                          <p className={`text-[11px] font-bold truncate ${isSelected ? 'text-blue-800' : 'text-slate-800'}`}>
+                          <p className={`text-[11px] font-bold truncate ${isSelected ? 'text-emerald-800' : 'text-slate-800'}`}>
                             {stage.label}
                           </p>
                           <p className="text-[10px] text-slate-400 mt-0.5">

@@ -71,7 +71,7 @@ export function CallEditModal({
       <div className="relative w-full max-w-lg bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
         <div className="px-6 py-4 border-b border-slate-800 flex items-center justify-between bg-slate-950/60">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 bg-blue-500/10 text-blue-400 rounded-lg">
+            <div className="p-2 bg-emerald-600/10 text-emerald-600 rounded-lg">
               <PhoneCall className="h-5 w-5" />
             </div>
             <div>
@@ -104,7 +104,7 @@ export function CallEditModal({
               required
               value={formData.subject}
               onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-              className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
             />
           </div>
 
@@ -116,7 +116,7 @@ export function CallEditModal({
               <select
                 value={formData.call_type}
                 onChange={(e) => setFormData({ ...formData, call_type: e.target.value as any })}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               >
                 {CALL_TYPES.map((t) => (
                   <option key={t.value} value={t.value}>
@@ -133,7 +133,7 @@ export function CallEditModal({
               <select
                 value={formData.status}
                 onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               >
                 {CALL_STATUSES.map((s) => (
                   <option key={s.value} value={s.value}>
@@ -152,7 +152,7 @@ export function CallEditModal({
                 min="0"
                 value={formData.call_duration_minutes}
                 onChange={(e) => setFormData({ ...formData, call_duration_minutes: Number(e.target.value) })}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               />
             </div>
 
@@ -164,7 +164,7 @@ export function CallEditModal({
                 type="datetime-local"
                 value={formData.start_time}
                 onChange={(e) => setFormData({ ...formData, start_time: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               />
             </div>
 
@@ -175,7 +175,7 @@ export function CallEditModal({
               <select
                 value={formData.assigned_to_id}
                 onChange={(e) => setFormData({ ...formData, assigned_to_id: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               >
                 <option value="">Unassigned</option>
                 {users.map((u) => (
@@ -193,7 +193,7 @@ export function CallEditModal({
               <select
                 value={formData.related_to_type}
                 onChange={(e) => setFormData({ ...formData, related_to_type: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               >
                 <option value="">None (Independent Call)</option>
                 <option value="lead">Lead</option>
@@ -213,7 +213,7 @@ export function CallEditModal({
                   value={formData.related_to_id}
                   onChange={(e) => setFormData({ ...formData, related_to_id: e.target.value })}
                   placeholder={`UUID of the related ${formData.related_to_type}`}
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500 font-mono text-xs"
+                  className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 font-mono text-xs"
                 />
               </div>
             )}
@@ -227,7 +227,7 @@ export function CallEditModal({
               rows={3}
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-              className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
             />
           </div>
 
@@ -243,7 +243,7 @@ export function CallEditModal({
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-5 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-semibold shadow-sm transition disabled:opacity-50"
+              className="px-5 py-2 bg-emerald-600 hover:bg-emerald-600 text-white rounded-lg font-semibold shadow-sm transition disabled:opacity-50"
             >
               {isSubmitting ? 'Updating...' : 'Update Call'}
             </button>

@@ -140,10 +140,10 @@ export default function DataQualityPage() {
   return (
     <PageContainer>
       <div className="flex items-center justify-between mb-2 text-xs">
-        <Link href="/settings" className="text-slate-500 hover:text-blue-600 transition flex items-center gap-1">
+        <Link href="/settings" className="text-slate-500 hover:text-emerald-800 transition flex items-center gap-1">
           <span>Settings</span>
           <span>›</span>
-          <span className="text-blue-600 font-medium">Data Quality &amp; Deduplication</span>
+          <span className="text-emerald-800 font-medium">Data Quality &amp; Deduplication</span>
         </Link>
       </div>
 
@@ -154,7 +154,7 @@ export default function DataQualityPage() {
           <button
             onClick={handleScanNow}
             disabled={isScanning}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold shadow-xs transition disabled:opacity-50"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-emerald-600 hover:bg-emerald-600 text-white rounded-lg text-xs font-semibold shadow-xs transition disabled:opacity-50"
           >
             <RefreshCw className={`h-3.5 w-3.5 ${isScanning ? 'animate-spin' : ''}`} />
             <span>{isScanning ? 'Scanning...' : 'Scan for Duplicates'}</span>
@@ -170,7 +170,7 @@ export default function DataQualityPage() {
             onClick={() => setActiveTab('accounts')}
             className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
               activeTab === 'accounts'
-                ? 'border-blue-500 text-blue-600 dark:text-blue-400'
+                ? 'border-emerald-200 text-emerald-800 dark:text-emerald-600'
                 : 'border-transparent text-slate-500 hover:text-slate-700'
             }`}
           >
@@ -183,7 +183,7 @@ export default function DataQualityPage() {
             onClick={() => setActiveTab('contacts')}
             className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
               activeTab === 'contacts'
-                ? 'border-blue-500 text-blue-600 dark:text-blue-400'
+                ? 'border-emerald-200 text-emerald-800 dark:text-emerald-600'
                 : 'border-transparent text-slate-500 hover:text-slate-700'
             }`}
           >
@@ -196,7 +196,7 @@ export default function DataQualityPage() {
             onClick={() => setActiveTab('logs')}
             className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
               activeTab === 'logs'
-                ? 'border-blue-500 text-blue-600 dark:text-blue-400'
+                ? 'border-emerald-200 text-emerald-800 dark:text-emerald-600'
                 : 'border-transparent text-slate-500 hover:text-slate-700'
             }`}
           >
@@ -209,7 +209,7 @@ export default function DataQualityPage() {
             onClick={() => setActiveTab('rules')}
             className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
               activeTab === 'rules'
-                ? 'border-blue-500 text-blue-600 dark:text-blue-400'
+                ? 'border-emerald-200 text-emerald-800 dark:text-emerald-600'
                 : 'border-transparent text-slate-500 hover:text-slate-700'
             }`}
           >
@@ -389,7 +389,7 @@ export default function DataQualityPage() {
                   <div key={log.id} className="p-4 space-y-1">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">
+                        <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-emerald-50 text-emerald-800 dark:bg-emerald-600/40 dark:text-emerald-600">
                           {log.entity_type}
                         </span>
                         <span className="font-semibold text-slate-900 dark:text-white">

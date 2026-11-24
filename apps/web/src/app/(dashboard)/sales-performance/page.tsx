@@ -34,13 +34,13 @@ export default function SalesPerformancePage() {
   const getRoleBadgeColor = (roleId: string) => {
     switch (roleId) {
       case 'SUPER_ADMIN':
-        return 'bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300';
+        return 'bg-emerald-50 text-emerald-800 dark:bg-emerald-600/30 dark:text-emerald-600';
       case 'HEAD_OF_SALES':
-        return 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300';
+        return 'bg-emerald-50 text-emerald-800 dark:bg-emerald-600/30 dark:text-emerald-600';
       case 'RSM':
-        return 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300';
+        return 'bg-emerald-50 text-emerald-800 dark:bg-emerald-600/30 dark:text-emerald-600';
       case 'SSM':
-        return 'bg-cyan-100 text-cyan-800 dark:bg-cyan-900/30 dark:text-cyan-300';
+        return 'bg-emerald-50 text-emerald-800 dark:bg-emerald-600/30 dark:text-emerald-600';
       case 'ASM':
         return 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300';
       case 'BDO':
@@ -51,14 +51,14 @@ export default function SalesPerformancePage() {
 
   const getAttainmentColor = (pct: number) => {
     if (pct >= 100) return 'text-emerald-600 dark:text-emerald-400';
-    if (pct >= 75) return 'text-blue-600 dark:text-blue-400';
+    if (pct >= 75) return 'text-emerald-800 dark:text-emerald-600';
     if (pct >= 50) return 'text-amber-600 dark:text-amber-400';
     return 'text-rose-600 dark:text-rose-400';
   };
 
   const getProgressBarColor = (pct: number) => {
     if (pct >= 100) return 'bg-emerald-500';
-    if (pct >= 75) return 'bg-blue-500';
+    if (pct >= 75) return 'bg-emerald-600';
     if (pct >= 50) return 'bg-amber-500';
     return 'bg-rose-500';
   };
@@ -76,7 +76,7 @@ export default function SalesPerformancePage() {
                 onClick={() => setPeriodType('monthly')}
                 className={`px-3 py-1.5 rounded-md font-semibold transition ${
                   periodType === 'monthly'
-                    ? 'bg-white text-blue-600 shadow-xs dark:bg-slate-800 dark:text-blue-400'
+                    ? 'bg-white text-emerald-800 shadow-xs dark:bg-slate-800 dark:text-emerald-600'
                     : 'text-slate-600 hover:text-slate-900 dark:text-slate-400'
                 }`}
               >
@@ -87,7 +87,7 @@ export default function SalesPerformancePage() {
                 onClick={() => setPeriodType('quarterly')}
                 className={`px-3 py-1.5 rounded-md font-semibold transition ${
                   periodType === 'quarterly'
-                    ? 'bg-white text-blue-600 shadow-xs dark:bg-slate-800 dark:text-blue-400'
+                    ? 'bg-white text-emerald-800 shadow-xs dark:bg-slate-800 dark:text-emerald-600'
                     : 'text-slate-600 hover:text-slate-900 dark:text-slate-400'
                 }`}
               >
@@ -109,7 +109,7 @@ export default function SalesPerformancePage() {
       <PermissionGate action="sales_performance.view" showAccessDenied>
         {isLoading && (
           <div className="flex h-64 items-center justify-center">
-            <div className="h-8 w-8 animate-spin rounded-full border-4 border-blue-600 border-t-transparent" />
+            <div className="h-8 w-8 animate-spin rounded-full border-4 border-emerald-200 border-t-transparent" />
           </div>
         )}
 
@@ -162,7 +162,7 @@ export default function SalesPerformancePage() {
 
               <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
                 <span className="text-xs font-medium text-slate-500">Open Pipeline</span>
-                <p className="mt-1 text-2xl font-bold text-blue-600 dark:text-blue-400">
+                <p className="mt-1 text-2xl font-bold text-emerald-800 dark:text-emerald-600">
                   ${performance.totalOpenPipeline.toLocaleString()}
                 </p>
                 <span className="text-xs text-slate-400">Supporting remaining target</span>
@@ -175,7 +175,7 @@ export default function SalesPerformancePage() {
                 <select
                   value={selectedRole}
                   onChange={(e) => setSelectedRole(e.target.value)}
-                  className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs shadow-sm focus:border-blue-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                  className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
                 >
                   <option value="all">All Roles in Hierarchy</option>
                   <option value="HEAD_OF_SALES">Head of Sales</option>
@@ -190,7 +190,7 @@ export default function SalesPerformancePage() {
                   placeholder="Filter representative..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  className="rounded-lg border border-slate-300 px-3 py-1.5 text-xs shadow-sm focus:border-blue-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white sm:w-64"
+                  className="rounded-lg border border-slate-300 px-3 py-1.5 text-xs shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white sm:w-64"
                 />
               </div>
 
@@ -203,7 +203,7 @@ export default function SalesPerformancePage() {
                 </button>
                 <button
                   onClick={() => exportLeaderboardToCSV(filteredReps)}
-                  className="rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-700"
+                  className="rounded-lg bg-emerald-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-emerald-600"
                 >
                   ↓ Export Leaderboard
                 </button>

@@ -52,7 +52,7 @@ export default function TaskDetailPage() {
     return (
       <PageContainer>
         <div className="flex items-center justify-center min-h-[400px]">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500" />
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-200" />
         </div>
       </PageContainer>
     );
@@ -68,7 +68,7 @@ export default function TaskDetailPage() {
           </p>
           <Link
             href="/tasks"
-            className="inline-flex items-center gap-1.5 mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-semibold transition"
+            className="inline-flex items-center gap-1.5 mt-4 px-4 py-2 bg-emerald-600 hover:bg-emerald-600 text-white rounded-lg text-xs font-semibold transition"
           >
             <ArrowLeft className="h-3.5 w-3.5" /> Back to Tasks
           </Link>
@@ -161,7 +161,7 @@ export default function TaskDetailPage() {
               <button
                 type="button"
                 onClick={() => setIsEditModalOpen(true)}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 hover:bg-blue-500 text-white transition shadow-sm"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-600 hover:bg-emerald-600 text-white transition shadow-sm"
               >
                 <Edit2 className="h-3.5 w-3.5" /> Edit Task
               </button>
@@ -185,7 +185,7 @@ export default function TaskDetailPage() {
               <select
                 value={task.status}
                 onChange={(e) => handleStatusChange(e.target.value)}
-                className="text-xs font-medium px-3 py-1.5 bg-slate-900 border border-slate-700 rounded-lg text-slate-200 focus:outline-none focus:ring-1 focus:ring-blue-500 cursor-pointer"
+                className="text-xs font-medium px-3 py-1.5 bg-slate-900 border border-slate-700 rounded-lg text-slate-200 focus:outline-none focus:ring-1 focus:ring-emerald-500 cursor-pointer"
               >
                 {TASK_STATUSES.map((s) => (
                   <option key={s.value} value={s.value}>
@@ -238,7 +238,7 @@ export default function TaskDetailPage() {
                     relatedUrl ? (
                       <Link
                         href={relatedUrl}
-                        className="inline-flex items-center gap-1 text-blue-400 hover:text-blue-300 font-medium underline transition text-sm"
+                        className="inline-flex items-center gap-1 text-emerald-600 hover:text-emerald-600 font-medium underline transition text-sm"
                       >
                         <span className="capitalize">{task.related_to_type}</span> ({task.related_to_id.slice(0, 8)}...)
                         <ExternalLink className="h-3 w-3" />

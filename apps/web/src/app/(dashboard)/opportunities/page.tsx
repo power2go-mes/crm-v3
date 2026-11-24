@@ -166,7 +166,7 @@ export default function OpportunitiesPage() {
           </div>
           <Link
             href={`/opportunities/${opp.id}`}
-            className="font-medium text-slate-900 hover:text-blue-600 transition"
+            className="font-medium text-slate-900 hover:text-emerald-800 transition"
           >
             {opp.name}
           </Link>
@@ -182,7 +182,7 @@ export default function OpportunitiesPage() {
             <Building2 className="h-3.5 w-3.5 text-slate-400" />
             <Link
               href={`/accounts/${opp.account.id}`}
-              className="hover:text-blue-600 transition"
+              className="hover:text-emerald-800 transition"
             >
               {opp.account.name}
             </Link>
@@ -245,7 +245,7 @@ export default function OpportunitiesPage() {
         <div className="flex items-center gap-1.5">
           <div className="w-12 bg-slate-200 rounded-full h-1.5 overflow-hidden">
             <div
-              className="bg-blue-500 h-full rounded-full transition-all"
+              className="bg-emerald-600 h-full rounded-full transition-all"
               style={{ width: `${opp.probability || 0}%` }}
             />
           </div>
@@ -308,7 +308,7 @@ export default function OpportunitiesPage() {
               type="button"
               title="Edit Opportunity"
               onClick={() => setEditingOpportunity(opp)}
-              className="p-1.5 rounded hover:bg-slate-100 text-slate-400 hover:text-blue-600 transition"
+              className="p-1.5 rounded hover:bg-slate-100 text-slate-400 hover:text-emerald-800 transition"
             >
               <Edit2 className="h-3.5 w-3.5" />
             </button>
@@ -404,7 +404,7 @@ export default function OpportunitiesPage() {
                     <div className="flex items-start justify-between gap-2">
                       <Link
                         href={`/opportunities/${opp.id}`}
-                        className="text-base font-semibold text-slate-900 hover:text-indigo-600 transition truncate"
+                        className="text-base font-semibold text-slate-900 hover:text-emerald-800 transition truncate"
                       >
                         {opp.name}
                       </Link>
@@ -423,13 +423,13 @@ export default function OpportunitiesPage() {
                       Close: {opp.close_date || '—'}
                     </div>
                     <div className="mt-4 flex justify-end gap-3 border-t border-slate-100 pt-3 text-sm">
-                      <Link href={`/opportunities/${opp.id}`} className="text-indigo-600 hover:text-indigo-800 font-medium">
+                      <Link href={`/opportunities/${opp.id}`} className="text-emerald-800 hover:text-emerald-800 font-medium">
                         View
                       </Link>
                       <button
                         type="button"
                         onClick={() => setEditingOpportunity(opp)}
-                        className="text-indigo-600 hover:text-indigo-800 font-medium"
+                        className="text-emerald-800 hover:text-emerald-800 font-medium"
                       >
                         Edit
                       </button>

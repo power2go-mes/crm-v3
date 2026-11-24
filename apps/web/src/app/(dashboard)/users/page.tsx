@@ -43,13 +43,13 @@ export default function UsersPage() {
   const getRoleBadgeColor = (roleId: string) => {
     switch (roleId) {
       case 'SUPER_ADMIN':
-        return 'bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300';
+        return 'bg-emerald-50 text-emerald-800 dark:bg-emerald-600/30 dark:text-emerald-600';
       case 'HEAD_OF_SALES':
-        return 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300';
+        return 'bg-emerald-50 text-emerald-800 dark:bg-emerald-600/30 dark:text-emerald-600';
       case 'RSM':
-        return 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300';
+        return 'bg-emerald-50 text-emerald-800 dark:bg-emerald-600/30 dark:text-emerald-600';
       case 'SSM':
-        return 'bg-cyan-100 text-cyan-800 dark:bg-cyan-900/30 dark:text-cyan-300';
+        return 'bg-emerald-50 text-emerald-800 dark:bg-emerald-600/30 dark:text-emerald-600';
       case 'ASM':
         return 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300';
       case 'BDO':
@@ -106,7 +106,7 @@ export default function UsersPage() {
             <select
               value={selectedRole}
               onChange={(e) => setSelectedRole(e.target.value)}
-              className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs shadow-sm focus:border-blue-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+              className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
             >
               <option value="all">All Roles</option>
               <option value="SUPER_ADMIN">Super Administrator</option>
@@ -120,7 +120,7 @@ export default function UsersPage() {
             <select
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value as any)}
-              className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs shadow-sm focus:border-blue-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+              className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
             >
               <option value="all">All Statuses</option>
               <option value="active">Active Only</option>
@@ -132,7 +132,7 @@ export default function UsersPage() {
               placeholder="Search by name, email, title..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="rounded-lg border border-slate-300 px-3 py-1.5 text-xs shadow-sm focus:border-blue-500 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white sm:w-64"
+              className="rounded-lg border border-slate-300 px-3 py-1.5 text-xs shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white sm:w-64"
             />
           </div>
 
@@ -156,7 +156,7 @@ export default function UsersPage() {
 
           {isLoading ? (
             <div className="flex h-48 items-center justify-center">
-              <div className="h-8 w-8 animate-spin rounded-full border-4 border-blue-600 border-t-transparent" />
+              <div className="h-8 w-8 animate-spin rounded-full border-4 border-emerald-200 border-t-transparent" />
             </div>
           ) : isError ? (
             <div className="py-8 text-center text-sm text-red-600">

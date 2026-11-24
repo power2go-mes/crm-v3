@@ -67,7 +67,7 @@ export function LeadPipelineBar({
           } else if (stage.id === 'lost') {
             stageStyle = 'bg-[#f0f0f0] text-slate-600 hover:bg-red-50';
           } else if (isConvertStage) {
-            stageStyle = 'bg-[#b7bce8] text-[#727dce] hover:bg-indigo-100';
+            stageStyle = 'bg-[#b7bce8] text-[#727dce] hover:bg-emerald-50';
           }
 
           return (
