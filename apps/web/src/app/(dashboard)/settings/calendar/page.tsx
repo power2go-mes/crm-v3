@@ -33,13 +33,23 @@ export default function CalendarSettingsPage() {
 
   const handleOpenConnect = (provider: CalendarProvider) => {
     setSelectedProvider(provider);
+    const existing = connections.find((c) => c.provider === provider);
+    if (existing) {
+      setCalendarName(existing.calendar_name || (provider === 'google_calendar' ? 'Google Primary Calendar' : 'Outlook Primary Calendar'));
+      setSyncDirection(existing.sync_direction || 'both');
+    } else {
+      setCalendarName(provider === 'google_calendar' ? 'Google Primary Calendar' : 'Outlook Primary Calendar');
+      setSyncDirection('both');
+    }
     setShowConfigModal(true);
   };
 
   const handleSaveConnection = async (status: 'unconfigured' | 'connected' | 'disabled') => {
     if (!selectedProvider) return;
     try {
+      const existing = connections.find((c) => c.provider === selectedProvider);
       await saveConnection({
+        ...(existing?.id ? { id: existing.id } : {}),
         provider: selectedProvider,
         calendar_name: calendarName,
         sync_direction: syncDirection,
@@ -50,9 +60,10 @@ export default function CalendarSettingsPage() {
             : null,
       });
       setShowConfigModal(false);
-    } catch (err) {
-      console.error('Failed to save calendar connection:', err);
-      alert('Failed to update calendar configuration.');
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : String(err);
+      console.error('Failed to save calendar connection:', message);
+      alert(`Failed to update calendar configuration: ${message}`);
     }
   };
 
@@ -285,7 +296,7 @@ export default function CalendarSettingsPage() {
 
       {/* Connection Modal */}
       {showConfigModal && selectedProvider && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-xs">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-xs p-4 backdrop-blur-xs">
           <div className="w-full max-w-md rounded-xl border border-slate-200 bg-white p-6 shadow-2xl">
             <div className="flex items-center justify-between border-b border-slate-200 pb-3">
               <h3 className="text-base font-bold text-slate-900">

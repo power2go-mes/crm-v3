@@ -99,7 +99,7 @@ export function AddMemberModal({
   const isPending = addMemberMutation.isPending;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-xs p-4">
       <div className="w-full max-w-lg rounded-xl bg-white p-6 shadow-xl">
         <div className="flex items-center justify-between border-b pb-3">
           <h2 className="text-lg font-semibold text-slate-900">

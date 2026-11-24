@@ -17,7 +17,7 @@ export function QuoteRevisionsModal({ isOpen, onClose, quote }: QuoteRevisionsMo
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 backdrop-blur-xs p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-xs p-4">
       <div className="relative w-full max-w-2xl rounded-2xl bg-white p-6 shadow-xl border border-slate-200">
         <div className="flex items-center justify-between border-b border-slate-100 pb-4">
           <div className="flex items-center gap-2">

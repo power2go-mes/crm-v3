@@ -267,7 +267,7 @@ export default function LeadStagesPage() {
 
         {/* Edit Stage Modal */}
         {editingStage && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-xs p-4">
             <div className="w-full max-w-md bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
               <div className="flex items-center justify-between px-5 py-4 border-b border-slate-200 bg-slate-50">
                 <div className="flex items-center gap-2">

@@ -36,7 +36,7 @@ export function ConfirmationDialog({
       : 'bg-emerald-600 hover:bg-emerald-700 text-white';
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-xs p-4 animate-fade-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-xs p-4 animate-fade-in">
       <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200">
         <div className="flex items-start justify-between mb-4">
           <div className="flex items-center gap-3">

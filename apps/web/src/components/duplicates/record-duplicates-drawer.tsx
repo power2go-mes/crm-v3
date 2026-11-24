@@ -51,7 +51,7 @@ export function RecordDuplicatesDrawer({
 
   return (
     <>
-      <div className="fixed inset-0 z-40 bg-black/50 backdrop-blur-xs flex justify-end">
+      <div className="fixed inset-0 z-40 bg-black/20 backdrop-blur-xs flex justify-end">
         <div className="w-full max-w-md bg-white h-full shadow-2xl flex flex-col border-l border-slate-200">
           {/* Header */}
           <div className="p-5 border-b border-slate-200 flex items-center justify-between bg-slate-50">

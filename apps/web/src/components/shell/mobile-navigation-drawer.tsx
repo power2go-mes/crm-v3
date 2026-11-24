@@ -36,7 +36,7 @@ export function MobileNavigationDrawer({
     <div className="fixed inset-0 z-50 md:hidden animate-fade-in">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity"
+        className="fixed inset-0 bg-black/20 backdrop-blur-xs transition-opacity"
         onClick={onClose}
         aria-hidden="true"
       />

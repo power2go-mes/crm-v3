@@ -208,7 +208,7 @@ export function QuoteEditorModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 backdrop-blur-xs p-4 overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-xs p-4 overflow-y-auto">
       <div className="relative my-8 w-full max-w-4xl rounded-2xl bg-white p-6 shadow-xl border border-slate-200 dark:border-slate-200">
         <div className="flex items-center justify-between border-b border-slate-100 pb-4 dark:border-slate-200">
           <div>

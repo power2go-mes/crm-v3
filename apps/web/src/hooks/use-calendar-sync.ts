@@ -34,11 +34,13 @@ export function useCalendarConnections() {
 
       const { data, error } = await supabase
         .from('crm_calendar_connections')
-        .upsert(record)
+        .upsert(record, { onConflict: 'user_id,provider' })
         .select()
         .single();
 
-      if (error) throw error;
+      if (error) {
+        throw new Error(error.message || 'Failed to save calendar connection');
+      }
       return data;
     },
     onSuccess: () => {

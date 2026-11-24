@@ -388,7 +388,7 @@ export default function RecycleBinPage() {
 
       {/* Single Delete Confirmation Modal */}
       {confirmDeleteId && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-xs p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-xs p-4">
           <div className="w-full max-w-sm rounded-2xl bg-white p-6 shadow-xl border border-slate-200 animate-in zoom-in-95 duration-150">
             <div className="flex items-center gap-3 text-red-600 mb-3">
               <AlertTriangle className="h-6 w-6" />
@@ -420,7 +420,7 @@ export default function RecycleBinPage() {
 
       {/* Bulk Delete Confirmation Modal */}
       {confirmBulkDelete && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-xs p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-xs p-4">
           <div className="w-full max-w-sm rounded-2xl bg-white p-6 shadow-xl border border-slate-200 animate-in zoom-in-95 duration-150">
             <div className="flex items-center gap-3 text-red-600 mb-3">
               <AlertTriangle className="h-6 w-6" />

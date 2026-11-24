@@ -35,7 +35,7 @@ export function LeadHistoryAudit({ leadId }: LeadHistoryAuditProps) {
         <span>Field Modification Audit Log ({history.length})</span>
       </h4>
 
-      <div className="overflow-hidden border border-slate-800 rounded-xl bg-slate-900/60">
+      <div className="overflow-hidden border border-slate-800 rounded-xl bg-black/20 backdrop-blur-xs">
         <table className="w-full text-left border-collapse text-xs">
           <thead>
             <tr className="bg-slate-950/70 border-b border-slate-800 text-slate-400 font-semibold uppercase tracking-wider">

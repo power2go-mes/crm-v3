@@ -387,7 +387,7 @@ export function RoleMatrixClient({
 
       {/* Modal for Creating Custom Role */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-xs p-4">
           <div className="bg-white rounded-xl max-w-md w-full p-6 shadow-2xl border border-slate-200">
             <h3 className="text-base font-bold text-slate-900 mb-1">Create Custom Role</h3>
             <p className="text-xs text-slate-500 mb-4">

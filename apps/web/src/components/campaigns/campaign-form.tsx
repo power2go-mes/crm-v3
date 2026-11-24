@@ -8,7 +8,7 @@ export function CampaignForm({record,parents,onClose,onSaved}:{record?:CampaignR
  const dialog=useRef<HTMLDialogElement>(null);const [pending,setPending]=useState(false);const [error,setError]=useState('');const {profile}=useAuth();
  useEffect(()=>{const d=dialog.current;d?.showModal();return()=>{d?.close();};},[]);
  const fields=[['start_date','Start Date','date'],['end_date','End Date','date'],['expected_revenue','Expected Revenue','number'],['budget_cost','Budget Cost','number'],['actual_cost','Actual Cost','number'],['expected_response','Expected Response (%)','number'],['number_sent','Number Sent in Campaign','number']] as const;
- return <dialog ref={dialog} onCancel={e=>{e.preventDefault();if(!pending)onClose();}} className="w-full max-w-2xl rounded-xl p-6 backdrop:bg-black/50">
+ return <dialog ref={dialog} onCancel={e=>{e.preventDefault();if(!pending)onClose();}} className="w-full max-w-2xl rounded-xl p-6 backdrop:bg-black/20 backdrop-blur-xs">
  <header className="flex justify-between"><h2>{record?'Edit Campaign':'New Campaign'}</h2><button aria-label="Close" disabled={pending} onClick={onClose}>Ã—</button></header>
  <form onSubmit={async e=>{e.preventDefault();const data=Object.fromEntries(new FormData(e.currentTarget));setPending(true);setError('');try{const r=await saveCampaign({...data,...(record?{id:record.id}:{})});if(r.error){setError(r.error);return;}await onSaved();onClose();}catch{setError('Save unavailable. Try again.');}finally{setPending(false);}}}>
  <fieldset disabled={pending} className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-4">

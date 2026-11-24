@@ -58,7 +58,7 @@ export function ClosedLostModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-xs p-4">
       <div className="w-full max-w-lg rounded-2xl bg-white shadow-2xl border border-slate-200 overflow-hidden dark:border-slate-200">
         <div className="flex items-center justify-between border-b border-slate-200 px-6 py-4 dark:border-slate-200 bg-red-50/50 dark:bg-red-950/20">
           <div className="flex items-center gap-2.5">

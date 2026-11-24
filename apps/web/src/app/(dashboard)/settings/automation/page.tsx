@@ -273,7 +273,7 @@ export default function AutomationSettingsPage() {
 
         {/* Create Workflow Modal */}
         {isModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-xs">
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-xs p-4 backdrop-blur-xs">
             <div className="w-full max-w-xl rounded-2xl bg-white p-6 shadow-2xl">
               <h3 className="text-base font-bold text-slate-900">Configure Sales Workflow Rule</h3>
 
