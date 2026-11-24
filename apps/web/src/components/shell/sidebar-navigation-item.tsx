@@ -27,15 +27,17 @@ export function SidebarNavigationItem({
         onClick={onNavigate}
         title={isCollapsed ? item.label : undefined}
         aria-current={isActive ? 'page' : undefined}
-        className={`w-full flex items-center space-x-2.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-150 ${
+        className={`w-full flex items-center transition-all duration-150 rounded-lg text-xs font-semibold ${
           isActive
             ? 'bg-emerald-600 text-white shadow-xs font-bold'
             : 'text-slate-600 hover:bg-emerald-50 hover:text-emerald-900'
-        } ${isCollapsed ? 'justify-center px-2' : ''}`}
+        } ${isCollapsed ? 'justify-center p-2.5 mx-auto' : 'space-x-2.5 px-3 py-1.5'}`}
       >
         <NavIcon
           name={item.iconName}
-          className={`w-3.5 h-3.5 shrink-0 ${isActive ? 'text-white' : 'text-slate-500 group-hover:text-emerald-700'}`}
+          className={`shrink-0 ${isCollapsed ? 'w-5 h-5' : 'w-3.5 h-3.5'} ${
+            isActive ? 'text-white' : 'text-slate-500 group-hover:text-emerald-700'
+          }`}
         />
         {!isCollapsed && <span className="truncate">{item.label}</span>}
         {!isCollapsed && item.badge && (
