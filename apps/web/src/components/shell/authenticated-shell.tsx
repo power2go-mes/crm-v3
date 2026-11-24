@@ -42,7 +42,7 @@ export function AuthenticatedShell({ children }: AuthenticatedShellProps) {
   return (
     <div className="flex h-screen w-full bg-slate-50 text-slate-900 overflow-hidden">
       {/* Desktop Fixed/Sticky Sidebar */}
-      <div className="hidden md:flex h-full shrink-0">
+      <div className={`hidden md:flex h-full shrink-0 ${isCollapsed ? 'z-40' : 'z-20'}`}>
         <ApplicationSidebar
           isCollapsed={isCollapsed}
           onToggleCollapse={toggleCollapse}

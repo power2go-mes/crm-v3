@@ -68,7 +68,7 @@ export function SidebarNavigationGroup({
 
     return (
       <div
-        className="relative flex justify-center py-1"
+        className="relative flex justify-center py-1 group/flyout"
         onMouseEnter={() => setIsFlyoutOpen(true)}
         onMouseLeave={() => setIsFlyoutOpen(false)}
       >
@@ -87,32 +87,34 @@ export function SidebarNavigationGroup({
           />
         </button>
 
-        {/* Hover / Click Flyout Card */}
+        {/* Hover / Click Flyout Card with transparent bridge to prevent pointer flicker */}
         {isFlyoutOpen && (
-          <div className="absolute left-full top-0 ml-2 w-52 bg-white rounded-2xl shadow-2xl border border-slate-200 p-3 z-50 animate-fadeIn space-y-1.5">
-            <div className="text-[11px] font-bold text-slate-400 px-2 uppercase tracking-wider mb-1">
-              {group.title || primaryItem.label}
+          <div className="absolute left-full top-0 pl-3 z-50 animate-in fade-in duration-150">
+            <div className="w-56 bg-white rounded-2xl shadow-2xl border border-slate-200 p-3 space-y-1.5">
+              <div className="text-[11px] font-bold text-slate-400 px-2 uppercase tracking-wider mb-1">
+                {group.title || primaryItem.label}
+              </div>
+              {group.items.map((item) => {
+                const isActive = isNavItemActive(pathname, item);
+                return (
+                  <Link
+                    key={item.id}
+                    href={item.href}
+                    onClick={() => {
+                      setIsFlyoutOpen(false);
+                      onNavigate?.();
+                    }}
+                    className={`block px-3 py-2 rounded-xl text-xs font-semibold transition-all ${
+                      isActive
+                        ? 'bg-amber-50 text-emerald-600 border border-amber-300 font-bold shadow-2xs'
+                        : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
             </div>
-            {group.items.map((item) => {
-              const isActive = isNavItemActive(pathname, item);
-              return (
-                <Link
-                  key={item.id}
-                  href={item.href}
-                  onClick={() => {
-                    setIsFlyoutOpen(false);
-                    onNavigate?.();
-                  }}
-                  className={`block px-3 py-2 rounded-xl text-xs font-semibold transition-all ${
-                    isActive
-                      ? 'bg-amber-50 text-emerald-600 border border-amber-300 font-bold shadow-2xs'
-                      : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
           </div>
         )}
       </div>

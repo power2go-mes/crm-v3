@@ -74,7 +74,7 @@ export function ApplicationSidebar({
   return (
     <aside
       className={`bg-white border-r border-slate-200 flex flex-col shrink-0 select-none transition-all duration-200 ease-in-out h-full ${
-        isCollapsed ? 'w-20' : 'w-64'
+        isCollapsed ? 'w-20 overflow-visible relative z-40' : 'w-64 overflow-hidden'
       } ${className}`}
     >
       {/* Brand Header */}
@@ -104,8 +104,10 @@ export function ApplicationSidebar({
       </div>
 
       {/* Nav Groups Container */}
-      <nav className={`flex-1 min-h-0 overflow-y-auto overflow-x-hidden no-scrollbar ${
-        isCollapsed ? 'px-2 py-4 space-y-2' : 'px-3 py-4 space-y-2'
+      <nav className={`flex-1 min-h-0 ${
+        isCollapsed
+          ? 'px-2 py-4 space-y-3 overflow-visible'
+          : 'px-3 py-4 space-y-2 overflow-y-auto overflow-x-hidden no-scrollbar'
       }`}>
         {mounted &&
           authorizedGroups.map((group) => (
