@@ -59,8 +59,8 @@ export function ClosedLostModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4">
-      <div className="w-full max-w-lg rounded-2xl bg-white shadow-2xl border border-slate-200 overflow-hidden dark:bg-slate-900 dark:border-slate-800">
-        <div className="flex items-center justify-between border-b border-slate-200 px-6 py-4 dark:border-slate-800 bg-red-50/50 dark:bg-red-950/20">
+      <div className="w-full max-w-lg rounded-2xl bg-white shadow-2xl border border-slate-200 overflow-hidden dark:bg-slate-900 dark:border-slate-200">
+        <div className="flex items-center justify-between border-b border-slate-200 px-6 py-4 dark:border-slate-200 bg-red-50/50 dark:bg-red-950/20">
           <div className="flex items-center gap-2.5">
             <div className="p-2 bg-red-100 text-red-600 rounded-xl dark:bg-red-900/40 dark:text-red-400">
               <ShieldAlert className="h-5 w-5" />
@@ -140,7 +140,7 @@ export function ClosedLostModal({
             />
           </div>
 
-          <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-200 dark:border-slate-800">
+          <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-200 dark:border-slate-200">
             <button
               type="button"
               onClick={onClose}

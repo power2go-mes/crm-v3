@@ -86,22 +86,22 @@ export function MeetingCreateModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-xs animate-fadeIn">
-      <div className="relative w-full max-w-xl bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
-        <div className="px-6 py-4 border-b border-slate-800 flex items-center justify-between bg-slate-950/60">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs animate-fadeIn">
+      <div className="relative w-full max-w-xl bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+        <div className="px-6 py-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
           <div className="flex items-center gap-2.5">
             <div className="p-2 bg-emerald-600/10 text-emerald-600 rounded-lg">
               <Calendar className="h-5 w-5" />
             </div>
             <div>
-              <h3 className="text-base font-bold text-white">Schedule Meeting</h3>
+              <h3 className="text-base font-bold text-slate-900">Schedule Meeting</h3>
               <p className="text-xs text-slate-400">Plan client demonstrations, discovery sessions, or reviews.</p>
             </div>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition"
+            className="p-1.5 text-slate-400 hover:text-slate-700 rounded-lg hover:bg-slate-100 transition"
           >
             <X className="h-5 w-5" />
           </button>
@@ -109,13 +109,13 @@ export function MeetingCreateModal({
 
         <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto p-6 space-y-4 text-xs">
           {errorMsg && (
-            <div className="p-3 bg-red-950/50 border border-red-500/40 rounded-lg text-red-200">
+            <div className="p-3 bg-orange-50 border border-orange-200 rounded-lg text-orange-800">
               {errorMsg}
             </div>
           )}
 
           <div>
-            <label className="block font-semibold text-slate-300 uppercase tracking-wider mb-1">
+            <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
               Meeting Title / Subject <span className="text-red-400">*</span>
             </label>
             <input
@@ -124,13 +124,13 @@ export function MeetingCreateModal({
               value={formData.subject}
               onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
               placeholder="e.g. Solution Architecture Review & Demo"
-              className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
             />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block font-semibold text-slate-300 uppercase tracking-wider mb-1">
+              <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
                 Start Date & Time <span className="text-red-400">*</span>
               </label>
               <input
@@ -138,12 +138,12 @@ export function MeetingCreateModal({
                 required
                 value={formData.start_time}
                 onChange={(e) => setFormData({ ...formData, start_time: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               />
             </div>
 
             <div>
-              <label className="block font-semibold text-slate-300 uppercase tracking-wider mb-1">
+              <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
                 End Date & Time <span className="text-red-400">*</span>
               </label>
               <input
@@ -151,18 +151,18 @@ export function MeetingCreateModal({
                 required
                 value={formData.end_time}
                 onChange={(e) => setFormData({ ...formData, end_time: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               />
             </div>
 
             <div>
-              <label className="block font-semibold text-slate-300 uppercase tracking-wider mb-1">
+              <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
                 Meeting Host / Organizer
               </label>
               <select
                 value={formData.assigned_to_id}
                 onChange={(e) => setFormData({ ...formData, assigned_to_id: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               >
                 <option value="">Unassigned</option>
                 {users.map((u) => (
@@ -174,13 +174,13 @@ export function MeetingCreateModal({
             </div>
 
             <div>
-              <label className="block font-semibold text-slate-300 uppercase tracking-wider mb-1">
+              <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
                 Status
               </label>
               <select
                 value={formData.status}
                 onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               >
                 {MEETING_STATUSES.map((s) => (
                   <option key={s.value} value={s.value}>
@@ -191,13 +191,13 @@ export function MeetingCreateModal({
             </div>
 
             <div>
-              <label className="block font-semibold text-slate-300 uppercase tracking-wider mb-1">
+              <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
                 Platform / Provider
               </label>
               <select
                 value={formData.provider}
                 onChange={(e) => setFormData({ ...formData, provider: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               >
                 {MEETING_PROVIDERS.map((p) => (
                   <option key={p.value} value={p.value}>
@@ -208,7 +208,7 @@ export function MeetingCreateModal({
             </div>
 
             <div>
-              <label className="block font-semibold text-slate-300 uppercase tracking-wider mb-1">
+              <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
                 Join URL / Link
               </label>
               <input
@@ -216,12 +216,12 @@ export function MeetingCreateModal({
                 value={formData.meeting_url}
                 onChange={(e) => setFormData({ ...formData, meeting_url: e.target.value })}
                 placeholder="https://meet.google.com/... or zoom.us/j/..."
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 text-xs"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 text-xs"
               />
             </div>
 
             <div className="md:col-span-2">
-              <label className="block font-semibold text-slate-300 uppercase tracking-wider mb-1">
+              <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
                 Physical Location (if In-Person)
               </label>
               <input
@@ -229,18 +229,18 @@ export function MeetingCreateModal({
                 value={formData.location}
                 onChange={(e) => setFormData({ ...formData, location: e.target.value })}
                 placeholder="e.g. Conference Room A, HQ Floor 4"
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               />
             </div>
 
             <div>
-              <label className="block font-semibold text-slate-300 uppercase tracking-wider mb-1">
+              <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
                 Related Entity Type
               </label>
               <select
                 value={formData.related_to_type}
                 onChange={(e) => setFormData({ ...formData, related_to_type: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               >
                 <option value="">None (Internal Meeting)</option>
                 <option value="lead">Lead</option>
@@ -252,7 +252,7 @@ export function MeetingCreateModal({
 
             {formData.related_to_type && (
               <div>
-                <label className="block font-semibold text-slate-300 uppercase tracking-wider mb-1">
+                <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
                   Related Entity ID
                 </label>
                 <input
@@ -260,13 +260,13 @@ export function MeetingCreateModal({
                   value={formData.related_to_id}
                   onChange={(e) => setFormData({ ...formData, related_to_id: e.target.value })}
                   placeholder={`UUID of the related ${formData.related_to_type}`}
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 font-mono text-xs"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 font-mono text-xs"
                 />
               </div>
             )}
 
             <div className="md:col-span-2">
-              <label className="block font-semibold text-slate-300 uppercase tracking-wider mb-1">
+              <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
                 External Participants (Emails)
               </label>
               <input
@@ -274,13 +274,13 @@ export function MeetingCreateModal({
                 value={formData.external_participants}
                 onChange={(e) => setFormData({ ...formData, external_participants: e.target.value })}
                 placeholder="client.lead@enterprise.com, partner@tech.co (comma-separated)"
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               />
             </div>
           </div>
 
           <div>
-            <label className="block font-semibold text-slate-300 uppercase tracking-wider mb-1">
+            <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
               Agenda & Meeting Notes
             </label>
             <textarea
@@ -288,16 +288,16 @@ export function MeetingCreateModal({
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
               placeholder="Key objectives, agenda topics, materials to prepare..."
-              className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
             />
           </div>
 
-          <div className="pt-4 border-t border-slate-800 flex items-center justify-end gap-2.5">
+          <div className="pt-4 border-t border-slate-200 flex items-center justify-end gap-2.5">
             <button
               type="button"
               onClick={onClose}
               disabled={isSubmitting}
-              className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg font-medium transition"
+              className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg font-medium transition"
             >
               Cancel
             </button>

@@ -153,7 +153,7 @@ export default function CalendarPage() {
                 onClick={() => setFilterType('all')}
                 className={`px-3 py-1.5 rounded-lg transition ${
                   filterType === 'all'
-                    ? 'bg-slate-900 text-white font-bold'
+                    ? 'bg-emerald-600 text-white font-bold shadow-xs'
                     : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                 }`}
               >

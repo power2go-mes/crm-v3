@@ -31,7 +31,7 @@ export function SystemAuditLogViewer() {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-slate-900/60 border border-slate-800 rounded-xl">
+      <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-white border border-slate-200 rounded-xl">
         <div className="flex items-center gap-3">
           <div className="p-2 rounded-lg bg-emerald-600/60 text-emerald-600 border border-emerald-200">
             <History className="h-5 w-5" />
@@ -49,7 +49,7 @@ export function SystemAuditLogViewer() {
           <select
             value={selectedModule}
             onChange={(e) => { setSelectedModule(e.target.value); setPage(1); }}
-            className="px-3 py-1.5 bg-slate-950 border border-slate-800 rounded-lg text-xs text-white capitalize focus:outline-hidden focus:border-emerald-200"
+            className="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs text-white capitalize focus:outline-hidden focus:border-emerald-200"
           >
             <option value="all">All Modules</option>
             <option value="leads">Leads</option>
@@ -61,7 +61,7 @@ export function SystemAuditLogViewer() {
         </div>
       </div>
 
-      <div className="bg-slate-900/60 border border-slate-800 rounded-xl overflow-hidden shadow-sm">
+      <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
         {isLoading && (
           <div className="p-8 text-center text-xs text-slate-400 animate-pulse">
             Loading system audit trail...

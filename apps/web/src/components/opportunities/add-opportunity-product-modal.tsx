@@ -119,8 +119,8 @@ export function AddOpportunityProductModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 backdrop-blur-xs p-4">
-      <div className="relative w-full max-w-lg rounded-2xl bg-white p-6 shadow-xl dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-        <div className="flex items-center justify-between border-b border-slate-100 pb-4 dark:border-slate-800">
+      <div className="relative w-full max-w-lg rounded-2xl bg-white p-6 shadow-xl dark:bg-slate-900 border border-slate-200 dark:border-slate-200">
+        <div className="flex items-center justify-between border-b border-slate-100 pb-4 dark:border-slate-200">
           <div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">
               {item ? 'Edit Opportunity Product' : 'Add Product to Opportunity'}
@@ -243,7 +243,7 @@ export function AddOpportunityProductModal({
           </div>
 
           {/* Real-time Calculation Summary Box */}
-          <div className="rounded-xl border border-slate-200 bg-slate-50 p-3.5 dark:border-slate-800 dark:bg-slate-800/40">
+          <div className="rounded-xl border border-slate-200 bg-slate-50 p-3.5 dark:border-slate-200 dark:bg-slate-800/40">
             <h4 className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
               Line Calculation Preview
             </h4>

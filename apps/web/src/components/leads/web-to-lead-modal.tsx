@@ -474,7 +474,7 @@ ${inputsHtml}
               </div>
 
               {/* Code preview block */}
-              <div className="relative rounded-xl bg-slate-900 p-3 text-[11px] text-emerald-400 font-mono overflow-x-auto max-h-48 border border-slate-800">
+              <div className="relative rounded-xl bg-slate-900 p-3 text-[11px] text-emerald-400 font-mono overflow-x-auto max-h-48 border border-slate-200">
                 <pre>{generateEmbedSnippet(selectedForm)}</pre>
               </div>
 

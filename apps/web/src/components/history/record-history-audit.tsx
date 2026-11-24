@@ -57,10 +57,10 @@ export function RecordHistoryAudit({ module, recordId }: RecordHistoryAuditProps
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between p-4 bg-slate-900/60 border border-slate-800 rounded-xl">
+      <div className="flex items-center justify-between p-4 bg-white border border-slate-200 rounded-xl">
         <div className="flex items-center gap-2">
           <History className="h-4 w-4 text-slate-400" />
-          <h3 className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+          <h3 className="text-xs font-semibold text-slate-700 uppercase tracking-wider">
             Audit Trail & Modification Log
           </h3>
         </div>
@@ -83,7 +83,7 @@ export function RecordHistoryAudit({ module, recordId }: RecordHistoryAuditProps
       )}
 
       {!isLoading && !error && history.length === 0 && (
-        <div className="p-12 text-center bg-slate-900/40 border border-slate-800 rounded-xl space-y-2">
+        <div className="p-12 text-center bg-white border border-slate-200 rounded-xl space-y-2">
           <History className="h-8 w-8 text-slate-600 mx-auto" />
           <h4 className="text-sm font-semibold text-slate-300">No History Recorded</h4>
           <p className="text-xs text-slate-500">
@@ -104,9 +104,9 @@ export function RecordHistoryAudit({ module, recordId }: RecordHistoryAuditProps
           return (
             <div
               key={item.id}
-              className="p-4 bg-slate-900/70 border border-slate-800 rounded-xl space-y-3"
+              className="p-4 bg-white border border-slate-200 rounded-xl space-y-3"
             >
-              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800/80 pb-2">
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-2">
                 <div className="flex items-center gap-2">
                   <span
                     className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border ${actionBadgeColor}`}
@@ -134,14 +134,14 @@ export function RecordHistoryAudit({ module, recordId }: RecordHistoryAuditProps
                     {item.changes.map((ch, idx) => (
                       <div
                         key={idx}
-                        className="p-2.5 rounded-lg bg-slate-950/60 border border-slate-800/80 flex flex-wrap items-center justify-between gap-2 text-xs"
+                        className="p-2.5 rounded-lg bg-slate-50 border border-slate-200 flex flex-wrap items-center justify-between gap-2 text-xs"
                       >
                         <div className="flex items-center gap-1.5 font-medium text-slate-300">
                           <Tag className="h-3.5 w-3.5 text-emerald-600" />
                           <span>{ch.label || ch.field}</span>
                         </div>
                         <div className="flex items-center gap-2 text-xs">
-                          <span className="px-2 py-0.5 rounded bg-slate-900 text-slate-400 border border-slate-800 line-through">
+                          <span className="px-2 py-0.5 rounded bg-slate-900 text-slate-400 border border-slate-200 line-through">
                             {formatValue(ch.old)}
                           </span>
                           <ArrowRight className="h-3.5 w-3.5 text-slate-500" />

@@ -40,12 +40,15 @@ export function ApplicationSidebar({
       } ${className}`}
     >
       {/* Brand Header */}
-      <div className="shrink-0 p-4 border-b border-slate-100 bg-slate-50/60">
+      <div className="shrink-0 p-3.5 border-b border-slate-100 bg-slate-50/60">
         <div className="flex min-h-8 items-center justify-between gap-2">
           <Link
             href="/"
             onClick={onNavigate}
-            className="flex items-center gap-2.5 font-bold text-slate-900 overflow-hidden group"
+            title={isCollapsed ? "FINLONEXA CRM v3" : undefined}
+            className={`flex items-center gap-2.5 font-bold text-slate-900 overflow-hidden group ${
+              isCollapsed ? 'mx-auto justify-center' : ''
+            }`}
           >
             <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-emerald-600 text-white shadow-xs group-hover:bg-emerald-700 transition">
               <Building2 className="h-4 w-4" />
@@ -63,18 +66,16 @@ export function ApplicationSidebar({
           </Link>
 
           {/* Desktop Collapse Toggle */}
-          <button
-            type="button"
-            onClick={onToggleCollapse}
-            aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-            className="hidden md:flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-500 hover:bg-slate-100 hover:text-slate-800 transition"
-          >
-            {isCollapsed ? (
-              <PanelLeftOpen className="h-3.5 w-3.5" />
-            ) : (
+          {!isCollapsed && (
+            <button
+              type="button"
+              onClick={onToggleCollapse}
+              aria-label="Collapse sidebar"
+              className="hidden md:flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-500 hover:bg-slate-100 hover:text-slate-800 transition"
+            >
               <PanelLeftClose className="h-3.5 w-3.5" />
-            )}
-          </button>
+            </button>
+          )}
         </div>
       </div>
 

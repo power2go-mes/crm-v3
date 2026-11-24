@@ -94,7 +94,7 @@ export function CustomFieldsManager() {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-slate-900/60 border border-slate-800 rounded-xl">
+      <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-white border border-slate-200 rounded-xl">
         <div className="flex items-center gap-3">
           <div className="p-2 rounded-lg bg-emerald-950/60 text-emerald-400 border border-emerald-800">
             <Database className="h-5 w-5" />
@@ -120,7 +120,7 @@ export function CustomFieldsManager() {
       </div>
 
       {/* Module Filter Tabs */}
-      <div className="flex flex-wrap items-center gap-1.5 border-b border-slate-800 pb-2">
+      <div className="flex flex-wrap items-center gap-1.5 border-b border-slate-200 pb-2">
         {['all', 'leads', 'accounts', 'contacts', 'opportunities', 'campaigns'].map((m) => (
           <button
             key={m}
@@ -129,7 +129,7 @@ export function CustomFieldsManager() {
             className={`px-3 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wider transition ${
               activeModule === m
                 ? 'bg-emerald-600 text-white shadow-xs'
-                : 'text-slate-400 hover:text-white bg-slate-900 border border-slate-800'
+                : 'text-slate-400 hover:text-white bg-white border border-slate-200'
             }`}
           >
             {m === 'all' ? 'All Modules' : m}
@@ -143,9 +143,9 @@ export function CustomFieldsManager() {
             e.preventDefault();
             createMutation.mutate();
           }}
-          className="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-4"
+          className="p-4 bg-white border border-slate-200 rounded-xl space-y-4"
         >
-          <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+          <div className="flex items-center justify-between border-b border-slate-200 pb-2">
             <span className="text-xs font-bold text-white uppercase tracking-wider">New Custom Field</span>
             <button
               type="button"
@@ -158,14 +158,14 @@ export function CustomFieldsManager() {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
             <div>
-              <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">
+              <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1">
                 Target Module *
               </label>
               <select
                 value={module}
                 disabled={!!editingId}
                 onChange={(e) => setModule(e.target.value)}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white capitalize focus:outline-hidden focus:border-emerald-200"
+                className="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-white capitalize focus:outline-hidden focus:border-emerald-200"
               >
                 <option value="leads">Leads</option>
                 <option value="accounts">Accounts</option>
@@ -176,7 +176,7 @@ export function CustomFieldsManager() {
             </div>
 
             <div>
-              <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">
+              <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1">
                 Field Label *
               </label>
               <input
@@ -190,12 +190,12 @@ export function CustomFieldsManager() {
                   }
                 }}
                 placeholder="e.g. Contract Expiration Date"
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white focus:outline-hidden focus:border-emerald-200"
+                className="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-white focus:outline-hidden focus:border-emerald-200"
               />
             </div>
 
             <div>
-              <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">
+              <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1">
                 Attribute Key (System ID) *
               </label>
               <input
@@ -205,18 +205,18 @@ export function CustomFieldsManager() {
                 disabled={!!editingId}
                 onChange={(e) => setKey(e.target.value)}
                 placeholder="e.g. contract_expiration_date"
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white font-mono focus:outline-hidden focus:border-emerald-200"
+                className="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-white font-mono focus:outline-hidden focus:border-emerald-200"
               />
             </div>
 
             <div>
-              <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">
+              <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1">
                 Data Type *
               </label>
               <select
                 value={type}
                 onChange={(e) => setType(e.target.value)}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white focus:outline-hidden focus:border-emerald-200"
+                className="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-white focus:outline-hidden focus:border-emerald-200"
               >
                 <option value="small_text">Short Text (255 chars)</option>
                 <option value="large_text">Long Text / Paragraph</option>
@@ -234,7 +234,7 @@ export function CustomFieldsManager() {
                 id="reqCheck"
                 checked={required}
                 onChange={(e) => setRequired(e.target.checked)}
-                className="h-4 w-4 rounded border-slate-700 bg-slate-950 text-emerald-800 focus:ring-0"
+                className="h-4 w-4 rounded border-slate-700 bg-white text-emerald-800 focus:ring-0"
               />
               <label htmlFor="reqCheck" className="text-xs text-slate-300 font-medium">
                 Mandatory Field
@@ -242,8 +242,8 @@ export function CustomFieldsManager() {
             </div>
           </div>
 
-          {['choice', 'single_choice'].includes(type) && <label className="block text-xs text-slate-300">Choices<textarea required value={choiceText} onChange={e => setChoiceText(e.target.value)} placeholder="Option 1, Option 2, Option 3" className="mt-1 block w-full rounded border border-slate-700 bg-slate-950 p-2 text-white" /></label>}
-          <label className="block text-xs text-slate-300">Display Order<input type="number" min={0} step={1} required value={position} onChange={e => setPosition(e.target.valueAsNumber)} className="mt-1 block rounded border border-slate-700 bg-slate-950 p-2 text-white" /></label>
+          {['choice', 'single_choice'].includes(type) && <label className="block text-xs text-slate-300">Choices<textarea required value={choiceText} onChange={e => setChoiceText(e.target.value)} placeholder="Option 1, Option 2, Option 3" className="mt-1 block w-full rounded border border-slate-700 bg-white p-2 text-white" /></label>}
+          <label className="block text-xs text-slate-300">Display Order<input type="number" min={0} step={1} required value={position} onChange={e => setPosition(e.target.valueAsNumber)} className="mt-1 block rounded border border-slate-700 bg-white p-2 text-white" /></label>
 
           {error && <p className="text-xs text-red-400">{error}</p>}
 
@@ -270,7 +270,7 @@ export function CustomFieldsManager() {
       {notice && <p role="status" className="text-sm text-green-700">{notice}</p>}
       {loadError && <p role="alert" className="text-sm text-red-700">{loadError.message} <button onClick={() => void refetch()}>Retry</button></p>}
       {archive.error && <p role="alert" className="text-sm text-red-700">{archive.error.message}</p>}
-      <div className="bg-slate-900/60 border border-slate-800 rounded-xl overflow-hidden shadow-sm">
+      <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
         {isLoading && (
           <div className="p-8 text-center text-xs text-slate-400 animate-pulse">
             Loading field definitions...

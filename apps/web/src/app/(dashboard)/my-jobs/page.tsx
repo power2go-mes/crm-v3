@@ -227,7 +227,7 @@ export default function MyJobsPage() {
                 <Clock className="w-6 h-6" />
               </div>
               <div>
-                <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Pending Tasks</p>
+                <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Pending Tasks</p>
                 <p className="text-2xl font-bold text-slate-900 mt-0.5">{totalCount}</p>
               </div>
             </div>
@@ -237,7 +237,7 @@ export default function MyJobsPage() {
                 <CheckCircle2 className="w-6 h-6" />
               </div>
               <div>
-                <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Direct Resolution</p>
+                <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Direct Resolution</p>
                 <p className="text-xs text-slate-500 mt-1">Click the check icon to complete items instantly</p>
               </div>
             </div>
@@ -247,7 +247,7 @@ export default function MyJobsPage() {
                 <Briefcase className="w-6 h-6" />
               </div>
               <div>
-                <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Personal Queue</p>
+                <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Personal Queue</p>
                 <p className="text-xs text-slate-500 mt-1">Filtered strictly to your assigned records</p>
               </div>
             </div>

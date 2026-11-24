@@ -189,7 +189,7 @@ export default function TasksPage() {
             <select
               value={t.status}
               onChange={(e) => updateMutation.mutateAsync({ id: t.id, updates: { status: e.target.value } })}
-              className="text-[11px] font-medium px-2 py-0.5 bg-slate-900 border border-slate-700 rounded text-slate-200 focus:outline-none focus:ring-1 focus:ring-emerald-500 cursor-pointer"
+              className="text-[11px] font-medium px-2 py-0.5 bg-white border border-slate-300 rounded text-slate-800 focus:outline-none focus:ring-1 focus:ring-emerald-500 cursor-pointer"
             >
               {TASK_STATUSES.map((s) => (
                 <option key={s.value} value={s.value}>
@@ -278,7 +278,7 @@ export default function TasksPage() {
           {/* Header & Status Filter Pills */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-              <h1 className="text-2xl font-bold tracking-tight text-white flex items-center gap-2.5">
+              <h1 className="text-2xl font-bold tracking-tight text-slate-900 flex items-center gap-2.5">
                 <CheckSquare className="h-6 w-6 text-emerald-800" />
                 <span>Tasks & Follow-ups</span>
               </h1>
@@ -287,7 +287,7 @@ export default function TasksPage() {
               </p>
             </div>
 
-            <div className="flex items-center gap-1.5 bg-slate-900 border border-slate-800 p-1 rounded-xl text-xs">
+            <div className="flex items-center gap-1.5 bg-white border border-slate-200 p-1 rounded-xl text-xs">
               {[
                 { id: 'all', label: 'All Tasks' },
                 { id: 'not_started', label: 'Not Started' },

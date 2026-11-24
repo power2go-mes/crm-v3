@@ -62,7 +62,7 @@ export default function MeetingDetailPage() {
   if (error || !meeting) {
     return (
       <PageContainer>
-        <div className="p-8 text-center bg-slate-900 border border-slate-800 rounded-2xl">
+        <div className="p-8 text-center bg-white border border-slate-200 rounded-2xl">
           <h2 className="text-lg font-bold text-slate-100">Meeting Not Found</h2>
           <p className="text-xs text-slate-400 mt-1">
             The requested meeting does not exist or you do not have permission to view it.
@@ -109,14 +109,14 @@ export default function MeetingDetailPage() {
             <div className="flex items-center gap-3">
               <Link
                 href="/meetings"
-                className="p-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg transition"
+                className="p-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg transition"
                 title="Back to Meetings List"
               >
                 <ArrowLeft className="h-4 w-4" />
               </Link>
               <div>
                 <div className="flex items-center gap-2">
-                  <h1 className="text-xl font-bold text-white tracking-tight">{meeting.subject}</h1>
+                  <h1 className="text-xl font-bold text-slate-900 tracking-tight">{meeting.subject}</h1>
                   <span
                     className={`inline-flex px-2 py-0.5 rounded text-[11px] font-medium border ${statusConfig.color}`}
                   >
@@ -156,9 +156,9 @@ export default function MeetingDetailPage() {
           </div>
 
           {/* Details Card */}
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-6">
+          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xl space-y-6">
             {/* Quick Status Control */}
-            <div className="flex items-center gap-3 p-4 bg-slate-950/50 border border-slate-800 rounded-xl">
+            <div className="flex items-center gap-3 p-4 bg-slate-50 border border-slate-200 rounded-xl">
               <label className="text-xs text-slate-400 font-semibold uppercase tracking-wider">
                 Meeting Status:
               </label>
@@ -176,7 +176,7 @@ export default function MeetingDetailPage() {
             </div>
 
             {/* Attributes Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4 bg-slate-950/30 border border-slate-800/80 rounded-xl">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4 bg-slate-50 border border-slate-200 rounded-xl">
               <div>
                 <span className="text-xs text-slate-400 flex items-center gap-1 font-semibold uppercase tracking-wider">
                   <Calendar className="h-3.5 w-3.5" /> Start Time
@@ -259,7 +259,7 @@ export default function MeetingDetailPage() {
               <span className="text-xs text-slate-400 flex items-center gap-1 font-semibold uppercase tracking-wider mb-2">
                 <FileText className="h-3.5 w-3.5" /> Agenda & Discussion Notes
               </span>
-              <div className="p-4 bg-slate-950/60 border border-slate-800 rounded-xl text-slate-200 text-xs leading-relaxed whitespace-pre-wrap">
+              <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-slate-200 text-xs leading-relaxed whitespace-pre-wrap">
                 {meeting.description || <span className="text-slate-500 italic">No notes logged.</span>}
               </div>
             </div>

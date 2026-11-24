@@ -197,10 +197,10 @@ export function RecordActivityTimeline({
   return (
     <div className="space-y-6">
       {/* Action Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 p-4 bg-slate-900/60 border border-slate-800 rounded-xl">
+      <div className="flex flex-wrap items-center justify-between gap-3 p-4 bg-white border border-slate-200 rounded-xl">
         <div className="flex items-center gap-2">
           <Clock className="h-4 w-4 text-slate-400" />
-          <span className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+          <span className="text-xs font-semibold text-slate-700 uppercase tracking-wider">
             Activity Timeline & Actions
           </span>
         </div>
@@ -251,9 +251,9 @@ export function RecordActivityTimeline({
       {activeForm && (
         <form
           onSubmit={handleSubmit}
-          className="p-5 bg-slate-900 border border-slate-800 rounded-xl space-y-4 shadow-sm animate-in fade-in duration-150"
+          className="p-5 bg-white border border-slate-200 rounded-xl space-y-4 shadow-sm animate-in fade-in duration-150"
         >
-          <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div className="flex items-center justify-between border-b border-slate-200 pb-3">
             <h4 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">
               {activeForm === 'call' && <Phone className="h-4 w-4 text-emerald-400" />}
               {activeForm === 'task' && <CheckSquare className="h-4 w-4 text-emerald-600" />}
@@ -275,7 +275,7 @@ export function RecordActivityTimeline({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="md:col-span-2">
-              <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">
+              <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1">
                 Subject / Objective *
               </label>
               <input
@@ -290,7 +290,7 @@ export function RecordActivityTimeline({
                       ? 'e.g. Send revised contract draft'
                       : 'e.g. Executive solution walkthrough'
                 }
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-hidden focus:border-emerald-200"
+                className="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-hidden focus:border-emerald-200"
               />
             </div>
 
@@ -298,24 +298,24 @@ export function RecordActivityTimeline({
             {activeForm === 'task' && (
               <>
                 <div>
-                  <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">
+                  <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1">
                     Due Date & Time
                   </label>
                   <input
                     type="datetime-local"
                     value={dueDate}
                     onChange={(e) => setDueDate(e.target.value)}
-                    className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-xs text-white focus:outline-hidden focus:border-emerald-200"
+                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs text-white focus:outline-hidden focus:border-emerald-200"
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">
+                  <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1">
                     Priority
                   </label>
                   <select
                     value={priority}
                     onChange={(e) => setPriority(e.target.value)}
-                    className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-xs text-white focus:outline-hidden focus:border-emerald-200"
+                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs text-white focus:outline-hidden focus:border-emerald-200"
                   >
                     <option value="high">High</option>
                     <option value="medium">Medium</option>
@@ -329,20 +329,20 @@ export function RecordActivityTimeline({
             {activeForm === 'call' && (
               <>
                 <div>
-                  <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">
+                  <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1">
                     Direction
                   </label>
                   <select
                     value={callType}
                     onChange={(e) => setCallType(e.target.value as 'inbound' | 'outbound')}
-                    className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-xs text-white focus:outline-hidden focus:border-emerald-200"
+                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs text-white focus:outline-hidden focus:border-emerald-200"
                   >
                     <option value="outbound">Outbound Call</option>
                     <option value="inbound">Inbound Call</option>
                   </select>
                 </div>
                 <div>
-                  <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">
+                  <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1">
                     Duration (Minutes)
                   </label>
                   <input
@@ -351,7 +351,7 @@ export function RecordActivityTimeline({
                     max="600"
                     value={callDuration}
                     onChange={(e) => setCallDuration(parseInt(e.target.value, 10) || 0)}
-                    className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-xs text-white focus:outline-hidden focus:border-emerald-200"
+                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs text-white focus:outline-hidden focus:border-emerald-200"
                   />
                 </div>
               </>
@@ -361,29 +361,29 @@ export function RecordActivityTimeline({
             {activeForm === 'meeting' && (
               <>
                 <div>
-                  <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">
+                  <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1">
                     Start Date & Time
                   </label>
                   <input
                     type="datetime-local"
                     value={startTime}
                     onChange={(e) => setStartTime(e.target.value)}
-                    className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-xs text-white focus:outline-hidden focus:border-emerald-200"
+                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs text-white focus:outline-hidden focus:border-emerald-200"
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">
+                  <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1">
                     End Date & Time
                   </label>
                   <input
                     type="datetime-local"
                     value={endTime}
                     onChange={(e) => setEndTime(e.target.value)}
-                    className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-xs text-white focus:outline-hidden focus:border-emerald-200"
+                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs text-white focus:outline-hidden focus:border-emerald-200"
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">
+                  <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1">
                     Location / Room
                   </label>
                   <input
@@ -391,11 +391,11 @@ export function RecordActivityTimeline({
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
                     placeholder="e.g. Conference Room A or Online"
-                    className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-xs text-white focus:outline-hidden focus:border-emerald-200"
+                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs text-white focus:outline-hidden focus:border-emerald-200"
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">
+                  <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1">
                     Meeting URL
                   </label>
                   <input
@@ -403,14 +403,14 @@ export function RecordActivityTimeline({
                     value={meetingUrl}
                     onChange={(e) => setMeetingUrl(e.target.value)}
                     placeholder="https://meet.google.com/..."
-                    className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-xs text-white focus:outline-hidden focus:border-emerald-200"
+                    className="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs text-white focus:outline-hidden focus:border-emerald-200"
                   />
                 </div>
               </>
             )}
 
             <div className="md:col-span-2">
-              <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">
+              <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1">
                 Notes & Discussion Summary
               </label>
               <textarea
@@ -418,7 +418,7 @@ export function RecordActivityTimeline({
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="Log key discussion points, outcomes, or next steps..."
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-hidden focus:border-emerald-200"
+                className="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-hidden focus:border-emerald-200"
               />
             </div>
           </div>
@@ -427,7 +427,7 @@ export function RecordActivityTimeline({
             <button
               type="button"
               onClick={() => setActiveForm(null)}
-              className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold rounded-lg transition"
+              className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg transition"
             >
               Cancel
             </button>
@@ -451,7 +451,7 @@ export function RecordActivityTimeline({
         )}
 
         {!isLoading && activities.length === 0 && (
-          <div className="p-12 text-center bg-slate-900/40 border border-slate-800 rounded-xl space-y-2">
+          <div className="p-12 text-center bg-white border border-slate-200 rounded-xl space-y-2">
             <Clock className="h-8 w-8 text-slate-600 mx-auto" />
             <h3 className="text-sm font-semibold text-slate-300">No Activities Recorded</h3>
             <p className="text-xs text-slate-500">
@@ -469,8 +469,8 @@ export function RecordActivityTimeline({
               key={act.id}
               className={`p-4 rounded-xl border transition flex items-start gap-3.5 ${
                 isDone
-                  ? 'bg-slate-950/40 border-slate-800/60 opacity-80'
-                  : 'bg-slate-900/70 border-slate-800 hover:border-slate-700'
+                  ? 'bg-slate-50 border-slate-200/60 opacity-80'
+                  : 'bg-slate-900/70 border-slate-200 hover:border-slate-700'
               }`}
             >
               {/* Checkbox for tasks, or icon for calls/meetings */}

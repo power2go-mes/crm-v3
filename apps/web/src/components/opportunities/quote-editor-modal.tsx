@@ -209,8 +209,8 @@ export function QuoteEditorModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 backdrop-blur-xs p-4 overflow-y-auto">
-      <div className="relative my-8 w-full max-w-4xl rounded-2xl bg-white p-6 shadow-xl dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-        <div className="flex items-center justify-between border-b border-slate-100 pb-4 dark:border-slate-800">
+      <div className="relative my-8 w-full max-w-4xl rounded-2xl bg-white p-6 shadow-xl dark:bg-slate-900 border border-slate-200 dark:border-slate-200">
+        <div className="flex items-center justify-between border-b border-slate-100 pb-4 dark:border-slate-200">
           <div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">
               {quote ? `Edit Quotation — ${quote.quote_number}` : 'Generate Professional Quotation'}
@@ -314,7 +314,7 @@ export function QuoteEditorModal({
                 return (
                   <div
                     key={idx}
-                    className="flex flex-wrap items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 p-2.5 dark:border-slate-800 dark:bg-slate-800/40"
+                    className="flex flex-wrap items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 p-2.5 dark:border-slate-200 dark:bg-slate-800/40"
                   >
                     <div className="flex-1 min-w-[140px]">
                       <input
@@ -396,7 +396,7 @@ export function QuoteEditorModal({
           </div>
 
           {/* Calculations Summary Box */}
-          <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-800/40">
+          <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-200 dark:bg-slate-800/40">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div className="space-y-1 text-slate-600 dark:text-slate-400">
                 <p>Items Subtotal: <span className="font-mono font-semibold text-slate-900 dark:text-white">{currency} {totals.subtotal.toFixed(2)}</span></p>
@@ -456,7 +456,7 @@ export function QuoteEditorModal({
             />
           </div>
 
-          <div className="flex justify-end gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+          <div className="flex justify-end gap-2 pt-2 border-t border-slate-100 dark:border-slate-200">
             <button
               type="button"
               onClick={onClose}

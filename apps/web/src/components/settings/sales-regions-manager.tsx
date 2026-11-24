@@ -77,7 +77,7 @@ export function SalesRegionsManager() {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-slate-900/60 border border-slate-800 rounded-xl">
+      <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-white border border-slate-200 rounded-xl">
         <div className="flex items-center gap-3">
           <div className="p-2 rounded-lg bg-emerald-600/60 text-emerald-600 border border-emerald-200">
             <MapPin className="h-5 w-5" />
@@ -105,9 +105,9 @@ export function SalesRegionsManager() {
       {isCreating && (
         <form
           onSubmit={handleCreate}
-          className="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-3"
+          className="p-4 bg-white border border-slate-200 rounded-xl space-y-3"
         >
-          <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+          <div className="flex items-center justify-between border-b border-slate-200 pb-2">
             <span className="text-xs font-bold text-white uppercase tracking-wider">New Region</span>
             <button
               type="button"
@@ -120,7 +120,7 @@ export function SalesRegionsManager() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">
+              <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1">
                 Region Name *
               </label>
               <input
@@ -129,11 +129,11 @@ export function SalesRegionsManager() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="e.g. Asia Pacific or Western Territory"
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-xs text-white focus:outline-hidden focus:border-emerald-200"
+                className="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs text-white focus:outline-hidden focus:border-emerald-200"
               />
             </div>
             <div>
-              <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">
+              <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1">
                 Region Code *
               </label>
               <input
@@ -143,7 +143,7 @@ export function SalesRegionsManager() {
                 value={code}
                 onChange={(e) => setCode(e.target.value)}
                 placeholder="e.g. APAC, NA-WEST, EMEA"
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-xs text-white uppercase focus:outline-hidden focus:border-emerald-200"
+                className="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs text-white uppercase focus:outline-hidden focus:border-emerald-200"
               />
             </div>
           </div>
@@ -170,7 +170,7 @@ export function SalesRegionsManager() {
       )}
 
       {/* Region Table / Cards */}
-      <div className="bg-slate-900/60 border border-slate-800 rounded-xl overflow-hidden shadow-sm">
+      <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
         {isLoading && (
           <div className="p-8 text-center text-xs text-slate-400 animate-pulse">
             Loading regions...

@@ -76,9 +76,9 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
   if (error || !contact) {
     return (
       <PageContainer>
-        <div className="p-12 text-center bg-slate-900/60 border border-slate-800 rounded-2xl space-y-4">
+        <div className="p-12 text-center bg-white border border-slate-200 rounded-2xl space-y-4">
           <AlertCircle className="h-10 w-10 text-red-400 mx-auto" />
-          <h2 className="text-lg font-bold text-white">Contact Not Found</h2>
+          <h2 className="text-lg font-bold text-slate-900">Contact Not Found</h2>
           <p className="text-sm text-slate-400">The requested contact record does not exist or access is restricted.</p>
           <Link
             href="/contacts"
@@ -106,7 +106,7 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
       </div>
 
       {/* Header Card */}
-      <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 shadow-sm mb-6">
+      <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm mb-6">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div className="flex items-start gap-4">
             <div className="p-3 bg-emerald-600/10 text-emerald-600 rounded-xl">
@@ -114,7 +114,7 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-2xl font-bold tracking-tight text-white">
+                <h1 className="text-2xl font-bold tracking-tight text-slate-900">
                   {contact.first_name} {contact.last_name}
                 </h1>
                 {contact.is_primary && (
@@ -191,7 +191,7 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
               <button
                 type="button"
                 onClick={handleDelete}
-                className="p-2 bg-slate-800/80 hover:bg-red-950/40 text-slate-400 hover:text-red-400 border border-slate-700 hover:border-red-500/40 rounded-lg transition"
+                className="p-2 bg-slate-800/80 hover:bg-red-950/40 text-slate-400 hover:text-red-400 border border-slate-700 hover:border-orange-200 rounded-lg transition"
                 title="Delete Contact"
               >
                 <Trash2 className="h-4 w-4" />
@@ -203,7 +203,7 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
 
       {/* Tabs */}
       <div className="space-y-6">
-        <div className="flex border-b border-slate-800 space-x-1">
+        <div className="flex border-b border-slate-200 space-x-1">
           <button
             type="button"
             onClick={() => setActiveTab('details')}
@@ -287,8 +287,8 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
 
         {/* Tab 1: Details */}
         {activeTab === 'details' && (
-          <div className="bg-slate-900/60 border border-slate-800 rounded-xl overflow-hidden shadow-sm">
-            <div className="px-5 py-3.5 bg-slate-950/70 border-b border-slate-800 text-xs font-semibold text-slate-400 uppercase tracking-wider">
+          <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+            <div className="px-5 py-3.5 bg-slate-900/40 border-b border-slate-200 text-xs font-semibold text-slate-500 uppercase tracking-wider">
               Contact Information
             </div>
             <div className="p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
@@ -387,7 +387,7 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
 
         {/* Tab 5: Account Overview */}
         {activeTab === 'account_overview' && contact.account && (
-          <div className="bg-slate-900/60 border border-slate-800 rounded-xl overflow-hidden p-6 text-sm text-slate-300 space-y-4">
+          <div className="bg-white border border-slate-200 rounded-xl overflow-hidden p-6 text-sm text-slate-300 space-y-4">
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="font-bold text-white text-base">{contact.account.name}</h3>

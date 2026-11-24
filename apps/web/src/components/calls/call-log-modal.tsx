@@ -72,22 +72,22 @@ export function CallLogModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-xs animate-fadeIn">
-      <div className="relative w-full max-w-lg bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
-        <div className="px-6 py-4 border-b border-slate-800 flex items-center justify-between bg-slate-950/60">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs animate-fadeIn">
+      <div className="relative w-full max-w-lg bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+        <div className="px-6 py-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
           <div className="flex items-center gap-2.5">
             <div className="p-2 bg-emerald-600/10 text-emerald-600 rounded-lg">
               <PhoneCall className="h-5 w-5" />
             </div>
             <div>
-              <h3 className="text-base font-bold text-white">Log Telephone Call</h3>
+              <h3 className="text-base font-bold text-slate-900">Log Telephone Call</h3>
               <p className="text-xs text-slate-400">Record customer interaction details and notes.</p>
             </div>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition"
+            className="p-1.5 text-slate-400 hover:text-slate-700 rounded-lg hover:bg-slate-100 transition"
           >
             <X className="h-5 w-5" />
           </button>
@@ -95,13 +95,13 @@ export function CallLogModal({
 
         <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto p-6 space-y-4 text-xs">
           {errorMsg && (
-            <div className="p-3 bg-red-950/50 border border-red-500/40 rounded-lg text-red-200">
+            <div className="p-3 bg-orange-50 border border-orange-200 rounded-lg text-orange-800">
               {errorMsg}
             </div>
           )}
 
           <div>
-            <label className="block font-semibold text-slate-300 uppercase tracking-wider mb-1">
+            <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
               Subject <span className="text-red-400">*</span>
             </label>
             <input
@@ -110,19 +110,19 @@ export function CallLogModal({
               value={formData.subject}
               onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
               placeholder="e.g. Discovery Call with Operations Director"
-              className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
             />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block font-semibold text-slate-300 uppercase tracking-wider mb-1">
+              <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
                 Call Direction
               </label>
               <select
                 value={formData.call_type}
                 onChange={(e) => setFormData({ ...formData, call_type: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               >
                 {CALL_TYPES.map((t) => (
                   <option key={t.value} value={t.value}>
@@ -133,13 +133,13 @@ export function CallLogModal({
             </div>
 
             <div>
-              <label className="block font-semibold text-slate-300 uppercase tracking-wider mb-1">
+              <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
                 Outcome / Status
               </label>
               <select
                 value={formData.status}
                 onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               >
                 {CALL_STATUSES.map((s) => (
                   <option key={s.value} value={s.value}>
@@ -150,7 +150,7 @@ export function CallLogModal({
             </div>
 
             <div>
-              <label className="block font-semibold text-slate-300 uppercase tracking-wider mb-1">
+              <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
                 Duration (Minutes)
               </label>
               <input
@@ -158,30 +158,30 @@ export function CallLogModal({
                 min="0"
                 value={formData.call_duration_minutes}
                 onChange={(e) => setFormData({ ...formData, call_duration_minutes: Number(e.target.value) })}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               />
             </div>
 
             <div>
-              <label className="block font-semibold text-slate-300 uppercase tracking-wider mb-1">
+              <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
                 Date & Time
               </label>
               <input
                 type="datetime-local"
                 value={formData.start_time}
                 onChange={(e) => setFormData({ ...formData, start_time: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               />
             </div>
 
             <div>
-              <label className="block font-semibold text-slate-300 uppercase tracking-wider mb-1">
+              <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
                 Caller (Logged By)
               </label>
               <select
                 value={formData.assigned_to_id}
                 onChange={(e) => setFormData({ ...formData, assigned_to_id: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               >
                 <option value="">Unassigned</option>
                 {users.map((u) => (
@@ -193,13 +193,13 @@ export function CallLogModal({
             </div>
 
             <div>
-              <label className="block font-semibold text-slate-300 uppercase tracking-wider mb-1">
+              <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
                 Related Entity Type
               </label>
               <select
                 value={formData.related_to_type}
                 onChange={(e) => setFormData({ ...formData, related_to_type: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               >
                 <option value="">None (Independent Call)</option>
                 <option value="lead">Lead</option>
@@ -211,7 +211,7 @@ export function CallLogModal({
 
             {formData.related_to_type && (
               <div className="md:col-span-2">
-                <label className="block font-semibold text-slate-300 uppercase tracking-wider mb-1">
+                <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
                   Related Entity ID
                 </label>
                 <input
@@ -219,14 +219,14 @@ export function CallLogModal({
                   value={formData.related_to_id}
                   onChange={(e) => setFormData({ ...formData, related_to_id: e.target.value })}
                   placeholder={`UUID of the related ${formData.related_to_type}`}
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 font-mono text-xs"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 font-mono text-xs"
                 />
               </div>
             )}
           </div>
 
           <div>
-            <label className="block font-semibold text-slate-300 uppercase tracking-wider mb-1">
+            <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
               Call Notes & Key Discussion Points
             </label>
             <textarea
@@ -234,16 +234,16 @@ export function CallLogModal({
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
               placeholder="Summary of conversation, objections raised, agreed next steps..."
-              className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
             />
           </div>
 
-          <div className="pt-4 border-t border-slate-800 flex items-center justify-end gap-2.5">
+          <div className="pt-4 border-t border-slate-200 flex items-center justify-end gap-2.5">
             <button
               type="button"
               onClick={onClose}
               disabled={isSubmitting}
-              className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg font-medium transition"
+              className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg font-medium transition"
             >
               Cancel
             </button>

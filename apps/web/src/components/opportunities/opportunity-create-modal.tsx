@@ -83,23 +83,23 @@ export function OpportunityCreateModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-xs animate-fadeIn">
-      <div className="relative w-full max-w-lg bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs animate-fadeIn">
+      <div className="relative w-full max-w-lg bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
         {/* Header */}
-        <div className="px-6 py-4 border-b border-slate-800 flex items-center justify-between bg-slate-950/60">
+        <div className="px-6 py-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
           <div className="flex items-center gap-2.5">
             <div className="p-2 bg-emerald-500/10 text-emerald-400 rounded-lg">
               <TrendingUp className="h-5 w-5" />
             </div>
             <div>
-              <h3 className="text-base font-bold text-white">Create New Opportunity</h3>
+              <h3 className="text-base font-bold text-slate-900">Create New Opportunity</h3>
               <p className="text-xs text-slate-400">Track deal value, stages, and forecast timelines.</p>
             </div>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition"
+            className="p-1.5 text-slate-400 hover:text-slate-700 rounded-lg hover:bg-slate-100 transition"
           >
             <X className="h-5 w-5" />
           </button>
@@ -108,14 +108,14 @@ export function OpportunityCreateModal({
         {/* Form Body */}
         <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto p-6 space-y-4 text-xs">
           {errorMsg && (
-            <div className="p-3 bg-red-950/50 border border-red-500/40 rounded-lg text-red-200">
+            <div className="p-3 bg-orange-50 border border-orange-200 rounded-lg text-orange-800">
               {errorMsg}
             </div>
           )}
 
           <div className="space-y-4">
             <div>
-              <label className="block font-semibold text-slate-300 uppercase tracking-wider mb-1">
+              <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
                 Opportunity Name <span className="text-red-400">*</span>
               </label>
               <input
@@ -124,19 +124,19 @@ export function OpportunityCreateModal({
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 placeholder="Enterprise Cloud Modernization"
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 text-sm"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 text-sm"
               />
             </div>
 
             <div>
-              <label className="block font-semibold text-slate-300 uppercase tracking-wider mb-1">
+              <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
                 Account <span className="text-red-400">*</span>
               </label>
               <select
                 required
                 value={formData.account_id}
                 onChange={(e) => setFormData({ ...formData, account_id: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               >
                 <option value="">Select an Account...</option>
                 {accounts.map((acc) => (
@@ -149,7 +149,7 @@ export function OpportunityCreateModal({
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block font-semibold text-slate-300 uppercase tracking-wider mb-1">
+                <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
                   Deal Amount ($)
                 </label>
                 <input
@@ -163,12 +163,12 @@ export function OpportunityCreateModal({
                     })
                   }
                   placeholder="250000"
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
                 />
               </div>
 
               <div>
-                <label className="block font-semibold text-slate-300 uppercase tracking-wider mb-1">
+                <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
                   Close Date <span className="text-red-400">*</span>
                 </label>
                 <input
@@ -176,20 +176,20 @@ export function OpportunityCreateModal({
                   required
                   value={formData.close_date}
                   onChange={(e) => setFormData({ ...formData, close_date: e.target.value })}
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block font-semibold text-slate-300 uppercase tracking-wider mb-1">
+                <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
                   Pipeline Stage
                 </label>
                 <select
                   value={formData.stage}
                   onChange={(e) => handleStageChange(e.target.value)}
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
                 >
                   {APPROVED_OPPORTUNITY_STAGES.map((s) => (
                     <option key={s.id} value={s.id}>
@@ -200,7 +200,7 @@ export function OpportunityCreateModal({
               </div>
 
               <div>
-                <label className="block font-semibold text-slate-300 uppercase tracking-wider mb-1">
+                <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
                   Probability (%)
                 </label>
                 <input
@@ -211,14 +211,14 @@ export function OpportunityCreateModal({
                   onChange={(e) =>
                     setFormData({ ...formData, probability: Number(e.target.value) })
                   }
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block font-semibold text-slate-300 uppercase tracking-wider mb-1">
+                <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
                   Next Step
                 </label>
                 <input
@@ -226,31 +226,31 @@ export function OpportunityCreateModal({
                   placeholder="e.g. Schedule discovery call"
                   value={formData.next_step || ''}
                   onChange={(e) => setFormData({ ...formData, next_step: e.target.value })}
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
                 />
               </div>
 
               <div>
-                <label className="block font-semibold text-slate-300 uppercase tracking-wider mb-1">
+                <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
                   Next Activity / Follow-up Date
                 </label>
                 <input
                   type="date"
                   value={formData.next_activity_date || ''}
                   onChange={(e) => setFormData({ ...formData, next_activity_date: e.target.value })}
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
                 />
               </div>
             </div>
           </div>
 
           {/* Footer */}
-          <div className="pt-4 border-t border-slate-800 flex items-center justify-end gap-2.5">
+          <div className="pt-4 border-t border-slate-200 flex items-center justify-end gap-2.5">
             <button
               type="button"
               onClick={onClose}
               disabled={isSubmitting}
-              className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg font-medium transition"
+              className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg font-medium transition"
             >
               Cancel
             </button>

@@ -75,7 +75,7 @@ export function UserProfileMenu() {
         aria-label="User profile menu"
         className="flex h-10 items-center space-x-2 pl-2 pr-3 rounded-xl border border-slate-200 hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white transition-all text-left"
       >
-        <div className="w-7 h-7 rounded-lg bg-slate-900 text-white flex items-center justify-center font-bold text-xs shrink-0">
+        <div className="w-7 h-7 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
           {initials || <User className="h-4 w-4" />}
         </div>
         <div className="hidden sm:block text-left min-w-0 max-w-[130px]">
