@@ -31,14 +31,14 @@ export function SystemAuditLogViewer() {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-white border border-slate-200 rounded-xl">
+      <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-white border border-slate-200 rounded-xl shadow-xs">
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded-lg bg-emerald-600/60 text-emerald-600 border border-emerald-200">
+          <div className="p-2.5 rounded-lg bg-emerald-50 text-emerald-600 border border-emerald-200">
             <History className="h-5 w-5" />
           </div>
           <div>
-            <h3 className="text-sm font-bold text-white">System Audit & Transaction Logs</h3>
-            <p className="text-xs text-slate-400">
+            <h3 className="text-sm font-bold text-slate-900">System Audit & Transaction Logs</h3>
+            <p className="text-xs text-slate-500">
               Complete historical record of record creations, state modifications, and deletion transactions.
             </p>
           </div>
@@ -49,7 +49,7 @@ export function SystemAuditLogViewer() {
           <select
             value={selectedModule}
             onChange={(e) => { setSelectedModule(e.target.value); setPage(1); }}
-            className="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs text-white capitalize focus:outline-hidden focus:border-emerald-200"
+            className="px-3 py-1.5 bg-white border border-slate-300 rounded-lg text-xs text-slate-900 capitalize focus:outline-hidden focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
           >
             <option value="all">All Modules</option>
             <option value="leads">Leads</option>
@@ -61,33 +61,33 @@ export function SystemAuditLogViewer() {
         </div>
       </div>
 
-      <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+      <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
         {isLoading && (
-          <div className="p-8 text-center text-xs text-slate-400 animate-pulse">
+          <div className="p-8 text-center text-xs text-slate-500 animate-pulse">
             Loading system audit trail...
           </div>
         )}
 
-        {error && <p role="alert" className="p-4 text-sm text-red-400">{error.message} <button onClick={() => void refetch()}>Retry</button></p>}
+        {error && <p role="alert" className="p-4 text-sm text-red-600">{error.message} <button onClick={() => void refetch()}>Retry</button></p>}
         {!isLoading && !error && logs.length === 0 && (
           <div className="p-8 text-center text-xs text-slate-500">
             No audit events captured yet for the selected filter.
           </div>
         )}
 
-        <div className="divide-y divide-slate-800/80">
+        <div className="divide-y divide-slate-100">
           {logs.map((log) => {
             const actionColor =
               log.action === 'create'
-                ? 'bg-emerald-950/60 text-emerald-400 border-emerald-800'
+                ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
                 : log.action === 'delete'
-                  ? 'bg-red-950/60 text-red-400 border-red-800'
-                  : 'bg-emerald-600/60 text-emerald-600 border-emerald-200';
+                  ? 'bg-red-50 text-red-700 border-red-200'
+                  : 'bg-emerald-50 text-emerald-700 border-emerald-200';
 
             return (
               <div
                 key={log.id}
-                className="p-4 flex flex-wrap items-center justify-between gap-3 hover:bg-slate-800/30 transition text-xs"
+                className="p-4 flex flex-wrap items-center justify-between gap-3 hover:bg-slate-50/80 transition text-xs"
               >
                 <div className="flex items-center gap-3">
                   <span
@@ -98,7 +98,7 @@ export function SystemAuditLogViewer() {
 
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="font-bold text-white capitalize">{log.module} Record</span>
+                      <span className="font-semibold text-slate-900 capitalize">{log.module} Record</span>
                       <span className="font-mono text-[10px] text-slate-500">ID: {log.record_id}</span>
                     </div>
                     <span className="text-[11px] text-slate-500">
@@ -107,8 +107,8 @@ export function SystemAuditLogViewer() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 text-xs text-slate-400">
-                  <Clock className="h-3.5 w-3.5 text-slate-500" />
+                <div className="flex items-center gap-2 text-xs text-slate-500">
+                  <Clock className="h-3.5 w-3.5 text-slate-400" />
                   <span>{new Date(log.occurred_at).toLocaleString()}</span>
                 </div>
               </div>

@@ -94,14 +94,14 @@ export function CustomFieldsManager() {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-white border border-slate-200 rounded-xl">
+      <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-white border border-slate-200 rounded-xl shadow-xs">
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded-lg bg-emerald-950/60 text-emerald-400 border border-emerald-800">
+          <div className="p-2.5 rounded-lg bg-emerald-50 text-emerald-600 border border-emerald-200">
             <Database className="h-5 w-5" />
           </div>
           <div>
-            <h3 className="text-sm font-bold text-white">Custom Fields & Schema Registry</h3>
-            <p className="text-xs text-slate-400">
+            <h3 className="text-sm font-bold text-slate-900">Custom Fields & Schema Registry</h3>
+            <p className="text-xs text-slate-500">
               Browse standard attributes and configure dynamic metadata fields across core CRM modules.
             </p>
           </div>
@@ -111,7 +111,7 @@ export function CustomFieldsManager() {
           <button
             type="button"
             onClick={() => { setEditingId(null); setKey(''); setLabel(''); setType('small_text'); setRequired(false); setPosition(0); setChoiceText(''); setError(''); setIsCreating(!isCreating); }}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-600 text-white rounded-lg text-xs font-semibold transition"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-semibold shadow-xs transition"
           >
             <Plus className="h-3.5 w-3.5" />
             <span>Add Custom Field</span>
@@ -129,7 +129,7 @@ export function CustomFieldsManager() {
             className={`px-3 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wider transition ${
               activeModule === m
                 ? 'bg-emerald-600 text-white shadow-xs'
-                : 'text-slate-400 hover:text-white bg-white border border-slate-200'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 bg-white border border-slate-200'
             }`}
           >
             {m === 'all' ? 'All Modules' : m}
@@ -143,14 +143,16 @@ export function CustomFieldsManager() {
             e.preventDefault();
             createMutation.mutate();
           }}
-          className="p-4 bg-white border border-slate-200 rounded-xl space-y-4"
+          className="p-5 bg-white border border-slate-200 rounded-xl shadow-xs space-y-4"
         >
           <div className="flex items-center justify-between border-b border-slate-200 pb-2">
-            <span className="text-xs font-bold text-white uppercase tracking-wider">New Custom Field</span>
+            <span className="text-xs font-bold text-slate-900 uppercase tracking-wider">
+              {editingId ? 'Edit Custom Field' : 'New Custom Field'}
+            </span>
             <button
               type="button"
               onClick={() => setIsCreating(false)}
-              className="text-xs text-slate-500 hover:text-slate-300"
+              className="text-xs text-slate-500 hover:text-slate-700"
             >
               Cancel
             </button>
@@ -158,14 +160,14 @@ export function CustomFieldsManager() {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
             <div>
-              <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1">
+              <label className="block text-[11px] font-semibold text-slate-700 uppercase tracking-wider mb-1">
                 Target Module *
               </label>
               <select
                 value={module}
                 disabled={!!editingId}
                 onChange={(e) => setModule(e.target.value)}
-                className="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-white capitalize focus:outline-hidden focus:border-emerald-200"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 capitalize focus:outline-hidden focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
               >
                 <option value="leads">Leads</option>
                 <option value="accounts">Accounts</option>
@@ -176,7 +178,7 @@ export function CustomFieldsManager() {
             </div>
 
             <div>
-              <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1">
+              <label className="block text-[11px] font-semibold text-slate-700 uppercase tracking-wider mb-1">
                 Field Label *
               </label>
               <input
@@ -190,12 +192,12 @@ export function CustomFieldsManager() {
                   }
                 }}
                 placeholder="e.g. Contract Expiration Date"
-                className="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-white focus:outline-hidden focus:border-emerald-200"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-hidden focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
               />
             </div>
 
             <div>
-              <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1">
+              <label className="block text-[11px] font-semibold text-slate-700 uppercase tracking-wider mb-1">
                 Attribute Key (System ID) *
               </label>
               <input
@@ -205,18 +207,18 @@ export function CustomFieldsManager() {
                 disabled={!!editingId}
                 onChange={(e) => setKey(e.target.value)}
                 placeholder="e.g. contract_expiration_date"
-                className="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-white font-mono focus:outline-hidden focus:border-emerald-200"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 font-mono focus:outline-hidden focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
               />
             </div>
 
             <div>
-              <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1">
+              <label className="block text-[11px] font-semibold text-slate-700 uppercase tracking-wider mb-1">
                 Data Type *
               </label>
               <select
                 value={type}
                 onChange={(e) => setType(e.target.value)}
-                className="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-white focus:outline-hidden focus:border-emerald-200"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-hidden focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
               >
                 <option value="small_text">Short Text (255 chars)</option>
                 <option value="large_text">Long Text / Paragraph</option>
@@ -234,31 +236,54 @@ export function CustomFieldsManager() {
                 id="reqCheck"
                 checked={required}
                 onChange={(e) => setRequired(e.target.checked)}
-                className="h-4 w-4 rounded border-slate-700 bg-white text-emerald-800 focus:ring-0"
+                className="h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
               />
-              <label htmlFor="reqCheck" className="text-xs text-slate-300 font-medium">
+              <label htmlFor="reqCheck" className="text-xs text-slate-700 font-medium">
                 Mandatory Field
               </label>
             </div>
           </div>
 
-          {['choice', 'single_choice'].includes(type) && <label className="block text-xs text-slate-300">Choices<textarea required value={choiceText} onChange={e => setChoiceText(e.target.value)} placeholder="Option 1, Option 2, Option 3" className="mt-1 block w-full rounded border border-slate-700 bg-white p-2 text-white" /></label>}
-          <label className="block text-xs text-slate-300">Display Order<input type="number" min={0} step={1} required value={position} onChange={e => setPosition(e.target.valueAsNumber)} className="mt-1 block rounded border border-slate-700 bg-white p-2 text-white" /></label>
+          {['choice', 'single_choice'].includes(type) && (
+            <label className="block text-xs text-slate-700 font-medium">
+              Choices
+              <textarea
+                required
+                value={choiceText}
+                onChange={(e) => setChoiceText(e.target.value)}
+                placeholder="Option 1, Option 2, Option 3"
+                className="mt-1 block w-full rounded-lg border border-slate-300 bg-white p-2.5 text-slate-900 focus:outline-hidden focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+              />
+            </label>
+          )}
 
-          {error && <p className="text-xs text-red-400">{error}</p>}
+          <label className="block text-xs text-slate-700 font-medium">
+            Display Order
+            <input
+              type="number"
+              min={0}
+              step={1}
+              required
+              value={position}
+              onChange={(e) => setPosition(e.target.valueAsNumber)}
+              className="mt-1 block w-40 rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:outline-hidden focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+            />
+          </label>
+
+          {error && <p className="text-xs text-red-600">{error}</p>}
 
           <div className="flex justify-end gap-2 pt-2">
             <button
               type="button"
               onClick={() => setIsCreating(false)}
-              className="px-3 py-1.5 bg-slate-800 text-slate-300 text-xs rounded-lg"
+              className="px-3 py-1.5 border border-slate-300 bg-white text-slate-700 text-xs font-medium rounded-lg hover:bg-slate-50 transition"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={createMutation.isPending}
-              className="px-3 py-1.5 bg-emerald-600 text-white text-xs font-semibold rounded-lg hover:bg-emerald-600 disabled:opacity-50"
+              className="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold rounded-lg shadow-xs disabled:opacity-50 transition"
             >
               {createMutation.isPending ? 'Saving...' : editingId ? 'Save' : 'Register Field'}
             </button>
@@ -270,50 +295,82 @@ export function CustomFieldsManager() {
       {notice && <p role="status" className="text-sm text-green-700">{notice}</p>}
       {loadError && <p role="alert" className="text-sm text-red-700">{loadError.message} <button onClick={() => void refetch()}>Retry</button></p>}
       {archive.error && <p role="alert" className="text-sm text-red-700">{archive.error.message}</p>}
-      <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+      <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
         {isLoading && (
-          <div className="p-8 text-center text-xs text-slate-400 animate-pulse">
+          <div className="p-8 text-center text-xs text-slate-500 animate-pulse">
             Loading field definitions...
           </div>
         )}
 
-        <div className="divide-y divide-slate-800/80">
+        <div className="divide-y divide-slate-100">
           {filteredFields.map((field) => (
             <div
               key={field.id}
-              className="p-4 flex flex-wrap items-center justify-between gap-3 hover:bg-slate-800/30 transition text-xs"
+              className="p-4 flex flex-wrap items-center justify-between gap-3 hover:bg-slate-50/80 transition text-xs"
             >
               <div className="flex items-center gap-3">
-                <span className="font-mono text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">
+                <span className="font-mono text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200">
                   {field.module}
                 </span>
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-bold text-white text-sm">{field.label}</span>
-                    <span className="font-mono text-[11px] text-slate-400">({field.key})</span>
+                    <span className="font-semibold text-slate-900 text-sm">{field.label}</span>
+                    <span className="font-mono text-[11px] text-slate-500">({field.key})</span>
                   </div>
                   <span className="text-[11px] text-slate-500">
-                    Type: <span className="text-emerald-600 font-medium">{field.type}</span> •{' '}
+                    Type: <span className="text-emerald-700 font-medium">{field.type}</span> •{' '}
                     {field.is_custom ? 'Custom Dynamic Field' : 'Core System Field'}
                   </span>
                 </div>
               </div>
 
               <div className="flex items-center gap-2">
-                {field.is_custom && hasPermission('settings.update') && <>
-                  <button type="button" aria-label={`Edit ${field.label}`} onClick={() => { setEditingId(field.id); setModule(field.module); setKey(field.key); setLabel(field.label); setType(field.type); setRequired(field.required); setChoiceText(field.choices.join(', ')); setPosition(field.position); setError(''); setIsCreating(true); }}><Pencil className="h-4 w-4" /></button>
-                  <button type="button" disabled={archive.isPending} aria-label={`Delete ${field.label}`} onClick={() => { if (window.confirm(`Delete ${field.label} from active forms? Its stored values and history will be retained.`)) archive.mutate(field.id); }}><Trash2 className="h-4 w-4" /></button>
-                </>}
+                {field.is_custom && hasPermission('settings.update') && (
+                  <div className="flex items-center gap-1 mr-2">
+                    <button
+                      type="button"
+                      aria-label={`Edit ${field.label}`}
+                      onClick={() => {
+                        setEditingId(field.id);
+                        setModule(field.module);
+                        setKey(field.key);
+                        setLabel(field.label);
+                        setType(field.type);
+                        setRequired(field.required);
+                        setChoiceText(field.choices.join(', '));
+                        setPosition(field.position);
+                        setError('');
+                        setIsCreating(true);
+                      }}
+                      className="p-1 rounded text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition"
+                    >
+                      <Pencil className="h-4 w-4" />
+                    </button>
+                    <button
+                      type="button"
+                      disabled={archive.isPending}
+                      aria-label={`Delete ${field.label}`}
+                      onClick={() => {
+                        if (window.confirm(`Delete ${field.label} from active forms? Its stored values and history will be retained.`)) {
+                          archive.mutate(field.id);
+                        }
+                      }}
+                      className="p-1 rounded text-slate-400 hover:text-red-600 hover:bg-red-50 transition"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </button>
+                  </div>
+                )}
                 {field.required && (
-                  <span className="text-[10px] font-bold uppercase px-1.5 py-0.5 rounded bg-amber-950/60 text-amber-400 border border-amber-800">
+                  <span className="text-[10px] font-bold uppercase px-1.5 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200">
                     Required
                   </span>
                 )}
                 <span
                   className={`text-[10px] font-bold uppercase px-1.5 py-0.5 rounded ${
                     field.is_custom
-                      ? 'bg-emerald-600/60 text-emerald-600 border border-emerald-200'
-                      : 'bg-slate-800 text-slate-400 border border-slate-700'
+                      ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                      : 'bg-slate-100 text-slate-600 border border-slate-200'
                   }`}
                 >
                   {field.is_custom ? 'Custom' : 'Standard'}

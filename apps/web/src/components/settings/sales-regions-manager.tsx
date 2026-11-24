@@ -77,14 +77,14 @@ export function SalesRegionsManager() {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-white border border-slate-200 rounded-xl">
+      <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-white border border-slate-200 rounded-xl shadow-xs">
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded-lg bg-emerald-600/60 text-emerald-600 border border-emerald-200">
+          <div className="p-2.5 rounded-lg bg-emerald-50 text-emerald-600 border border-emerald-200">
             <MapPin className="h-5 w-5" />
           </div>
           <div>
-            <h3 className="text-sm font-bold text-white">Sales Regions & Territories</h3>
-            <p className="text-xs text-slate-400">
+            <h3 className="text-sm font-bold text-slate-900">Sales Regions & Territories</h3>
+            <p className="text-xs text-slate-500">
               Configure geographic and functional territories for sales hierarchy assignment and routing.
             </p>
           </div>
@@ -94,7 +94,7 @@ export function SalesRegionsManager() {
           <button
             type="button"
             onClick={() => setIsCreating(!isCreating)}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-600 text-white rounded-lg text-xs font-semibold transition"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-semibold shadow-xs transition"
           >
             <Plus className="h-3.5 w-3.5" />
             <span>Add Sales Region</span>
@@ -105,14 +105,14 @@ export function SalesRegionsManager() {
       {isCreating && (
         <form
           onSubmit={handleCreate}
-          className="p-4 bg-white border border-slate-200 rounded-xl space-y-3"
+          className="p-5 bg-white border border-slate-200 rounded-xl shadow-xs space-y-3"
         >
           <div className="flex items-center justify-between border-b border-slate-200 pb-2">
-            <span className="text-xs font-bold text-white uppercase tracking-wider">New Region</span>
+            <span className="text-xs font-bold text-slate-900 uppercase tracking-wider">New Region</span>
             <button
               type="button"
               onClick={() => setIsCreating(false)}
-              className="text-xs text-slate-500 hover:text-slate-300"
+              className="text-xs text-slate-500 hover:text-slate-700"
             >
               Cancel
             </button>
@@ -120,7 +120,7 @@ export function SalesRegionsManager() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1">
+              <label className="block text-[11px] font-semibold text-slate-700 uppercase tracking-wider mb-1">
                 Region Name *
               </label>
               <input
@@ -129,11 +129,11 @@ export function SalesRegionsManager() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="e.g. Asia Pacific or Western Territory"
-                className="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs text-white focus:outline-hidden focus:border-emerald-200"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-xs text-slate-900 focus:outline-hidden focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
               />
             </div>
             <div>
-              <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1">
+              <label className="block text-[11px] font-semibold text-slate-700 uppercase tracking-wider mb-1">
                 Region Code *
               </label>
               <input
@@ -143,25 +143,25 @@ export function SalesRegionsManager() {
                 value={code}
                 onChange={(e) => setCode(e.target.value)}
                 placeholder="e.g. APAC, NA-WEST, EMEA"
-                className="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs text-white uppercase focus:outline-hidden focus:border-emerald-200"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-xs text-slate-900 uppercase focus:outline-hidden focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
               />
             </div>
           </div>
 
-          {error && <p className="text-xs text-red-400">{error}</p>}
+          {error && <p className="text-xs text-red-600">{error}</p>}
 
           <div className="flex justify-end gap-2 pt-2">
             <button
               type="button"
               onClick={() => setIsCreating(false)}
-              className="px-3 py-1.5 bg-slate-800 text-slate-300 text-xs rounded-lg"
+              className="px-3 py-1.5 border border-slate-300 bg-white text-slate-700 text-xs font-medium rounded-lg hover:bg-slate-50 transition"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={createMutation.isPending}
-              className="px-3 py-1.5 bg-emerald-600 text-white text-xs font-semibold rounded-lg hover:bg-emerald-600 disabled:opacity-50"
+              className="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold rounded-lg shadow-xs disabled:opacity-50 transition"
             >
               {createMutation.isPending ? 'Saving...' : 'Save Region'}
             </button>
@@ -170,33 +170,33 @@ export function SalesRegionsManager() {
       )}
 
       {/* Region Table / Cards */}
-      <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+      <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
         {isLoading && (
-          <div className="p-8 text-center text-xs text-slate-400 animate-pulse">
+          <div className="p-8 text-center text-xs text-slate-500 animate-pulse">
             Loading regions...
           </div>
         )}
 
-        {loadError && <p role="alert" className="p-4 text-red-400">{loadError.message} <button onClick={() => void refetch()}>Retry</button></p>}
-        {toggleMutation.error && <p role="alert" className="p-4 text-red-400">{toggleMutation.error.message}</p>}
+        {loadError && <p role="alert" className="p-4 text-red-600">{loadError.message} <button onClick={() => void refetch()}>Retry</button></p>}
+        {toggleMutation.error && <p role="alert" className="p-4 text-red-600">{toggleMutation.error.message}</p>}
         {!isLoading && !loadError && regions.length === 0 && (
           <div className="p-8 text-center text-xs text-slate-500">
             No sales regions defined yet. Click "Add Sales Region" to create the first territory.
           </div>
         )}
 
-        <div className="divide-y divide-slate-800/80">
+        <div className="divide-y divide-slate-100">
           {regions.map((reg) => (
             <div
               key={reg.id}
-              className="p-4 flex flex-wrap items-center justify-between gap-3 hover:bg-slate-800/30 transition"
+              className="p-4 flex flex-wrap items-center justify-between gap-3 hover:bg-slate-50/80 transition"
             >
               <div className="flex items-center gap-3">
-                <span className="font-mono text-xs font-bold px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
+                <span className="font-mono text-xs font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200">
                   {reg.code}
                 </span>
                 <div>
-                  <h4 className="text-sm font-semibold text-white">{reg.name}</h4>
+                  <h4 className="text-sm font-semibold text-slate-900">{reg.name}</h4>
                   <span className="text-[11px] text-slate-500">
                     Created {new Date(reg.created_at).toLocaleDateString()}
                   </span>
@@ -207,8 +207,8 @@ export function SalesRegionsManager() {
                 <span
                   className={`inline-flex items-center gap-1 text-[11px] font-bold uppercase px-2 py-0.5 rounded ${
                     reg.is_active
-                      ? 'bg-emerald-950/60 text-emerald-400 border border-emerald-800'
-                      : 'bg-slate-800 text-slate-400 border border-slate-700'
+                      ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                      : 'bg-slate-100 text-slate-600 border border-slate-200'
                   }`}
                 >
                   {reg.is_active ? <CheckCircle2 className="h-3 w-3" /> : <XCircle className="h-3 w-3" />}
@@ -219,7 +219,7 @@ export function SalesRegionsManager() {
                   <button
                     type="button"
                     onClick={() => toggleMutation.mutate({ id: reg.id, is_active: !reg.is_active })}
-                    className="text-xs text-slate-400 hover:text-white transition px-2 py-1 rounded bg-slate-800 border border-slate-700"
+                    className="text-xs text-slate-600 hover:text-slate-900 transition px-2.5 py-1 rounded-md bg-white border border-slate-300 hover:bg-slate-50"
                   >
                     {reg.is_active ? 'Deactivate' : 'Activate'}
                   </button>
