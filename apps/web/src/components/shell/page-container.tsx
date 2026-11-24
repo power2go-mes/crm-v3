@@ -14,7 +14,7 @@ export function PageContainer({
   const maxClass = maxWidth === 'full' ? 'w-full' : `max-w-${maxWidth} mx-auto`;
 
   return (
-    <div className={`w-full ${maxClass} px-4 sm:px-6 lg:px-8 py-6 ${className}`}>
+    <div className={`w-full ${maxClass} px-4 sm:px-6 lg:px-8 py-6 space-y-6 page-transition ${className}`}>
       {children}
     </div>
   );

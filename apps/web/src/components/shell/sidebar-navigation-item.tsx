@@ -27,23 +27,23 @@ export function SidebarNavigationItem({
         onClick={onNavigate}
         title={isCollapsed ? item.label : undefined}
         aria-current={isActive ? 'page' : undefined}
-        className={`w-full flex items-center space-x-2.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+        className={`w-full flex items-center space-x-2.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-150 ${
           isActive
             ? 'bg-emerald-600 text-white shadow-xs font-bold'
-            : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+            : 'text-slate-600 hover:bg-emerald-50 hover:text-emerald-900'
         } ${isCollapsed ? 'justify-center px-2' : ''}`}
       >
         <NavIcon
           name={item.iconName}
-          className={`w-3.5 h-3.5 shrink-0 ${isActive ? 'text-white' : 'text-slate-500 group-hover:text-slate-800'}`}
+          className={`w-3.5 h-3.5 shrink-0 ${isActive ? 'text-white' : 'text-slate-500 group-hover:text-emerald-700'}`}
         />
         {!isCollapsed && <span className="truncate">{item.label}</span>}
         {!isCollapsed && item.badge && (
           <span
             className={`ml-auto text-[9px] font-bold px-1.5 py-0.2 rounded ${
               isActive
-                ? 'bg-emerald-700 text-emerald-100'
-                : 'bg-slate-100 text-slate-600'
+                ? 'bg-amber-500 text-white font-extrabold shadow-2xs'
+                : 'bg-amber-100 text-amber-800'
             }`}
           >
             {item.badge}

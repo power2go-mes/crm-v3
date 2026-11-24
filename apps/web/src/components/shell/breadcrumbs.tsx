@@ -33,12 +33,12 @@ export function Breadcrumbs({ items, className = '' }: BreadcrumbsProps) {
             {item.href && !isLast ? (
               <Link
                 href={item.href}
-                className="hover:text-slate-900 font-medium transition"
+                className="hover:text-emerald-700 font-medium transition"
               >
                 {item.label}
               </Link>
             ) : (
-              <span className={`font-semibold ${isLast ? 'text-slate-900' : 'text-slate-500'}`}>
+              <span className={`font-semibold ${isLast ? 'text-slate-900 border-b-2 border-orange-500 pb-0.5' : 'text-slate-500'}`}>
                 {item.label}
               </span>
             )}

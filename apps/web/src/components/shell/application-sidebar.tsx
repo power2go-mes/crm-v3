@@ -45,9 +45,9 @@ export function ApplicationSidebar({
           <Link
             href="/"
             onClick={onNavigate}
-            className="flex items-center gap-2.5 font-bold text-slate-900 overflow-hidden"
+            className="flex items-center gap-2.5 font-bold text-slate-900 overflow-hidden group"
           >
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-emerald-600 text-white shadow-xs">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-emerald-600 text-white shadow-xs group-hover:bg-emerald-700 transition">
               <Building2 className="h-4 w-4" />
             </div>
             {!isCollapsed && (
@@ -55,7 +55,7 @@ export function ApplicationSidebar({
                 <span className="text-sm font-bold tracking-tight leading-none text-slate-900 truncate">
                   FINLONEXA
                 </span>
-                <span className="text-[9px] font-extrabold text-emerald-700 uppercase tracking-widest leading-normal">
+                <span className="text-[9px] font-extrabold text-orange-600 uppercase tracking-widest leading-normal">
                   CRM v3
                 </span>
               </div>
