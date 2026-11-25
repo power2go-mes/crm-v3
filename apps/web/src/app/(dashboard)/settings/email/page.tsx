@@ -82,6 +82,7 @@ export default function EmailSettingsPage() {
   const handleOpenTestModal = (acc: CrmEmailAccount) => {
     setTestModalAccount(acc);
     setTestRecipient(acc.email_address);
+    // If the account already has a saved app password, preload it or leave blank to use the stored one
     setTestPasswordInput(acc.encrypted_tokens?.app_password || '');
     setTestResult(null);
   };
@@ -121,6 +122,13 @@ export default function EmailSettingsPage() {
     e.preventDefault();
     if (!testModalAccount) return;
 
+    // Use password from input if entered, otherwise fallback to stored encrypted_tokens
+    const finalPassword = testPasswordInput.trim() || testModalAccount.encrypted_tokens?.app_password;
+    if (!finalPassword) {
+      setTestResult({ success: false, message: 'Please enter an App Password to test.' });
+      return;
+    }
+
     setIsSendingTest(true);
     setTestResult(null);
 
@@ -130,7 +138,7 @@ export default function EmailSettingsPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email_address: testModalAccount.email_address,
-          app_password: testPasswordInput.trim(),
+          app_password: finalPassword,
           provider: testModalAccount.provider,
           smtp_host: testModalAccount.encrypted_tokens?.smtp_host,
           smtp_port: testModalAccount.encrypted_tokens?.smtp_port,
@@ -152,7 +160,7 @@ export default function EmailSettingsPage() {
           status_message: 'Verified via live test email.',
           encrypted_tokens: {
             ...testModalAccount.encrypted_tokens,
-            app_password: testPasswordInput.trim(),
+            app_password: finalPassword,
           },
         });
       }
@@ -632,17 +640,28 @@ export default function EmailSettingsPage() {
                 </div>
 
                 <div>
-                  <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
-                    App Password / Password *
-                  </label>
+                  <div className="flex items-center justify-between mb-1">
+                    <label className="block font-semibold text-slate-700 uppercase tracking-wider">
+                      App Password / Password
+                    </label>
+                    {testModalAccount.encrypted_tokens?.app_password && (
+                      <span className="text-[10px] text-emerald-600 font-semibold flex items-center gap-1">
+                        <Check className="h-3 w-3" /> Stored Credential Ready
+                      </span>
+                    )}
+                  </div>
                   <input
                     type="password"
-                    required
                     value={testPasswordInput}
                     onChange={(e) => setTestPasswordInput(e.target.value)}
-                    placeholder="Enter your App Password to test"
+                    placeholder={testModalAccount.encrypted_tokens?.app_password ? "Using stored password (type to override)" : "Enter your App Password to test"}
                     className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
                   />
+                  <p className="mt-1 text-[11px] text-slate-500">
+                    {testModalAccount.encrypted_tokens?.app_password
+                      ? 'Your saved password is automatically used. You only need to type here if you want to test a new password.'
+                      : 'Enter your 16-character Google App Password or relay secret to test.'}
+                  </p>
                 </div>
 
                 <div>
