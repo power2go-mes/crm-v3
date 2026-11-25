@@ -13,6 +13,7 @@ export interface CrmEmailAccount {
   is_default: boolean;
   auth_status: EmailAuthStatus;
   status_message: string | null;
+  encrypted_tokens?: any;
   created_at: string;
   updated_at: string;
 }
@@ -56,21 +57,19 @@ export interface CrmEmail {
 }
 
 export const EMAIL_TEMPLATE_CATEGORIES: { id: EmailTemplateCategory; label: string }[] = [
-  { id: 'general', label: 'General Communication' },
-  { id: 'sales_pitch', label: 'Sales Pitch & Intro' },
-  { id: 'follow_up', label: 'Deal Follow-Up' },
-  { id: 'quotation', label: 'Quotation & Pricing' },
-  { id: 'meeting', label: 'Meeting Invitation' },
-  { id: 'renewal', label: 'Contract & Renewal' },
+  { id: 'general', label: 'General Announcement' },
+  { id: 'sales_pitch', label: 'Initial Sales Pitch' },
+  { id: 'follow_up', label: 'Follow Up / Inactivity' },
+  { id: 'quotation', label: 'Quotation & Proposal Delivery' },
+  { id: 'meeting', label: 'Meeting Confirmation' },
+  { id: 'renewal', label: 'Contract Renewal' },
 ];
 
 export const EMAIL_MERGE_FIELDS = [
-  { token: '{{recipient.name}}', label: 'Recipient Name' },
-  { token: '{{recipient.email}}', label: 'Recipient Email' },
-  { token: '{{account.name}}', label: 'Account Name' },
-  { token: '{{opportunity.name}}', label: 'Opportunity Name' },
-  { token: '{{opportunity.amount}}', label: 'Opportunity Amount' },
-  { token: '{{opportunity.stage}}', label: 'Opportunity Stage' },
-  { token: '{{sender.name}}', label: 'Your Name' },
-  { token: '{{sender.email}}', label: 'Your Email' },
+  { tag: '{{contact.first_name}}', description: "Recipient's First Name" },
+  { tag: '{{contact.last_name}}', description: "Recipient's Last Name" },
+  { tag: '{{contact.email}}', description: "Recipient's Email" },
+  { tag: '{{account.name}}', description: "Company / Account Name" },
+  { tag: '{{user.name}}', description: "Your Full Name" },
+  { tag: '{{user.email}}', description: "Your Email Address" },
 ];

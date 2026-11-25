@@ -23,8 +23,10 @@ import {
   ShieldCheck,
   Check,
   X,
+  Send,
+  RefreshCw,
 } from 'lucide-react';
-import { EMAIL_TEMPLATE_CATEGORIES, EMAIL_MERGE_FIELDS, type EmailTemplateCategory } from '@/types/email';
+import { EMAIL_TEMPLATE_CATEGORIES, EMAIL_MERGE_FIELDS, type EmailTemplateCategory, type CrmEmailAccount } from '@/types/email';
 
 export default function EmailSettingsPage() {
   const { hasPermission, user } = useAuth();
@@ -33,11 +35,19 @@ export default function EmailSettingsPage() {
   // Accounts state
   const { accounts, saveAccount, deleteAccount, isSaving } = useEmailAccounts();
   const [connectProvider, setConnectProvider] = useState<'google' | 'microsoft' | 'smtp' | null>(null);
+  const [editingAccountId, setEditingAccountId] = useState<string | null>(null);
   const [accountEmail, setAccountEmail] = useState('');
   const [accountDisplayName, setAccountDisplayName] = useState('');
   const [appPassword, setAppPassword] = useState('');
   const [smtpHost, setSmtpHost] = useState('smtp.gmail.com');
   const [smtpPort, setSmtpPort] = useState('587');
+
+  // Test email modal state
+  const [testModalAccount, setTestModalAccount] = useState<CrmEmailAccount | null>(null);
+  const [testRecipient, setTestRecipient] = useState('');
+  const [testPasswordInput, setTestPasswordInput] = useState('');
+  const [isSendingTest, setIsSendingTest] = useState(false);
+  const [testResult, setTestResult] = useState<{ success: boolean; message: string } | null>(null);
 
   // Templates state
   const { templates, saveTemplate, deleteTemplate, isSaving: isSavingTemplate } = useEmailTemplates();
@@ -48,6 +58,108 @@ export default function EmailSettingsPage() {
   const [templateCategory, setTemplateCategory] = useState<EmailTemplateCategory>('general');
   const [templateBody, setTemplateBody] = useState('');
   const [templateIsShared, setTemplateIsShared] = useState(true);
+
+  const handleOpenConnect = (provider: 'google' | 'microsoft' | 'smtp') => {
+    setEditingAccountId(null);
+    setConnectProvider(provider);
+    setAccountEmail('');
+    setAccountDisplayName(provider === 'google' ? 'Google Workspace Mailbox' : provider === 'microsoft' ? 'Microsoft Outlook Mailbox' : 'Corporate SMTP Relay');
+    setAppPassword('');
+    setSmtpHost(provider === 'google' ? 'smtp.gmail.com' : provider === 'microsoft' ? 'smtp.office365.com' : 'smtp.company.com');
+    setSmtpPort('587');
+  };
+
+  const handleOpenEditCredentials = (acc: CrmEmailAccount) => {
+    setEditingAccountId(acc.id);
+    setConnectProvider(acc.provider);
+    setAccountEmail(acc.email_address);
+    setAccountDisplayName(acc.display_name || '');
+    setAppPassword(acc.encrypted_tokens?.app_password || '');
+    setSmtpHost(acc.encrypted_tokens?.smtp_host || (acc.provider === 'google' ? 'smtp.gmail.com' : acc.provider === 'microsoft' ? 'smtp.office365.com' : 'smtp.company.com'));
+    setSmtpPort(acc.encrypted_tokens?.smtp_port || '587');
+  };
+
+  const handleOpenTestModal = (acc: CrmEmailAccount) => {
+    setTestModalAccount(acc);
+    setTestRecipient(acc.email_address);
+    setTestPasswordInput(acc.encrypted_tokens?.app_password || '');
+    setTestResult(null);
+  };
+
+  const handleSaveAccount = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!connectProvider || !accountEmail.trim()) return;
+
+    const isConfigured = Boolean(appPassword.trim() || connectProvider === 'smtp');
+    const authStatus = isConfigured ? 'connected' : 'unconfigured';
+    const msg = isConfigured
+      ? `Connected via ${connectProvider.toUpperCase()} Mail Protocol (Direct Credentials Active)`
+      : 'Credentials pending configuration.';
+
+    await saveAccount({
+      ...(editingAccountId ? { id: editingAccountId } : {}),
+      provider: connectProvider,
+      email_address: accountEmail.trim(),
+      display_name: accountDisplayName.trim() || null,
+      auth_status: authStatus,
+      status_message: msg,
+      encrypted_tokens: {
+        app_password: appPassword.trim(),
+        smtp_host: smtpHost.trim(),
+        smtp_port: smtpPort.trim(),
+      },
+    });
+
+    setConnectProvider(null);
+    setEditingAccountId(null);
+    setAccountEmail('');
+    setAccountDisplayName('');
+    setAppPassword('');
+  };
+
+  const handleSendTestEmail = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!testModalAccount) return;
+
+    setIsSendingTest(true);
+    setTestResult(null);
+
+    try {
+      const res = await fetch('/api/email/test', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email_address: testModalAccount.email_address,
+          app_password: testPasswordInput.trim(),
+          provider: testModalAccount.provider,
+          smtp_host: testModalAccount.encrypted_tokens?.smtp_host,
+          smtp_port: testModalAccount.encrypted_tokens?.smtp_port,
+          test_recipient: testRecipient.trim(),
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        setTestResult({ success: false, message: data.error || 'Failed to send test email.' });
+      } else {
+        setTestResult({ success: true, message: data.message || `Test email successfully sent to ${testRecipient}!` });
+        // Update account status to connected
+        await saveAccount({
+          id: testModalAccount.id,
+          auth_status: 'connected',
+          status_message: 'Verified via live test email.',
+          encrypted_tokens: {
+            ...testModalAccount.encrypted_tokens,
+            app_password: testPasswordInput.trim(),
+          },
+        });
+      }
+    } catch (err: any) {
+      setTestResult({ success: false, message: err.message || 'Network error occurred while sending test email.' });
+    } finally {
+      setIsSendingTest(false);
+    }
+  };
 
   const handleOpenCreateTemplate = () => {
     setEditingTemplateId(null);
@@ -82,31 +194,6 @@ export default function EmailSettingsPage() {
       is_shared: templateIsShared,
     });
     setIsTemplateModalOpen(false);
-  };
-
-  const handleConnectAccount = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!connectProvider || !accountEmail.trim()) return;
-
-    // Direct password / app-password configuration
-    const isConfigured = Boolean(appPassword.trim() || connectProvider === 'smtp');
-    const authStatus = isConfigured ? 'connected' : 'unconfigured';
-    const msg = isConfigured
-      ? `Connected via ${connectProvider.toUpperCase()} Mail Protocol (Direct Credentials Active)`
-      : 'Credentials pending configuration.';
-
-    await saveAccount({
-      provider: connectProvider,
-      email_address: accountEmail.trim(),
-      display_name: accountDisplayName.trim() || (connectProvider === 'google' ? 'Google Workspace' : connectProvider === 'microsoft' ? 'Microsoft Outlook' : 'Corporate SMTP'),
-      auth_status: authStatus,
-      status_message: msg,
-    });
-
-    setConnectProvider(null);
-    setAccountEmail('');
-    setAccountDisplayName('');
-    setAppPassword('');
   };
 
   return (
@@ -161,12 +248,7 @@ export default function EmailSettingsPage() {
                 </p>
                 <div className="mt-4">
                   <button
-                    onClick={() => {
-                      setConnectProvider('google');
-                      setAccountDisplayName('Google Workspace Mailbox');
-                      setSmtpHost('smtp.gmail.com');
-                      setSmtpPort('587');
-                    }}
+                    onClick={() => handleOpenConnect('google')}
                     className="w-full rounded-lg bg-emerald-600 px-3 py-2 text-xs font-semibold text-white hover:bg-emerald-700 transition"
                   >
                     Connect Google / Gmail
@@ -187,12 +269,7 @@ export default function EmailSettingsPage() {
                 </p>
                 <div className="mt-4">
                   <button
-                    onClick={() => {
-                      setConnectProvider('microsoft');
-                      setAccountDisplayName('Microsoft Outlook Mailbox');
-                      setSmtpHost('smtp.office365.com');
-                      setSmtpPort('587');
-                    }}
+                    onClick={() => handleOpenConnect('microsoft')}
                     className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-xs font-semibold text-slate-800 hover:bg-slate-50 transition"
                   >
                     Connect Outlook / 365
@@ -213,12 +290,7 @@ export default function EmailSettingsPage() {
                 </p>
                 <div className="mt-4">
                   <button
-                    onClick={() => {
-                      setConnectProvider('smtp');
-                      setAccountDisplayName('Corporate SMTP Relay');
-                      setSmtpHost('smtp.company.com');
-                      setSmtpPort('587');
-                    }}
+                    onClick={() => handleOpenConnect('smtp')}
                     className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-xs font-semibold text-slate-800 hover:bg-slate-50 transition"
                   >
                     Configure Custom SMTP
@@ -242,7 +314,7 @@ export default function EmailSettingsPage() {
               ) : (
                 <div className="divide-y divide-slate-100">
                   {accounts.map((acc) => (
-                    <div key={acc.id} className="flex items-center justify-between p-4">
+                    <div key={acc.id} className="flex flex-wrap items-center justify-between gap-4 p-4">
                       <div className="flex items-center gap-3">
                         <div className="rounded-xl bg-emerald-50 p-2.5 text-emerald-700 border border-emerald-200">
                           <Mail className="h-4 w-4" />
@@ -262,7 +334,7 @@ export default function EmailSettingsPage() {
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-4">
+                      <div className="flex items-center gap-2.5 flex-wrap">
                         <span
                           className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[10px] font-semibold border ${
                             acc.auth_status === 'connected'
@@ -278,9 +350,32 @@ export default function EmailSettingsPage() {
                           {acc.auth_status === 'connected' ? 'Active / Connected' : 'Credentials Required'}
                         </span>
 
+                        {/* Send Test Email Button */}
+                        <button
+                          type="button"
+                          onClick={() => handleOpenTestModal(acc)}
+                          className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-lg transition"
+                          title="Send a real test email to verify credentials"
+                        >
+                          <Send className="h-3.5 w-3.5" />
+                          <span>Send Test Email</span>
+                        </button>
+
+                        {/* Update Credentials Button */}
+                        <button
+                          type="button"
+                          onClick={() => handleOpenEditCredentials(acc)}
+                          className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-lg transition"
+                          title="Update email address or app password"
+                        >
+                          <KeyRound className="h-3.5 w-3.5" />
+                          <span>Update Credentials</span>
+                        </button>
+
                         <button
                           onClick={() => deleteAccount(acc.id)}
                           className="rounded-lg p-1.5 text-slate-400 hover:bg-red-50 hover:text-red-600 transition"
+                          title="Delete mailbox connection"
                         >
                           <Trash2 className="h-4 w-4" />
                         </button>
@@ -355,7 +450,7 @@ export default function EmailSettingsPage() {
           </div>
         )}
 
-        {/* Modal for Connecting Mailbox with Email & App Password */}
+        {/* Modal for Connecting or Updating Mailbox with Email & App Password */}
         {connectProvider && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/20 backdrop-blur-xs animate-fadeIn">
             <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl border border-slate-200">
@@ -366,21 +461,24 @@ export default function EmailSettingsPage() {
                   </div>
                   <div>
                     <h3 className="text-base font-bold text-slate-900">
-                      Connect {connectProvider === 'google' ? 'Google Workspace / Gmail' : connectProvider === 'microsoft' ? 'Microsoft Outlook' : 'Corporate SMTP'}
+                      {editingAccountId ? 'Update Mailbox Credentials' : `Connect ${connectProvider === 'google' ? 'Google Workspace / Gmail' : connectProvider === 'microsoft' ? 'Microsoft Outlook' : 'Corporate SMTP'}`}
                     </h3>
                     <p className="text-xs text-slate-500">Configure your direct email ID and app password</p>
                   </div>
                 </div>
                 <button
                   type="button"
-                  onClick={() => setConnectProvider(null)}
+                  onClick={() => {
+                    setConnectProvider(null);
+                    setEditingAccountId(null);
+                  }}
                   className="p-1.5 text-slate-400 hover:text-slate-700 rounded-lg hover:bg-slate-100 transition"
                 >
                   <X className="h-5 w-5" />
                 </button>
               </div>
 
-              <form onSubmit={handleConnectAccount} className="mt-4 space-y-3.5 text-xs">
+              <form onSubmit={handleSaveAccount} className="mt-4 space-y-3.5 text-xs">
                 <div>
                   <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
                     Email Address *
@@ -455,7 +553,10 @@ export default function EmailSettingsPage() {
                 <div className="pt-3 border-t border-slate-100 flex items-center justify-end gap-2.5">
                   <button
                     type="button"
-                    onClick={() => setConnectProvider(null)}
+                    onClick={() => {
+                      setConnectProvider(null);
+                      setEditingAccountId(null);
+                    }}
                     className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg font-medium transition"
                   >
                     Cancel
@@ -465,7 +566,124 @@ export default function EmailSettingsPage() {
                     disabled={isSaving}
                     className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-semibold shadow-xs transition"
                   >
-                    {isSaving ? 'Connecting...' : 'Connect Mailbox'}
+                    {isSaving ? 'Saving...' : editingAccountId ? 'Update Credentials' : 'Connect Mailbox'}
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
+
+        {/* Modal for Sending Real Test Email */}
+        {testModalAccount && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/20 backdrop-blur-xs animate-fadeIn">
+            <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl border border-slate-200">
+              <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                <div className="flex items-center gap-2.5">
+                  <div className="p-2 bg-emerald-50 text-emerald-600 rounded-lg border border-emerald-200">
+                    <Send className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-slate-900">
+                      Send Test Email
+                    </h3>
+                    <p className="text-xs text-slate-500">Verify SMTP delivery & app password credentials</p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setTestModalAccount(null)}
+                  className="p-1.5 text-slate-400 hover:text-slate-700 rounded-lg hover:bg-slate-100 transition"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+
+              <form onSubmit={handleSendTestEmail} className="mt-4 space-y-3.5 text-xs">
+                {testResult && (
+                  <div
+                    className={`p-3 rounded-lg border flex items-start gap-2 ${
+                      testResult.success
+                        ? 'bg-emerald-50 border-emerald-200 text-emerald-800'
+                        : 'bg-red-50 border-red-200 text-red-800'
+                    }`}
+                  >
+                    {testResult.success ? (
+                      <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
+                    ) : (
+                      <AlertTriangle className="h-4 w-4 text-red-600 shrink-0 mt-0.5" />
+                    )}
+                    <span className="text-xs font-medium leading-relaxed">{testResult.message}</span>
+                  </div>
+                )}
+
+                <div>
+                  <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
+                    Sending Mailbox (From)
+                  </label>
+                  <input
+                    type="text"
+                    disabled
+                    value={testModalAccount.email_address}
+                    className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-700 cursor-not-allowed"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
+                    App Password / Password *
+                  </label>
+                  <input
+                    type="password"
+                    required
+                    value={testPasswordInput}
+                    onChange={(e) => setTestPasswordInput(e.target.value)}
+                    placeholder="Enter your App Password to test"
+                    className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-semibold text-slate-700 uppercase tracking-wider mb-1">
+                    Recipient Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    value={testRecipient}
+                    onChange={(e) => setTestRecipient(e.target.value)}
+                    placeholder="e.g. yourpersonal@gmail.com"
+                    className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                  />
+                  <p className="mt-1 text-[11px] text-slate-500">
+                    A verification email will be dispatched to this address.
+                  </p>
+                </div>
+
+                <div className="pt-3 border-t border-slate-100 flex items-center justify-end gap-2.5">
+                  <button
+                    type="button"
+                    onClick={() => setTestModalAccount(null)}
+                    className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg font-medium transition"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={isSendingTest}
+                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-semibold shadow-xs transition disabled:opacity-50"
+                  >
+                    {isSendingTest ? (
+                      <>
+                        <RefreshCw className="h-3.5 w-3.5 animate-spin" />
+                        <span>Sending Test...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send className="h-3.5 w-3.5" />
+                        <span>Dispatch Test Email</span>
+                      </>
+                    )}
                   </button>
                 </div>
               </form>
