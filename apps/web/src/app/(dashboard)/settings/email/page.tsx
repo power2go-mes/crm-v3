@@ -146,6 +146,8 @@ export default function EmailSettingsPage() {
         // Update account status to connected
         await saveAccount({
           id: testModalAccount.id,
+          provider: testModalAccount.provider,
+          email_address: testModalAccount.email_address,
           auth_status: 'connected',
           status_message: 'Verified via live test email.',
           encrypted_tokens: {

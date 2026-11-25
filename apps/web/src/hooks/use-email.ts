@@ -26,18 +26,36 @@ export function useEmailAccounts() {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) throw new Error('Authentication required');
 
-      const toInsert = {
-        ...payload,
-        user_id: user.id,
-        auth_status: payload.auth_status || 'unconfigured',
-        updated_at: new Date().toISOString(),
-      };
-
-      const { data, error } = await supabase
-        .from('crm_email_accounts')
-        .upsert(toInsert)
-        .select()
-        .single();
+      let data, error;
+      if (payload.id) {
+        // Partial update for existing account
+        const res = await supabase
+          .from('crm_email_accounts')
+          .update({
+            ...payload,
+            updated_at: new Date().toISOString(),
+          })
+          .eq('id', payload.id)
+          .select()
+          .single();
+        data = res.data;
+        error = res.error;
+      } else {
+        // Insert new account
+        const toInsert = {
+          ...payload,
+          user_id: user.id,
+          auth_status: payload.auth_status || 'unconfigured',
+          updated_at: new Date().toISOString(),
+        };
+        const res = await supabase
+          .from('crm_email_accounts')
+          .insert(toInsert)
+          .select()
+          .single();
+        data = res.data;
+        error = res.error;
+      }
 
       if (error) throw error;
       return data;
