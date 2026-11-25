@@ -13,6 +13,15 @@ export async function OPTIONS() {
 
 export async function POST(req: NextRequest) {
   try {
+    // Enforce payload size limit (max 64KB)
+    const rawText = await req.clone().text().catch(() => '');
+    if (rawText.length > 65536) {
+      return NextResponse.json(
+        { success: false, error: 'Request payload exceeds maximum allowed size' },
+        { status: 413, headers: corsHeaders }
+      );
+    }
+
     const contentType = req.headers.get('content-type') || '';
     let formId: string | null = null;
     let payload: Record<string, any> = {};
@@ -77,13 +86,12 @@ export async function POST(req: NextRequest) {
       return NextResponse.redirect(result.return_url, 303);
     }
 
+    // Generic response: do not disclose CRM internal record IDs or duplicate status
     return NextResponse.json(
       {
         success: true,
         message: result?.message || 'Thank you for your submission!',
         description: result?.description || '',
-        lead_id: result?.lead_id,
-        duplicate_prevented: result?.duplicate_prevented,
       },
       { status: 200, headers: corsHeaders }
     );

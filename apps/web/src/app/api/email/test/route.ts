@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 import nodemailer from 'nodemailer';
 import { createClient } from '@/lib/supabase/server';
 
@@ -14,50 +15,32 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Authentication required' }, { status: 401 });
     }
 
-    const body = await req.json();
-    const { email_address, app_password, provider, smtp_host, smtp_port, test_recipient } = body;
-
-    if (!email_address || !app_password) {
-      return NextResponse.json(
-        { error: 'Email address and app password/password are required' },
-        { status: 400 }
-      );
+    const schema = z.object({
+      email_address: z.string().trim().max(254).email(),
+      app_password: z.string().min(1).max(1024),
+      provider: z.enum(['google', 'microsoft', 'custom']).optional(),
+      smtp_host: z.string().trim().toLowerCase().max(253).regex(/^(?:[a-z0-9-]+\.)+[a-z][a-z0-9-]*$/).optional(),
+      smtp_port: z.union([z.number().int(), z.string().regex(/^\d{1,5}$/)]).transform(Number)
+        .pipe(z.number().int().min(1).max(65535)).optional(),
+      test_recipient: z.string().trim().max(254).email().optional(),
+    });
+    const parsed = schema.safeParse(await req.json().catch(() => null));
+    if (!parsed.success) return NextResponse.json({ error: 'Invalid SMTP settings' }, { status: 400 });
+    const { email_address, app_password, provider, smtp_host, smtp_port, test_recipient } = parsed.data;
+    const recipient = test_recipient ?? email_address;
+    const host = smtp_host ?? (provider === 'microsoft' ? 'smtp.office365.com' : 'smtp.gmail.com');
+    const port = smtp_port ?? 587;
+    const customHosts = (process.env.SMTP_TEST_ALLOWED_HOSTS ?? '').split(',').map(value => value.trim().toLowerCase());
+    if (!['smtp.gmail.com', 'smtp.office365.com', ...customHosts].includes(host)) {
+      return NextResponse.json({ error: 'SMTP host is not permitted' }, { status: 400 });
     }
 
-    const recipient = test_recipient?.trim() || email_address.trim();
-
-    // Determine host & port
-    let host = smtp_host?.trim();
-    let port = parseInt(smtp_port, 10) || 587;
-    let secure = port === 465;
-
-    if (!host) {
-      if (provider === 'google') {
-        host = 'smtp.gmail.com';
-        port = 587;
-        secure = false;
-      } else if (provider === 'microsoft') {
-        host = 'smtp.office365.com';
-        port = 587;
-        secure = false;
-      } else {
-        host = 'smtp.gmail.com';
-      }
-    }
-
-    // Configure nodemailer transporter
-    const cleanPassword = app_password.replace(/\s+/g, '');
     const transporter = nodemailer.createTransport({
       host,
       port,
-      secure,
-      auth: {
-        user: email_address.trim(),
-        pass: cleanPassword,
-      },
-      tls: {
-        rejectUnauthorized: false,
-      },
+      secure: port === 465,
+      requireTLS: port !== 465,
+      auth: { user: email_address, pass: app_password },
     });
 
     // Verify SMTP connection credentials
@@ -77,7 +60,7 @@ export async function POST(req: NextRequest) {
           </div>
           <h2 style="color: #0f172a; margin-top: 0;">Email Connection Test Passed!</h2>
           <p style="color: #475569; font-size: 14px; line-height: 1.5;">
-            This test email confirms that your mailbox <strong>${email_address.trim()}</strong> is successfully configured with your App Password.
+            This test email confirms that your mailbox <strong>your configured mailbox</strong> is successfully configured with your App Password.
           </p>
           <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 14px; border-radius: 8px; margin: 20px 0;">
             <p style="margin: 0; color: #166534; font-size: 13px; font-weight: bold;">
@@ -100,13 +83,7 @@ export async function POST(req: NextRequest) {
       recipient,
       message: `Test email successfully sent to ${recipient}!`,
     });
-  } catch (err: any) {
-    console.error('Test email failure:', err);
-    return NextResponse.json(
-      {
-        error: err.message || 'Failed to send test email. Check email ID, host, and app password.',
-      },
-      { status: 500 }
-    );
+  } catch {
+    return NextResponse.json({ error: 'SMTP connection or delivery failed' }, { status: 502 });
   }
 }

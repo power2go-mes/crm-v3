@@ -61,11 +61,11 @@ function createMcpServerInstance(userCtx: AuthenticatedUserContext): Server {
       const result = await tool.handler(args || {}, userCtx);
 
       // 4. Safe audit log
-      await recordAudit(userCtx, {
-        toolName: name,
-        arguments: args || {},
-        status: 'SUCCESS',
-      });
+      try {
+        await recordAudit(userCtx, { toolName: name, arguments: {}, status: 'SUCCESS' });
+      } catch {
+        throw new Error('Tool ran but its audit could not be saved. Verify its effects before retrying.');
+      }
 
       return {
         content: [
@@ -81,8 +81,7 @@ function createMcpServerInstance(userCtx: AuthenticatedUserContext): Server {
         toolName: name,
         arguments: args || {},
         status: 'DENIED',
-        errorMessage: err.message,
-      });
+      }).catch(() => undefined);
 
       return {
         isError: true,

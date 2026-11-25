@@ -94,8 +94,7 @@ export default function RecycleBinPage() {
     mutationFn: async (id: string) => {
       const { error } = await supabase.rpc('restore_recycle_bin_item', { p_recycle_id: id });
       if (error) {
-        // Fallback: delete row if RPC handles internal restore or fallback
-        await supabase.from('crm_recycle_bin').delete().eq('id', id);
+        throw error;
       }
     },
     onSuccess: () => {

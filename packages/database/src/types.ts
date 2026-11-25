@@ -359,6 +359,48 @@ export interface Database {
         Update: { title?: string; body?: string };
         Relationships: [];
       };
+      crm_calendar_connections: {
+        Row: {
+          id: string;
+          user_id: string;
+          provider: string;
+          calendar_id: string | null;
+          calendar_name: string | null;
+          sync_status: string;
+          sync_direction: string;
+          last_synced_at: string | null;
+          error_message: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          provider: string;
+          calendar_id?: string | null;
+          calendar_name?: string | null;
+          sync_status?: string;
+          sync_direction?: string;
+          last_synced_at?: string | null;
+          error_message?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          provider?: string;
+          calendar_id?: string | null;
+          calendar_name?: string | null;
+          sync_status?: string;
+          sync_direction?: string;
+          last_synced_at?: string | null;
+          error_message?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
       leads: {
         Row: {
           id: string;

@@ -491,7 +491,7 @@ export const crmTools: ToolDefinition[] = [
       requirePermission(ctx, permKey);
 
       // Validates token ownership, expiration, and single-use
-      consumeConfirmationToken(ctx.userId, args.confirmationToken, 'delete_record');
+      consumeConfirmationToken(ctx.userId, args.confirmationToken, 'delete_record', { entityType: args.entityType, recordId: args.recordId });
 
       const tableName = `${args.entityType}s`;
       const { error } = await ctx.supabase.from(tableName).delete().eq('id', args.recordId);

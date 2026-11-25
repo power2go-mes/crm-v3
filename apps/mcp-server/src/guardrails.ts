@@ -1,3 +1,4 @@
+import { randomUUID } from 'node:crypto';
 import { AuthenticatedUserContext } from './auth.js';
 
 export interface AuditLogEntry {
@@ -53,19 +54,15 @@ export async function recordAudit(ctx: AuthenticatedUserContext, entry: Omit<Aud
     action: `MCP_TOOL:${entry.toolName}`,
     entity_name: 'MCP_SERVER',
     status: entry.status,
-    details: {
-      ...entry.arguments,
-      error: entry.errorMessage,
-      user_role: ctx.primaryRole,
-    },
+    details: { user_role: ctx.primaryRole },
   };
 
-  // We write via user's delegated client so user actions are attributable
   try {
-    await ctx.supabase.from('audit_logs').insert([auditData]);
-  } catch (err) {
-    // Audit write should not crash caller if audit table doesn't have exact schema, log locally
-    console.error('[MCP AUDIT LOG]', JSON.stringify(auditData));
+    const { error } = await ctx.supabase.from('audit_logs').insert([auditData]);
+    if (error) throw error;
+  } catch {
+    console.error('[MCP] Audit persistence failed');
+    throw new Error('MCP audit persistence failed');
   }
 }
 
@@ -73,9 +70,6 @@ export async function recordAudit(ctx: AuthenticatedUserContext, entry: Omit<Aud
  * Checks if the caller has a required permission
  */
 export function requirePermission(ctx: AuthenticatedUserContext, permission: string): void {
-  if (ctx.roles.includes('SUPER_ADMIN')) {
-    return; // Super admin possesses baseline authorizations but still subject to safety rules
-  }
   if (!ctx.permissions.includes(permission)) {
     throw new Error(`Access Denied: Missing "${permission}" permission. Current permissions do not permit this operation.`);
   }
@@ -85,7 +79,7 @@ export function requirePermission(ctx: AuthenticatedUserContext, permission: str
  * Generates a two-step confirmation token for destructive operations
  */
 export function createPendingConfirmation(userId: string, actionName: string, details: Record<string, unknown>): string {
-  const token = `CONFIRM_${Date.now()}_${Math.random().toString(36).substring(2, 9).toUpperCase()}`;
+  const token = randomUUID();
   pendingConfirmations.set(token, {
     confirmationToken: token,
     userId,
@@ -100,7 +94,7 @@ export function createPendingConfirmation(userId: string, actionName: string, de
 /**
  * Validates and consumes a confirmation token
  */
-export function consumeConfirmationToken(userId: string, token: string, actionName: string): boolean {
+export function consumeConfirmationToken(userId: string, token: string, actionName: string, target: { entityType: string; recordId: string }): boolean {
   const pending = pendingConfirmations.get(token);
   if (!pending) {
     throw new Error('Invalid or expired confirmation token. Please re-initiate the action.');
@@ -117,6 +111,10 @@ export function consumeConfirmationToken(userId: string, token: string, actionNa
   if (Date.now() > pending.expiresAt) {
     pendingConfirmations.delete(token);
     throw new Error('Confirmation token has expired. High-impact operations must be confirmed within 5 minutes.');
+  }
+
+  if (pending.details.entityType !== target.entityType || pending.details.recordId !== target.recordId) {
+    throw new Error('Confirmation token does not match this record.');
   }
 
   // Single-use token

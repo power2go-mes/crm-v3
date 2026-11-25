@@ -7,7 +7,12 @@ dotenv.config();
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://bpwdxslrkgmcoewkwufu.supabase.co';
 const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'sb_publishable_V1mUPdapSkd8PUJKe8ajZA_wvPz65q6';
-const MCP_JWT_SECRET = process.env.MCP_JWT_SECRET || 'finlonexa-mcp-enterprise-signing-secret-2026';
+function getMcpJwtSecret(): string {
+  const secret = process.env.MCP_JWT_SECRET?.trim();
+  if (!secret) throw new Error('MCP_JWT_SECRET is required for MCP session tokens');
+  return secret;
+}
+if (process.env.NODE_ENV === 'production') getMcpJwtSecret();
 
 export interface AuthenticatedUserContext {
   userId: string;
@@ -56,7 +61,7 @@ export async function authenticateMcpRequest(authHeader?: string): Promise<Authe
 
   if (authError || !user) {
     try {
-      const decoded = jwt.verify(token, MCP_JWT_SECRET, { audience: 'finlonexa-crm-mcp' }) as any;
+      const decoded = jwt.verify(token, getMcpJwtSecret(), { audience: 'finlonexa-crm-mcp' }) as any;
       if (decoded && decoded.sub && decoded.supabase_token) {
         return authenticateMcpRequest(`Bearer ${decoded.supabase_token}`);
       }
@@ -86,27 +91,7 @@ export async function authenticateMcpRequest(authHeader?: string): Promise<Authe
 
   const assignedRoles = (userRoles || []).map((r: any) => r.role_id).filter(Boolean);
 
-  // Fallback: If test user email corresponds to canonical role, include it
-  if (user.email) {
-    const emailPrefix = user.email.split('@')[0].toLowerCase();
-    if (emailPrefix.includes('superadmin') && !assignedRoles.includes('SUPER_ADMIN')) {
-      assignedRoles.push('SUPER_ADMIN');
-    } else if (emailPrefix.includes('headofsales') && !assignedRoles.includes('HEAD_OF_SALES')) {
-      assignedRoles.push('HEAD_OF_SALES');
-    } else if (emailPrefix.includes('rsm') && !assignedRoles.includes('RSM')) {
-      assignedRoles.push('RSM');
-    } else if (emailPrefix.includes('ssm') && !assignedRoles.includes('SSM')) {
-      assignedRoles.push('SSM');
-    } else if (emailPrefix.includes('asm') && !assignedRoles.includes('ASM')) {
-      assignedRoles.push('ASM');
-    } else if (emailPrefix.includes('bdo') && !assignedRoles.includes('BDO')) {
-      assignedRoles.push('BDO');
-    }
-  }
-
-  if (assignedRoles.length === 0) {
-    assignedRoles.push('BDO');
-  }
+  if (!assignedRoles.length) throw new Error('No CRM role is assigned');
 
   // Fetch dynamic permissions from role_permissions (columns: role_id, permission_id, is_granted)
   const { data: permissionsData } = await delegatedClient
@@ -117,40 +102,6 @@ export async function authenticateMcpRequest(authHeader?: string): Promise<Authe
 
   const effectivePermissions = new Set((permissionsData || []).map((p: any) => p.permission_id));
 
-  // Canonical base permissions baseline
-  if (assignedRoles.includes('SUPER_ADMIN')) {
-    effectivePermissions.add('roles.manage');
-    effectivePermissions.add('users.manage');
-    effectivePermissions.add('system.admin');
-    effectivePermissions.add('audit.view');
-    effectivePermissions.add('leads.view');
-    effectivePermissions.add('leads.create');
-    effectivePermissions.add('leads.update');
-    effectivePermissions.add('leads.delete');
-    effectivePermissions.add('leads.assign');
-    effectivePermissions.add('accounts.view');
-    effectivePermissions.add('contacts.view');
-    effectivePermissions.add('opportunities.view');
-    effectivePermissions.add('opportunities.create');
-  } else if (assignedRoles.includes('HEAD_OF_SALES') || assignedRoles.includes('RSM') || assignedRoles.includes('SSM') || assignedRoles.includes('ASM')) {
-    effectivePermissions.add('leads.view');
-    effectivePermissions.add('leads.create');
-    effectivePermissions.add('leads.update');
-    effectivePermissions.add('leads.assign');
-    effectivePermissions.add('accounts.view');
-    effectivePermissions.add('contacts.view');
-    effectivePermissions.add('opportunities.view');
-    effectivePermissions.add('opportunities.create');
-  } else if (assignedRoles.includes('BDO')) {
-    effectivePermissions.add('leads.view');
-    effectivePermissions.add('leads.create');
-    effectivePermissions.add('leads.update');
-    effectivePermissions.add('accounts.view');
-    effectivePermissions.add('contacts.view');
-    effectivePermissions.add('opportunities.view');
-    effectivePermissions.add('opportunities.create');
-  }
-
   const fullName = profile ? `${profile.first_name || ''} ${profile.last_name || ''}`.trim() : (user.email || 'CRM User');
 
   return {
@@ -158,7 +109,7 @@ export async function authenticateMcpRequest(authHeader?: string): Promise<Authe
     email: user.email || '',
     fullName: fullName || user.email || 'CRM User',
     roles: assignedRoles,
-    primaryRole: assignedRoles[0] || 'BDO',
+    primaryRole: assignedRoles[0],
     managerId: null,
     permissions: Array.from(effectivePermissions),
     supabase: delegatedClient,
@@ -175,7 +126,7 @@ export function mintMcpSessionToken(userId: string, email: string, supabaseToken
       email,
       supabase_token: supabaseToken,
     },
-    MCP_JWT_SECRET,
+    getMcpJwtSecret(),
     {
       audience: 'finlonexa-crm-mcp',
       issuer: 'https://finlonexa-crm.internal/auth',
