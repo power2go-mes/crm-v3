@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '@/components/providers/auth-provider';
-import { ChevronDown, ChevronUp, LogOut, Shield, User } from 'lucide-react';
+import { ChevronDown, ChevronUp, LogOut, Shield, User, Bot } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
@@ -120,6 +120,7 @@ export function UserProfileMenu() {
           </div>
 
           <div className="p-1.5">
+            <Link href="/my-settings/mcp" onClick={() => setIsOpen(false)} className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 transition"><Bot className="h-4 w-4 text-emerald-600" />AI & MCP Agent Access</Link>
             <Link href="/my-settings/password" onClick={() => setIsOpen(false)} className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-50"><User className="h-4 w-4" />Password Management</Link>
             {(hasPermission('login_history.view_own') || hasPermission('login_history.view_team')) && <Link href="/my-settings/login-history" onClick={() => setIsOpen(false)} className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-50">My Login History</Link>}
             <button
