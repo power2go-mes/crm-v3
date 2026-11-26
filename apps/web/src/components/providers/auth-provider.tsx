@@ -50,20 +50,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const nextIdentity = currentUser?.id ?? null;
     const isIdentityChange = identity.current !== nextIdentity || forceReset;
 
-    if (isIdentityChange) {
-      if (identity.current !== nextIdentity) {
-        queryClient.clear();
-        identity.current = nextIdentity;
-      }
-      setUser(currentUser);
-      setProfile(null);
-      setRoles([]);
-      setPermissions([]);
-      setIsLoading(Boolean(currentUser));
-    } else {
-      setUser(currentUser);
-    }
-
     if (!currentUser) {
       identity.current = null;
       setUser(null);
@@ -72,6 +58,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setPermissions([]);
       setIsLoading(false);
       return;
+    }
+
+    if (isIdentityChange) {
+      if (identity.current !== nextIdentity) {
+        queryClient.clear();
+        identity.current = nextIdentity;
+      }
+      setUser(currentUser);
+      setIsLoading(true);
+    } else {
+      setUser(currentUser);
     }
 
     try {
@@ -114,25 +111,24 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [supabase, queryClient]);
 
   useEffect(() => {
-    // Initial user fetch
-    supabase.auth.getUser().then(({ data: { user: currentUser } }) => {
-      fetchUserData(currentUser);
-    });
+    let isMounted = true;
 
     // Listen for auth state changes
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((event, session) => {
+      if (!isMounted) return;
       if (event === 'TOKEN_REFRESHED') {
         if (session?.user) {
           setUser(session.user);
         }
         return;
       }
-      setTimeout(() => { void fetchUserData(session?.user ?? null); }, 0);
+      void fetchUserData(session?.user ?? null);
     });
 
     return () => {
+      isMounted = false;
       subscription.unsubscribe();
     };
   }, [supabase, fetchUserData]);
