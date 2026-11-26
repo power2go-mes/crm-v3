@@ -71,7 +71,7 @@ export default function LeadsPage() {
   const [exportOpen, setExportOpen] = useState(false);
   const [actionError, setActionError] = useState('');
   // State for layout & search & filter
-  const [viewMode, setViewMode] = useState<ViewMode>('table');
+  const [viewMode, setViewMode] = useState<ViewMode>('kanban');
   const [chartSelection, setChartSelection] = useState<LeadChartSelection>({group:'status',value:'count',kind:'column'});
   const [searchTerm, setSearchTerm] = useState('');
   const [viewType, setViewType] = useState('all');

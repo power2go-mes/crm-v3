@@ -10,6 +10,8 @@ import { DataGrid, type ColumnDef } from '@/components/ui/data-grid/data-grid';
 import { ContactCreateModal } from '@/components/contacts/contact-create-modal';
 import { ContactEditModal } from '@/components/contacts/contact-edit-modal';
 import { ContactFilterPanel } from '@/components/contacts/contact-filter-panel';
+import { ContactKanbanBoard } from '@/components/contacts/contact-kanban-board';
+import type { ViewMode } from '@/types/leads';
 import {
   useContacts,
   useCreateContactMutation,
@@ -40,6 +42,7 @@ const defaultFilters: ContactFilterState = {
 };
 
 export default function ContactsPage() {
+  const [viewMode, setViewMode] = useState<ViewMode>('kanban');
   const [searchTerm, setSearchTerm] = useState('');
   const [viewType, setViewType] = useState('all');
   const [page, setPage] = useState(1);
@@ -292,7 +295,7 @@ export default function ContactsPage() {
   ];
 
   return (
-    <PageContainer>
+    <PageContainer maxWidth="full">
       <PermissionGate action="contacts.view" showAccessDenied>
         <div className="space-y-4">
           <ListToolbar
@@ -304,8 +307,8 @@ export default function ContactsPage() {
               setSelectedIds([]);
               setPage(1);
             }}
-            viewMode="table"
-            onViewModeChange={() => {}}
+            viewMode={viewMode}
+            onViewModeChange={setViewMode}
             searchValue={searchTerm}
             onSearchChange={(val) => {
               setSearchTerm(val);
@@ -329,29 +332,39 @@ export default function ContactsPage() {
             onExportSelected={handleExportSelected}
           />
 
-          <DataGrid
-            columns={columns}
-            data={contacts}
-            keyExtractor={(c) => c.id}
-            selectedIds={selectedIds}
-            onSelectRow={handleSelectRow}
-            onSelectAll={handleSelectAll}
-            sortField={sortBy}
-            sortDirection={sortOrder}
-            onSort={handleSort}
-            isLoading={isLoading}
-          />
+          {viewMode === 'kanban' ? (
+            <ContactKanbanBoard
+              contacts={contacts}
+              isLoading={isLoading}
+              onContactClick={(c) => setEditingContact(c)}
+            />
+          ) : (
+            <>
+              <DataGrid
+                columns={columns}
+                data={contacts}
+                keyExtractor={(c) => c.id}
+                selectedIds={selectedIds}
+                onSelectRow={handleSelectRow}
+                onSelectAll={handleSelectAll}
+                sortField={sortBy}
+                sortDirection={sortOrder}
+                onSort={handleSort}
+                isLoading={isLoading}
+              />
 
-          <PaginationBar
-            currentPage={page}
-            pageSize={pageSize}
-            totalCount={totalCount}
-            onPageChange={setPage}
-            onPageSizeChange={(newSize) => {
-              setPageSize(newSize);
-              setPage(1);
-            }}
-          />
+              <PaginationBar
+                currentPage={page}
+                pageSize={pageSize}
+                totalCount={totalCount}
+                onPageChange={setPage}
+                onPageSizeChange={(newSize) => {
+                  setPageSize(newSize);
+                  setPage(1);
+                }}
+              />
+            </>
+          )}
         </div>
       </PermissionGate>
 

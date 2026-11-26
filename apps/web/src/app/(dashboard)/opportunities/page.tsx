@@ -47,7 +47,7 @@ const defaultFilters: OpportunityFilterState = {
 };
 
 export default function OpportunitiesPage() {
-  const [viewMode, setViewMode] = useState<ViewMode>('table');
+  const [viewMode, setViewMode] = useState<ViewMode>('kanban');
   const [searchTerm, setSearchTerm] = useState('');
   const [viewType, setViewType] = useState('all');
   const [page, setPage] = useState(1);
