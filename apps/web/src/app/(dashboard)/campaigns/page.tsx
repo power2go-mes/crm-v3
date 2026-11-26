@@ -13,6 +13,7 @@ import { CampaignForm } from '@/components/campaigns/campaign-form';
 import { CampaignFilterPanel } from '@/components/campaigns/campaign-filter-panel';
 import { CampaignChartView } from '@/components/campaigns/campaign-chart-view';
 import { CampaignSplitView } from '@/components/campaigns/campaign-split-view';
+import { CampaignKanbanBoard } from '@/components/campaigns/campaign-kanban-board';
 import type { ViewMode } from '@/types/leads';
 import {
   useCampaignsList,
@@ -304,34 +305,37 @@ export default function CampaignsPage() {
   ];
 
   return (
-    <PageContainer>
+    <PageContainer maxWidth="full">
       <PermissionGate action="campaigns.view" showAccessDenied>
         <div className="space-y-4">
-          <ListToolbar
-            title="Campaigns"
-            viewType={viewType}
-            onViewTypeChange={(type) => {
-              setViewType(type);
-              setSelectedIds([]);
-              setPage(1);
-            }}
-            viewMode={viewMode}
-            showLeadViews={true}
-            showKanban={false}
-            onViewModeChange={setViewMode}
-            searchValue={searchTerm}
-            onSearchChange={(val) => {
-              setSearchTerm(val);
-              setPage(1);
-            }}
-            onReload={() => refetch()}
-            onFilterToggle={() => setIsFilterPanelOpen((prev) => !prev)}
-            isFilterOpen={isFilterPanelOpen}
-            activeFilterCount={activeFilterCount}
-            onNewClick={() => setEditingCampaign(null)}
-            newButtonLabel="New"
-            canCreate={hasPermission('campaigns.create')}
-          />
+          <div className="rounded-2xl border border-slate-200/80 bg-white shadow-xs">
+            <ListToolbar
+              title="Campaigns"
+              subtitle="Plan marketing initiatives, track budgets, and evaluate campaign ROI."
+              viewType={viewType}
+              onViewTypeChange={(type) => {
+                setViewType(type);
+                setSelectedIds([]);
+                setPage(1);
+              }}
+              viewMode={viewMode}
+              showLeadViews={true}
+              showKanban={true}
+              onViewModeChange={setViewMode}
+              searchValue={searchTerm}
+              onSearchChange={(val) => {
+                setSearchTerm(val);
+                setPage(1);
+              }}
+              onReload={() => refetch()}
+              onFilterToggle={() => setIsFilterPanelOpen((prev) => !prev)}
+              isFilterOpen={isFilterPanelOpen}
+              activeFilterCount={activeFilterCount}
+              onNewClick={() => setEditingCampaign(null)}
+              newButtonLabel="+ New Campaign"
+              canCreate={hasPermission('campaigns.create')}
+            />
+          </div>
 
           <BulkActionBar
             selectedCount={selectedIds.length}
@@ -439,6 +443,13 @@ export default function CampaignsPage() {
                 }}
               />
             </>
+          )}
+
+          {viewMode === 'kanban' && (
+            <CampaignKanbanBoard
+              campaigns={campaigns}
+              isLoading={isLoading}
+            />
           )}
 
           {viewMode === 'split' && (

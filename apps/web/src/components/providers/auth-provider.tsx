@@ -77,17 +77,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       const [profileResult, roleResult] = await Promise.all([
         supabase.from('user_profiles').select('*').eq('id', currentUser.id).single(),
-        supabase.from('user_roles').select('role_id').eq('user_id', currentUser.id),
+        supabase.from('user_roles').select('role_id, roles(id, name, description, is_active)').eq('user_id', currentUser.id),
       ]);
       if (profileResult.error || roleResult.error || !profileResult.data?.is_active) {
         throw new Error('Active user authorization unavailable');
       }
-      const assignedIds = (roleResult.data ?? []).map(item => item.role_id);
-      const roleRows = assignedIds.length
-        ? await supabase.from('roles').select('*').in('id', assignedIds).eq('is_active', true)
-        : { data: [] as Role[], error: null };
-      if (roleRows.error) throw new Error('Active roles unavailable');
-      const assignedRoles = roleRows.data ?? [];
+      const rawRoles = (roleResult.data ?? []).map((item: any) => item.roles).filter(Boolean);
+      const assignedRoles: Role[] = rawRoles.filter((r: any) => r.is_active);
       const roleIds = assignedRoles.map(role => role.id);
       let effective: string[] = [];
       if (roleIds.length) {

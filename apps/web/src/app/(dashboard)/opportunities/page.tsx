@@ -330,34 +330,37 @@ export default function OpportunitiesPage() {
   ];
 
   return (
-    <PageContainer>
+    <PageContainer maxWidth="full">
       <PermissionGate action="opportunities.view" showAccessDenied>
         <div className="space-y-4">
-          <ListToolbar
-            title="Opportunities"
-            viewType={viewType}
-            onViewTypeChange={(type) => {
-              setViewType(type);
-              setSelectedIds([]);
-              setPage(1);
-            }}
-            viewMode={viewMode}
-            showLeadViews={true}
-            showKanban={true}
-            onViewModeChange={setViewMode}
-            searchValue={searchTerm}
-            onSearchChange={(val) => {
-              setSearchTerm(val);
-              setPage(1);
-            }}
-            onReload={() => refetch()}
-            onFilterToggle={() => setIsFilterPanelOpen((prev) => !prev)}
-            isFilterOpen={isFilterPanelOpen}
-            activeFilterCount={activeFilterCount}
-            onNewClick={() => setIsCreateModalOpen(true)}
-            newButtonLabel="New Opportunity"
-            canCreate={true}
-          />
+          <div className="rounded-2xl border border-slate-200/80 bg-white shadow-xs">
+            <ListToolbar
+              title="Opportunities"
+              subtitle="Track sales pipeline stages, deal probabilities, and expected close revenue."
+              viewType={viewType}
+              onViewTypeChange={(type) => {
+                setViewType(type);
+                setSelectedIds([]);
+                setPage(1);
+              }}
+              viewMode={viewMode}
+              showLeadViews={true}
+              showKanban={true}
+              onViewModeChange={setViewMode}
+              searchValue={searchTerm}
+              onSearchChange={(val) => {
+                setSearchTerm(val);
+                setPage(1);
+              }}
+              onReload={() => refetch()}
+              onFilterToggle={() => setIsFilterPanelOpen((prev) => !prev)}
+              isFilterOpen={isFilterPanelOpen}
+              activeFilterCount={activeFilterCount}
+              onNewClick={() => setIsCreateModalOpen(true)}
+              newButtonLabel="+ New Deal"
+              canCreate={true}
+            />
+          </div>
 
           <BulkActionBar
             selectedCount={selectedIds.length}

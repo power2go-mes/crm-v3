@@ -10,6 +10,7 @@ import { DataGrid, type ColumnDef } from '@/components/ui/data-grid/data-grid';
 import { AccountCreateModal } from '@/components/accounts/account-create-modal';
 import { AccountEditModal } from '@/components/accounts/account-edit-modal';
 import { AccountFilterPanel } from '@/components/accounts/account-filter-panel';
+import { AccountKanbanBoard } from '@/components/accounts/account-kanban-board';
 import {
   useAccounts,
   useCreateAccountMutation,
@@ -17,6 +18,7 @@ import {
   useDeleteAccountMutation,
 } from '@/hooks/use-accounts';
 import type { AccountWithRelations, AccountFilterState } from '@/types/accounts';
+import type { ViewMode } from '@/types/leads';
 import Link from 'next/link';
 import {
   Building2,
@@ -42,6 +44,7 @@ const defaultFilters: AccountFilterState = {
 };
 
 export default function AccountsPage() {
+  const [viewMode, setViewMode] = useState<ViewMode>('table');
   const [searchTerm, setSearchTerm] = useState('');
   const [viewType, setViewType] = useState('all');
   const [page, setPage] = useState(1);
@@ -301,33 +304,37 @@ export default function AccountsPage() {
   ];
 
   return (
-    <PageContainer>
+    <PageContainer maxWidth="full">
       <PermissionGate action="accounts.view" showAccessDenied>
         <div className="space-y-4">
-          <ListToolbar
-            title="Accounts"
-            subtitle="Manage organizations, client companies, and institutional customer profiles."
-            viewType={viewType}
-            onViewTypeChange={(type) => {
-              setViewType(type);
-              setSelectedIds([]);
-              setPage(1);
-            }}
-            viewMode="table"
-            onViewModeChange={() => {}}
-            searchValue={searchTerm}
-            onSearchChange={(val) => {
-              setSearchTerm(val);
-              setPage(1);
-            }}
-            onReload={() => refetch()}
-            onFilterToggle={() => setIsFilterPanelOpen((prev) => !prev)}
-            isFilterOpen={isFilterPanelOpen}
-            activeFilterCount={activeFilterCount}
-            onNewClick={() => setIsCreateModalOpen(true)}
-            newButtonLabel="New Account"
-            canCreate={true}
-          />
+          <div className="rounded-2xl border border-slate-200/80 bg-white shadow-xs">
+            <ListToolbar
+              title="Accounts"
+              subtitle="Manage organizations, client companies, and institutional customer profiles."
+              viewType={viewType}
+              onViewTypeChange={(type) => {
+                setViewType(type);
+                setSelectedIds([]);
+                setPage(1);
+              }}
+              viewMode={viewMode}
+              showKanban={true}
+              showLeadViews={false}
+              onViewModeChange={setViewMode}
+              searchValue={searchTerm}
+              onSearchChange={(val) => {
+                setSearchTerm(val);
+                setPage(1);
+              }}
+              onReload={() => refetch()}
+              onFilterToggle={() => setIsFilterPanelOpen((prev) => !prev)}
+              isFilterOpen={isFilterPanelOpen}
+              activeFilterCount={activeFilterCount}
+              onNewClick={() => setIsCreateModalOpen(true)}
+              newButtonLabel="+ New Account"
+              canCreate={true}
+            />
+          </div>
 
           <BulkActionBar
             selectedCount={selectedIds.length}
@@ -338,29 +345,40 @@ export default function AccountsPage() {
             onExportSelected={handleExportSelected}
           />
 
-          <DataGrid
-            columns={columns}
-            data={accounts}
-            keyExtractor={(a) => a.id}
-            selectedIds={selectedIds}
-            onSelectRow={handleSelectRow}
-            onSelectAll={handleSelectAll}
-            sortField={sortBy}
-            sortDirection={sortOrder}
-            onSort={handleSort}
-            isLoading={isLoading}
-          />
+          {viewMode === 'table' && (
+            <>
+              <DataGrid
+                columns={columns}
+                data={accounts}
+                keyExtractor={(a) => a.id}
+                selectedIds={selectedIds}
+                onSelectRow={handleSelectRow}
+                onSelectAll={handleSelectAll}
+                sortField={sortBy}
+                sortDirection={sortOrder}
+                onSort={handleSort}
+                isLoading={isLoading}
+              />
 
-          <PaginationBar
-            currentPage={page}
-            pageSize={pageSize}
-            totalCount={totalCount}
-            onPageChange={setPage}
-            onPageSizeChange={(newSize) => {
-              setPageSize(newSize);
-              setPage(1);
-            }}
-          />
+              <PaginationBar
+                currentPage={page}
+                pageSize={pageSize}
+                totalCount={totalCount}
+                onPageChange={setPage}
+                onPageSizeChange={(newSize) => {
+                  setPageSize(newSize);
+                  setPage(1);
+                }}
+              />
+            </>
+          )}
+
+          {viewMode === 'kanban' && (
+            <AccountKanbanBoard
+              accounts={accounts}
+              isLoading={isLoading}
+            />
+          )}
         </div>
       </PermissionGate>
 

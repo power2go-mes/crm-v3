@@ -29,10 +29,11 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.next({ request });
   }
 
-  // Avoid redundant remote network round-trips on link prefetch requests
+  // Avoid redundant remote network round-trips on link prefetch requests or client-side Next RSC data requests
   const isPrefetch =
     request.headers.get('next-router-prefetch') === '1' ||
-    request.headers.get('purpose') === 'prefetch';
+    request.headers.get('purpose') === 'prefetch' ||
+    request.headers.get('rsc') === '1';
   if (isPrefetch && hasAuthCookie && !isAuthRoute) {
     return NextResponse.next({ request });
   }
