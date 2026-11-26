@@ -47,6 +47,7 @@ import {
   Mail,
   UserCheck,
   Globe,
+  Filter,
 } from 'lucide-react';
 
 const defaultFilters: LeadFilterState = {
@@ -320,60 +321,93 @@ export default function LeadsPage() {
     <PageContainer maxWidth="full">
       <PermissionGate action="leads.view" showAccessDenied>
         <div className="space-y-4">
-          {(listError || actionError) && <p role="alert" className="rounded border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+          {(listError || actionError) && <p role="alert" className="rounded-xl border border-red-200 bg-red-50 p-3.5 text-sm text-red-700 shadow-2xs">
             {actionError || 'The lead list could not be loaded. Retry or check your access.'}
           </p>}
-          {/* Web-to-Lead Quick Trigger */}
-          {viewMode !== 'chart' && <div className="flex items-center justify-between text-xs">
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={() => setIsWebToLeadOpen(true)}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-semibold transition shadow-2xs"
-              >
-                <Globe className="h-3.5 w-3.5 text-primary" />
-                <span>Web-to-Lead Capture Forms</span>
-              </button>
-            </div>
-          </div>}
-          {/* Main Toolbar matching CRM v2 navbar.html */}
-          <ListToolbar
-            title="Leads"
-            subtitle={viewMode === 'chart' ? undefined : 'Manage acquisition opportunities, qualification status, and rep assignments.'}
-            viewType={viewType}
-            onViewTypeChange={(type) => {
-              setViewType(type);
-              setSelectedIds([]);
-              if (type === 'converted') setViewMode('table');
-              setPage(1);
-            }}
-            viewMode={viewMode}
-            showLeadViews
-            onViewModeChange={setViewMode}
-            searchValue={searchTerm}
-            onSearchChange={(val) => {
-              setSearchTerm(val);
-              setPage(1);
-            }}
-            onReload={() => viewMode === 'chart'
-              ? queryClient.invalidateQueries({queryKey: leadQueryKey(user?.id, 'chart')})
-              : refetch()}
-            onFilterToggle={() => setIsFilterPanelOpen((prev) => !prev)}
-            isFilterOpen={isFilterPanelOpen}
-            activeFilterCount={activeFilterCount}
-            onPinClick={() => { void pin.mutateAsync(pinnedView === viewType ? null : viewType).catch(error => setActionError(error.message)); }}
-            pinned={pinnedView === viewType}
-            pinPending={pin.isPending}
-            onNewClick={() => setIsCreateModalOpen(true)}
-            newButtonLabel="New"
-            canCreate={hasPermission('leads.create') && viewType !== 'converted'}
-          />
 
-          {hasPermission('recycle_bin.view') && <div className="flex justify-end">
-            <button type="button" aria-expanded={recoveryOpen} className="rounded border bg-white px-3 py-2 text-sm"
-              onClick={() => setRecoveryOpen(open => !open)}>Deleted Leads</button>
-          </div>}
-          {recoveryOpen && hasPermission('recycle_bin.view') && <LeadRecovery onClose={() => setRecoveryOpen(false)} />}
+          {/* Main Toolbar with integrated rounded styling */}
+          <div className="rounded-2xl border border-slate-200/80 bg-white shadow-xs">
+            <ListToolbar
+              title="Leads"
+              subtitle={viewMode === 'chart' ? undefined : 'Manage acquisition opportunities, qualification status, and rep assignments.'}
+              viewType={viewType}
+              onViewTypeChange={(type) => {
+                setViewType(type);
+                setSelectedIds([]);
+                if (type === 'converted') setViewMode('table');
+                setPage(1);
+              }}
+              viewMode={viewMode}
+              showLeadViews
+              onViewModeChange={setViewMode}
+              searchValue={searchTerm}
+              onSearchChange={(val) => {
+                setSearchTerm(val);
+                setPage(1);
+              }}
+              onReload={() => viewMode === 'chart'
+                ? queryClient.invalidateQueries({queryKey: leadQueryKey(user?.id, 'chart')})
+                : refetch()}
+              onFilterToggle={() => setIsFilterPanelOpen((prev) => !prev)}
+              isFilterOpen={isFilterPanelOpen}
+              activeFilterCount={activeFilterCount}
+              onPinClick={() => { void pin.mutateAsync(pinnedView === viewType ? null : viewType).catch(error => setActionError(error.message)); }}
+              pinned={pinnedView === viewType}
+              pinPending={pin.isPending}
+              onNewClick={() => setIsCreateModalOpen(true)}
+              newButtonLabel="+ New Lead"
+              canCreate={hasPermission('leads.create') && viewType !== 'converted'}
+            />
+
+            {/* Sub-bar for Web-to-Lead, Quick Filters, and Recycle Bin */}
+            <div className="flex flex-wrap items-center justify-between gap-2 px-4 sm:px-6 py-2 bg-slate-50/60 border-t border-slate-100 text-xs rounded-b-2xl">
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setIsWebToLeadOpen(true)}
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-semibold transition shadow-2xs hover:border-slate-300"
+                >
+                  <Globe className="h-3.5 w-3.5 text-emerald-600" />
+                  <span>Web-to-Lead Forms</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setIsFilterPanelOpen(true)}
+                  className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border transition font-semibold shadow-2xs ${
+                    isFilterPanelOpen || activeFilterCount > 0
+                      ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
+                      : 'bg-white hover:bg-slate-50 text-slate-700 border-slate-200 hover:border-slate-300'
+                  }`}
+                >
+                  <Filter className="h-3.5 w-3.5 text-emerald-600" />
+                  <span>Filters {activeFilterCount > 0 ? `(${activeFilterCount})` : ''}</span>
+                </button>
+              </div>
+
+              {hasPermission('recycle_bin.view') && (
+                <button
+                  type="button"
+                  aria-expanded={recoveryOpen}
+                  className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border transition font-medium shadow-2xs ${
+                    recoveryOpen
+                      ? 'bg-slate-800 text-white border-slate-800'
+                      : 'bg-white hover:bg-slate-50 text-slate-600 border-slate-200 hover:text-slate-900'
+                  }`}
+                  onClick={() => setRecoveryOpen((open) => !open)}
+                >
+                  <Trash2 className="h-3.5 w-3.5 text-slate-400" />
+                  <span>Deleted Leads</span>
+                </button>
+              )}
+            </div>
+          </div>
+
+          {recoveryOpen && hasPermission('recycle_bin.view') && (
+            <div className="rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm">
+              <LeadRecovery onClose={() => setRecoveryOpen(false)} />
+            </div>
+          )}
 
           {/* Bulk Selection Bar */}
           {viewMode !== 'chart' && <BulkActionBar

@@ -218,69 +218,72 @@ export function ListToolbar({
 
               {isViewDropdownOpen && (
                 <div
-                  className="absolute right-0 mt-1 w-36 bg-white border border-slate-200 rounded-lg shadow-lg py-1 z-30"
+                  className="absolute right-0 top-full mt-1.5 w-44 bg-white border border-slate-200 rounded-xl shadow-xl py-1.5 z-50 divide-y divide-slate-100"
                   onClick={() => setIsViewDropdownOpen(false)}
                 >
+                  <div className="py-1">
+                    <button
+                      onClick={() => onViewModeChange?.('table')}
+                      className={`w-full flex items-center gap-2.5 px-3 py-2 text-xs text-left transition ${
+                        viewMode === 'table'
+                          ? 'bg-emerald-50 text-emerald-800 font-bold'
+                          : 'text-slate-700 hover:bg-slate-50'
+                      }`}
+                    >
+                      <TableIcon className="h-4 w-4 text-emerald-600" />
+                      <span>List / Table</span>
+                    </button>
+                    {showKanban && (
+                      <button
+                        onClick={() => onViewModeChange?.('kanban')}
+                        className={`w-full flex items-center gap-2.5 px-3 py-2 text-xs text-left transition ${
+                          viewMode === 'kanban'
+                            ? 'bg-emerald-50 text-emerald-800 font-bold'
+                            : 'text-slate-700 hover:bg-slate-50'
+                        }`}
+                      >
+                        <Columns3 className="h-4 w-4 text-purple-600" />
+                        <span>Kanban Board</span>
+                      </button>
+                    )}
+                    <button
+                      onClick={() => onViewModeChange?.('split')}
+                      className={`w-full flex items-center gap-2.5 px-3 py-2 text-xs text-left transition ${
+                        viewMode === 'split'
+                          ? 'bg-emerald-50 text-emerald-800 font-bold'
+                          : 'text-slate-700 hover:bg-slate-50'
+                      }`}
+                    >
+                      <SplitSquareVertical className="h-4 w-4 text-blue-600" />
+                      <span>Split View</span>
+                    </button>
+                  </div>
+
                   {showLeadViews && (
-                    <button
-                      onClick={() => onViewModeChange?.('chart')}
-                      className={`w-full flex items-center gap-2 px-3 py-1.5 text-xs text-left ${
-                        viewMode === 'chart'
-                          ? 'bg-emerald-50 text-emerald-800 font-semibold'
-                          : 'text-slate-700 hover:bg-slate-50'
-                      }`}
-                    >
-                      <PieChart className="h-3.5 w-3.5" />
-                      <span>Chart View</span>
-                    </button>
-                  )}
-                  <button
-                    onClick={() => onViewModeChange?.('table')}
-                    className={`w-full flex items-center gap-2 px-3 py-1.5 text-xs text-left ${
-                      viewMode === 'table'
-                        ? 'bg-emerald-50 text-emerald-800 font-semibold'
-                        : 'text-slate-700 hover:bg-slate-50'
-                    }`}
-                  >
-                    <TableIcon className="h-3.5 w-3.5" />
-                    <span>List</span>
-                  </button>
-                  {showLeadViews && (
-                    <button
-                      onClick={() => onViewModeChange?.('card')}
-                      className={`w-full flex items-center gap-2 px-3 py-1.5 text-xs text-left ${
-                        viewMode === 'card'
-                          ? 'bg-emerald-50 text-emerald-800 font-semibold'
-                          : 'text-slate-700 hover:bg-slate-50'
-                      }`}
-                    >
-                      <LayoutGrid className="h-3.5 w-3.5" />
-                      <span>Card</span>
-                    </button>
-                  )}
-                  <button
-                    onClick={() => onViewModeChange?.('split')}
-                    className={`w-full flex items-center gap-2 px-3 py-1.5 text-xs text-left ${
-                      viewMode === 'split'
-                        ? 'bg-emerald-50 text-emerald-800 font-semibold'
-                        : 'text-slate-700 hover:bg-slate-50'
-                    }`}
-                  >
-                    <SplitSquareVertical className="h-3.5 w-3.5" />
-                    <span>Split View</span>
-                  </button>
-                  {showKanban && (
-                    <button
-                      onClick={() => onViewModeChange?.('kanban')}
-                      className={`w-full flex items-center gap-2 px-3 py-1.5 text-xs text-left ${
-                        viewMode === 'kanban'
-                          ? 'bg-emerald-50 text-emerald-800 font-semibold'
-                          : 'text-slate-700 hover:bg-slate-50'
-                      }`}
-                    >
-                      <Columns3 className="h-3.5 w-3.5" />
-                      <span>Kanban View</span>
-                    </button>
+                    <div className="py-1">
+                      <button
+                        onClick={() => onViewModeChange?.('card')}
+                        className={`w-full flex items-center gap-2.5 px-3 py-2 text-xs text-left transition ${
+                          viewMode === 'card'
+                            ? 'bg-emerald-50 text-emerald-800 font-bold'
+                            : 'text-slate-700 hover:bg-slate-50'
+                        }`}
+                      >
+                        <LayoutGrid className="h-4 w-4 text-amber-600" />
+                        <span>Card Grid</span>
+                      </button>
+                      <button
+                        onClick={() => onViewModeChange?.('chart')}
+                        className={`w-full flex items-center gap-2.5 px-3 py-2 text-xs text-left transition ${
+                          viewMode === 'chart'
+                            ? 'bg-emerald-50 text-emerald-800 font-bold'
+                            : 'text-slate-700 hover:bg-slate-50'
+                        }`}
+                      >
+                        <PieChart className="h-4 w-4 text-rose-600" />
+                        <span>Analytics Chart</span>
+                      </button>
+                    </div>
                   )}
                 </div>
               )}
