@@ -46,13 +46,13 @@ export function EmailComposerModal({
   const [statusMessage, setStatusMessage] = useState<{ type: 'error' | 'success'; text: string } | null>(null);
 
   React.useEffect(() => {
-    if (defaultRecipientEmail && !toEmail) {
+    if (defaultRecipientEmail) {
       setToEmail(defaultRecipientEmail);
     }
-    if (defaultRecipientName && !toName) {
+    if (defaultRecipientName) {
       setToName(defaultRecipientName);
     }
-  }, [defaultRecipientEmail, defaultRecipientName]);
+  }, [defaultRecipientEmail, defaultRecipientName, isOpen]);
 
   if (!isOpen) return null;
 

@@ -550,7 +550,7 @@ export function RecordActivityTimeline({
                           deleteActivityMutation.mutate(act.id);
                         }
                       }}
-                      className="text-slate-500 hover:text-red-400 transition"
+                      className="text-slate-500 hover:text-slate-800 transition"
                       title="Delete activity"
                     >
                       <Trash2 className="h-3.5 w-3.5" />

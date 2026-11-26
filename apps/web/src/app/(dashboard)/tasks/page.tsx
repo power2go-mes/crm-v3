@@ -262,7 +262,7 @@ export default function TasksPage() {
             type="button"
             onClick={() => handleDeleteSingle(t.id)}
             title="Delete Task"
-            className="p-1.5 rounded hover:bg-slate-800 text-slate-400 hover:text-red-400 transition"
+            className="p-1.5 rounded hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition"
           >
             <Trash2 className="h-3.5 w-3.5" />
           </button>

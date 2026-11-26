@@ -84,9 +84,9 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
     return (
       <PageContainer>
         <div className="p-12 text-center bg-white border border-slate-200 rounded-2xl space-y-4">
-          <AlertCircle className="h-10 w-10 text-red-400 mx-auto" />
+          <AlertCircle className="h-10 w-10 text-red-700 mx-auto" />
           <h2 className="text-lg font-bold text-slate-900">Account Not Found</h2>
-          <p className="text-sm text-slate-400">The requested account record does not exist or access is restricted.</p>
+          <p className="text-sm text-slate-600">The requested account record does not exist or access is restricted.</p>
           <Link
             href="/accounts"
             className="inline-flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-lg transition"
@@ -105,7 +105,7 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
       <div className="mb-4">
         <Link
           href="/accounts"
-          className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-white transition"
+          className="inline-flex items-center gap-1.5 text-xs text-slate-600 hover:text-slate-900 transition"
         >
           <ArrowLeft className="h-4 w-4" />
           <span>Back to Accounts</span>
@@ -121,12 +121,12 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
             </div>
             <div>
               <h1 className="text-2xl font-bold tracking-tight text-slate-900">{account.name}</h1>
-              <div className="flex flex-wrap items-center gap-4 mt-2 text-xs text-slate-400">
+              <div className="flex flex-wrap items-center gap-4 mt-2 text-xs text-slate-600">
                 {account.industry && (
-                  <span className="capitalize text-slate-300 font-medium">{account.industry}</span>
+                  <span className="capitalize text-slate-700 font-medium">{account.industry}</span>
                 )}
                 {account.annual_revenue && (
-                  <span className="text-emerald-400 font-semibold flex items-center gap-0.5">
+                  <span className="text-emerald-700 font-semibold flex items-center gap-0.5">
                     <DollarSign className="h-3.5 w-3.5" />
                     ${Number(account.annual_revenue).toLocaleString()}
                   </span>
@@ -142,7 +142,7 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
                     href={account.website.startsWith('http') ? account.website : `https://${account.website}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-emerald-600 hover:underline flex items-center gap-1"
+                    className="text-emerald-700 hover:underline flex items-center gap-1"
                   >
                     <Globe className="h-3.5 w-3.5" />
                     <span>{account.website}</span>
@@ -158,7 +158,7 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
             <button
               type="button"
               onClick={() => setIsEmailModalOpen(true)}
-              className="px-3 py-2 bg-emerald-600 hover:bg-emerald-600 text-white text-xs font-semibold rounded-lg transition inline-flex items-center gap-1.5 shadow-xs"
+              className="px-3 py-2 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold rounded-lg transition inline-flex items-center gap-1.5 shadow-xs"
               title="Compose email to account contacts"
             >
               <Send className="h-3.5 w-3.5" />
@@ -192,7 +192,7 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
               <button
                 type="button"
                 onClick={handleDelete}
-                className="p-2 bg-slate-800/80 hover:bg-red-950/40 text-slate-400 hover:text-red-400 border border-slate-700 hover:border-orange-200 rounded-lg transition"
+                className="p-2 bg-white hover:bg-slate-100 text-slate-600 hover:text-slate-800 border border-slate-300 rounded-lg transition"
                 title="Delete Account"
               >
                 <Trash2 className="h-4 w-4" />
@@ -210,8 +210,8 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
             onClick={() => setActiveTab('details')}
             className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
               activeTab === 'details'
-                ? 'border-emerald-200 text-emerald-600'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-emerald-600 text-emerald-700'
+                : 'border-transparent text-slate-600 hover:text-slate-900'
             }`}
           >
             <FileText className="h-3.5 w-3.5" />
@@ -223,8 +223,8 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
             onClick={() => setActiveTab('contacts')}
             className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
               activeTab === 'contacts'
-                ? 'border-emerald-200 text-emerald-600'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-emerald-600 text-emerald-700'
+                : 'border-transparent text-slate-600 hover:text-slate-900'
             }`}
           >
             <Users className="h-3.5 w-3.5" />
@@ -236,8 +236,8 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
             onClick={() => setActiveTab('opportunities')}
             className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
               activeTab === 'opportunities'
-                ? 'border-emerald-200 text-emerald-600'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-emerald-600 text-emerald-700'
+                : 'border-transparent text-slate-600 hover:text-slate-900'
             }`}
           >
             <TrendingUp className="h-3.5 w-3.5" />
@@ -249,8 +249,8 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
             onClick={() => setActiveTab('activity')}
             className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
               activeTab === 'activity'
-                ? 'border-emerald-200 text-emerald-600'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-emerald-600 text-emerald-700'
+                : 'border-transparent text-slate-600 hover:text-slate-900'
             }`}
           >
             <Activity className="h-3.5 w-3.5" />
@@ -262,8 +262,8 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
             onClick={() => setActiveTab('emails')}
             className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
               activeTab === 'emails'
-                ? 'border-emerald-200 text-emerald-600'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-emerald-600 text-emerald-700'
+                : 'border-transparent text-slate-600 hover:text-slate-900'
             }`}
           >
             <Mail className="h-3.5 w-3.5" />
@@ -275,8 +275,8 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
             onClick={() => setActiveTab('history')}
             className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
               activeTab === 'history'
-                ? 'border-emerald-200 text-emerald-600'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-emerald-600 text-emerald-700'
+                : 'border-transparent text-slate-600 hover:text-slate-900'
             }`}
           >
             <History className="h-3.5 w-3.5" />
@@ -294,39 +294,39 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
               <div className="p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
                 <div>
                   <span className="block text-slate-500 uppercase tracking-wider text-[10px]">Account Name</span>
-                  <span className="font-semibold text-slate-200 text-sm mt-0.5 block">{account.name}</span>
+                  <span className="font-semibold text-slate-800 text-sm mt-0.5 block">{account.name}</span>
                 </div>
                 <div>
                   <span className="block text-slate-500 uppercase tracking-wider text-[10px]">Account Owner</span>
-                  <span className="font-semibold text-slate-200 text-sm mt-0.5 block">
+                  <span className="font-semibold text-slate-800 text-sm mt-0.5 block">
                     {account.account_owner ? `${account.account_owner.first_name} (${account.account_owner.email})` : '—'}
                   </span>
                 </div>
                 <div>
                   <span className="block text-slate-500 uppercase tracking-wider text-[10px]">Source</span>
-                  <span className="font-semibold text-slate-200 text-sm mt-0.5 block capitalize">{account.account_source || '—'}</span>
+                  <span className="font-semibold text-slate-800 text-sm mt-0.5 block capitalize">{account.account_source || '—'}</span>
                 </div>
                 <div>
                   <span className="block text-slate-500 uppercase tracking-wider text-[10px]">Industry</span>
-                  <span className="font-semibold text-slate-200 text-sm mt-0.5 block capitalize">{account.industry || '—'}</span>
+                  <span className="font-semibold text-slate-800 text-sm mt-0.5 block capitalize">{account.industry || '—'}</span>
                 </div>
                 <div>
                   <span className="block text-slate-500 uppercase tracking-wider text-[10px]">Annual Revenue</span>
-                  <span className="font-bold text-emerald-400 text-sm mt-0.5 block">
+                  <span className="font-bold text-emerald-700 text-sm mt-0.5 block">
                     {account.annual_revenue ? `$${Number(account.annual_revenue).toLocaleString()}` : '—'}
                   </span>
                 </div>
                 <div>
                   <span className="block text-slate-500 uppercase tracking-wider text-[10px]">No of Employees</span>
-                  <span className="font-semibold text-slate-200 text-sm mt-0.5 block">{account.no_of_employees ?? '—'}</span>
+                  <span className="font-semibold text-slate-800 text-sm mt-0.5 block">{account.no_of_employees ?? '—'}</span>
                 </div>
                 <div>
                   <span className="block text-slate-500 uppercase tracking-wider text-[10px]">Contact Number</span>
-                  <span className="font-semibold text-slate-200 text-sm mt-0.5 block">{account.contact_number || '—'}</span>
+                  <span className="font-semibold text-slate-800 text-sm mt-0.5 block">{account.contact_number || '—'}</span>
                 </div>
                 <div>
                   <span className="block text-slate-500 uppercase tracking-wider text-[10px]">Fax</span>
-                  <span className="font-semibold text-slate-200 text-sm mt-0.5 block">{account.fax || '—'}</span>
+                  <span className="font-semibold text-slate-800 text-sm mt-0.5 block">{account.fax || '—'}</span>
                 </div>
               </div>
             </div>
@@ -338,13 +338,13 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
               <div className="p-5 grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                 <div>
                   <span className="block text-slate-500 uppercase tracking-wider text-[10px] mb-1">Billing Address</span>
-                  <p className="p-3 bg-slate-50 rounded-lg border border-slate-200 text-slate-300 text-sm whitespace-pre-line">
+                  <p className="p-3 bg-slate-50 rounded-lg border border-slate-200 text-slate-700 text-sm whitespace-pre-line">
                     {account.billing_address || 'No billing address recorded.'}
                   </p>
                 </div>
                 <div>
                   <span className="block text-slate-500 uppercase tracking-wider text-[10px] mb-1">Shipping Address</span>
-                  <p className="p-3 bg-slate-50 rounded-lg border border-slate-200 text-slate-300 text-sm whitespace-pre-line">
+                  <p className="p-3 bg-slate-50 rounded-lg border border-slate-200 text-slate-700 text-sm whitespace-pre-line">
                     {account.shipping_address || 'No shipping address recorded.'}
                   </p>
                 </div>
@@ -357,12 +357,12 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
         {activeTab === 'contacts' && (
           <div className="bg-white border border-slate-200 rounded-xl overflow-hidden p-4">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-sm font-semibold text-slate-200 uppercase tracking-wider">
+              <h3 className="text-sm font-semibold text-slate-800 uppercase tracking-wider">
                 Associated Contacts ({contacts.length})
               </h3>
               <Link
                 href="/contacts"
-                className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-600 text-white rounded-lg text-xs font-medium transition"
+                className="px-3 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs font-medium transition"
               >
                 Go to Contacts
               </Link>
@@ -377,12 +377,12 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
                 {contacts.map((c: any) => (
                   <div key={c.id} className="py-3 flex items-center justify-between">
                     <div>
-                      <Link href={`/contacts/${c.id}`} className="font-semibold text-sm text-slate-200 hover:text-emerald-600 transition">
+                      <Link href={`/contacts/${c.id}`} className="font-semibold text-sm text-slate-800 hover:text-emerald-700 transition">
                         {c.first_name} {c.last_name}
                       </Link>
-                      <div className="text-xs text-slate-400 mt-0.5">{c.title || 'Contact'} • {c.email || c.contact_number || 'No contact info'}</div>
+                      <div className="text-xs text-slate-600 mt-0.5">{c.title || 'Contact'} • {c.email || c.contact_number || 'No contact info'}</div>
                     </div>
-                    <Link href={`/contacts/${c.id}`} className="text-xs text-emerald-600 hover:underline">
+                    <Link href={`/contacts/${c.id}`} className="text-xs text-emerald-700 hover:underline">
                       View Contact →
                     </Link>
                   </div>
@@ -396,12 +396,12 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
         {activeTab === 'opportunities' && (
           <div className="bg-white border border-slate-200 rounded-xl overflow-hidden p-4">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-sm font-semibold text-slate-200 uppercase tracking-wider">
+              <h3 className="text-sm font-semibold text-slate-800 uppercase tracking-wider">
                 Associated Opportunities ({opportunities.length})
               </h3>
               <Link
                 href="/opportunities"
-                className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-600 text-white rounded-lg text-xs font-medium transition"
+                className="px-3 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs font-medium transition"
               >
                 Go to Opportunities
               </Link>
@@ -416,15 +416,15 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
                 {opportunities.map((opp: any) => (
                   <div key={opp.id} className="py-3 flex items-center justify-between">
                     <div>
-                      <Link href={`/opportunities/${opp.id}`} className="font-semibold text-sm text-slate-200 hover:text-emerald-600 transition">
+                      <Link href={`/opportunities/${opp.id}`} className="font-semibold text-sm text-slate-800 hover:text-emerald-700 transition">
                         {opp.name}
                       </Link>
-                      <div className="text-xs text-slate-400 mt-0.5">
-                        Stage: <span className="capitalize text-emerald-600 font-medium">{opp.stage}</span> • Close Date: {opp.close_date}
+                      <div className="text-xs text-slate-600 mt-0.5">
+                        Stage: <span className="capitalize text-emerald-700 font-medium">{opp.stage}</span> • Close Date: {opp.close_date}
                       </div>
                     </div>
                     <div className="text-right">
-                      <span className="font-bold text-emerald-400 text-sm block">
+                      <span className="font-bold text-emerald-700 text-sm block">
                         ${Number(opp.amount || 0).toLocaleString()}
                       </span>
                     </div>
@@ -449,13 +449,13 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-sm font-bold text-white">Email Communications</h3>
-                <p className="text-xs text-slate-400">All outbound emails and logged correspondence with {account.name}.</p>
+                <h3 className="text-sm font-bold text-slate-900">Email Communications</h3>
+                <p className="text-xs text-slate-600">All outbound emails and logged correspondence with {account.name}.</p>
               </div>
               <button
                 type="button"
                 onClick={() => setIsEmailModalOpen(true)}
-                className="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-600 text-white rounded-lg text-xs font-semibold inline-flex items-center gap-1.5 transition"
+                className="px-3.5 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs font-semibold inline-flex items-center gap-1.5 transition"
               >
                 <Send className="h-3.5 w-3.5" />
                 <span>Compose Email</span>

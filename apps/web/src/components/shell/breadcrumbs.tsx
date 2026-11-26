@@ -38,7 +38,7 @@ export function Breadcrumbs({ items, className = '' }: BreadcrumbsProps) {
                 {item.label}
               </Link>
             ) : (
-              <span className={`font-semibold ${isLast ? 'text-slate-900 border-b-2 border-orange-500 pb-0.5' : 'text-slate-500'}`}>
+              <span className={`font-semibold ${isLast ? 'text-red-700 border-b-2 border-red-600 pb-0.5' : 'text-slate-500'}`}>
                 {item.label}
               </span>
             )}

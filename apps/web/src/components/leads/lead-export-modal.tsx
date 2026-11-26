@@ -15,7 +15,7 @@ export function LeadExportModal({ onClose, onExport }: {
   const [error, setError] = useState('');
   useEffect(() => { dialog.current?.showModal(); return () => dialog.current?.close(); }, []);
   return <dialog ref={dialog} onCancel={event => { event.preventDefault(); if (!pending) onClose(); }}
-    className="w-full max-w-xl rounded-lg bg-white p-5 text-slate-900 backdrop:bg-black/40"
+    className="w-full max-w-xl rounded-lg bg-white p-5 text-slate-900 backdrop:bg-black/20 backdrop:backdrop-blur-xs"
     aria-labelledby="lead-export-title">
     <form onSubmit={async event => {
       event.preventDefault(); setPending(true); setError('');

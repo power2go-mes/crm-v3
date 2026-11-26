@@ -119,7 +119,7 @@ export function LeadAttachments({ leadId }: { leadId: string }) {
         <span className="min-w-0 flex-1 break-all">{filename(file.name)}</span>
         {previewTypes.includes(String(file.metadata?.mimetype)) && <button type="button" disabled={download.isPending} onClick={() => { setError(''); download.mutate({ name: file.name, show: true }); }}>View</button>}
         <button type="button" disabled={download.isPending} onClick={() => { setError(''); download.mutate({ name: file.name, show: false }); }}>Download</button>
-        {canUpdate && <button type="button" className="text-red-700" onClick={() => { setError(''); setRemoval(file.name); }}>Remove</button>}
+        {canUpdate && <button type="button" className="text-slate-700 hover:text-slate-900" onClick={() => { setError(''); setRemoval(file.name); }}>Remove</button>}
       </li>)}</ul>}
     {(page > 0 || (files.data?.length ?? 0) > pageSize) && <div className="flex gap-3 text-sm">
       <button type="button" disabled={page === 0 || files.isFetching} onClick={() => setPage(page - 1)}>Previous attachments</button>
@@ -132,7 +132,7 @@ export function LeadAttachments({ leadId }: { leadId: string }) {
     </figure>}
     {removal && <div className="flex flex-wrap items-center gap-3 rounded border p-3">
       <p>Remove {filename(removal)}?</p>
-      <button type="button" disabled={remove.isPending} className="text-red-700" onClick={() => remove.mutate(removal)}>Confirm removal</button>
+      <button type="button" disabled={remove.isPending} className="rounded bg-slate-100 px-3 py-1.5 text-slate-700 hover:bg-slate-200" onClick={() => remove.mutate(removal)}>Confirm removal</button>
       <button type="button" disabled={remove.isPending} onClick={() => setRemoval(undefined)}>Cancel</button>
     </div>}
   </section>;

@@ -31,7 +31,7 @@ const xml = (v: string) => v.replace(/&/g, '&amp;').replace(/</g, '&lt;')
 export function spreadsheetText(v: string): string {
   return /^[\s\u0000-\u001f]*[=+\-@]/u.test(v) || /^[\t\r\n]/.test(v) ? "'" + v : v;
 }
-function text(value: unknown, column: ExportColumn, timeZone: string): string {
+function text(value: unknown, column: ExportColumn, dateTimeFormatter: Intl.DateTimeFormat): string {
   if (value === undefined || value === null) return '';
   if (Array.isArray(value)) return value.map(v => String(v)).join(', ');
   if (typeof value === 'object') throw new Error('Unsupported export cell');
@@ -39,7 +39,7 @@ function text(value: unknown, column: ExportColumn, timeZone: string): string {
   if (column.kind === 'datetime') {
     const date = new Date(result);
     if (!Number.isFinite(date.getTime())) throw new Error('Invalid export datetime');
-    return new Intl.DateTimeFormat('en-GB', { timeZone, dateStyle: 'short', timeStyle: 'medium' }).format(date);
+    return dateTimeFormatter.format(date);
   }
   if (column.kind === 'date') {
     if (!/^\d{4}-\d{2}-\d{2}$/.test(result)) throw new Error('Invalid export date');
@@ -162,12 +162,42 @@ export async function exportRecords(raw: unknown, source: ScopedExportSource): P
   return renderExportTable(request.module, columns, request.ids.map(id => byId.get(id)!.values), request.format, request.timeZone);
 }
 
+/** Render one bounded CSV page. Include the header and BOM only in the first part. */
+export function renderExportCsvFragment(
+  columns: readonly ExportColumn[],
+  records: readonly Readonly<Record<string, unknown>>[],
+  timeZone: string,
+  includeHeader: boolean
+): Buffer {
+  if (!columns.length || columns.length > 50 || records.length > 250 ||
+    columns.some(column => !column.visible || !column.exportable)) {
+    throw new Error('Invalid export page');
+  }
+  const dateTimeFormatter = new Intl.DateTimeFormat('en-GB', { timeZone, dateStyle: 'short', timeStyle: 'medium' });
+  const rows = [
+    ...(includeHeader ? [columns.map(column => column.label)] : []),
+    ...records.map(record => columns.map(column => text(record[column.key], column, dateTimeFormatter))),
+  ];
+  let size = 0;
+  for (const row of rows) for (const value of row) {
+    if (value.length > 32000 || /[\x00-\x08\x0b\x0c\x0e-\x1f]/.test(value)) {
+      throw new Error('Invalid export text');
+    }
+    size += Buffer.byteLength(value);
+  }
+  if (size > 8 * 1024 * 1024) throw new Error('Export page is too large');
+  const csv = rows.map(row =>
+    row.map(value => '"' + spreadsheetText(value).replace(/"/g, '""') + '"').join(',')
+  ).join('\r\n');
+  return Buffer.from((includeHeader ? '\ufeff' : '') + csv + (rows.length ? '\r\n' : ''), 'utf8');
+}
+
 /** Encoding only. Callers must authorize current fields and fetch records through RLS. */
 export function renderExportTable(module: string, columns: readonly ExportColumn[], records: readonly Readonly<Record<string, unknown>>[], format: 'csv' | 'xlsx' | 'pdf', timeZone: string): ExportFile {
   moduleKey.parse(module);
   if (!columns.length || columns.length > 50 || records.length > 5000 || records.length * columns.length > 50000 || columns.some(column => !column.visible || !column.exportable)) throw new Error('Invalid export table');
-  new Intl.DateTimeFormat('en-GB', { timeZone }).format();
-  const rows = [columns.map(c => c.label), ...records.map(record => columns.map(c => text(record[c.key], c, timeZone)))];
+  const dateTimeFormatter = new Intl.DateTimeFormat('en-GB', { timeZone, dateStyle: 'short', timeStyle: 'medium' });
+  const rows = [columns.map(c => c.label), ...records.map(record => columns.map(c => text(record[c.key], c, dateTimeFormatter)))];
   let size = 0;
   for (const row of rows) for (const value of row) {
     if (value.length > 32000 || /[\x00-\x08\x0b\x0c\x0e-\x1f]/.test(value)) throw new Error('Invalid export text');

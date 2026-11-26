@@ -255,4 +255,13 @@ describe('FINLONEXA CRM v3 — Navigation & Sidebar Structure Upgrade Tests', ()
       { label: 'My Jobs', href: undefined },
     ]);
   });
+
+  it('uses a generic label for UUID detail routes', () => {
+    const breadcrumbs = getBreadcrumbs('/contacts/80f430ba-07fd-453e-b3b8-f3583c90a04a');
+
+    expect(breadcrumbs[breadcrumbs.length - 1]).toEqual({
+      label: 'Details',
+      href: undefined,
+    });
+  });
 });

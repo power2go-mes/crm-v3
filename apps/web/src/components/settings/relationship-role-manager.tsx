@@ -68,7 +68,7 @@ function CatalogManager({ kind }: { kind: CatalogKind }) {
     ...(showDescription ? [{id:'description',header:'Description',accessorKey:'description',sortable:true} satisfies ColumnDef<CatalogRole>] : []),
     {id:'actions',header:'Actions',cell: row => hasPermission('settings.update') ? <div className="flex gap-3">
       <button aria-label={`Edit ${row.name}`} onClick={event => open(row,event.currentTarget)}><Pencil className="h-4 w-4" /></button>
-      <button aria-label={`Delete ${row.name}`} onClick={event => { trigger.current=event.currentTarget; deletion.reset(); setConfirmRelationships(false); setRemoving(row); }}><Trash2 className="h-4 w-4" /></button>
+      <button aria-label={`Delete ${row.name}`} onClick={event => { trigger.current=event.currentTarget; deletion.reset(); setConfirmRelationships(false); setRemoving(row); }} className="rounded p-1.5 text-slate-500 hover:bg-slate-100 hover:text-slate-800 transition"><Trash2 className="h-4 w-4" /></button>
     </div> : null},
   ];
   return <PageContainer>
@@ -84,7 +84,7 @@ function CatalogManager({ kind }: { kind: CatalogKind }) {
       {list.isError ? <p role="alert">{list.error.message} <button onClick={() => void list.refetch()}>Retry</button></p> : <DataGrid columns={columns} data={list.data?.rows ?? []} keyExtractor={row => row.id} isLoading={list.isLoading} sortField={sort} sortDirection={ascending ? 'asc' : 'desc'} onSort={field => {if(field==='name'||field==='description'){setSort(field);setAscending(field===sort?!ascending:true);setPage(1);}}} emptyState={<div><p>No {config.title} found.</p>{hasPermission('settings.update') && <button className="mt-2 rounded border px-3 py-1" onClick={event => open(null,event.currentTarget)}>Add</button>}</div>} />}
       <nav aria-label={`${config.title} pagination`} className="mt-4 flex gap-4 text-sm"><button disabled={page===1||list.isFetching} onClick={() => setPage(page-1)}>Previous</button><span>Page {page} · {list.data?.count ?? 0} {config.title}</span><button disabled={list.isFetching||page*20 >= (list.data?.count ?? 0)} onClick={() => setPage(page+1)}>Next</button></nav>
     </PermissionGate>
-    <dialog ref={formDialog} aria-labelledby="role-form-title" onCancel={event => {if(save.isPending)event.preventDefault();else close();}} className="w-[calc(100%_-_2rem)] max-w-lg rounded-xl p-6 backdrop:bg-black/40">
+    <dialog ref={formDialog} aria-labelledby="role-form-title" onCancel={event => {if(save.isPending)event.preventDefault();else close();}} className="w-[calc(100%_-_2rem)] max-w-lg rounded-xl p-6 backdrop:bg-black/20 backdrop:backdrop-blur-xs">
       <form onSubmit={event => {event.preventDefault();save.mutate(kind!=='customer' && editing===null && ((event.nativeEvent as SubmitEvent).submitter as HTMLButtonElement | null)?.value==='new');}}>
         <h2 id="role-form-title" className="mb-4 text-lg font-semibold">{config.singular}</h2>
         <label className="mb-4 block text-sm">{config.singular} Name <span aria-hidden="true">*</span><input autoFocus required maxLength={50} value={name} onChange={event => setName(event.target.value)} className="mt-1 block w-full rounded border p-2" /></label>
@@ -93,11 +93,11 @@ function CatalogManager({ kind }: { kind: CatalogKind }) {
         <div className="mt-5 flex justify-end gap-3"><button type="button" disabled={save.isPending} onClick={close}>Cancel</button>{kind!=='customer' && editing===null && <button type="submit" value="new" disabled={save.isPending||!name.trim()} className="rounded border border-emerald-200 px-4 py-2 text-emerald-800">Save &amp; New</button>}<button type="submit" value="save" disabled={save.isPending||!name.trim()} className="rounded bg-emerald-600 px-4 py-2 text-white">{save.isPending?'Saving…':'Save'}</button></div>
       </form>
     </dialog>
-    <dialog ref={deleteDialog} aria-labelledby="role-delete-title" onCancel={event => {if(deletion.isPending)event.preventDefault();else close();}} className="w-[calc(100%_-_2rem)] max-w-lg rounded-xl p-6 backdrop:bg-black/40">
+    <dialog ref={deleteDialog} aria-labelledby="role-delete-title" onCancel={event => {if(deletion.isPending)event.preventDefault();else close();}} className="w-[calc(100%_-_2rem)] max-w-lg rounded-xl p-6 backdrop:bg-black/20 backdrop:backdrop-blur-xs">
       <h2 id="role-delete-title" className="mb-4 text-lg font-semibold">Delete {config.singular}</h2><p>Delete {removing?.name}?</p>
       {kind==='customer' && <label className="my-4 block text-sm"><input type="checkbox" checked={confirmRelationships} onChange={event => setConfirmRelationships(event.target.checked)} /> If this role is used, remove its role labels while retaining all Contact and Account associations.</label>}
       {deletion.error && <p role="alert" className="text-red-700">{deletion.error.message}</p>}
-      <div className="mt-5 flex justify-end gap-3"><button disabled={deletion.isPending} onClick={close}>Cancel</button><button disabled={deletion.isPending} className="rounded bg-red-600 px-4 py-2 text-white" onClick={() => deletion.mutate()}>{deletion.isPending?'Deleting…':'Delete'}</button></div>
+      <div className="mt-5 flex justify-end gap-3"><button disabled={deletion.isPending} onClick={close}>Cancel</button><button disabled={deletion.isPending} className="rounded bg-slate-100 px-4 py-2 text-slate-700 hover:bg-slate-200" onClick={() => deletion.mutate()}>{deletion.isPending?'Deleting…':'Delete'}</button></div>
     </dialog>
   </PageContainer>;
 }

@@ -14,6 +14,37 @@ export const importRunInput = importDraftInput.superRefine((value, ctx) => {
   if (new Set(value.match).size !== value.match.length || value.match.some(key => value.mapping[key] === undefined)) ctx.addIssue({ code: 'custom', message: 'Match fields must be unique and mapped.' });
   if (value.mode !== 'create' && !value.match.length) ctx.addIssue({ code: 'custom', message: 'Select at least one match field for updates.' });
 });
+const importProgressSchema = z.object({
+  total_rows: z.number().int().nonnegative(),
+  processed_rows: z.number().int().nonnegative(),
+  complete: z.boolean(),
+  created_count: z.number().int().nonnegative(),
+  updated_count: z.number().int().nonnegative(),
+  error_count: z.number().int().nonnegative(),
+  success_rate: z.number().nonnegative(),
+  duration_seconds: z.number().nonnegative(),
+  errors: z.array(z.object({ row: z.number().int().positive(), message: z.string() })),
+});
+export type ImportProgress = z.infer<typeof importProgressSchema>;
+
+export async function runImportBatches(
+  runBatch: () => Promise<ImportProgress>,
+  startAt: number,
+  onProgress: (progress: ImportProgress) => void
+) {
+  let processedRows = startAt;
+  let progress: ImportProgress;
+  do {
+    progress = await runBatch();
+    if (!progress.complete && progress.processed_rows <= processedRows) {
+      throw new Error('Import worker did not advance. Retry to resume from saved progress.');
+    }
+    processedRows = progress.processed_rows;
+    onProgress(progress);
+  } while (!progress.complete);
+  return progress;
+}
+
 export async function authorizeImport(client: SupabaseClient<Database>, run = false) {
   const { data: { user }, error } = await client.auth.getUser();
   if (error || !user) throw new Error('Authentication required.');
@@ -23,8 +54,8 @@ export async function authorizeImport(client: SupabaseClient<Database>, run = fa
   }
   return user;
 }
-export async function createImport(client: SupabaseClient<Database>, name: string, filename: string, csv: string) {
-  await authorizeImport(client, true);
+export async function createImport(client: SupabaseClient<Database>, name: string, filename: string, csv: string, authorized = false) {
+  if (!authorized) await authorizeImport(client, true);
   if (!filename.toLowerCase().endsWith('.csv')) throw new Error('This import currently accepts CSV files.');
   const importName = z.string().trim().min(1).max(100).parse(name);
   const parsed = parseImportCsv(csv);
@@ -32,10 +63,16 @@ export async function createImport(client: SupabaseClient<Database>, name: strin
   if (error) throw new Error('Import could not be prepared. Check permissions and file limits.');
   return { id: data, headers: parsed.headers, sample: parsed.rows.slice(0, 3), total: parsed.rows.length };
 }
-export async function runImport(client: SupabaseClient<Database>, raw: unknown) {
-  await authorizeImport(client, true);
+export async function runImport(client: SupabaseClient<Database>, raw: unknown, authorized = false) {
+  if (!authorized) await authorizeImport(client, true);
   const value = importRunInput.parse(raw);
-  const { data, error } = await client.rpc('run_lead_import', { p_job: value.job, p_mapping: value.mapping, p_mode: value.mode, p_match: value.match });
+  const { data, error } = await client.rpc('run_lead_import', {
+    p_job: value.job,
+    p_mapping: value.mapping,
+    p_mode: value.mode,
+    p_match: value.match,
+    p_limit: 250,
+  });
   if (error) throw new Error(error.code === '42501' ? 'Permission denied.' : 'Import configuration was rejected. Check mapped fields, field permissions and required custom fields.');
-  return data;
+  return importProgressSchema.parse(data);
 }

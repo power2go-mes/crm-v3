@@ -31,4 +31,5 @@ export interface ReportResult {
   breakdown: ReportBreakdownItem[];
   columns: { id: string; header: string; accessorKey: string }[];
   rows: Record<string, any>[];
+  pageInfo?: { page: number; pageSize: number; totalCount: number };
 }

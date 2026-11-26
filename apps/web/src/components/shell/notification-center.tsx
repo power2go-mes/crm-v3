@@ -267,7 +267,7 @@ export function NotificationCenter() {
                         deleteNotification(item.id);
                       }}
                       title="Dismiss"
-                      className="h-6 w-6 rounded-md hover:bg-slate-200 flex items-center justify-center text-slate-400 hover:text-red-600 transition"
+                      className="h-6 w-6 rounded-md hover:bg-slate-200 flex items-center justify-center text-slate-400 hover:text-slate-700 transition"
                     >
                       <Trash2 className="h-3 w-3" />
                     </button>
@@ -415,7 +415,7 @@ export function NotificationCenter() {
                           deleteNotification(item.id);
                         }}
                         title="Delete"
-                        className="h-7 w-7 rounded-lg hover:bg-slate-200 flex items-center justify-center text-slate-400 hover:text-red-600 transition"
+                        className="h-7 w-7 rounded-lg hover:bg-slate-200 flex items-center justify-center text-slate-400 hover:text-slate-700 transition"
                       >
                         <Trash2 className="h-3.5 w-3.5" />
                       </button>

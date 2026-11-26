@@ -5,6 +5,8 @@ import {
   createPendingConfirmation,
   consumeConfirmationToken,
   checkRateLimit,
+  maskSensitiveFields,
+  recordAudit,
 } from '../src/guardrails.js';
 
 describe('FINLONEXA CRM MCP Server Security & Role Isolation Suite', () => {
@@ -112,5 +114,81 @@ describe('FINLONEXA CRM MCP Server Security & Role Isolation Suite', () => {
     }
     // 121st request must be denied
     expect(() => checkRateLimit(testUser)).toThrow('Rate limit exceeded');
+  });
+
+  it('masks sensitive fields on a copy for non-privileged roles', () => {
+    const record = {
+      id: 'account-1',
+      bank_account_number: '123456789012',
+      tax_id: '123-45-6789',
+    };
+
+    const masked = maskSensitiveFields(record, 'BDO');
+
+    expect(masked).toEqual({
+      id: 'account-1',
+      bank_account_number: '********9012',
+      tax_id: '***-**-6789',
+    });
+    expect(record.bank_account_number).toBe('123456789012');
+    expect(record.tax_id).toBe('123-45-6789');
+    expect(maskSensitiveFields({ id: 'account-2' }, 'BDO')).toEqual({ id: 'account-2' });
+  });
+
+  it('does not mask records for privileged roles', () => {
+    const record = { bank_account_number: '123456789012', tax_id: '123-45-6789' };
+
+    expect(maskSensitiveFields(record, 'SUPER_ADMIN')).toBe(record);
+    expect(maskSensitiveFields(record, 'HEAD_OF_SALES')).toBe(record);
+  });
+
+  it('persists minimal owner-scoped audit metadata without tool arguments', async () => {
+    const insert = vi.fn().mockResolvedValue({ error: null });
+    const context: any = {
+      userId: 'mcp-audit-user',
+      primaryRole: 'BDO',
+      supabase: {
+        from: vi.fn().mockReturnValue({ insert }),
+      },
+    };
+
+    await recordAudit(context, {
+      toolName: 'crm_search_records',
+      arguments: { email: 'private@example.test' },
+      status: 'SUCCESS',
+    });
+
+    expect(insert).toHaveBeenCalledWith([
+      {
+        user_id: 'mcp-audit-user',
+        action: 'MCP_TOOL:crm_search_records',
+        entity_name: 'MCP_SERVER',
+        status: 'SUCCESS',
+        details: { user_role: 'BDO' },
+      },
+    ]);
+  });
+
+  it('surfaces audit persistence failures without exposing database details', async () => {
+    const insert = vi.fn().mockResolvedValue({ error: { code: '42501' } });
+    const context: any = {
+      userId: 'mcp-audit-user',
+      primaryRole: 'BDO',
+      supabase: {
+        from: vi.fn().mockReturnValue({ insert }),
+      },
+    };
+    const logError = vi.spyOn(console, 'error').mockImplementation(() => {});
+
+    await expect(
+      recordAudit(context, {
+        toolName: 'crm_search_records',
+        arguments: {},
+        status: 'FAILED',
+      })
+    ).rejects.toThrow('MCP audit persistence failed');
+
+    expect(logError).toHaveBeenCalledWith('[MCP] Audit persistence failed', { code: '42501' });
+    logError.mockRestore();
   });
 });

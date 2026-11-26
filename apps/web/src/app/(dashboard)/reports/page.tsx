@@ -18,6 +18,7 @@ export default function ReportsPage() {
   const [selectedCategory, setSelectedCategory] = useState<ReportCategory | 'all'>('all');
   const [activeReportId, setActiveReportId] = useState<string | null>(null);
   const [searchTable, setSearchTable] = useState('');
+  const [reportPage, setReportPage] = useState(1);
 
   const { reports: customReports, isLoading: isLoadingCustom, deleteReport } = useCustomReports();
 
@@ -25,7 +26,7 @@ export default function ReportsPage() {
     selectedCategory === 'all' ? true : r.category === selectedCategory
   );
 
-  const { data: reportResult, isLoading, isError, refetch } = useReport(activeReportId || '');
+  const { data: reportResult, isLoading, isError, refetch } = useReport(activeReportId || '', reportPage);
 
   const filteredRows = (reportResult?.rows || []).filter((row) => {
     if (!searchTable.trim()) return true;
@@ -58,6 +59,8 @@ export default function ReportsPage() {
             onClick={() => {
               setMainTab('standard');
               setActiveReportId(null);
+              setReportPage(1);
+              setSearchTable('');
             }}
             className={`border-b-2 pb-3 text-sm font-semibold transition-colors ${
               mainTab === 'standard'
@@ -71,6 +74,8 @@ export default function ReportsPage() {
             onClick={() => {
               setMainTab('custom');
               setActiveReportId(null);
+              setReportPage(1);
+              setSearchTable('');
             }}
             className={`flex items-center gap-2 border-b-2 pb-3 text-sm font-semibold transition-colors ${
               mainTab === 'custom'
@@ -181,7 +186,7 @@ export default function ReportsPage() {
                             await deleteReport(report.id);
                           }
                         }}
-                        className="rounded p-1 text-slate-400 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-900/30"
+                        className="rounded p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-700 dark:hover:bg-slate-700 dark:hover:text-slate-200"
                         title="Delete report"
                       >
                         <Trash2 className="h-3.5 w-3.5" />
@@ -248,7 +253,11 @@ export default function ReportsPage() {
 
                       <div className="mt-6 border-t pt-4">
                         <button
-                          onClick={() => setActiveReportId(report.id)}
+                          onClick={() => {
+                            setActiveReportId(report.id);
+                            setReportPage(1);
+                            setSearchTable('');
+                          }}
                           className="w-full rounded-lg bg-slate-900 px-4 py-2 text-center text-sm font-medium text-white transition-colors hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white"
                         >
                           View Report →
@@ -268,6 +277,7 @@ export default function ReportsPage() {
                   <button
                     onClick={() => {
                       setActiveReportId(null);
+                      setReportPage(1);
                       setSearchTable('');
                     }}
                     className="flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-slate-900 dark:hover:text-white"
@@ -287,7 +297,7 @@ export default function ReportsPage() {
                         onClick={() => exportReportToCSV(reportResult)}
                         className="flex items-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-600"
                       >
-                        ↓ Export CSV
+                        {reportResult.pageInfo ? '↓ Export Current Page' : '↓ Export CSV'}
                       </button>
                     )}
                   </div>
@@ -370,11 +380,13 @@ export default function ReportsPage() {
                     <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
                       <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                         <h3 className="text-base font-semibold text-slate-900">
-                          Report Dataset Records ({filteredRows.length})
+                          Report Dataset Records ({reportResult.pageInfo
+                            ? `${filteredRows.length} on this page / ${reportResult.pageInfo.totalCount} total`
+                            : filteredRows.length})
                         </h3>
                         <input
                           type="text"
-                          placeholder="Search within report results..."
+                          placeholder={reportResult.pageInfo ? 'Search this page...' : 'Search within report results...'}
                           value={searchTable}
                           onChange={(e) => setSearchTable(e.target.value)}
                           className="rounded-md border border-slate-300 px-3 py-1.5 text-xs shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 sm:w-64"
@@ -397,6 +409,37 @@ export default function ReportsPage() {
                           ),
                         }))}
                       />
+                      {reportResult.pageInfo && (
+                        <div className="mt-4 flex items-center justify-between gap-3 text-sm text-slate-600">
+                          <span>
+                            Page {reportResult.pageInfo.page} of {Math.max(
+                              1,
+                              Math.ceil(reportResult.pageInfo.totalCount / reportResult.pageInfo.pageSize)
+                            )}
+                          </span>
+                          <div className="flex gap-2">
+                            <button
+                              type="button"
+                              disabled={reportResult.pageInfo.page <= 1 || isLoading}
+                              onClick={() => setReportPage(page => Math.max(1, page - 1))}
+                              className="rounded border border-slate-300 px-3 py-1.5 disabled:opacity-50"
+                            >
+                              Previous
+                            </button>
+                            <button
+                              type="button"
+                              disabled={
+                                reportResult.pageInfo.page * reportResult.pageInfo.pageSize >= reportResult.pageInfo.totalCount
+                                || isLoading
+                              }
+                              onClick={() => setReportPage(page => page + 1)}
+                              className="rounded border border-slate-300 px-3 py-1.5 disabled:opacity-50"
+                            >
+                              Next
+                            </button>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </>
                 )}

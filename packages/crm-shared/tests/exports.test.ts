@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { spawnSync } from 'node:child_process';
-import { exportRecords, spreadsheetText, type ScopedExportSource } from '../src/exports';
+import { exportRecords, renderExportCsvFragment, spreadsheetText, type ScopedExportSource } from '../src/exports';
 const source: ScopedExportSource = {
   authorize: async () => [
     { key: 'name', label: 'Name', visible: true, exportable: true, kind: 'text' },
@@ -11,6 +11,19 @@ const source: ScopedExportSource = {
 };
 const request = { module: 'contacts', ids: ['one'], columns: ['name'], format: 'csv' };
 describe('bounded authorized exports', () => {
+  it('renders independent, formula-safe CSV fragments with a single first-page header', () => {
+    const columns = [{ key: 'name', label: 'Name', kind: 'text' as const, visible: true, exportable: true }];
+    const first = renderExportCsvFragment(columns, [{ name: '=SUM(1,2)' }], 'UTC', true).toString();
+    const next = renderExportCsvFragment(columns, [{ name: 'Taylor' }], 'UTC', false).toString();
+    expect(first).toContain('\ufeff"Name"\r\n"\'=SUM(1,2)"\r\n');
+    expect(next).toBe('"Taylor"\r\n');
+    expect(renderExportCsvFragment(columns, [], 'UTC', false).toString()).toBe('');
+  });
+  it('rejects oversized or unauthorized CSV pages', () => {
+    const columns = [{ key: 'name', label: 'Name', kind: 'text' as const, visible: true, exportable: true }];
+    expect(() => renderExportCsvFragment(columns, Array.from({ length: 251 }, () => ({ name: 'x' })), 'UTC', false)).toThrow('Invalid export page');
+    expect(() => renderExportCsvFragment([{ ...columns[0], visible: false }], [], 'UTC', true)).toThrow('Invalid export page');
+  });
   it.each(['=1+1', '+cmd', '-cmd', '@SUM(1)', '  =1+1', '\tdata', '\rdata'])('guards spreadsheet input %j', value => {
     expect(spreadsheetText(value).startsWith("'")).toBe(true);
   });

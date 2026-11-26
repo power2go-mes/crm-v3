@@ -558,7 +558,7 @@ function CustomReportBuilderContent() {
                     <button
                       type="button"
                       onClick={() => removeFilter(idx)}
-                      className="text-slate-400 hover:text-red-500"
+                      className="text-slate-400 hover:text-slate-700"
                     >
                       <Trash2 className="h-3.5 w-3.5" />
                     </button>

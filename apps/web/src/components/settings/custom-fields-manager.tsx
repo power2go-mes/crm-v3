@@ -355,7 +355,7 @@ export function CustomFieldsManager() {
                           archive.mutate(field.id);
                         }
                       }}
-                      className="p-1 rounded text-slate-400 hover:text-red-600 hover:bg-red-50 transition"
+                      className="p-1 rounded text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition"
                     >
                       <Trash2 className="h-4 w-4" />
                     </button>

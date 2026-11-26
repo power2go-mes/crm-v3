@@ -77,9 +77,9 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
     return (
       <PageContainer>
         <div className="p-12 text-center bg-white border border-slate-200 rounded-2xl space-y-4">
-          <AlertCircle className="h-10 w-10 text-red-400 mx-auto" />
+          <AlertCircle className="h-10 w-10 text-red-700 mx-auto" />
           <h2 className="text-lg font-bold text-slate-900">Contact Not Found</h2>
-          <p className="text-sm text-slate-400">The requested contact record does not exist or access is restricted.</p>
+          <p className="text-sm text-slate-600">The requested contact record does not exist or access is restricted.</p>
           <Link
             href="/contacts"
             className="inline-flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-lg transition"
@@ -98,7 +98,7 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
       <div className="mb-4">
         <Link
           href="/contacts"
-          className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-white transition"
+          className="inline-flex items-center gap-1.5 text-xs text-slate-600 hover:text-slate-900 transition"
         >
           <ArrowLeft className="h-4 w-4" />
           <span>Back to Contacts</span>
@@ -118,19 +118,19 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
                   {contact.first_name} {contact.last_name}
                 </h1>
                 {contact.is_primary && (
-                  <span className="px-2 py-0.5 rounded text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/30">
+                  <span className="px-2 py-0.5 rounded text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200">
                     Primary Contact
                   </span>
                 )}
               </div>
               {contact.title && (
-                <p className="text-sm text-emerald-600 font-medium mt-0.5">{contact.title}</p>
+                <p className="text-sm text-emerald-700 font-medium mt-0.5">{contact.title}</p>
               )}
-              <div className="flex flex-wrap items-center gap-4 mt-2 text-xs text-slate-400">
+              <div className="flex flex-wrap items-center gap-4 mt-2 text-xs text-slate-600">
                 {contact.account && (
                   <Link
                     href={`/accounts/${contact.account.id}`}
-                    className="flex items-center gap-1.5 text-slate-300 hover:text-emerald-600 transition"
+                    className="flex items-center gap-1.5 text-slate-700 hover:text-emerald-700 transition"
                   >
                     <Building2 className="h-3.5 w-3.5 text-slate-500" />
                     <span>{contact.account.name}</span>
@@ -157,7 +157,7 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
             <button
               type="button"
               onClick={() => setIsEmailModalOpen(true)}
-              className="px-3 py-2 bg-emerald-600 hover:bg-emerald-600 text-white text-xs font-semibold rounded-lg transition inline-flex items-center gap-1.5 shadow-xs"
+              className="px-3 py-2 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold rounded-lg transition inline-flex items-center gap-1.5 shadow-xs"
               title="Compose and log email to contact"
             >
               <Send className="h-3.5 w-3.5" />
@@ -191,7 +191,7 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
               <button
                 type="button"
                 onClick={handleDelete}
-                className="p-2 bg-slate-800/80 hover:bg-red-950/40 text-slate-400 hover:text-red-400 border border-slate-700 hover:border-orange-200 rounded-lg transition"
+                className="p-2 bg-white hover:bg-slate-100 text-slate-600 hover:text-slate-800 border border-slate-300 rounded-lg transition"
                 title="Delete Contact"
               >
                 <Trash2 className="h-4 w-4" />
@@ -209,8 +209,8 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
             onClick={() => setActiveTab('details')}
             className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
               activeTab === 'details'
-                ? 'border-emerald-200 text-emerald-600'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-emerald-600 text-emerald-700'
+                : 'border-transparent text-slate-600 hover:text-slate-900'
             }`}
           >
             <FileText className="h-3.5 w-3.5" />
@@ -222,8 +222,8 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
             onClick={() => setActiveTab('accounts')}
             className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
               activeTab === 'accounts'
-                ? 'border-emerald-200 text-emerald-600'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-emerald-600 text-emerald-700'
+                : 'border-transparent text-slate-600 hover:text-slate-900'
             }`}
           >
             <Building2 className="h-3.5 w-3.5" />
@@ -235,8 +235,8 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
             onClick={() => setActiveTab('activity')}
             className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
               activeTab === 'activity'
-                ? 'border-emerald-200 text-emerald-600'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-emerald-600 text-emerald-700'
+                : 'border-transparent text-slate-600 hover:text-slate-900'
             }`}
           >
             <Activity className="h-3.5 w-3.5" />
@@ -248,8 +248,8 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
             onClick={() => setActiveTab('emails')}
             className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
               activeTab === 'emails'
-                ? 'border-emerald-200 text-emerald-600'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-emerald-600 text-emerald-700'
+                : 'border-transparent text-slate-600 hover:text-slate-900'
             }`}
           >
             <Mail className="h-3.5 w-3.5" />
@@ -261,8 +261,8 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
             onClick={() => setActiveTab('history')}
             className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
               activeTab === 'history'
-                ? 'border-emerald-200 text-emerald-600'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-emerald-600 text-emerald-700'
+                : 'border-transparent text-slate-600 hover:text-slate-900'
             }`}
           >
             <History className="h-3.5 w-3.5" />
@@ -275,8 +275,8 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
               onClick={() => setActiveTab('account_overview')}
               className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
                 activeTab === 'account_overview'
-                  ? 'border-emerald-200 text-emerald-600'
-                  : 'border-transparent text-slate-400 hover:text-slate-200'
+                  ? 'border-emerald-600 text-emerald-700'
+                  : 'border-transparent text-slate-600 hover:text-slate-900'
               }`}
             >
               <ExternalLink className="h-3.5 w-3.5" />
@@ -294,51 +294,51 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
             <div className="p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
               <div>
                 <span className="block text-slate-500 uppercase tracking-wider text-[10px]">First Name</span>
-                <span className="font-semibold text-slate-200 text-sm mt-0.5 block">{contact.first_name}</span>
+                <span className="font-semibold text-slate-800 text-sm mt-0.5 block">{contact.first_name}</span>
               </div>
               <div>
                 <span className="block text-slate-500 uppercase tracking-wider text-[10px]">Last Name</span>
-                <span className="font-semibold text-slate-200 text-sm mt-0.5 block">{contact.last_name}</span>
+                <span className="font-semibold text-slate-800 text-sm mt-0.5 block">{contact.last_name}</span>
               </div>
               <div>
                 <span className="block text-slate-500 uppercase tracking-wider text-[10px]">Job Title</span>
-                <span className="font-semibold text-slate-200 text-sm mt-0.5 block">{contact.title || '—'}</span>
+                <span className="font-semibold text-slate-800 text-sm mt-0.5 block">{contact.title || '—'}</span>
               </div>
               <div>
                 <span className="block text-slate-500 uppercase tracking-wider text-[10px]">Primary Account</span>
-                <span className="font-semibold text-slate-200 text-sm mt-0.5 block">
+                <span className="font-semibold text-slate-800 text-sm mt-0.5 block">
                   {contact.account ? contact.account.name : 'Individual'}
                 </span>
               </div>
               <div>
                 <span className="block text-slate-500 uppercase tracking-wider text-[10px]">Parent Contact</span>
-                <span className="font-semibold text-slate-200 text-sm mt-0.5 block">
+                <span className="font-semibold text-slate-800 text-sm mt-0.5 block">
                   {contact.parent_contact
-                    ? `${contact.parent_contact.first_name} ${contact.parent_contact.last_name}`
+                    ? [contact.parent_contact.first_name, contact.parent_contact.last_name].filter(Boolean).join(' ') || 'Contact unavailable'
                     : 'None (Top Level)'}
                 </span>
               </div>
               <div>
                 <span className="block text-slate-500 uppercase tracking-wider text-[10px]">Primary Contact</span>
-                <span className="font-semibold text-slate-200 text-sm mt-0.5 block">
+                <span className="font-semibold text-slate-800 text-sm mt-0.5 block">
                   {contact.is_primary ? 'Yes (Primary)' : 'No'}
                 </span>
               </div>
               <div>
                 <span className="block text-slate-500 uppercase tracking-wider text-[10px]">Email Address</span>
-                <span className="font-semibold text-slate-200 text-sm mt-0.5 block">{contact.email || '—'}</span>
+                <span className="font-semibold text-slate-800 text-sm mt-0.5 block">{contact.email || '—'}</span>
               </div>
               <div>
                 <span className="block text-slate-500 uppercase tracking-wider text-[10px]">Primary Phone</span>
-                <span className="font-semibold text-slate-200 text-sm mt-0.5 block">{contact.contact_number || '—'}</span>
+                <span className="font-semibold text-slate-800 text-sm mt-0.5 block">{contact.contact_number || '—'}</span>
               </div>
               <div>
                 <span className="block text-slate-500 uppercase tracking-wider text-[10px]">Secondary Phone</span>
-                <span className="font-semibold text-slate-200 text-sm mt-0.5 block">{contact.secondary_contact_number || '—'}</span>
+                <span className="font-semibold text-slate-800 text-sm mt-0.5 block">{contact.secondary_contact_number || '—'}</span>
               </div>
               <div>
                 <span className="block text-slate-500 uppercase tracking-wider text-[10px]">Contact Owner</span>
-                <span className="font-semibold text-slate-200 text-sm mt-0.5 block">
+                <span className="font-semibold text-slate-800 text-sm mt-0.5 block">
                   {contact.contact_owner ? `${contact.contact_owner.first_name} (${contact.contact_owner.email})` : '—'}
                 </span>
               </div>
@@ -366,11 +366,11 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
         {activeTab === 'emails' && (
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <h3 className="text-sm font-bold text-white">Email Communications</h3>
+              <h3 className="text-sm font-bold text-slate-900">Email Communications</h3>
               <button
                 type="button"
                 onClick={() => setIsEmailModalOpen(true)}
-                className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-600 text-white rounded-lg text-xs font-semibold inline-flex items-center gap-1.5 transition"
+                className="px-3 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs font-semibold inline-flex items-center gap-1.5 transition"
               >
                 <Send className="h-3.5 w-3.5" />
                 <span>Compose Email</span>
@@ -387,15 +387,15 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
 
         {/* Tab 5: Account Overview */}
         {activeTab === 'account_overview' && contact.account && (
-          <div className="bg-white border border-slate-200 rounded-xl overflow-hidden p-6 text-sm text-slate-300 space-y-4">
+          <div className="bg-white border border-slate-200 rounded-xl overflow-hidden p-6 text-sm text-slate-700 space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="font-bold text-white text-base">{contact.account.name}</h3>
-                <p className="text-xs text-slate-400">Primary organization account associated with this contact.</p>
+                <h3 className="font-bold text-slate-900 text-base">{contact.account.name}</h3>
+                <p className="text-xs text-slate-600">Primary organization account associated with this contact.</p>
               </div>
               <Link
                 href={`/accounts/${contact.account.id}`}
-                className="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-600 text-white rounded-lg text-xs font-semibold inline-flex items-center gap-1.5 transition"
+                className="px-3.5 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs font-semibold inline-flex items-center gap-1.5 transition"
               >
                 <span>View Full Account</span>
                 <ExternalLink className="h-3.5 w-3.5" />

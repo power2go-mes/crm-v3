@@ -62,13 +62,13 @@ export default function TaskDetailPage() {
     return (
       <PageContainer>
         <div className="p-8 text-center bg-white border border-slate-200 rounded-2xl">
-          <h2 className="text-lg font-bold text-slate-100">Task Not Found</h2>
-          <p className="text-xs text-slate-400 mt-1">
+          <h2 className="text-lg font-bold text-slate-900">Task Not Found</h2>
+          <p className="text-xs text-slate-600 mt-1">
             The requested task does not exist or you do not have permission to view it.
           </p>
           <Link
             href="/tasks"
-            className="inline-flex items-center gap-1.5 mt-4 px-4 py-2 bg-emerald-600 hover:bg-emerald-600 text-white rounded-lg text-xs font-semibold transition"
+            className="inline-flex items-center gap-1.5 mt-4 px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs font-semibold transition"
           >
             <ArrowLeft className="h-3.5 w-3.5" /> Back to Tasks
           </Link>
@@ -135,12 +135,12 @@ export default function TaskDetailPage() {
                     {statusConfig.label}
                   </span>
                   {isOverdue && (
-                    <span className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-rose-500/20 text-rose-400 border border-rose-500/30">
+                    <span className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-rose-50 text-rose-700 border border-rose-200">
                       Overdue
                     </span>
                   )}
                 </div>
-                <p className="text-xs text-slate-400 mt-0.5">Task Detail View</p>
+                <p className="text-xs text-slate-600 mt-0.5">Task Detail View</p>
               </div>
             </div>
 
@@ -161,14 +161,14 @@ export default function TaskDetailPage() {
               <button
                 type="button"
                 onClick={() => setIsEditModalOpen(true)}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-600 hover:bg-emerald-600 text-white transition shadow-sm"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-700 hover:bg-emerald-800 text-white transition shadow-sm"
               >
                 <Edit2 className="h-3.5 w-3.5" /> Edit Task
               </button>
               <button
                 type="button"
                 onClick={handleDelete}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-rose-950/60 hover:bg-rose-900/80 text-rose-200 border border-rose-800/50 transition"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 transition"
               >
                 <Trash2 className="h-3.5 w-3.5" /> Delete
               </button>
@@ -179,7 +179,7 @@ export default function TaskDetailPage() {
           <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xl space-y-6">
             {/* Quick Status Control */}
             <div className="flex items-center gap-3 p-4 bg-slate-50 border border-slate-200 rounded-xl">
-              <label className="text-xs text-slate-400 font-semibold uppercase tracking-wider">
+              <label className="text-xs text-slate-600 font-semibold uppercase tracking-wider">
                 Current Status:
               </label>
               <select
@@ -198,10 +198,10 @@ export default function TaskDetailPage() {
             {/* Attributes Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4 bg-slate-50 border border-slate-200 rounded-xl">
               <div>
-                <span className="text-xs text-slate-400 flex items-center gap-1 font-semibold uppercase tracking-wider">
+                <span className="text-xs text-slate-600 flex items-center gap-1 font-semibold uppercase tracking-wider">
                   <Calendar className="h-3.5 w-3.5" /> Due Date
                 </span>
-                <p className="mt-1 font-medium text-slate-200 text-sm">
+                <p className="mt-1 font-medium text-slate-800 text-sm">
                   {task.due_date ? (
                     new Date(task.due_date).toLocaleString(undefined, {
                       month: 'short',
@@ -217,10 +217,10 @@ export default function TaskDetailPage() {
               </div>
 
               <div>
-                <span className="text-xs text-slate-400 flex items-center gap-1 font-semibold uppercase tracking-wider">
+                <span className="text-xs text-slate-600 flex items-center gap-1 font-semibold uppercase tracking-wider">
                   <User className="h-3.5 w-3.5" /> Assignee
                 </span>
-                <p className="mt-1 font-medium text-slate-200 text-sm">
+                <p className="mt-1 font-medium text-slate-800 text-sm">
                   {task.assigned_to ? (
                     `${task.assigned_to.first_name} ${task.assigned_to.last_name}`
                   ) : (
@@ -230,7 +230,7 @@ export default function TaskDetailPage() {
               </div>
 
               <div>
-                <span className="text-xs text-slate-400 flex items-center gap-1 font-semibold uppercase tracking-wider">
+                <span className="text-xs text-slate-600 flex items-center gap-1 font-semibold uppercase tracking-wider">
                   <Link2 className="h-3.5 w-3.5" /> Related Record
                 </span>
                 <div className="mt-1">
@@ -238,13 +238,13 @@ export default function TaskDetailPage() {
                     relatedUrl ? (
                       <Link
                         href={relatedUrl}
-                        className="inline-flex items-center gap-1 text-emerald-600 hover:text-emerald-600 font-medium underline transition text-sm"
+                        className="inline-flex items-center gap-1 text-emerald-700 hover:text-emerald-800 font-medium underline transition text-sm"
                       >
                         <span className="capitalize">{task.related_to_type}</span> ({task.related_to_id.slice(0, 8)}...)
                         <ExternalLink className="h-3 w-3" />
                       </Link>
                     ) : (
-                      <span className="text-slate-300 text-sm">
+                      <span className="text-slate-700 text-sm">
                         <span className="capitalize">{task.related_to_type}</span>: {task.related_to_id}
                       </span>
                     )
@@ -255,10 +255,10 @@ export default function TaskDetailPage() {
               </div>
 
               <div>
-                <span className="text-xs text-slate-400 flex items-center gap-1 font-semibold uppercase tracking-wider">
+                <span className="text-xs text-slate-600 flex items-center gap-1 font-semibold uppercase tracking-wider">
                   <Clock className="h-3.5 w-3.5" /> Created Date
                 </span>
-                <p className="mt-1 text-slate-300 text-sm">
+                <p className="mt-1 text-slate-700 text-sm">
                   {task.created_at ? new Date(task.created_at).toLocaleDateString() : '—'}
                 </p>
               </div>
@@ -266,10 +266,10 @@ export default function TaskDetailPage() {
 
             {/* Description */}
             <div>
-              <span className="text-xs text-slate-400 flex items-center gap-1 font-semibold uppercase tracking-wider mb-2">
+              <span className="text-xs text-slate-600 flex items-center gap-1 font-semibold uppercase tracking-wider mb-2">
                 <FileText className="h-3.5 w-3.5" /> Notes & Instructions
               </span>
-              <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-slate-200 text-xs leading-relaxed whitespace-pre-wrap">
+              <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-xs leading-relaxed whitespace-pre-wrap">
                 {task.description || <span className="text-slate-500 italic">No notes provided.</span>}
               </div>
             </div>

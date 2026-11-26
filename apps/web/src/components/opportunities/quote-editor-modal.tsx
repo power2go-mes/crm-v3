@@ -384,7 +384,7 @@ export function QuoteEditorModal({
                     <button
                       type="button"
                       onClick={() => handleRemoveItem(idx)}
-                      className="rounded p-1 text-slate-400 hover:text-red-600 dark:hover:text-red-400"
+                      className="rounded p-1 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
                       title="Remove Item"
                     >
                       <Trash2 className="h-4 w-4" />

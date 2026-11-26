@@ -323,10 +323,14 @@ export function getBreadcrumbs(pathname: string): BreadcrumbItem[] {
 
     const isLast = i === segments.length - 1;
 
-    let label = segment
-      .split('-')
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
+    const isUuid =
+      /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(segment);
+    let label = isUuid
+      ? 'Details'
+      : segment
+          .split('-')
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(' ');
 
     if (segment.toLowerCase() === 'roles') {
       label = 'Roles';

@@ -2,6 +2,8 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 
+dotenv.config({ path: '.env.local' });
+dotenv.config({ path: '.env.local' });
 dotenv.config({ path: '../../apps/web/.env.local' });
 dotenv.config();
 

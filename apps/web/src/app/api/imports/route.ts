@@ -7,15 +7,15 @@ export async function POST(request: Request) {
   try {
     if (request.headers.get('origin') && request.headers.get('origin') !== new URL(request.url).origin) return Response.json({ error: 'Origin denied.' }, { status: 403 });
     const client = await createClient();
-    await authorizeImport(client, true);
     const length = Number(request.headers.get('content-length'));
     if (length > IMPORT_MAX_BYTES + 100000) return Response.json({ error: 'Import request is too large.' }, { status: 413 });
     if (request.headers.get('content-type')?.includes('multipart/form-data')) {
+      await authorizeImport(client, true);
       const body = await boundedBody(request, IMPORT_MAX_BYTES + 100000);
       const form = await new Response(body, { headers: { 'Content-Type': request.headers.get('content-type')! } }).formData();
       const file = form.get('file');
       if (!(file instanceof File) || file.size > IMPORT_MAX_BYTES) return Response.json({ error: 'Select a CSV file up to 2 MB.' }, { status: 400 });
-      return Response.json(await createImport(client, String(form.get('name') ?? ''), file.name, new TextDecoder('utf-8', { fatal: true }).decode(await file.arrayBuffer())));
+      return Response.json(await createImport(client, String(form.get('name') ?? ''), file.name, new TextDecoder('utf-8', { fatal: true }).decode(await file.arrayBuffer()), true));
     }
     const text = new TextDecoder().decode(await boundedBody(request, 20000));
     return Response.json({ result: await runImport(client, JSON.parse(text)) });

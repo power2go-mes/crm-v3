@@ -3,6 +3,26 @@
 import { useQuery } from '@tanstack/react-query';
 import { createClient } from '@/lib/supabase/client';
 import type { ReportDefinition, ReportResult, ReportCategory } from '@/types/reports';
+import { z } from 'zod';
+
+const LEAD_REPORT_PAGE_SIZE = 100;
+const leadReportSummarySchema = z.object({
+  total_count: z.number().int().nonnegative(),
+  groups: z.array(z.object({
+    key: z.string(),
+    label: z.string(),
+    count: z.number().int().nonnegative(),
+  })),
+});
+
+async function fetchLeadReportSummary(
+  supabase: ReturnType<typeof createClient>,
+  reportId: string
+) {
+  const { data, error } = await supabase.rpc('leads_report_summary', { p_report: reportId });
+  if (error) throw error;
+  return leadReportSummarySchema.parse(data);
+}
 
 export const REPORT_CATALOG: ReportDefinition[] = [
   // Leads
@@ -67,43 +87,43 @@ export const REPORT_CATALOG: ReportDefinition[] = [
   },
 ];
 
-export function useReport(reportId: string) {
+export function useReport(reportId: string, page = 1) {
   const supabase = createClient();
+  const safePage = z.number().int().min(1).max(1000).parse(page);
 
   return useQuery<ReportResult>({
-    queryKey: ['report', reportId],
+    queryKey: ['report', reportId, safePage],
     queryFn: async () => {
       switch (reportId) {
         case 'leads-by-status': {
-          const { data: leads, error } = await supabase
+          const [summary, pageResult] = await Promise.all([
+            fetchLeadReportSummary(supabase, reportId),
+            supabase
             .from('leads')
             .select('id, title, first_name, last_name, company_name, email, phone, status, created_at')
-            .order('created_at', { ascending: false });
-
-          if (error) throw error;
-          const allLeads = leads || [];
-          const statusCounts: Record<string, number> = {};
-
-          for (const l of allLeads) {
-            const st = (l.status || 'new').toLowerCase();
-            statusCounts[st] = (statusCounts[st] || 0) + 1;
-          }
-
-          const total = allLeads.length;
-          const breakdown = Object.entries(statusCounts).map(([label, count]) => ({
-            label: label.charAt(0).toUpperCase() + label.slice(1),
-            count,
-            percent: total > 0 ? Math.round((count / total) * 100) : 0,
+            .order('created_at', { ascending: false })
+            .order('id', { ascending: true })
+            .range((safePage - 1) * LEAD_REPORT_PAGE_SIZE, safePage * LEAD_REPORT_PAGE_SIZE - 1),
+          ]);
+          if (pageResult.error) throw pageResult.error;
+          const statusCounts = Object.fromEntries(summary.groups.map(group => [
+            group.key.toLowerCase(),
+            group.count,
+          ]));
+          const breakdown = summary.groups.map(group => ({
+            label: group.label,
+            count: group.count,
+            percent: summary.total_count > 0 ? Math.round((group.count / summary.total_count) * 100) : 0,
           }));
 
           return {
             title: 'Leads by Status',
             description: 'Distribution of leads across workflow statuses',
             summaryMetrics: [
-              { label: 'Total Leads', value: total },
+              { label: 'Total Leads', value: summary.total_count },
               { label: 'Active Leads', value: (statusCounts['in_progress'] || 0) + (statusCounts['new'] || 0) },
               { label: 'Qualified', value: statusCounts['qualified'] || 0 },
-              { label: 'Converted', value: statusCounts['converted'] || 0 },
+              { label: 'Converted', value: statusCounts['converted'] || statusCounts['convert'] || 0 },
             ],
             breakdown,
             columns: [
@@ -114,38 +134,36 @@ export function useReport(reportId: string) {
               { id: 'status', header: 'Status', accessorKey: 'status' },
               { id: 'created_at', header: 'Created', accessorKey: 'created_at' },
             ],
-            rows: allLeads,
+            rows: (pageResult.data as Record<string, any>[] | null) || [],
+            pageInfo: { page: safePage, pageSize: LEAD_REPORT_PAGE_SIZE, totalCount: summary.total_count },
           };
         }
 
         case 'leads-by-source': {
-          const { data: leads, error } = await supabase
+          const [summary, pageResult] = await Promise.all([
+            fetchLeadReportSummary(supabase, reportId),
+            supabase
             .from('leads')
-            .select('id, first_name, last_name, company_name, email, lead_source, status, created_at');
-
-          if (error) throw error;
-          const allLeads = leads || [];
-          const sourceCounts: Record<string, number> = {};
-
-          for (const l of allLeads) {
-            const src = l.lead_source || 'Unknown';
-            sourceCounts[src] = (sourceCounts[src] || 0) + 1;
-          }
-
-          const total = allLeads.length;
-          const breakdown = Object.entries(sourceCounts).map(([label, count]) => ({
-            label,
-            count,
-            percent: total > 0 ? Math.round((count / total) * 100) : 0,
+            .select('id, first_name, last_name, company_name, email, lead_source, status, created_at')
+            .order('created_at', { ascending: false })
+            .order('id', { ascending: true })
+            .range((safePage - 1) * LEAD_REPORT_PAGE_SIZE, safePage * LEAD_REPORT_PAGE_SIZE - 1),
+          ]);
+          if (pageResult.error) throw pageResult.error;
+          const breakdown = summary.groups.map(group => ({
+            label: group.label,
+            count: group.count,
+            percent: summary.total_count > 0 ? Math.round((group.count / summary.total_count) * 100) : 0,
           }));
+          const topSource = summary.groups[0]?.label || 'None';
 
           return {
             title: 'Leads by Source',
             description: 'Channel attribution and lead origin analysis',
             summaryMetrics: [
-              { label: 'Total Leads', value: total },
-              { label: 'Channels Tracked', value: Object.keys(sourceCounts).length },
-              { label: 'Top Source', value: breakdown[0]?.label || 'None' },
+              { label: 'Total Leads', value: summary.total_count },
+              { label: 'Channels Tracked', value: summary.groups.length },
+              { label: 'Top Source', value: topSource },
             ],
             breakdown,
             columns: [
@@ -155,29 +173,34 @@ export function useReport(reportId: string) {
               { id: 'lead_source', header: 'Source', accessorKey: 'lead_source' },
               { id: 'status', header: 'Status', accessorKey: 'status' },
             ],
-            rows: allLeads,
+            rows: (pageResult.data as Record<string, any>[] | null) || [],
+            pageInfo: { page: safePage, pageSize: LEAD_REPORT_PAGE_SIZE, totalCount: summary.total_count },
           };
         }
 
         case 'converted-leads': {
-          const { data: converted, error } = await supabase
+          const [summary, pageResult] = await Promise.all([
+            fetchLeadReportSummary(supabase, reportId),
+            supabase
             .from('leads')
             .select('id, first_name, last_name, company_name, email, phone, converted_at, created_at')
             .or('is_convert.eq.true,status.eq.converted')
-            .order('created_at', { ascending: false });
-
-          if (error) throw error;
-          const rows = converted || [];
+            .order('created_at', { ascending: false })
+            .order('id', { ascending: true })
+            .range((safePage - 1) * LEAD_REPORT_PAGE_SIZE, safePage * LEAD_REPORT_PAGE_SIZE - 1),
+          ]);
+          if (pageResult.error) throw pageResult.error;
+          const rows = (pageResult.data as Record<string, any>[] | null) || [];
 
           return {
             title: 'Converted Leads Summary',
             description: 'Record of leads converted into customers and accounts',
             summaryMetrics: [
-              { label: 'Total Converted', value: rows.length },
+              { label: 'Total Converted', value: summary.total_count },
               { label: 'Report Status', value: 'Live' },
             ],
             breakdown: [
-              { label: 'Converted', count: rows.length, percent: 100 },
+              { label: 'Converted', count: summary.total_count, percent: summary.total_count > 0 ? 100 : 0 },
             ],
             columns: [
               { id: 'first_name', header: 'First Name', accessorKey: 'first_name' },
@@ -187,6 +210,7 @@ export function useReport(reportId: string) {
               { id: 'created_at', header: 'Created', accessorKey: 'created_at' },
             ],
             rows,
+            pageInfo: { page: safePage, pageSize: LEAD_REPORT_PAGE_SIZE, totalCount: summary.total_count },
           };
         }
 

@@ -63,7 +63,7 @@ export function BulkActionBar({
         <button
           type="button"
           onClick={onBulkDelete}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-red-50 text-red-700 border border-red-300 hover:bg-red-600 hover:text-white rounded-md font-medium transition ml-auto"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white text-slate-700 border border-slate-300 hover:bg-slate-100 rounded-md font-medium transition ml-auto"
         >
           <Trash2 className="h-3.5 w-3.5" />
           <span>Bulk Delete</span>

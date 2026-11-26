@@ -319,7 +319,7 @@ export default function OpportunitiesPage() {
               type="button"
               title="Delete Opportunity"
               onClick={() => handleDeleteSingle(opp.id)}
-              className="p-1.5 rounded hover:bg-slate-100 text-slate-400 hover:text-red-600 transition"
+              className="p-1.5 rounded hover:bg-slate-100 text-slate-500 hover:text-slate-700 transition"
             >
               <Trash2 className="h-3.5 w-3.5" />
             </button>

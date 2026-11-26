@@ -309,7 +309,7 @@ export function OpportunityQuotesTab({ opportunity }: OpportunityQuotesTabProps)
                                   </button>
                                   <button
                                     onClick={() => handleStatusChange(quote, 'Rejected')}
-                                    className="w-full px-3 py-1.5 text-xs text-red-600 hover:bg-red-50 dark:hover:bg-slate-700 text-left"
+                                    className="w-full px-3 py-1.5 text-xs text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-700 text-left"
                                   >
                                     Mark Rejected
                                   </button>
@@ -325,7 +325,7 @@ export function OpportunityQuotesTab({ opportunity }: OpportunityQuotesTabProps)
                                   </button>
                                   <button
                                     onClick={() => handleStatusChange(quote, 'Rejected')}
-                                    className="w-full px-3 py-1.5 text-xs text-red-600 hover:bg-red-50 dark:hover:bg-slate-700 text-left"
+                                    className="w-full px-3 py-1.5 text-xs text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-700 text-left"
                                   >
                                     Mark Rejected
                                   </button>
@@ -370,7 +370,7 @@ export function OpportunityQuotesTab({ opportunity }: OpportunityQuotesTabProps)
                           <button
                             type="button"
                             onClick={() => handleDeleteQuote(quote)}
-                            className="rounded p-1 text-slate-400 hover:text-red-600 dark:hover:text-red-400"
+                            className="rounded p-1 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
                             title="Delete Draft"
                           >
                             <Trash2 className="h-3.5 w-3.5" />

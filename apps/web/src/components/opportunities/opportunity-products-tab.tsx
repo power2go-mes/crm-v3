@@ -307,7 +307,7 @@ export function OpportunityProductsTab({
                         <button
                           type="button"
                           onClick={() => handleDeleteItem(item)}
-                          className="rounded p-1 text-slate-400 hover:text-red-600 dark:hover:text-red-400"
+                          className="rounded p-1 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
                           title="Delete Line Item"
                         >
                           <Trash2 className="h-3.5 w-3.5" />

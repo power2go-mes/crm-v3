@@ -67,6 +67,12 @@ export interface Database {
         Update: never;
         Relationships: [];
       };
+      crm_export_jobs: {
+        Row: { id: string; user_id: string; module: string; columns: Json; time_zone: string; status: string; cursor_id: string | null; processed_rows: number; part_count: number; output_bytes: number; storage_path: string | null; error_message: string | null; claim_token: string | null; lease_expires_at: string | null; created_at: string; updated_at: string; completed_at: string | null };
+        Insert: { module: string; columns: Json; time_zone?: string; id?: string; user_id?: string; status?: string; cursor_id?: string | null; processed_rows?: number; part_count?: number; output_bytes?: number; storage_path?: string | null; error_message?: string | null; claim_token?: string | null; lease_expires_at?: string | null; created_at?: string; updated_at?: string; completed_at?: string | null };
+        Update: never;
+        Relationships: [];
+      };
       crm_field_requirements: {
         Row: { definition_id: string; required: boolean };
         Insert: { definition_id: string; required: boolean };
@@ -889,6 +895,7 @@ export interface Database {
     };
     Views: Record<string, never>;
     Functions: {
+      generate_sales_reminders: { Args: { p_target_user_id: string | null }; Returns: Json };
       company_currency_page: { Args: { p_page: number; p_date: string | null }; Returns: Json };
       set_multiple_currency_enabled: { Args: { p_enabled: boolean }; Returns: undefined };
       save_company_currency: { Args: { p_id: string | null; p_currency: string; p_rate: string; p_decimal_places: number }; Returns: string };
@@ -909,7 +916,10 @@ export interface Database {
       save_settings_role: { Args: { p_kind: string; p_id: string | null; p_name: string; p_description: string | null }; Returns: string };
       delete_settings_role: { Args: { p_kind: string; p_id: string; p_confirm_relationships: boolean }; Returns: undefined };
       create_lead_import: { Args: { p_name: string; p_filename: string; p_csv: string; p_headers: Json; p_rows: Json }; Returns: string };
-      run_lead_import: { Args: { p_job: string; p_mapping: Json; p_mode: string; p_match: string[] }; Returns: Json };
+      run_lead_import: { Args: { p_job: string; p_mapping: Json; p_mode: string; p_match?: string[]; p_limit?: number }; Returns: Json };
+      claim_crm_export_job: { Args: { p_job: string }; Returns: Json };
+      complete_crm_export_batch: { Args: { p_job: string; p_claim_token: string; p_cursor_id: string | null; p_batch_rows: number; p_part_bytes: number; p_finished: boolean }; Returns: boolean };
+      release_crm_export_job: { Args: { p_job: string; p_claim_token: string; p_error: string; p_terminal?: boolean }; Returns: boolean };
       crm_shared_put_definition: { Args: { payload: Json }; Returns: string };
       crm_shared_delete_definition: { Args: { fid: string }; Returns: undefined };
       save_department: { Args: { p_id: string | null; p_name: string; p_description: string | null }; Returns: string };
@@ -922,6 +932,7 @@ export interface Database {
       dashboard_home_table_page: {Args:{widget:string;page_number?:number;date_from?:string|null;date_to?:string|null;search_query?:string;sort_field?:string;sort_direction?:string};Returns:Json};
       dashboard_home_metrics: { Args: {date_from?: string | null;date_to?: string | null}; Returns: Json };
       leads_chart_aggregate: { Args: {p_group?: string;p_value?: string;p_filters?: Json;p_converted?: boolean};Returns: Json };
+      leads_report_summary: { Args: { p_report: string }; Returns: Json };
       lead_bulk_change: { Args: { p_ids: string[]; p_status?: string }; Returns: number };
       lead_bulk_edit: { Args: { p_ids: string[]; p_field: string; p_value: string }; Returns: number };
       begin_lead_pending_attachment: { Args: { p_submission_id: string; p_lead_id: string; p_name: string }; Returns: undefined };

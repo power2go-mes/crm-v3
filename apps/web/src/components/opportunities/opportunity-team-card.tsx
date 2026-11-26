@@ -235,7 +235,7 @@ export function OpportunityTeamCard({
                       type="button"
                       onClick={() => removeMemberMutation.mutate(m.id)}
                       title="Remove member"
-                      className="p-1.5 rounded-lg text-slate-400 hover:text-red-600 hover:bg-red-50 transition"
+                      className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition"
                     >
                       <Trash2 className="h-3.5 w-3.5" />
                     </button>

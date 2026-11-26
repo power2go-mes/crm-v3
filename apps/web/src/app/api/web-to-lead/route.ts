@@ -66,9 +66,16 @@ export async function POST(req: NextRequest) {
 
     if (error) {
       console.error('[Web-To-Lead Error]', error);
+      const invalidForm = error.code === 'P0002';
+      const invalidInput = typeof error.code === 'string' && error.code.startsWith('22');
       return NextResponse.json(
-        { success: false, error: error.message || 'Submission failed' },
-        { status: 400, headers: corsHeaders }
+        {
+          success: false,
+          error: invalidForm ? 'This form is unavailable.'
+            : invalidInput ? 'The submission could not be accepted.'
+              : 'The submission could not be completed. Please retry.',
+        },
+        { status: invalidForm ? 404 : invalidInput ? 400 : 503, headers: corsHeaders }
       );
     }
 

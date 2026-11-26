@@ -109,7 +109,7 @@ export function CallDetailModal({
                 }
               }}
               title="Delete Call"
-              className="p-1.5 text-slate-400 hover:text-rose-400 rounded-lg hover:bg-slate-800 transition"
+              className="p-1.5 text-slate-400 hover:text-slate-700 rounded-lg hover:bg-slate-100 transition"
             >
               <Trash2 className="h-4 w-4" />
             </button>

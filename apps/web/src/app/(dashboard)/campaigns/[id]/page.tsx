@@ -274,7 +274,7 @@ export default function CampaignDetailPage({ params }: CampaignDetailPageProps) 
               <button
                 type="button"
                 onClick={handleDelete}
-                className="p-2 bg-slate-100 hover:bg-red-50 text-slate-500 hover:text-red-600 border border-slate-200 rounded-lg transition"
+                className="p-2 bg-white hover:bg-slate-100 text-slate-600 hover:text-slate-800 border border-slate-300 rounded-lg transition"
                 title="Delete Campaign"
               >
                 <Trash2 className="h-4 w-4" />

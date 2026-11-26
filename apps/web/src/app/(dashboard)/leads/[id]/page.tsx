@@ -173,7 +173,7 @@ export default function LeadDetailPage({ params }: LeadDetailPageProps) {
               <button
                 type="button"
                 onClick={handleDelete}
-                className="inline-flex items-center gap-2 rounded px-3 py-2 text-left text-sm text-red-700 hover:bg-red-50"
+                className="inline-flex items-center gap-2 rounded px-3 py-2 text-left text-sm text-slate-700 hover:bg-slate-100"
                 title="Delete Lead"
               >
                 <Trash2 className="h-4 w-4" /> Delete Lead

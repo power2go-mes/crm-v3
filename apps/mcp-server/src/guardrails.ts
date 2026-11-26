@@ -49,19 +49,19 @@ export function checkRateLimit(userId: string): void {
  * Log tool access to CRM audit ledger
  */
 export async function recordAudit(ctx: AuthenticatedUserContext, entry: Omit<AuditLogEntry, 'timestamp' | 'userId' | 'userRole'>): Promise<void> {
+  const toolName =
+    entry.toolName.replace(/[^A-Za-z0-9_]/g, '_').slice(0, 120) || 'unknown';
   const auditData = {
     user_id: ctx.userId,
-    action: `MCP_TOOL:${entry.toolName}`,
+    action: `MCP_TOOL:${toolName}`,
     entity_name: 'MCP_SERVER',
     status: entry.status,
     details: { user_role: ctx.primaryRole },
   };
 
-  try {
-    const { error } = await ctx.supabase.from('audit_logs').insert([auditData]);
-    if (error) throw error;
-  } catch {
-    console.error('[MCP] Audit persistence failed');
+  const { error } = await ctx.supabase.from('audit_logs').insert([auditData]);
+  if (error) {
+    console.error('[MCP] Audit persistence failed', { code: error.code });
     throw new Error('MCP audit persistence failed');
   }
 }
@@ -125,18 +125,21 @@ export function consumeConfirmationToken(userId: string, token: string, actionNa
 /**
  * Field masking utility conforming to crm_masked_reader specifications
  */
-export function maskSensitiveFields<T extends Record<string, any>>(record: T, role: string): T {
+export function maskSensitiveFields<T extends object>(record: T, role: string): T {
   if (role === 'SUPER_ADMIN' || role === 'HEAD_OF_SALES') {
     return record;
   }
 
   const masked = { ...record };
-  // Mask sensitive financial or banking details if present
-  if ('bank_account_number' in masked && typeof masked.bank_account_number === 'string') {
-    masked.bank_account_number = masked.bank_account_number.slice(-4).padStart(masked.bank_account_number.length, '*');
+  const bankAccountNumber: unknown = Reflect.get(masked, 'bank_account_number');
+  if (typeof bankAccountNumber === 'string') {
+    Object.assign(masked, {
+      bank_account_number: bankAccountNumber.slice(-4).padStart(bankAccountNumber.length, '*'),
+    });
   }
-  if ('tax_id' in masked && typeof masked.tax_id === 'string') {
-    masked.tax_id = '***-**-' + masked.tax_id.slice(-4);
+  const taxId: unknown = Reflect.get(masked, 'tax_id');
+  if (typeof taxId === 'string') {
+    Object.assign(masked, { tax_id: `***-**-${taxId.slice(-4)}` });
   }
   return masked;
 }

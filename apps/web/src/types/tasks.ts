@@ -21,14 +21,14 @@ export interface TaskWithRelations extends ActivityRow {
 }
 
 export const TASK_PRIORITIES = [
-  { value: 'high', label: 'High', color: 'text-red-400 bg-red-500/10 border-red-500/20' },
-  { value: 'medium', label: 'Medium', color: 'text-amber-400 bg-amber-500/10 border-amber-500/20' },
-  { value: 'low', label: 'Low', color: 'text-slate-400 bg-slate-500/10 border-slate-500/20' },
+  { value: 'high', label: 'High', color: 'text-red-700 bg-red-50 border-red-200' },
+  { value: 'medium', label: 'Medium', color: 'text-amber-700 bg-amber-50 border-amber-200' },
+  { value: 'low', label: 'Low', color: 'text-slate-700 bg-slate-100 border-slate-200' },
 ] as const;
 
 export const TASK_STATUSES = [
-  { value: 'not_started', label: 'Not Started', color: 'text-slate-300 bg-slate-800' },
-  { value: 'in_progress', label: 'In Progress', color: 'text-emerald-600 bg-emerald-600/10 border-emerald-200/20' },
-  { value: 'completed', label: 'Completed', color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20' },
-  { value: 'cancelled', label: 'Cancelled', color: 'text-rose-400 bg-rose-500/10 border-rose-500/20' },
+  { value: 'not_started', label: 'Not Started', color: 'text-slate-700 bg-slate-100 border border-slate-200' },
+  { value: 'in_progress', label: 'In Progress', color: 'text-emerald-700 bg-emerald-50 border border-emerald-200' },
+  { value: 'completed', label: 'Completed', color: 'text-emerald-700 bg-emerald-50 border border-emerald-200' },
+  { value: 'cancelled', label: 'Cancelled', color: 'text-rose-700 bg-rose-50 border border-rose-200' },
 ] as const;
