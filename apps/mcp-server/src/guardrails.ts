@@ -1,5 +1,5 @@
 import { randomUUID } from 'node:crypto';
-import { AuthenticatedUserContext } from './auth.js';
+import { AuthenticatedUserContext } from './auth';
 
 export interface AuditLogEntry {
   toolName: string;

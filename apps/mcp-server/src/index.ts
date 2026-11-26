@@ -7,9 +7,9 @@ import {
   CallToolRequestSchema,
   ListToolsRequestSchema,
 } from '@modelcontextprotocol/sdk/types.js';
-import { authenticateMcpRequest, mintMcpSessionToken, AuthenticatedUserContext } from './auth.js';
-import { crmTools } from './tools.js';
-import { checkRateLimit, recordAudit } from './guardrails.js';
+import { authenticateMcpRequest, mintMcpSessionToken, AuthenticatedUserContext } from './auth';
+import { crmTools } from './tools';
+import { checkRateLimit, recordAudit } from './guardrails';
 
 const app = express();
 app.use(express.json());

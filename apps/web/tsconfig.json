@@ -25,6 +25,7 @@
     "paths": {
       "@finlonexa/crm-shared": ["../../packages/crm-shared/src/index.ts"],
       "@finlonexa/crm-shared/server": ["../../packages/crm-shared/src/server.ts"],
+      "@finlonexa/mcp-server/*": ["../../apps/mcp-server/src/*"],
       "@/*": [
         "./src/*"
       ],

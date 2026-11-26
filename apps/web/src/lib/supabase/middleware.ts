@@ -6,7 +6,7 @@ import { getClientEnv } from '../env';
 export async function updateSession(request: NextRequest) {
   const url = request.nextUrl.clone();
   const isAuthRoute = url.pathname.startsWith('/login') || url.pathname.startsWith('/auth');
-  const isApiRoute = url.pathname.startsWith('/api');
+  const isApiRoute = url.pathname.startsWith('/api') || url.pathname.startsWith('/.well-known');
 
   // Skip supabase getUser call for API routes (they authenticate independently)
   if (isApiRoute) {

@@ -1,4 +1,4 @@
-import { AuthenticatedUserContext } from './auth.js';
+import { AuthenticatedUserContext } from './auth';
 import {
   requirePermission,
   createPendingConfirmation,
@@ -6,7 +6,7 @@ import {
   maskSensitiveFields,
   checkRateLimit,
   recordAudit,
-} from './guardrails.js';
+} from './guardrails';
 
 export interface ToolDefinition {
   name: string;
