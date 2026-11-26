@@ -202,7 +202,7 @@ export default function AutomationSettingsPage() {
 
                       <button
                         onClick={() => deleteRule(rule.id)}
-                        className="rounded-lg p-1.5 text-slate-400 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/40"
+                        className="rounded-lg p-1.5 text-slate-400 hover:bg-slate-100 hover:text-slate-700 dark:hover:bg-slate-800 dark:hover:text-slate-200"
                       >
                         <Trash2 className="h-4 w-4" />
                       </button>
@@ -273,7 +273,7 @@ export default function AutomationSettingsPage() {
 
         {/* Create Workflow Modal */}
         {isModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-xs p-4 backdrop-blur-xs">
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-xs p-4">
             <div className="w-full max-w-xl rounded-2xl bg-white p-6 shadow-2xl">
               <h3 className="text-base font-bold text-slate-900">Configure Sales Workflow Rule</h3>
 

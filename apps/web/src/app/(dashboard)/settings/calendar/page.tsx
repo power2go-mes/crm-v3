@@ -263,7 +263,7 @@ export default function CalendarSettingsPage() {
                   <button
                     type="button"
                     onClick={() => deleteConnection(googleConn.id)}
-                    className="text-xs text-red-600 hover:underline"
+                    className="text-xs text-slate-600 hover:text-slate-900 hover:underline"
                   >
                     Disconnect
                   </button>
@@ -349,7 +349,7 @@ export default function CalendarSettingsPage() {
                   <button
                     type="button"
                     onClick={() => deleteConnection(msConn.id)}
-                    className="text-xs text-red-600 hover:underline"
+                    className="text-xs text-slate-600 hover:text-slate-900 hover:underline"
                   >
                     Disconnect
                   </button>

@@ -71,7 +71,7 @@ export default function FieldRequirementsPage() {
       {remove.error && <p role="alert" className="text-red-700">{remove.error.message}</p>}
       {query.isError ? <p role="alert">{query.error.message} <button onClick={() => void query.refetch()}>Retry</button></p> : <DataGrid columns={columns} data={rows} keyExtractor={row => row.id} isLoading={query.isLoading} emptyState={<p>No Field Requirements found.</p>} />}
     </PermissionGate>
-    <dialog ref={modal} aria-labelledby="requirement-title" onCancel={event => { if (save.isPending) event.preventDefault(); else close(); }} className="w-[calc(100%_-_2rem)] max-w-lg rounded-xl p-6 backdrop:bg-black/40">
+    <dialog ref={modal} aria-labelledby="requirement-title" onCancel={event => { if (save.isPending) event.preventDefault(); else close(); }} className="w-[calc(100%_-_2rem)] max-w-lg rounded-xl p-6 backdrop:bg-black/20 backdrop:backdrop-blur-xs">
       <form onSubmit={event => { event.preventDefault(); save.mutate(((event.nativeEvent as SubmitEvent).submitter as HTMLButtonElement | null)?.value === 'new'); }}>
         <h2 id="requirement-title" className="mb-4 text-lg font-semibold">Field Requirement</h2>
         <label className="mb-4 block">Model<select autoFocus required disabled={!!editing} className="block w-full rounded border p-2" value={module} onChange={e => { setModule(e.target.value); setField(''); setRequired(true); }}><option value="">Select Model</option>{[...new Set(fields.map(f => f.module))].map(m => <option key={m} value={m}>{m}</option>)}</select></label>

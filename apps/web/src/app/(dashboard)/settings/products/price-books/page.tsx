@@ -248,7 +248,7 @@ export default function PriceBooksPage() {
                           <button
                             type="button"
                             onClick={() => handleDeleteBook(currentBook)}
-                            className="inline-flex items-center gap-1.5 rounded-lg border border-red-200 bg-red-50 px-3 py-1.5 text-xs font-medium text-red-700 hover:bg-red-100 dark:border-red-900/40 dark:bg-red-950/20 dark:text-red-400"
+                            className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
                           >
                             <Trash2 className="h-3.5 w-3.5" />
                             <span>Delete</span>
@@ -392,7 +392,7 @@ export default function PriceBooksPage() {
                                   <button
                                     type="button"
                                     onClick={() => handleDeleteEntry(entry)}
-                                    className="rounded p-1 text-slate-400 hover:text-red-600 dark:hover:text-red-400"
+                                    className="rounded p-1 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
                                     title="Remove from Price Book"
                                   >
                                     <Trash2 className="h-3.5 w-3.5" />

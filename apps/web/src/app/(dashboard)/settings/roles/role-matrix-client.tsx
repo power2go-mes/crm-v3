@@ -250,7 +250,7 @@ export function RoleMatrixClient({
                           e.stopPropagation();
                           handleDeleteRole(r.id);
                         }}
-                        className="p-1 text-slate-400 hover:text-red-600 rounded transition"
+                        className="p-1 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded transition"
                         title="Delete custom role"
                       >
                         <Trash2 className="h-3.5 w-3.5" />

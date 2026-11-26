@@ -54,7 +54,7 @@ function WorkingHours(){
       {current&&<BusinessHourHolidays/>}
       </>}
     </PermissionGate>
-    <dialog ref={modal} aria-labelledby="business-hour-form-title" onCancel={event=>{if(save.isPending)event.preventDefault();else close();}} className="max-h-[90vh] w-[calc(100%_-_2rem)] max-w-2xl overflow-y-auto rounded-xl p-6 backdrop:bg-black/40">
+    <dialog ref={modal} aria-labelledby="business-hour-form-title" onCancel={event=>{if(save.isPending)event.preventDefault();else close();}} className="max-h-[90vh] w-[calc(100%_-_2rem)] max-w-2xl overflow-y-auto rounded-xl p-6 backdrop:bg-black/20 backdrop:backdrop-blur-xs">
       <form onSubmit={event=>{event.preventDefault();save.mutate();}} className="space-y-4"><h2 id="business-hour-form-title" className="text-lg font-semibold">Business Hour Form</h2>
         <label className="block text-sm">Name *<input autoFocus required maxLength={255} className="mt-1 block w-full rounded border p-2" placeholder="e.g. US Business Hours" value={form.name} onChange={event=>set('name',event.target.value)}/></label>
         <label className="block text-sm">Time Zone *<input required list="business-timezones" className="mt-1 block w-full rounded border p-2" value={form.time_zone} onChange={event=>set('time_zone',event.target.value)}/><datalist id="business-timezones"><option value="UTC"/>{timezones.map(zone=><option key={zone} value={zone}/>)}</datalist></label>

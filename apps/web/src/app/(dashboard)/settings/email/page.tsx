@@ -384,7 +384,7 @@ export default function EmailSettingsPage() {
 
                         <button
                           onClick={() => deleteAccount(acc.id)}
-                          className="rounded-lg p-1.5 text-slate-400 hover:bg-red-50 hover:text-red-600 transition"
+                          className="rounded-lg p-1.5 text-slate-400 hover:bg-slate-100 hover:text-slate-700 transition"
                           title="Delete mailbox connection"
                         >
                           <Trash2 className="h-4 w-4" />
@@ -449,7 +449,7 @@ export default function EmailSettingsPage() {
                     </button>
                     <button
                       onClick={() => deleteTemplate(tpl.id)}
-                      className="rounded-lg p-1.5 text-slate-400 hover:bg-red-50 hover:text-red-600 transition"
+                      className="rounded-lg p-1.5 text-slate-400 hover:bg-slate-100 hover:text-slate-700 transition"
                     >
                       <Trash2 className="h-3.5 w-3.5" />
                     </button>

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { X, Send, FileText, AlertCircle, CheckCircle2, Paperclip, ChevronDown } from 'lucide-react';
 import { useEmailAccounts, useEmailTemplates, useRecordEmails } from '@/hooks/use-email';
 import { EMAIL_MERGE_FIELDS } from '@/types/email';
+import { ModalPortal } from '@/components/ui/modal-portal';
 
 interface EmailComposerModalProps {
   isOpen: boolean;
@@ -43,6 +44,15 @@ export function EmailComposerModal({
   const [body, setBody] = useState('');
   const [selectedTemplateId, setSelectedTemplateId] = useState<string>('');
   const [statusMessage, setStatusMessage] = useState<{ type: 'error' | 'success'; text: string } | null>(null);
+
+  React.useEffect(() => {
+    if (defaultRecipientEmail && !toEmail) {
+      setToEmail(defaultRecipientEmail);
+    }
+    if (defaultRecipientName && !toName) {
+      setToName(defaultRecipientName);
+    }
+  }, [defaultRecipientEmail, defaultRecipientName]);
 
   if (!isOpen) return null;
 
@@ -126,8 +136,9 @@ export function EmailComposerModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-xs p-4 backdrop-blur-xs">
-      <div className="flex max-h-[90vh] w-full max-w-2xl flex-col rounded-2xl bg-white shadow-2xl">
+    <ModalPortal>
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-xs p-4">
+        <div className="flex max-h-[90vh] w-full max-w-2xl flex-col rounded-2xl bg-white shadow-2xl">
         {/* Header */}
         <div className="flex items-center justify-between border-b border-slate-200 px-6 py-4">
           <div className="flex items-center gap-2">
@@ -296,5 +307,6 @@ export function EmailComposerModal({
         </div>
       </div>
     </div>
-  );
+  </ModalPortal>
+);
 }

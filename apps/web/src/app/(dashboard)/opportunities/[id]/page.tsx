@@ -20,6 +20,7 @@ import {
   useReopenOpportunityMutation,
   useOpportunityLossHistory,
 } from '@/hooks/use-opportunities';
+import { useContacts } from '@/hooks/use-contacts';
 import { CLOSED_LOST_REASONS } from '@/types/opportunities';
 import Link from 'next/link';
 import {
@@ -71,6 +72,10 @@ export default function OpportunityDetailPage({ params }: OpportunityDetailPageP
 
   const { data: opp, isLoading, error } = useOpportunityDetail(oppId);
   const { data: lossHistory = [] } = useOpportunityLossHistory(oppId);
+  const { data: contactsData } = useContacts({ accountId: opp?.account_id, pageSize: 1 });
+  const primaryContact = contactsData?.contacts?.[0];
+  const defaultEmail = primaryContact?.email || '';
+  const defaultRecipientName = primaryContact ? `${primaryContact.first_name || ''} ${primaryContact.last_name || ''}`.trim() : (opp?.account?.name || '');
   const updateMutation = useUpdateOpportunityMutation();
   const deleteMutation = useDeleteOpportunityMutation();
   const reopenMutation = useReopenOpportunityMutation();
@@ -359,7 +364,7 @@ export default function OpportunityDetailPage({ params }: OpportunityDetailPageP
               <button
                 type="button"
                 onClick={handleDelete}
-                className="p-2 bg-slate-100 hover:bg-red-50 text-slate-500 hover:text-red-600 border border-slate-200 rounded-lg transition"
+                className="p-2 bg-white hover:bg-slate-100 text-slate-600 hover:text-slate-800 border border-slate-300 rounded-lg transition"
                 title="Delete Opportunity"
               >
                 <Trash2 className="h-4 w-4" />
@@ -783,8 +788,11 @@ export default function OpportunityDetailPage({ params }: OpportunityDetailPageP
           onClose={() => setIsEmailModalOpen(false)}
           relatedToType="opportunity"
           relatedToId={opp.id}
+          defaultRecipientEmail={defaultEmail}
+          defaultRecipientName={defaultRecipientName}
           mergeData={{
-            recipientName: opp.account?.name || 'Valued Customer',
+            recipientName: defaultRecipientName || 'Valued Customer',
+            recipientEmail: defaultEmail,
             accountName: opp.account?.name || '',
             opportunityName: opp.name,
             opportunityAmount: opp.amount ? `$${Number(opp.amount).toLocaleString()}` : '',

@@ -458,7 +458,7 @@ export default function LeadAssignmentPage() {
                           <button
                             type="button"
                             onClick={() => deleteMutation.mutate(rule.id)}
-                            className="p-1.5 rounded-lg text-slate-400 hover:text-red-600 hover:bg-red-50 transition dark:hover:bg-slate-800"
+                            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition dark:hover:bg-slate-800 dark:hover:text-slate-200"
                             title="Delete Rule"
                           >
                             <Trash2 className="h-3.5 w-3.5" />
@@ -589,7 +589,7 @@ export default function LeadAssignmentPage() {
                         <button
                           type="button"
                           onClick={() => handleRemoveCriteriaRow(i)}
-                          className="p-2 text-slate-400 hover:text-red-600 rounded-lg"
+                          className="p-2 text-slate-400 hover:text-slate-700 rounded-lg"
                         >
                           <Trash2 className="h-3.5 w-3.5" />
                         </button>

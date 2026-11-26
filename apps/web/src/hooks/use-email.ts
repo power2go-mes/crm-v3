@@ -191,57 +191,22 @@ export function useRecordEmails(relatedToType: string, relatedToId: string) {
       template_id?: string | null;
       is_draft?: boolean;
     }) => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) throw new Error('Authentication required');
+      const res = await fetch('/api/email/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...payload,
+          related_to_type: relatedToType,
+          related_to_id: relatedToId,
+        }),
+      });
 
-      // Check if user has connected email account
-      const { data: accounts } = await supabase
-        .from('crm_email_accounts')
-        .select('*')
-        .eq('user_id', user.id)
-        .eq('auth_status', 'connected')
-        .limit(1);
-
-      const hasConnectedAccount = accounts && accounts.length > 0;
-
-      let emailStatus: string = 'draft';
-      let errorMsg: string | null = null;
-
-      if (!payload.is_draft) {
-        if (!hasConnectedAccount) {
-          emailStatus = 'failed';
-          errorMsg = 'No connected email account with active OAuth credentials found. Configure Gmail or Outlook in Settings -> Email.';
-        } else {
-          // If connected, set status
-          emailStatus = 'provider_accepted';
-        }
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to dispatch email');
       }
 
-      const emailRecord = {
-        user_id: user.id,
-        related_to_type: relatedToType,
-        related_to_id: relatedToId,
-        recipient_email: payload.recipient_email,
-        recipient_name: payload.recipient_name || null,
-        cc_emails: payload.cc_emails || [],
-        bcc_emails: payload.bcc_emails || [],
-        subject: payload.subject,
-        body_html: payload.body_html,
-        template_id: payload.template_id || null,
-        status: emailStatus,
-        error_message: errorMsg,
-        provider: hasConnectedAccount ? accounts[0].provider : null,
-        sent_at: emailStatus === 'provider_accepted' ? new Date().toISOString() : null,
-      };
-
-      const { data, error } = await supabase
-        .from('crm_emails')
-        .insert(emailRecord)
-        .select()
-        .single();
-
-      if (error) throw error;
-      return data;
+      return data.email || data;
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['record-emails', relatedToType, relatedToId] });
