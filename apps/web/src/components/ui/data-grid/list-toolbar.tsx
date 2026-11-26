@@ -145,9 +145,9 @@ export function ListToolbar({
         )}
 
         {/* Right Side: Search + Control Icons + New Button */}
-        <div className="flex items-center gap-2 flex-wrap">
+        <div className="flex items-center gap-2 flex-wrap ml-auto">
           {/* Search Input with 500ms debounce */}
-          <div className="relative hidden sm:block w-44 sm:w-60">
+          <div className="relative w-full sm:w-56 md:w-64 order-last sm:order-first mt-2 sm:mt-0">
             <input
               type="text"
               value={localSearch}

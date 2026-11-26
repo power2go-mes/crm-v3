@@ -125,8 +125,8 @@ export function AccountKanbanBoard({
         )}
       </div>
 
-      {/* Kanban Columns */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3.5 min-h-[640px] overflow-x-auto pb-4 scroll-smooth">
+      {/* Mobile Horizontal Snap Carousel / Desktop Multi-Column Grid */}
+      <div className="flex sm:grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-3.5 min-h-[580px] overflow-x-auto pb-4 pt-1 snap-x snap-mandatory sm:snap-none -mx-4 px-4 sm:mx-0 sm:px-0">
         {ACCOUNT_TIERS.map((tier) => {
           const tierAccounts = grouped[tier.id] || [];
           const tierRevenue = tierAccounts.reduce((sum, a) => sum + (Number(a.annual_revenue) || 0), 0);
@@ -134,7 +134,7 @@ export function AccountKanbanBoard({
           return (
             <div
               key={tier.id}
-              className="flex flex-col bg-slate-50/80 border border-slate-200/70 rounded-2xl overflow-hidden shadow-xs hover:shadow-sm transition-all duration-200 flex-1 min-w-[260px] max-w-full"
+              className="flex flex-col bg-slate-50/80 border border-slate-200/80 rounded-2xl overflow-hidden shadow-2xs hover:shadow-xs transition-all duration-200 shrink-0 w-[85vw] sm:w-auto min-w-[280px] sm:min-w-0 snap-center"
             >
               {/* Header */}
               <div className="p-3.5 border-b border-slate-200/80 bg-white/95 backdrop-blur-xs relative overflow-hidden">

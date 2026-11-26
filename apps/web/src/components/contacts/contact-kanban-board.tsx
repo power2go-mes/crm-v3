@@ -99,15 +99,15 @@ export function ContactKanbanBoard({
         </div>
       </div>
 
-      {/* Kanban Columns Horizontal Canvas */}
-      <div className="flex gap-4 overflow-x-auto pb-4 pt-1 items-start snap-x select-none">
+      {/* Mobile Horizontal Snap Carousel / Desktop Multi-Column Grid */}
+      <div className="flex sm:grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-3.5 min-h-[580px] overflow-x-auto pb-4 pt-1 snap-x snap-mandatory sm:snap-none -mx-4 px-4 sm:mx-0 sm:px-0">
         {CONTACT_COLUMNS.map((col) => {
           const colItems = grouped[col.id] || [];
 
           return (
             <div
               key={col.id}
-              className="flex flex-col shrink-0 w-[290px] sm:w-[310px] bg-slate-50/80 rounded-2xl border border-slate-200/90 shadow-2xs overflow-hidden snap-start max-h-[calc(100vh-210px)]"
+              className="flex flex-col bg-slate-50/80 border border-slate-200/80 rounded-2xl overflow-hidden shadow-2xs hover:shadow-xs transition-all duration-200 shrink-0 w-[85vw] sm:w-auto min-w-[280px] sm:min-w-0 snap-center"
             >
               {/* Column Header */}
               <div className="px-3.5 py-3 border-b border-slate-200/80 bg-white flex items-center justify-between">
