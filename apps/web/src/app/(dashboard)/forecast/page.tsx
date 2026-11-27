@@ -265,7 +265,7 @@ export default function ForecastPage() {
       cell: (opp) => (
         <Link
           href={`/opportunities/${opp.id}`}
-          className="font-medium text-slate-900 hover:text-emerald-800 transition"
+          className="font-medium text-slate-900 hover:text-[#4361ee] transition"
         >
           {opp.name}
         </Link>
@@ -296,7 +296,7 @@ export default function ForecastPage() {
         let label = opp.stage || 'Unassigned';
 
         if (stageId === 'closed_won') {
-          color = 'bg-emerald-100 text-emerald-800 font-bold';
+          color = 'bg-[#eef2ff] text-[#4361ee] font-bold';
           label = 'Closed Won';
         } else if (stageId === 'closed_lost') {
           color = 'bg-rose-100 text-rose-800';
@@ -308,13 +308,13 @@ export default function ForecastPage() {
           color = 'bg-amber-100 text-amber-800';
           label = 'Proposal/Quote';
         } else if (stageId === 'needs_analysis') {
-          color = 'bg-emerald-50 text-emerald-800';
+          color = 'bg-[#eef2ff] text-[#4361ee]';
           label = 'Needs Analysis';
         } else if (stageId === 'qualification') {
-          color = 'bg-emerald-50 text-emerald-800';
+          color = 'bg-[#eef2ff] text-[#4361ee]';
           label = 'Qualification';
         } else if (stageId === 'prospecting') {
-          color = 'bg-emerald-50 text-emerald-800';
+          color = 'bg-[#eef2ff] text-[#4361ee]';
           label = 'Prospecting';
         }
 
@@ -349,7 +349,7 @@ export default function ForecastPage() {
 
         return (
           <div className="flex flex-col">
-            <span className="font-semibold text-emerald-700">${Math.round(weighted).toLocaleString()}</span>
+            <span className="font-semibold text-[#4361ee]">${Math.round(weighted).toLocaleString()}</span>
             <span className="text-[10px] text-slate-400">{prob}% probability</span>
           </div>
         );
@@ -461,7 +461,7 @@ export default function ForecastPage() {
                   setSelectedStage(e.target.value);
                   setPage(1);
                 }}
-                className="px-2.5 py-1.5 text-xs bg-slate-50 border border-slate-300 rounded-lg text-slate-700 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="px-2.5 py-1.5 text-xs bg-slate-50 border border-slate-300 rounded-lg text-slate-700 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               >
                 <option value="all">Individual Stages...</option>
                 {APPROVED_FORECAST_STAGES.map((s) => (
@@ -493,7 +493,7 @@ export default function ForecastPage() {
                 </p>
                 <p className="text-[11px] text-slate-500 mt-0.5">{stats.openDealsCount} active open opportunities</p>
               </div>
-              <div className="p-3 bg-emerald-50 text-emerald-800 rounded-xl">
+              <div className="p-3 bg-[#eef2ff] text-[#4361ee] rounded-xl">
                 <DollarSign className="w-6 h-6" />
               </div>
             </div>
@@ -501,14 +501,14 @@ export default function ForecastPage() {
             <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-xs flex items-center justify-between">
               <div>
                 <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Weighted Forecast</p>
-                <p className="text-2xl font-bold text-emerald-600 mt-1">
+                <p className="text-2xl font-bold text-[#4361ee] mt-1">
                   ${Math.round(stats.weightedPipeline).toLocaleString()}
                 </p>
-                <p className="text-[11px] text-emerald-600 font-medium mt-0.5">
+                <p className="text-[11px] text-[#4361ee] font-medium mt-0.5">
                   {Math.round(stats.blendedConfidence)}% blended win confidence
                 </p>
               </div>
-              <div className="p-3 bg-emerald-50 text-emerald-600 rounded-xl">
+              <div className="p-3 bg-[#eef2ff] text-[#4361ee] rounded-xl">
                 <Target className="w-6 h-6" />
               </div>
             </div>
@@ -519,11 +519,11 @@ export default function ForecastPage() {
                 <p className="text-2xl font-bold text-slate-900 mt-1">
                   ${Math.round(stats.closedWonRevenue).toLocaleString()}
                 </p>
-                <p className="text-[11px] text-emerald-600 font-semibold mt-0.5">
+                <p className="text-[11px] text-[#4361ee] font-semibold mt-0.5">
                   {stats.wonDealsCount} won deals (100% attained)
                 </p>
               </div>
-              <div className="p-3 bg-emerald-50 text-emerald-800 rounded-xl">
+              <div className="p-3 bg-[#eef2ff] text-[#4361ee] rounded-xl">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
             </div>
@@ -576,7 +576,7 @@ export default function ForecastPage() {
                       <div className="flex items-start justify-between gap-2">
                         <Link
                           href={`/opportunities/${opp.id}`}
-                          className="text-base font-semibold text-slate-900 hover:text-emerald-800 transition truncate"
+                          className="text-base font-semibold text-slate-900 hover:text-[#4361ee] transition truncate"
                         >
                           {opp.name}
                         </Link>
@@ -594,7 +594,7 @@ export default function ForecastPage() {
                         </div>
                         <div>
                           <span className="text-slate-400 block text-[10px] uppercase">Weighted Value</span>
-                          <span className="font-bold text-emerald-600 text-sm">
+                          <span className="font-bold text-[#4361ee] text-sm">
                             ${Math.round(weighted).toLocaleString()}
                           </span>
                         </div>
@@ -635,7 +635,7 @@ export default function ForecastPage() {
                     <button
                       type="button"
                       onClick={() => setSelectedStage('all')}
-                      className="text-xs text-emerald-800 hover:text-emerald-800 font-medium"
+                      className="text-xs text-[#4361ee] hover:text-[#4361ee] font-medium"
                     >
                       Clear stage filter ({selectedStage})
                     </button>
@@ -655,12 +655,12 @@ export default function ForecastPage() {
                         }}
                         className={`p-3 rounded-lg border text-left transition flex flex-col justify-between cursor-pointer ${
                           isSelected
-                            ? 'bg-emerald-50 border-emerald-200 ring-2 ring-blue-400/20 shadow-xs'
+                            ? 'bg-[#eef2ff] border-indigo-100 ring-2 ring-blue-400/20 shadow-xs'
                             : 'bg-slate-50 hover:bg-slate-100 border-slate-200'
                         }`}
                       >
                         <div>
-                          <p className={`text-[11px] font-bold truncate ${isSelected ? 'text-emerald-800' : 'text-slate-800'}`}>
+                          <p className={`text-[11px] font-bold truncate ${isSelected ? 'text-[#4361ee]' : 'text-slate-800'}`}>
                             {stage.label}
                           </p>
                           <p className="text-[10px] text-slate-400 mt-0.5">
@@ -669,7 +669,7 @@ export default function ForecastPage() {
                         </div>
                         <div className="mt-3 pt-2 border-t border-slate-200/80">
                           <p className="text-sm font-bold text-slate-900">${Math.round(stage.totalAmount).toLocaleString()}</p>
-                          <p className="text-[10px] text-emerald-700 font-semibold mt-0.5">
+                          <p className="text-[10px] text-[#4361ee] font-semibold mt-0.5">
                             {stage.isLost ? '0% Lost' : stage.isWon ? '100% Realized' : `Wt: $${Math.round(stage.weightedAmount).toLocaleString()}`}
                           </p>
                         </div>

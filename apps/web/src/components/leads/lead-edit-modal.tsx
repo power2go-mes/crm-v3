@@ -169,7 +169,7 @@ export function LeadEditModal({
                   type="text"
                   value={form.title}
                   onChange={(e) => setForm({ ...form, title: e.target.value })}
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-[#4361ee]"
                 />
               </div>
 
@@ -183,7 +183,7 @@ export function LeadEditModal({
                   required
                   value={form.first_name}
                   onChange={(e) => setForm({ ...form, first_name: e.target.value })}
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-[#4361ee]"
                 />
               </div>
 
@@ -197,7 +197,7 @@ export function LeadEditModal({
                   required
                   value={form.last_name}
                   onChange={(e) => setForm({ ...form, last_name: e.target.value })}
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-[#4361ee]"
                 />
               </div>
 
@@ -211,7 +211,7 @@ export function LeadEditModal({
                   required
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-[#4361ee]"
                 />
               </div>
 
@@ -224,7 +224,7 @@ export function LeadEditModal({
                   type="tel"
                   value={form.phone}
                   onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-[#4361ee]"
                 />
               </div>
 
@@ -238,7 +238,7 @@ export function LeadEditModal({
                   required
                   value={form.company_name}
                   onChange={(e) => setForm({ ...form, company_name: e.target.value })}
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-[#4361ee]"
                 />
               </div>
 
@@ -250,7 +250,7 @@ export function LeadEditModal({
                 <select
                   value={form.status}
                   onChange={(e) => setForm({ ...form, status: e.target.value })}
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-[#4361ee]"
                 >
                   {CANONICAL_LEAD_STAGES.map((s) => (
                     <option key={s.id} value={s.id}>
@@ -268,7 +268,7 @@ export function LeadEditModal({
                 <select
                   value={form.lead_source}
                   onChange={(e) => setForm({ ...form, lead_source: e.target.value })}
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-[#4361ee]"
                 >
                   {LEAD_SOURCES.map((s) => (
                     <option key={s.value} value={s.value}>
@@ -286,7 +286,7 @@ export function LeadEditModal({
                 <select
                   value={form.industry}
                   onChange={(e) => setForm({ ...form, industry: e.target.value })}
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-[#4361ee]"
                 >
                   {INDUSTRY_CHOICES.map((i) => (
                     <option key={i.value} value={i.value}>
@@ -306,7 +306,7 @@ export function LeadEditModal({
                   min="0"
                   value={form.no_of_employees}
                   onChange={(e) => setForm({ ...form, no_of_employees: e.target.value })}
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-[#4361ee]"
                 />
               </div>
 
@@ -321,7 +321,7 @@ export function LeadEditModal({
                   step="0.01"
                   value={form.annual_revenue}
                   onChange={(e) => setForm({ ...form, annual_revenue: e.target.value })}
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-[#4361ee]"
                 />
               </div>
 
@@ -334,7 +334,7 @@ export function LeadEditModal({
                   type="text"
                   value={form.country}
                   onChange={(e) => setForm({ ...form, country: e.target.value })}
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-[#4361ee]"
                 />
               </div>
 
@@ -347,7 +347,7 @@ export function LeadEditModal({
                   type="text"
                   value={form.state}
                   onChange={(e) => setForm({ ...form, state: e.target.value })}
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-[#4361ee]"
                 />
               </div>
 
@@ -360,7 +360,7 @@ export function LeadEditModal({
                   type="text"
                   value={form.city}
                   onChange={(e) => setForm({ ...form, city: e.target.value })}
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-[#4361ee]"
                 />
               </div>
 
@@ -373,7 +373,7 @@ export function LeadEditModal({
                   type="text"
                   value={form.zip_code}
                   onChange={(e) => setForm({ ...form, zip_code: e.target.value })}
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-[#4361ee]"
                 />
               </div>
 
@@ -387,7 +387,7 @@ export function LeadEditModal({
                     disabled={assignees.isFetching || assignees.isError}
                     value={form.sub_owner_id}
                     onChange={(e) => setForm({ ...form, sub_owner_id: e.target.value })}
-                    className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
+                    className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-[#4361ee]"
                   >
                     <option value="">-- No BDO Assigned --</option>
                     {form.sub_owner_id && !bdoUsers.some(user => user.id === form.sub_owner_id) &&
@@ -410,7 +410,7 @@ export function LeadEditModal({
                   rows={4}
                   value={form.requirements}
                   onChange={(e) => setForm({ ...form, requirements: e.target.value })}
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500 resize-y"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-[#4361ee] resize-y"
                 />
               </div>
             </LeadFormGrid>
@@ -432,7 +432,7 @@ export function LeadEditModal({
             <button
               type="submit"
               disabled={isSubmitting}
-              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-600 rounded-md transition shadow-xs"
+              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white bg-[#4361ee] hover:bg-[#4361ee] rounded-md transition shadow-xs"
             >
               <Check className="h-3.5 w-3.5" />
               <span>{isSubmitting ? 'Saving...' : 'Save Changes'}</span>

@@ -40,7 +40,7 @@ export function ProductUsageModal({ isOpen, onClose, product }: ProductUsageModa
             <>
               <div className="grid grid-cols-2 gap-4">
                 <div className="rounded-xl border border-slate-200 p-4 bg-slate-50 text-center">
-                  <div className="flex justify-center mb-1 text-emerald-800">
+                  <div className="flex justify-center mb-1 text-[#4361ee]">
                     <Layers className="h-5 w-5" />
                   </div>
                   <div className="text-xl font-bold text-slate-900">{usage?.lineItemsCount || 0}</div>
@@ -48,7 +48,7 @@ export function ProductUsageModal({ isOpen, onClose, product }: ProductUsageModa
                 </div>
 
                 <div className="rounded-xl border border-slate-200 p-4 bg-slate-50 text-center">
-                  <div className="flex justify-center mb-1 text-emerald-600">
+                  <div className="flex justify-center mb-1 text-[#4361ee]">
                     <FileText className="h-5 w-5" />
                   </div>
                   <div className="text-xl font-bold text-slate-900">{usage?.quotesCount || 0}</div>
@@ -67,8 +67,8 @@ export function ProductUsageModal({ isOpen, onClose, product }: ProductUsageModa
                   </div>
                 </div>
               ) : (
-                <div className="flex items-center gap-2 rounded-xl bg-emerald-50 p-3.5 text-xs text-emerald-800 border border-emerald-200">
-                  <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600" />
+                <div className="flex items-center gap-2 rounded-xl bg-[#eef2ff] p-3.5 text-xs text-[#4361ee] border border-indigo-100">
+                  <CheckCircle2 className="h-4 w-4 shrink-0 text-[#4361ee]" />
                   <span>No transactional records linked. Safe to edit or delete if needed.</span>
                 </div>
               )}

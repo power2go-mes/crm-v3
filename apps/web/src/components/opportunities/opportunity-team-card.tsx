@@ -161,7 +161,7 @@ export function OpportunityTeamCard({
           <span
             className={`font-bold ${
               totalSplitPercent === 100
-                ? 'text-emerald-600'
+                ? 'text-[#4361ee]'
                 : totalSplitPercent > 100
                 ? 'text-red-600'
                 : 'text-amber-600'
@@ -208,7 +208,7 @@ export function OpportunityTeamCard({
                     <span
                       className={`text-[10px] font-medium px-2 py-0.5 rounded-full ${
                         m.access_level === 'edit'
-                          ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
+                          ? 'bg-[#eef2ff] text-[#4361ee] border border-indigo-100'
                           : 'bg-slate-50 text-slate-500'
                       }`}
                     >
@@ -225,7 +225,7 @@ export function OpportunityTeamCard({
                     <span className="text-xs font-bold text-slate-800">
                       {m.split_percentage}% Split
                     </span>
-                    <p className="text-[11px] text-emerald-600 font-medium">
+                    <p className="text-[11px] text-[#4361ee] font-medium">
                       ${splitDollar.toLocaleString(undefined, { maximumFractionDigits: 0 })}
                     </p>
                   </div>

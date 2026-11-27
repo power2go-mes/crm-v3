@@ -154,12 +154,12 @@ export default function ContactsPage() {
       accessorKey: 'first_name',
       cell: (contact) => (
         <div className="flex items-center gap-2">
-          <div className="p-1.5 bg-emerald-600/10 text-emerald-600 rounded-lg">
+          <div className="p-1.5 bg-[#4361ee]/10 text-[#4361ee] rounded-lg">
             <Users className="h-4 w-4" />
           </div>
           <Link
             href={`/contacts/${contact.id}`}
-            className="font-medium text-slate-900 hover:text-emerald-800 transition flex items-center gap-1.5"
+            className="font-medium text-slate-900 hover:text-[#4361ee] transition flex items-center gap-1.5"
           >
             <span>
               {contact.first_name} {contact.last_name}
@@ -189,7 +189,7 @@ export default function ContactsPage() {
             <Building2 className="h-3.5 w-3.5 text-slate-400" />
             <Link
               href={`/accounts/${contact.account.id}`}
-              className="hover:text-emerald-800 transition"
+              className="hover:text-[#4361ee] transition"
             >
               {contact.account.name}
             </Link>
@@ -210,7 +210,7 @@ export default function ContactsPage() {
               <Mail className="h-3 w-3 text-slate-400" />
               <a
                 href={`mailto:${contact.email}`}
-                className="hover:text-emerald-800 truncate max-w-[180px]"
+                className="hover:text-[#4361ee] truncate max-w-[180px]"
               >
                 {contact.email}
               </a>
@@ -273,7 +273,7 @@ export default function ContactsPage() {
               type="button"
               title="Edit Contact"
               onClick={() => setEditingContact(contact)}
-              className="p-1.5 rounded hover:bg-slate-100 text-slate-400 hover:text-emerald-800 transition"
+              className="p-1.5 rounded hover:bg-slate-100 text-slate-400 hover:text-[#4361ee] transition"
             >
               <Edit2 className="h-3.5 w-3.5" />
             </button>

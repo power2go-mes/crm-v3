@@ -135,7 +135,7 @@ export function TaskDetailModal({
               <select
                 value={task.status}
                 onChange={(e) => onStatusChange(task.id, e.target.value)}
-                className="text-xs font-medium px-2.5 py-1 bg-white border border-slate-300 rounded-md text-slate-200 focus:outline-none focus:ring-1 focus:ring-emerald-500 cursor-pointer"
+                className="text-xs font-medium px-2.5 py-1 bg-white border border-slate-300 rounded-md text-slate-200 focus:outline-none focus:ring-1 focus:ring-[#4361ee] cursor-pointer"
               >
                 {TASK_STATUSES.map((s) => (
                   <option key={s.value} value={s.value}>
@@ -193,7 +193,7 @@ export function TaskDetailModal({
                   relatedUrl ? (
                     <Link
                       href={relatedUrl}
-                      className="inline-flex items-center gap-1 text-emerald-600 hover:text-emerald-600 font-medium underline transition"
+                      className="inline-flex items-center gap-1 text-[#4361ee] hover:text-[#4361ee] font-medium underline transition"
                     >
                       <span className="capitalize">{task.related_to_type}</span> ({task.related_to_id.slice(0, 8)}...)
                       <ExternalLink className="h-3 w-3" />
@@ -243,7 +243,7 @@ export function TaskDetailModal({
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 transition"
           >
             <CheckCircle2
-              className={`h-4 w-4 ${task.status === 'completed' ? 'text-emerald-400' : 'text-slate-400'}`}
+              className={`h-4 w-4 ${task.status === 'completed' ? 'text-[#4361ee]' : 'text-slate-400'}`}
             />
             {task.status === 'completed' ? 'Mark as Incomplete' : 'Mark as Completed'}
           </button>

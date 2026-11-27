@@ -46,7 +46,7 @@ export default function CallDetailPage() {
     return (
       <PageContainer>
         <div className="flex items-center justify-center min-h-[400px]">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-200" />
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-100" />
         </div>
       </PageContainer>
     );
@@ -62,7 +62,7 @@ export default function CallDetailPage() {
           </p>
           <Link
             href="/calls"
-            className="inline-flex items-center gap-1.5 mt-4 px-4 py-2 bg-emerald-600 hover:bg-emerald-600 text-white rounded-lg text-xs font-semibold transition"
+            className="inline-flex items-center gap-1.5 mt-4 px-4 py-2 bg-[#4361ee] hover:bg-[#4361ee] text-white rounded-lg text-xs font-semibold transition"
           >
             <ArrowLeft className="h-3.5 w-3.5" /> Back to Calls
           </Link>
@@ -136,7 +136,7 @@ export default function CallDetailPage() {
               <button
                 type="button"
                 onClick={() => setIsEditModalOpen(true)}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-600 hover:bg-emerald-600 text-white transition shadow-sm"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#4361ee] hover:bg-[#4361ee] text-white transition shadow-sm"
               >
                 <Edit2 className="h-3.5 w-3.5" /> Edit Record
               </button>
@@ -203,7 +203,7 @@ export default function CallDetailPage() {
                     relatedUrl ? (
                       <Link
                         href={relatedUrl}
-                        className="inline-flex items-center gap-1 text-emerald-600 hover:text-emerald-600 font-medium underline transition text-sm"
+                        className="inline-flex items-center gap-1 text-[#4361ee] hover:text-[#4361ee] font-medium underline transition text-sm"
                       >
                         <span className="capitalize">{call.related_to_type}</span> ({call.related_to_id.slice(0, 8)}...)
                         <ExternalLink className="h-3 w-3" />

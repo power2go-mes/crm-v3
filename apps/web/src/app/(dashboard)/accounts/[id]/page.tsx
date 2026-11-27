@@ -116,7 +116,7 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
       <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm mb-6">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div className="flex items-start gap-4">
-            <div className="p-3 bg-emerald-600/10 text-emerald-600 rounded-xl">
+            <div className="p-3 bg-[#4361ee]/10 text-[#4361ee] rounded-xl">
               <Building2 className="h-8 w-8" />
             </div>
             <div>
@@ -126,7 +126,7 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
                   <span className="capitalize text-slate-700 font-medium">{account.industry}</span>
                 )}
                 {account.annual_revenue && (
-                  <span className="text-emerald-700 font-semibold flex items-center gap-0.5">
+                  <span className="text-[#4361ee] font-semibold flex items-center gap-0.5">
                     <DollarSign className="h-3.5 w-3.5" />
                     ${Number(account.annual_revenue).toLocaleString()}
                   </span>
@@ -142,7 +142,7 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
                     href={account.website.startsWith('http') ? account.website : `https://${account.website}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-emerald-700 hover:underline flex items-center gap-1"
+                    className="text-[#4361ee] hover:underline flex items-center gap-1"
                   >
                     <Globe className="h-3.5 w-3.5" />
                     <span>{account.website}</span>
@@ -158,7 +158,7 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
             <button
               type="button"
               onClick={() => setIsEmailModalOpen(true)}
-              className="px-3 py-2 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold rounded-lg transition inline-flex items-center gap-1.5 shadow-xs"
+              className="px-3 py-2 bg-[#3a5bf0] hover:bg-emerald-800 text-white text-xs font-semibold rounded-lg transition inline-flex items-center gap-1.5 shadow-xs"
               title="Compose email to account contacts"
             >
               <Send className="h-3.5 w-3.5" />
@@ -172,7 +172,7 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
                 className="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-semibold rounded-lg transition inline-flex items-center gap-1.5"
                 title="Scan for potential duplicate accounts"
               >
-                <GitMerge className="h-3.5 w-3.5 text-emerald-600" />
+                <GitMerge className="h-3.5 w-3.5 text-[#4361ee]" />
                 <span>Find Duplicates</span>
               </button>
             </PermissionGate>
@@ -210,7 +210,7 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
             onClick={() => setActiveTab('details')}
             className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
               activeTab === 'details'
-                ? 'border-emerald-600 text-emerald-700'
+                ? 'border-[#4361ee] text-[#4361ee]'
                 : 'border-transparent text-slate-600 hover:text-slate-900'
             }`}
           >
@@ -223,7 +223,7 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
             onClick={() => setActiveTab('contacts')}
             className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
               activeTab === 'contacts'
-                ? 'border-emerald-600 text-emerald-700'
+                ? 'border-[#4361ee] text-[#4361ee]'
                 : 'border-transparent text-slate-600 hover:text-slate-900'
             }`}
           >
@@ -236,7 +236,7 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
             onClick={() => setActiveTab('opportunities')}
             className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
               activeTab === 'opportunities'
-                ? 'border-emerald-600 text-emerald-700'
+                ? 'border-[#4361ee] text-[#4361ee]'
                 : 'border-transparent text-slate-600 hover:text-slate-900'
             }`}
           >
@@ -249,7 +249,7 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
             onClick={() => setActiveTab('activity')}
             className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
               activeTab === 'activity'
-                ? 'border-emerald-600 text-emerald-700'
+                ? 'border-[#4361ee] text-[#4361ee]'
                 : 'border-transparent text-slate-600 hover:text-slate-900'
             }`}
           >
@@ -262,7 +262,7 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
             onClick={() => setActiveTab('emails')}
             className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
               activeTab === 'emails'
-                ? 'border-emerald-600 text-emerald-700'
+                ? 'border-[#4361ee] text-[#4361ee]'
                 : 'border-transparent text-slate-600 hover:text-slate-900'
             }`}
           >
@@ -275,7 +275,7 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
             onClick={() => setActiveTab('history')}
             className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
               activeTab === 'history'
-                ? 'border-emerald-600 text-emerald-700'
+                ? 'border-[#4361ee] text-[#4361ee]'
                 : 'border-transparent text-slate-600 hover:text-slate-900'
             }`}
           >
@@ -312,7 +312,7 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
                 </div>
                 <div>
                   <span className="block text-slate-500 uppercase tracking-wider text-[10px]">Annual Revenue</span>
-                  <span className="font-bold text-emerald-700 text-sm mt-0.5 block">
+                  <span className="font-bold text-[#4361ee] text-sm mt-0.5 block">
                     {account.annual_revenue ? `$${Number(account.annual_revenue).toLocaleString()}` : '—'}
                   </span>
                 </div>
@@ -362,7 +362,7 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
               </h3>
               <Link
                 href="/contacts"
-                className="px-3 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs font-medium transition"
+                className="px-3 py-1.5 bg-[#3a5bf0] hover:bg-emerald-800 text-white rounded-lg text-xs font-medium transition"
               >
                 Go to Contacts
               </Link>
@@ -377,12 +377,12 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
                 {contacts.map((c: any) => (
                   <div key={c.id} className="py-3 flex items-center justify-between">
                     <div>
-                      <Link href={`/contacts/${c.id}`} className="font-semibold text-sm text-slate-800 hover:text-emerald-700 transition">
+                      <Link href={`/contacts/${c.id}`} className="font-semibold text-sm text-slate-800 hover:text-[#4361ee] transition">
                         {c.first_name} {c.last_name}
                       </Link>
                       <div className="text-xs text-slate-600 mt-0.5">{c.title || 'Contact'} • {c.email || c.contact_number || 'No contact info'}</div>
                     </div>
-                    <Link href={`/contacts/${c.id}`} className="text-xs text-emerald-700 hover:underline">
+                    <Link href={`/contacts/${c.id}`} className="text-xs text-[#4361ee] hover:underline">
                       View Contact →
                     </Link>
                   </div>
@@ -401,7 +401,7 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
               </h3>
               <Link
                 href="/opportunities"
-                className="px-3 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs font-medium transition"
+                className="px-3 py-1.5 bg-[#3a5bf0] hover:bg-emerald-800 text-white rounded-lg text-xs font-medium transition"
               >
                 Go to Opportunities
               </Link>
@@ -416,15 +416,15 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
                 {opportunities.map((opp: any) => (
                   <div key={opp.id} className="py-3 flex items-center justify-between">
                     <div>
-                      <Link href={`/opportunities/${opp.id}`} className="font-semibold text-sm text-slate-800 hover:text-emerald-700 transition">
+                      <Link href={`/opportunities/${opp.id}`} className="font-semibold text-sm text-slate-800 hover:text-[#4361ee] transition">
                         {opp.name}
                       </Link>
                       <div className="text-xs text-slate-600 mt-0.5">
-                        Stage: <span className="capitalize text-emerald-700 font-medium">{opp.stage}</span> • Close Date: {opp.close_date}
+                        Stage: <span className="capitalize text-[#4361ee] font-medium">{opp.stage}</span> • Close Date: {opp.close_date}
                       </div>
                     </div>
                     <div className="text-right">
-                      <span className="font-bold text-emerald-700 text-sm block">
+                      <span className="font-bold text-[#4361ee] text-sm block">
                         ${Number(opp.amount || 0).toLocaleString()}
                       </span>
                     </div>
@@ -455,7 +455,7 @@ export default function AccountDetailPage({ params }: AccountDetailPageProps) {
               <button
                 type="button"
                 onClick={() => setIsEmailModalOpen(true)}
-                className="px-3.5 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs font-semibold inline-flex items-center gap-1.5 transition"
+                className="px-3.5 py-1.5 bg-[#3a5bf0] hover:bg-emerald-800 text-white rounded-lg text-xs font-semibold inline-flex items-center gap-1.5 transition"
               >
                 <Send className="h-3.5 w-3.5" />
                 <span>Compose Email</span>

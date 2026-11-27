@@ -159,7 +159,7 @@ export function LeadSplitView({
                 <Link
                   href={detailHref?.(activeLead.id) ?? `/leads/${activeLead.id}`}
                   onClick={() => onOpenDetail?.(activeLead.id)}
-                  className="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-600 text-xs font-medium text-white transition inline-flex items-center gap-1.5 shadow-sm"
+                  className="px-3 py-1.5 rounded-lg bg-[#4361ee] hover:bg-[#4361ee] text-xs font-medium text-white transition inline-flex items-center gap-1.5 shadow-sm"
                 >
                   <span>Full View</span>
                   <ExternalLink className="h-3.5 w-3.5" />
@@ -176,7 +176,7 @@ export function LeadSplitView({
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   <div className="flex items-center gap-2 p-2.5 bg-slate-950/40 border border-slate-800/80 rounded-lg">
-                    <Mail className="h-4 w-4 text-emerald-600 flex-shrink-0" />
+                    <Mail className="h-4 w-4 text-[#4361ee] flex-shrink-0" />
                     <div className="min-w-0">
                       <span className="block text-[10px] text-slate-500 uppercase">Email</span>
                       <span className="truncate block font-medium">{activeLead.email || '—'}</span>
@@ -184,7 +184,7 @@ export function LeadSplitView({
                   </div>
 
                   <div className="flex items-center gap-2 p-2.5 bg-slate-950/40 border border-slate-800/80 rounded-lg">
-                    <Phone className="h-4 w-4 text-emerald-400 flex-shrink-0" />
+                    <Phone className="h-4 w-4 text-[#4361ee] flex-shrink-0" />
                     <div className="min-w-0">
                       <span className="block text-[10px] text-slate-500 uppercase">Phone</span>
                       <span className="truncate block font-medium">{activeLead.phone || '—'}</span>
@@ -213,7 +213,7 @@ export function LeadSplitView({
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                   <div className="p-3 bg-slate-950/40 border border-slate-800/80 rounded-lg">
                     <span className="block text-[10px] text-slate-500 uppercase">Annual Revenue</span>
-                    <span className="font-semibold text-emerald-400 text-sm">
+                    <span className="font-semibold text-[#4361ee] text-sm">
                       {activeLead.annual_revenue ? `$${Number(activeLead.annual_revenue).toLocaleString()}` : '—'}
                     </span>
                   </div>
@@ -246,7 +246,7 @@ export function LeadSplitView({
                   <div className="p-3 bg-slate-950/40 border border-slate-800/80 rounded-lg">
                     <span className="block text-[10px] text-slate-500 uppercase">Assigned BDO</span>
                     <span className="font-medium text-sm flex items-center gap-1.5">
-                      <UserCheck className="h-3.5 w-3.5 text-emerald-600" />
+                      <UserCheck className="h-3.5 w-3.5 text-[#4361ee]" />
                       {activeLead.sub_owner?.first_name ? `${activeLead.sub_owner.first_name} (${activeLead.sub_owner.email})` : 'Unassigned'}
                     </span>
                   </div>

@@ -247,7 +247,7 @@ export function QuoteEditorModal({
                 required
                 value={subject}
                 onChange={(e) => setSubject(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
+                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-indigo-100 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
               />
             </div>
 
@@ -259,7 +259,7 @@ export function QuoteEditorModal({
                 type="text"
                 value={currency}
                 onChange={(e) => setCurrency(e.target.value.toUpperCase())}
-                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 font-mono text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
+                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 font-mono text-slate-900 focus:border-indigo-100 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
               />
             </div>
           </div>
@@ -274,7 +274,7 @@ export function QuoteEditorModal({
                 required
                 value={issueDate}
                 onChange={(e) => setIssueDate(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
+                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-indigo-100 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
               />
             </div>
 
@@ -287,7 +287,7 @@ export function QuoteEditorModal({
                 required
                 value={validUntil}
                 onChange={(e) => setValidUntil(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
+                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-indigo-100 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
               />
             </div>
           </div>
@@ -301,7 +301,7 @@ export function QuoteEditorModal({
               <button
                 type="button"
                 onClick={handleAddItem}
-                className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-800 hover:text-emerald-800 dark:text-emerald-600"
+                className="inline-flex items-center gap-1 text-xs font-semibold text-[#4361ee] hover:text-[#4361ee] dark:text-[#4361ee]"
               >
                 <Plus className="h-3.5 w-3.5" />
                 <span>Add Item</span>
@@ -408,7 +408,7 @@ export function QuoteEditorModal({
                 <span className="text-xs uppercase tracking-wider text-slate-400 font-bold">
                   Quotation Grand Total
                 </span>
-                <p className="font-mono text-xl font-bold text-emerald-600 dark:text-emerald-400">
+                <p className="font-mono text-xl font-bold text-[#4361ee] dark:text-[#4361ee]">
                   {currency} {totals.grandTotal.toFixed(2)}
                 </p>
               </div>
@@ -426,7 +426,7 @@ export function QuoteEditorModal({
                 value={billingAddress}
                 onChange={(e) => setBillingAddress(e.target.value)}
                 placeholder="Client billing address..."
-                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
+                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-indigo-100 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
               />
             </div>
 
@@ -439,7 +439,7 @@ export function QuoteEditorModal({
                 value={shippingAddress}
                 onChange={(e) => setShippingAddress(e.target.value)}
                 placeholder="Client shipping address (if applicable)..."
-                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
+                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-indigo-100 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
               />
             </div>
           </div>
@@ -452,7 +452,7 @@ export function QuoteEditorModal({
               rows={2}
               value={terms}
               onChange={(e) => setTerms(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
+              className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-indigo-100 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
             />
           </div>
 
@@ -468,7 +468,7 @@ export function QuoteEditorModal({
             <button
               type="submit"
               disabled={isSubmitting}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-xs font-semibold text-white shadow-xs transition hover:bg-emerald-600 disabled:opacity-50"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-[#4361ee] px-4 py-2 text-xs font-semibold text-white shadow-xs transition hover:bg-[#4361ee] disabled:opacity-50"
             >
               <FileText className="h-4 w-4" />
               <span>{isSubmitting ? 'Saving...' : quote ? 'Update Quotation' : 'Save & Snapshot Quotation'}</span>

@@ -105,8 +105,8 @@ export default function MyJobsPage() {
             }
             className={`p-1.5 rounded-lg transition ${
               isDone
-                ? 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200'
-                : 'bg-slate-100 text-slate-400 hover:text-emerald-600 hover:bg-slate-200'
+                ? 'bg-[#eef2ff] text-[#4361ee] hover:bg-emerald-200'
+                : 'bg-slate-100 text-slate-400 hover:text-[#4361ee] hover:bg-slate-200'
             }`}
             title={isDone ? 'Mark as Not Started' : 'Mark as Completed'}
           >
@@ -125,7 +125,7 @@ export default function MyJobsPage() {
             <Link
               href={`/tasks/${job.id}`}
               className={`font-semibold hover:underline ${
-                isDone ? 'line-through text-slate-400' : 'text-emerald-800 hover:text-emerald-800'
+                isDone ? 'line-through text-slate-400' : 'text-[#4361ee] hover:text-[#4361ee]'
               }`}
             >
               {job.subject}
@@ -212,7 +212,7 @@ export default function MyJobsPage() {
               <button
                 type="button"
                 onClick={() => setIsTaskModalOpen(true)}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg shadow-xs transition"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-[#4361ee] hover:bg-[#3a5bf0] rounded-lg shadow-xs transition"
               >
                 <Plus className="w-3.5 h-3.5" />
                 Add Action Item
@@ -233,7 +233,7 @@ export default function MyJobsPage() {
             </div>
 
             <div className="p-4 bg-white rounded-xl border border-slate-200 shadow-xs flex items-center gap-3">
-              <div className="p-3 bg-emerald-50 text-emerald-600 rounded-xl">
+              <div className="p-3 bg-[#eef2ff] text-[#4361ee] rounded-xl">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
               <div>
@@ -243,7 +243,7 @@ export default function MyJobsPage() {
             </div>
 
             <div className="p-4 bg-white rounded-xl border border-slate-200 shadow-xs flex items-center gap-3">
-              <div className="p-3 bg-emerald-50 text-emerald-800 rounded-xl">
+              <div className="p-3 bg-[#eef2ff] text-[#4361ee] rounded-xl">
                 <Briefcase className="w-6 h-6" />
               </div>
               <div>
@@ -262,7 +262,7 @@ export default function MyJobsPage() {
                   onClick={() => { setFilter('pending'); setPage(1); }}
                   className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
                     filter === 'pending'
-                      ? 'bg-emerald-600 text-white font-bold'
+                      ? 'bg-[#4361ee] text-white font-bold'
                       : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                   }`}
                 >
@@ -284,7 +284,7 @@ export default function MyJobsPage() {
                   onClick={() => { setFilter('completed'); setPage(1); }}
                   className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
                     filter === 'completed'
-                      ? 'bg-emerald-600 text-white font-bold shadow-xs'
+                      ? 'bg-[#4361ee] text-white font-bold shadow-xs'
                       : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                   }`}
                 >
@@ -295,7 +295,7 @@ export default function MyJobsPage() {
                   onClick={() => { setFilter('all'); setPage(1); }}
                   className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
                     filter === 'all'
-                      ? 'bg-emerald-600 text-white font-bold shadow-xs'
+                      ? 'bg-[#4361ee] text-white font-bold shadow-xs'
                     : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                 }`}
               >
@@ -310,7 +310,7 @@ export default function MyJobsPage() {
                   placeholder="Search assigned jobs and tasks..."
                   value={search}
                   onChange={(e) => { setSearch(e.target.value); setPage(1); }}
-                  className="w-full pl-9 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-300 rounded-lg text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="w-full pl-9 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-300 rounded-lg text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#4361ee]"
                 />
               </div>
             </div>

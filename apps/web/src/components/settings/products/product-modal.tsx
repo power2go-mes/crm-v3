@@ -104,7 +104,7 @@ export function ProductModal({ isOpen, onClose, product, onSuccess }: ProductMod
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="e.g. Cloud ERP License"
-                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-hidden"
+                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs focus:ring-2 focus:ring-[#4361ee] focus:outline-hidden"
               />
             </div>
 
@@ -118,7 +118,7 @@ export function ProductModal({ isOpen, onClose, product, onSuccess }: ProductMod
                 value={sku}
                 onChange={(e) => setSku(e.target.value.toUpperCase())}
                 placeholder="e.g. ERP-CLOUD-01"
-                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs uppercase font-mono focus:ring-2 focus:ring-emerald-500 focus:outline-hidden"
+                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs uppercase font-mono focus:ring-2 focus:ring-[#4361ee] focus:outline-hidden"
               />
             </div>
           </div>
@@ -131,7 +131,7 @@ export function ProductModal({ isOpen, onClose, product, onSuccess }: ProductMod
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
                 placeholder="e.g. Software, Hardware, Services"
-                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-hidden"
+                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs focus:ring-2 focus:ring-[#4361ee] focus:outline-hidden"
               />
             </div>
 
@@ -140,7 +140,7 @@ export function ProductModal({ isOpen, onClose, product, onSuccess }: ProductMod
               <select
                 value={type}
                 onChange={(e) => setType(e.target.value as any)}
-                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-hidden bg-white"
+                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs focus:ring-2 focus:ring-[#4361ee] focus:outline-hidden bg-white"
               >
                 <option value="product">Physical Product</option>
                 <option value="service">Service / Consulting</option>
@@ -155,7 +155,7 @@ export function ProductModal({ isOpen, onClose, product, onSuccess }: ProductMod
                 value={unitOfMeasure}
                 onChange={(e) => setUnitOfMeasure(e.target.value)}
                 placeholder="e.g. Unit, Month, Hour, License"
-                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-hidden"
+                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs focus:ring-2 focus:ring-[#4361ee] focus:outline-hidden"
               />
             </div>
           </div>
@@ -172,7 +172,7 @@ export function ProductModal({ isOpen, onClose, product, onSuccess }: ProductMod
                 required
                 value={defaultPrice}
                 onChange={(e) => setDefaultPrice(e.target.value)}
-                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-hidden"
+                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs focus:ring-2 focus:ring-[#4361ee] focus:outline-hidden"
               />
             </div>
 
@@ -181,7 +181,7 @@ export function ProductModal({ isOpen, onClose, product, onSuccess }: ProductMod
               <select
                 value={currency}
                 onChange={(e) => setCurrency(e.target.value)}
-                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-hidden bg-white"
+                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs focus:ring-2 focus:ring-[#4361ee] focus:outline-hidden bg-white"
               >
                 <option value="INR">INR (₹)</option>
                 <option value="USD">USD ($)</option>
@@ -199,7 +199,7 @@ export function ProductModal({ isOpen, onClose, product, onSuccess }: ProductMod
                 max="100"
                 value={taxRate}
                 onChange={(e) => setTaxRate(e.target.value)}
-                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-hidden"
+                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs focus:ring-2 focus:ring-[#4361ee] focus:outline-hidden"
               />
             </div>
           </div>
@@ -211,7 +211,7 @@ export function ProductModal({ isOpen, onClose, product, onSuccess }: ProductMod
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Detailed description for proposals and invoices..."
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-hidden"
+              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs focus:ring-2 focus:ring-[#4361ee] focus:outline-hidden"
             />
           </div>
 
@@ -221,7 +221,7 @@ export function ProductModal({ isOpen, onClose, product, onSuccess }: ProductMod
               id="isActiveCheck"
               checked={isActive}
               onChange={(e) => setIsActive(e.target.checked)}
-              className="h-4 w-4 rounded border-slate-300 text-emerald-800 focus:ring-emerald-500"
+              className="h-4 w-4 rounded border-slate-300 text-[#4361ee] focus:ring-[#4361ee]"
             />
             <label htmlFor="isActiveCheck" className="text-xs font-medium text-slate-700 select-none">
               Active in catalog and available for price books
@@ -240,7 +240,7 @@ export function ProductModal({ isOpen, onClose, product, onSuccess }: ProductMod
             <button
               type="submit"
               disabled={isSubmitting}
-              className="rounded-lg bg-emerald-600 px-4 py-2 text-xs font-semibold text-white shadow-xs hover:bg-emerald-600 transition disabled:opacity-50"
+              className="rounded-lg bg-[#4361ee] px-4 py-2 text-xs font-semibold text-white shadow-xs hover:bg-[#4361ee] transition disabled:opacity-50"
             >
               {isSubmitting ? 'Saving...' : product ? 'Update Product' : 'Create Product'}
             </button>

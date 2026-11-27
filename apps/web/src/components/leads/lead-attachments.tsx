@@ -106,7 +106,7 @@ export function LeadAttachments({ leadId }: { leadId: string }) {
           event.target.value = '';
           if (file) { setError(''); upload.mutate(file); }
         }} />
-        <button type="button" disabled={upload.isPending} className="rounded bg-emerald-50 px-3 py-2 text-sm text-emerald-800" onClick={() => input.current?.click()}>
+        <button type="button" disabled={upload.isPending} className="rounded bg-[#eef2ff] px-3 py-2 text-sm text-[#4361ee]" onClick={() => input.current?.click()}>
           {upload.isPending ? 'Uploading…' : 'Upload File'}
         </button>
       </>}

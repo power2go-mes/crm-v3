@@ -27,8 +27,8 @@ export const MEETING_PROVIDERS = [
 ] as const;
 
 export const MEETING_STATUSES = [
-  { value: 'not_started', label: 'Scheduled', color: 'text-emerald-600 bg-emerald-600/10 border-emerald-200/20' },
+  { value: 'not_started', label: 'Scheduled', color: 'text-[#4361ee] bg-[#4361ee]/10 border-indigo-100/20' },
   { value: 'in_progress', label: 'In Progress', color: 'text-amber-400 bg-amber-500/10 border-amber-500/20' },
-  { value: 'completed', label: 'Completed', color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20' },
+  { value: 'completed', label: 'Completed', color: 'text-[#4361ee] bg-[#4361ee]/10 border-[#4361ee]/20' },
   { value: 'cancelled', label: 'Cancelled', color: 'text-rose-400 bg-rose-500/10 border-rose-500/20' },
 ] as const;

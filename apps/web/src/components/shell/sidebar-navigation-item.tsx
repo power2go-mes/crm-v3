@@ -29,14 +29,14 @@ export function SidebarNavigationItem({
         aria-current={isActive ? 'page' : undefined}
         className={`w-full flex items-center transition-all duration-150 rounded-lg text-xs font-semibold ${
           isActive
-            ? 'bg-emerald-600 text-white shadow-xs font-bold'
-            : 'text-slate-600 hover:bg-emerald-50 hover:text-emerald-900'
+            ? 'bg-[#4361ee] text-white shadow-xs font-bold'
+            : 'text-slate-600 hover:bg-[#eef2ff] hover:text-emerald-900'
         } ${isCollapsed ? 'justify-center p-2.5 mx-auto' : 'space-x-2.5 px-3 py-1.5'}`}
       >
         <NavIcon
           name={item.iconName}
           className={`shrink-0 ${isCollapsed ? 'w-5 h-5' : 'w-3.5 h-3.5'} ${
-            isActive ? 'text-white' : 'text-slate-500 group-hover:text-emerald-700'
+            isActive ? 'text-white' : 'text-slate-500 group-hover:text-[#4361ee]'
           }`}
         />
         {!isCollapsed && <span className="truncate">{item.label}</span>}

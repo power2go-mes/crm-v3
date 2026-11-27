@@ -91,7 +91,7 @@ export default function AutomationSettingsPage() {
           hasPermission('automation.manage') ? (
             <button
               onClick={handleOpenCreate}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3.5 py-2 text-xs font-semibold text-white shadow-xs hover:bg-emerald-600"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-[#4361ee] px-3.5 py-2 text-xs font-semibold text-white shadow-xs hover:bg-[#4361ee]"
             >
               <Plus className="h-4 w-4" />
               <span>Create Workflow</span>
@@ -107,7 +107,7 @@ export default function AutomationSettingsPage() {
             onClick={() => setActiveTab('rules')}
             className={`flex items-center gap-2 border-b-2 px-5 py-3 text-xs font-semibold uppercase tracking-wider transition ${
               activeTab === 'rules'
-                ? 'border-emerald-200 text-emerald-800 dark:text-emerald-600'
+                ? 'border-indigo-100 text-[#4361ee] dark:text-[#4361ee]'
                 : 'border-transparent text-slate-500 hover:text-slate-800 '
             }`}
           >
@@ -118,7 +118,7 @@ export default function AutomationSettingsPage() {
             onClick={() => setActiveTab('logs')}
             className={`flex items-center gap-2 border-b-2 px-5 py-3 text-xs font-semibold uppercase tracking-wider transition ${
               activeTab === 'logs'
-                ? 'border-emerald-200 text-emerald-800 dark:text-emerald-600'
+                ? 'border-indigo-100 text-[#4361ee] dark:text-[#4361ee]'
                 : 'border-transparent text-slate-500 hover:text-slate-800 '
             }`}
           >
@@ -140,7 +140,7 @@ export default function AutomationSettingsPage() {
                 {hasPermission('automation.manage') && (
                   <button
                     onClick={handleOpenCreate}
-                    className="mt-4 inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-xs font-semibold text-white hover:bg-emerald-600"
+                    className="mt-4 inline-flex items-center gap-1.5 rounded-lg bg-[#4361ee] px-4 py-2 text-xs font-semibold text-white hover:bg-[#4361ee]"
                   >
                     <Plus className="h-4 w-4" />
                     <span>Create Your First Workflow</span>
@@ -160,7 +160,7 @@ export default function AutomationSettingsPage() {
                         <span
                           className={`rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
                             rule.is_active
-                              ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-400'
+                              ? 'bg-[#eef2ff] text-[#4361ee] dark:bg-emerald-950/40 dark:text-[#4361ee]'
                               : 'bg-slate-100 text-slate-600 dark:bg-slate-800 '
                           }`}
                         >
@@ -170,7 +170,7 @@ export default function AutomationSettingsPage() {
                       <p className="text-xs text-slate-500">{rule.description || 'No description provided.'}</p>
 
                       <div className="flex flex-wrap items-center gap-3 pt-2 text-[11px] text-slate-600">
-                        <span className="flex items-center gap-1 font-medium text-emerald-800 dark:text-emerald-600">
+                        <span className="flex items-center gap-1 font-medium text-[#4361ee] dark:text-[#4361ee]">
                           <Zap className="h-3 w-3" />
                           WHEN: {rule.trigger_event.replace(/_/g, ' ')}
                         </span>
@@ -193,7 +193,7 @@ export default function AutomationSettingsPage() {
                         className={`inline-flex items-center gap-1 rounded-lg border px-3 py-1.5 text-xs font-semibold ${
                           rule.is_active
                             ? 'border-slate-300 text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300'
-                            : 'border-emerald-300 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950/40'
+                            : 'border-indigo-200 bg-[#eef2ff] text-[#4361ee] hover:bg-[#eef2ff] dark:border-emerald-800 dark:bg-emerald-950/40'
                         }`}
                       >
                         {rule.is_active ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}
@@ -249,7 +249,7 @@ export default function AutomationSettingsPage() {
                       <span
                         className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold ${
                           log.status === 'success'
-                            ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-400'
+                            ? 'bg-[#eef2ff] text-[#4361ee] dark:bg-emerald-950/40 dark:text-[#4361ee]'
                             : 'bg-red-50 text-red-700 dark:bg-red-950/40 dark:text-red-400'
                         }`}
                       >
@@ -402,7 +402,7 @@ export default function AutomationSettingsPage() {
                   <button
                     type="submit"
                     disabled={isSaving}
-                    className="rounded-lg bg-emerald-600 px-4 py-2 text-xs font-semibold text-white hover:bg-emerald-600"
+                    className="rounded-lg bg-[#4361ee] px-4 py-2 text-xs font-semibold text-white hover:bg-[#4361ee]"
                   >
                     Save Rule
                   </button>

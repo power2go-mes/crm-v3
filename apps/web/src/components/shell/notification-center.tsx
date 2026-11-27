@@ -47,21 +47,21 @@ function formatTimeAgo(isoString: string): string {
 function getCategoryIcon(category: NotificationCategory) {
   switch (category) {
     case 'lead':
-      return <UserPlus className="h-4 w-4 text-emerald-600" />;
+      return <UserPlus className="h-4 w-4 text-[#4361ee]" />;
     case 'task':
-      return <CheckSquare className="h-4 w-4 text-emerald-800" />;
+      return <CheckSquare className="h-4 w-4 text-[#4361ee]" />;
     case 'call':
       return <Phone className="h-4 w-4 text-amber-600" />;
     case 'meeting':
-      return <Calendar className="h-4 w-4 text-emerald-800" />;
+      return <Calendar className="h-4 w-4 text-[#4361ee]" />;
     case 'deal':
-      return <DollarSign className="h-4 w-4 text-green-600" />;
+      return <DollarSign className="h-4 w-4 text-[#4361ee]" />;
     case 'campaign':
       return <Megaphone className="h-4 w-4 text-pink-600" />;
     case 'account':
-      return <Building className="h-4 w-4 text-emerald-800" />;
+      return <Building className="h-4 w-4 text-[#4361ee]" />;
     case 'contact':
-      return <Users className="h-4 w-4 text-emerald-800" />;
+      return <Users className="h-4 w-4 text-[#4361ee]" />;
     case 'system':
     default:
       return <Info className="h-4 w-4 text-slate-600" />;
@@ -143,7 +143,7 @@ export function NotificationCenter() {
             <div className="flex items-center gap-2">
               <h2 className="text-sm font-semibold text-slate-800">Notifications</h2>
               {unreadCount > 0 && (
-                <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-medium text-emerald-800">
+                <span className="rounded-full bg-[#eef2ff] px-2 py-0.5 text-[11px] font-medium text-[#4361ee]">
                   {unreadCount} new
                 </span>
               )}
@@ -207,7 +207,7 @@ export function NotificationCenter() {
                   key={item.id}
                   onClick={() => handleNotificationClick(item)}
                   className={`group relative flex items-start gap-3 p-3 text-left transition hover:bg-slate-50 cursor-pointer ${
-                    !item.read ? 'bg-emerald-50/30' : 'bg-white'
+                    !item.read ? 'bg-[#eef2ff]/30' : 'bg-white'
                   }`}
                 >
                   {/* Category icon avatar */}
@@ -369,7 +369,7 @@ export function NotificationCenter() {
                     key={item.id}
                     onClick={() => handleNotificationClick(item)}
                     className={`p-3 rounded-xl transition cursor-pointer hover:bg-slate-50 flex items-start gap-3 my-1 ${
-                      !item.read ? 'bg-emerald-50/40 border border-emerald-200' : 'bg-white'
+                      !item.read ? 'bg-[#eef2ff]/40 border border-indigo-100' : 'bg-white'
                     }`}
                   >
                     <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white border border-slate-200 shadow-2xs">

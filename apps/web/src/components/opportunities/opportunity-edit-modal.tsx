@@ -99,7 +99,7 @@ export function OpportunityEditModal({
         {/* Header */}
         <div className="px-6 py-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 bg-emerald-500/10 text-emerald-400 rounded-lg">
+            <div className="p-2 bg-[#4361ee]/10 text-[#4361ee] rounded-lg">
               <TrendingUp className="h-5 w-5" />
             </div>
             <div>
@@ -134,7 +134,7 @@ export function OpportunityEditModal({
                 required
                 value={formData.name || ''}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 text-sm"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee] text-sm"
               />
             </div>
 
@@ -146,7 +146,7 @@ export function OpportunityEditModal({
                 required
                 value={formData.account_id || ''}
                 onChange={(e) => setFormData({ ...formData, account_id: e.target.value })}
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               >
                 <option value="">Select an Account...</option>
                 {accounts.map((acc) => (
@@ -172,7 +172,7 @@ export function OpportunityEditModal({
                       amount: e.target.value ? Number(e.target.value) : undefined,
                     })
                   }
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
                 />
               </div>
 
@@ -185,7 +185,7 @@ export function OpportunityEditModal({
                   required
                   value={formData.close_date || ''}
                   onChange={(e) => setFormData({ ...formData, close_date: e.target.value })}
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
                 />
               </div>
             </div>
@@ -198,7 +198,7 @@ export function OpportunityEditModal({
                 <select
                   value={formData.stage || 'prospecting'}
                   onChange={(e) => handleStageChange(e.target.value)}
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
                 >
                   {APPROVED_OPPORTUNITY_STAGES.map((s) => (
                     <option key={s.id} value={s.id}>
@@ -220,7 +220,7 @@ export function OpportunityEditModal({
                   onChange={(e) =>
                     setFormData({ ...formData, probability: Number(e.target.value) })
                   }
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
                 />
               </div>
             </div>
@@ -235,7 +235,7 @@ export function OpportunityEditModal({
                   placeholder="e.g. Schedule architecture review"
                   value={formData.next_step || ''}
                   onChange={(e) => setFormData({ ...formData, next_step: e.target.value })}
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
                 />
               </div>
 
@@ -247,7 +247,7 @@ export function OpportunityEditModal({
                   type="date"
                   value={formData.next_activity_date || ''}
                   onChange={(e) => setFormData({ ...formData, next_activity_date: e.target.value })}
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
                 />
               </div>
             </div>
@@ -323,7 +323,7 @@ export function OpportunityEditModal({
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-semibold shadow-sm transition disabled:opacity-50"
+              className="px-5 py-2 bg-[#4361ee] hover:bg-[#4361ee] text-white rounded-lg font-semibold shadow-sm transition disabled:opacity-50"
             >
               {isSubmitting ? 'Saving...' : 'Update Opportunity'}
             </button>

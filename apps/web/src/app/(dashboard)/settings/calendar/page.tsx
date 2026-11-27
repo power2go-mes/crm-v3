@@ -142,14 +142,14 @@ export default function CalendarSettingsPage() {
       <PermissionGate action="calendar.sync" showAccessDenied>
         <div className="space-y-6">
           {/* Active Status Notice */}
-          <div className="rounded-xl border border-emerald-200 bg-emerald-50/60 p-5">
+          <div className="rounded-xl border border-indigo-100 bg-[#eef2ff]/60 p-5">
             <div className="flex items-start gap-3">
-              <ShieldCheck className="mt-0.5 h-5 w-5 flex-shrink-0 text-emerald-600" />
+              <ShieldCheck className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#4361ee]" />
               <div className="flex-1">
                 <h3 className="text-sm font-semibold text-emerald-900">
                   Direct Calendar Sync Engine Active
                 </h3>
-                <p className="mt-1 text-xs text-emerald-800">
+                <p className="mt-1 text-xs text-[#4361ee]">
                   Connect your calendar using your Email / Calendar ID, or subscribe directly to the CRM calendar feed. Meetings, scheduled calls, and tasks synchronize automatically.
                 </p>
               </div>
@@ -161,13 +161,13 @@ export default function CalendarSettingsPage() {
             <div
               className={`p-4 rounded-xl border flex items-center justify-between gap-3 text-xs font-medium ${
                 syncResult.success
-                  ? 'bg-emerald-50 border-emerald-200 text-emerald-800'
+                  ? 'bg-[#eef2ff] border-indigo-100 text-[#4361ee]'
                   : 'bg-red-50 border-red-200 text-red-800'
               }`}
             >
               <div className="flex items-center gap-2">
                 {syncResult.success ? (
-                  <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0" />
+                  <CheckCircle2 className="h-4 w-4 text-[#4361ee] shrink-0" />
                 ) : (
                   <AlertCircle className="h-4 w-4 text-red-600 shrink-0" />
                 )}
@@ -190,7 +190,7 @@ export default function CalendarSettingsPage() {
               <div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="rounded-xl bg-emerald-50 p-2.5 text-emerald-700 border border-emerald-200">
+                    <div className="rounded-xl bg-[#eef2ff] p-2.5 text-[#4361ee] border border-indigo-100">
                       <CalendarIcon className="h-6 w-6" />
                     </div>
                     <div>
@@ -201,7 +201,7 @@ export default function CalendarSettingsPage() {
                   <span
                     className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider border ${
                       googleConn?.sync_status === 'connected'
-                        ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
+                        ? 'bg-[#eef2ff] text-[#4361ee] border-indigo-100'
                         : 'bg-orange-50 text-orange-700 border-orange-200'
                     }`}
                   >
@@ -211,11 +211,11 @@ export default function CalendarSettingsPage() {
 
                 <ul className="mt-4 space-y-2 text-xs text-slate-600">
                   <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-600" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#4361ee]" />
                     Bi-directional sync for Customer Meetings and Calls.
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-600" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#4361ee]" />
                     Auto-maps Google Meet video links into CRM Activity records.
                   </li>
                 </ul>
@@ -228,7 +228,7 @@ export default function CalendarSettingsPage() {
                       <div className="text-slate-500 font-mono text-[11px] truncate">ID: {googleConn.calendar_id}</div>
                     )}
                     {googleConn.last_synced_at && (
-                      <div className="text-emerald-700 font-medium text-[10px]">
+                      <div className="text-[#4361ee] font-medium text-[10px]">
                         Last Synced: {new Date(googleConn.last_synced_at).toLocaleString()}
                       </div>
                     )}
@@ -241,7 +241,7 @@ export default function CalendarSettingsPage() {
                   <button
                     type="button"
                     onClick={() => handleOpenConnect('google_calendar')}
-                    className="rounded-lg bg-emerald-600 px-3.5 py-2 text-xs font-semibold text-white hover:bg-emerald-700 shadow-xs transition"
+                    className="rounded-lg bg-[#4361ee] px-3.5 py-2 text-xs font-semibold text-white hover:bg-[#3a5bf0] shadow-xs transition"
                   >
                     {googleConn ? 'Configure' : 'Connect Google Calendar'}
                   </button>
@@ -287,7 +287,7 @@ export default function CalendarSettingsPage() {
                   <span
                     className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider border ${
                       msConn?.sync_status === 'connected'
-                        ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
+                        ? 'bg-[#eef2ff] text-[#4361ee] border-indigo-100'
                         : 'bg-orange-50 text-orange-700 border-orange-200'
                     }`}
                   >
@@ -297,11 +297,11 @@ export default function CalendarSettingsPage() {
 
                 <ul className="mt-4 space-y-2 text-xs text-slate-600">
                   <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-600" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#4361ee]" />
                     Sync Outlook events with CRM sales meetings.
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-600" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#4361ee]" />
                     Auto-maps Microsoft Teams video conference links.
                   </li>
                 </ul>
@@ -314,7 +314,7 @@ export default function CalendarSettingsPage() {
                       <div className="text-slate-500 font-mono text-[11px] truncate">ID: {msConn.calendar_id}</div>
                     )}
                     {msConn.last_synced_at && (
-                      <div className="text-emerald-700 font-medium text-[10px]">
+                      <div className="text-[#4361ee] font-medium text-[10px]">
                         Last Synced: {new Date(msConn.last_synced_at).toLocaleString()}
                       </div>
                     )}
@@ -374,13 +374,13 @@ export default function CalendarSettingsPage() {
                   onClick={handleCopyFeedUrl}
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition"
                 >
-                  {copiedUrl ? <Check className="h-3.5 w-3.5 text-emerald-600" /> : <Copy className="h-3.5 w-3.5" />}
+                  {copiedUrl ? <Check className="h-3.5 w-3.5 text-[#4361ee]" /> : <Copy className="h-3.5 w-3.5" />}
                   <span>{copiedUrl ? 'Copied URL!' : 'Copy Feed URL'}</span>
                 </button>
                 <a
                   href="/api/calendar/ical"
                   download="crm-calendar.ics"
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 text-xs font-semibold text-white hover:bg-emerald-700 shadow-xs transition"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#4361ee] text-xs font-semibold text-white hover:bg-[#3a5bf0] shadow-xs transition"
                 >
                   <Download className="h-3.5 w-3.5" />
                   <span>Download .ics</span>
@@ -401,7 +401,7 @@ export default function CalendarSettingsPage() {
           <div className="w-full max-w-md rounded-2xl border border-slate-200 bg-white p-6 shadow-2xl">
             <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <div className="flex items-center gap-2.5">
-                <div className="p-2 bg-emerald-50 text-emerald-600 rounded-lg border border-emerald-200">
+                <div className="p-2 bg-[#eef2ff] text-[#4361ee] rounded-lg border border-indigo-100">
                   <Link2 className="h-5 w-5" />
                 </div>
                 <div>
@@ -431,7 +431,7 @@ export default function CalendarSettingsPage() {
                   value={calendarIdOrUrl}
                   onChange={(e) => setCalendarIdOrUrl(e.target.value)}
                   placeholder="e.g. yourname@gmail.com or primary"
-                  className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                  className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
                 />
                 <p className="mt-1 text-[11px] text-slate-500">
                   Enter your Google or Outlook account email, or specific Google Calendar ID.
@@ -447,7 +447,7 @@ export default function CalendarSettingsPage() {
                   value={calendarName}
                   onChange={(e) => setCalendarName(e.target.value)}
                   placeholder="e.g. Sales Primary Calendar"
-                  className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                  className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
                 />
               </div>
 
@@ -458,7 +458,7 @@ export default function CalendarSettingsPage() {
                 <select
                   value={syncDirection}
                   onChange={(e) => setSyncDirection(e.target.value as CalendarSyncDirection)}
-                  className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                  className="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
                 >
                   <option value="both">Both Ways (CRM ↔ External Calendar)</option>
                   <option value="crm_to_external">CRM to External Calendar Only</option>
@@ -479,7 +479,7 @@ export default function CalendarSettingsPage() {
                 type="button"
                 onClick={() => handleSaveConnection('connected')}
                 disabled={isSaving}
-                className="rounded-lg bg-emerald-600 px-4 py-2 text-xs font-semibold text-white hover:bg-emerald-700 shadow-xs transition disabled:opacity-50"
+                className="rounded-lg bg-[#4361ee] px-4 py-2 text-xs font-semibold text-white hover:bg-[#3a5bf0] shadow-xs transition disabled:opacity-50"
               >
                 {isSaving ? 'Connecting...' : 'Connect Calendar'}
               </button>

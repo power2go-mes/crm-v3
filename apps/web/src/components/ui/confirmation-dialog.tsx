@@ -33,7 +33,7 @@ export function ConfirmationDialog({
       ? 'bg-red-600 hover:bg-red-700 text-white'
       : variant === 'warning'
       ? 'bg-amber-600 hover:bg-amber-700 text-white'
-      : 'bg-emerald-600 hover:bg-emerald-700 text-white';
+      : 'bg-[#4361ee] hover:bg-[#3a5bf0] text-white';
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-xs p-4 animate-fade-in">

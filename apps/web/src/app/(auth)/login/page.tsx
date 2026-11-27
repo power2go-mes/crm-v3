@@ -43,7 +43,7 @@ export default function LoginPage() {
   return (
     <div className="flex min-h-screen bg-slate-50 text-slate-900 flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
-        <div className="inline-flex items-center justify-center h-14 w-14 rounded-2xl bg-emerald-600 shadow-md mb-4 text-white">
+        <div className="inline-flex items-center justify-center h-14 w-14 rounded-2xl bg-[#4361ee] shadow-md mb-4 text-white">
           <ShieldCheck className="h-8 w-8" />
         </div>
         <h1 className="text-2xl font-bold tracking-tight text-slate-900">FINLONEXA CRM</h1>
@@ -79,7 +79,7 @@ export default function LoginPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="name@company.com"
-                  className="block w-full pl-10 pr-3 py-2.5 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
+                  className="block w-full pl-10 pr-3 py-2.5 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#4361ee] focus:border-transparent transition"
                 />
               </div>
             </div>
@@ -101,7 +101,7 @@ export default function LoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••••••"
-                  className="block w-full pl-10 pr-3 py-2.5 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
+                  className="block w-full pl-10 pr-3 py-2.5 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#4361ee] focus:border-transparent transition"
                 />
               </div>
             </div>
@@ -109,7 +109,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 disabled:opacity-50 transition shadow-sm"
+              className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg text-sm font-semibold text-white bg-[#4361ee] hover:bg-[#3a5bf0] focus:outline-none focus:ring-2 focus:ring-[#4361ee] focus:ring-offset-2 disabled:opacity-50 transition shadow-sm"
             >
               {isSubmitting ? (
                 <>

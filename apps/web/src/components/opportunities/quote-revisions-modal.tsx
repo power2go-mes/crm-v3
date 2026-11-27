@@ -21,7 +21,7 @@ export function QuoteRevisionsModal({ isOpen, onClose, quote }: QuoteRevisionsMo
       <div className="relative w-full max-w-2xl rounded-2xl bg-white p-6 shadow-xl border border-slate-200">
         <div className="flex items-center justify-between border-b border-slate-100 pb-4">
           <div className="flex items-center gap-2">
-            <History className="h-5 w-5 text-emerald-800 dark:text-emerald-600" />
+            <History className="h-5 w-5 text-[#4361ee] dark:text-[#4361ee]" />
             <div>
               <h3 className="text-base font-bold text-slate-900">
                 Revision History — {quote.quote_number}
@@ -57,7 +57,7 @@ export function QuoteRevisionsModal({ isOpen, onClose, quote }: QuoteRevisionsMo
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <span className="rounded bg-emerald-50 px-2 py-0.5 text-xs font-bold text-emerald-800 dark:bg-emerald-600/60 dark:text-emerald-600">
+                    <span className="rounded bg-[#eef2ff] px-2 py-0.5 text-xs font-bold text-[#4361ee] dark:bg-[#4361ee]/60 dark:text-[#4361ee]">
                       Rev #{rev.revision_number}
                     </span>
                     <span className="rounded-full bg-slate-200 px-2 py-0.5 text-[11px] font-semibold text-slate-700 dark:bg-slate-700 dark:text-slate-200">
@@ -90,7 +90,7 @@ export function QuoteRevisionsModal({ isOpen, onClose, quote }: QuoteRevisionsMo
                   </div>
                   <div>
                     <span className="text-slate-400">Grand Total:</span>
-                    <p className="font-mono font-bold text-emerald-600 dark:text-emerald-400">
+                    <p className="font-mono font-bold text-[#4361ee] dark:text-[#4361ee]">
                       {quote.currency} {Number(rev.snapshot_data?.quote?.grand_total || 0).toLocaleString('en-IN', { minimumFractionDigits: 2 })}
                     </p>
                   </div>

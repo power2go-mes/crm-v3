@@ -181,7 +181,7 @@ export function RoleMatrixClient({
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h1 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-            <ShieldCheck className="h-6 w-6 text-emerald-600" />
+            <ShieldCheck className="h-6 w-6 text-[#4361ee]" />
             Dynamic Role & Permission Manager
           </h1>
           <p className="text-xs text-slate-500 mt-0.5">
@@ -191,7 +191,7 @@ export function RoleMatrixClient({
 
         <button
           onClick={() => setIsModalOpen(true)}
-          className="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold text-white bg-emerald-600 rounded-lg hover:bg-emerald-700 shadow-xs transition"
+          className="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold text-white bg-[#4361ee] rounded-lg hover:bg-[#3a5bf0] shadow-xs transition"
         >
           <Plus className="h-4 w-4" /> Add Custom Role
         </button>
@@ -202,12 +202,12 @@ export function RoleMatrixClient({
         <div
           className={`p-3 rounded-lg text-xs font-medium flex items-center gap-2 ${
             statusMessage.type === 'success'
-              ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
+              ? 'bg-[#eef2ff] text-[#4361ee] border border-indigo-100'
               : 'bg-red-50 text-red-800 border border-red-200'
           }`}
         >
           {statusMessage.type === 'success' ? (
-            <Check className="h-4 w-4 text-emerald-600 flex-shrink-0" />
+            <Check className="h-4 w-4 text-[#4361ee] flex-shrink-0" />
           ) : (
             <AlertCircle className="h-4 w-4 text-red-600 flex-shrink-0" />
           )}
@@ -232,7 +232,7 @@ export function RoleMatrixClient({
                   key={r.id}
                   onClick={() => setSelectedRoleId(r.id)}
                   className={`p-3.5 cursor-pointer transition flex items-center justify-between ${
-                    isSelected ? 'bg-emerald-50/80 border-l-4 border-emerald-600' : 'hover:bg-slate-50'
+                    isSelected ? 'bg-[#eef2ff]/80 border-l-4 border-[#4361ee]' : 'hover:bg-slate-50'
                   }`}
                 >
                   <div className="flex flex-col">
@@ -241,7 +241,7 @@ export function RoleMatrixClient({
                   </div>
                   <div className="flex items-center gap-1.5">
                     {r.is_canonical ? (
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#eef2ff] text-[#4361ee] border border-indigo-100">
                         <Lock className="h-2.5 w-2.5" /> CANONICAL
                       </span>
                     ) : (
@@ -271,11 +271,11 @@ export function RoleMatrixClient({
                 <div className="flex items-center gap-2">
                   <h2 className="text-lg font-bold text-slate-900">{selectedRole.name}</h2>
                   {selectedRole.is_canonical ? (
-                    <span className="px-2 py-0.5 text-[10px] font-bold rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
+                    <span className="px-2 py-0.5 text-[10px] font-bold rounded-full bg-[#eef2ff] text-[#4361ee] border border-indigo-100">
                       Protected Canonical
                     </span>
                   ) : (
-                    <span className="px-2 py-0.5 text-[10px] font-bold rounded-full bg-emerald-100 text-emerald-700 border border-emerald-200">
+                    <span className="px-2 py-0.5 text-[10px] font-bold rounded-full bg-[#eef2ff] text-[#4361ee] border border-indigo-100">
                       Custom Role
                     </span>
                   )}
@@ -302,7 +302,7 @@ export function RoleMatrixClient({
                 placeholder="Search action or description..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-3 py-2 text-xs border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                className="w-full pl-9 pr-3 py-2 text-xs border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4361ee]"
               />
             </div>
             <div className="flex items-center gap-2">
@@ -310,7 +310,7 @@ export function RoleMatrixClient({
               <select
                 value={selectedModule}
                 onChange={(e) => setSelectedModule(e.target.value)}
-                className="text-xs border border-slate-200 rounded-lg px-2.5 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                className="text-xs border border-slate-200 rounded-lg px-2.5 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-[#4361ee]"
               >
                 <option value="all">All Modules ({modules.length})</option>
                 {modules.map((m) => (
@@ -358,8 +358,8 @@ export function RoleMatrixClient({
                           type="button"
                           disabled={isPending}
                           onClick={() => handleToggle(perm.id)}
-                          className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 ${
-                            granted ? 'bg-emerald-600' : 'bg-slate-300'
+                          className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#4361ee] focus:ring-offset-2 ${
+                            granted ? 'bg-[#4361ee]' : 'bg-slate-300'
                           } ${isPending ? 'opacity-60 cursor-not-allowed' : ''}`}
                         >
                           <span
@@ -404,7 +404,7 @@ export function RoleMatrixClient({
                   placeholder="e.g. MARKETING_LEAD"
                   value={newRoleId}
                   onChange={(e) => setNewRoleId(e.target.value.toUpperCase())}
-                  className="mt-1 w-full px-3 py-2 text-xs font-mono border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="mt-1 w-full px-3 py-2 text-xs font-mono border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4361ee]"
                 />
               </div>
 
@@ -418,7 +418,7 @@ export function RoleMatrixClient({
                   placeholder="e.g. Marketing Lead"
                   value={newRoleName}
                   onChange={(e) => setNewRoleName(e.target.value)}
-                  className="mt-1 w-full px-3 py-2 text-xs border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="mt-1 w-full px-3 py-2 text-xs border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4361ee]"
                 />
               </div>
 
@@ -431,7 +431,7 @@ export function RoleMatrixClient({
                   placeholder="Responsibilities and purpose..."
                   value={newRoleDesc}
                   onChange={(e) => setNewRoleDesc(e.target.value)}
-                  className="mt-1 w-full px-3 py-2 text-xs border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="mt-1 w-full px-3 py-2 text-xs border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4361ee]"
                 />
               </div>
 
@@ -446,7 +446,7 @@ export function RoleMatrixClient({
                 <button
                   type="submit"
                   disabled={isPending}
-                  className="px-4 py-2 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg transition"
+                  className="px-4 py-2 text-xs font-semibold text-white bg-[#4361ee] hover:bg-[#3a5bf0] rounded-lg transition"
                 >
                   Create Role
                 </button>

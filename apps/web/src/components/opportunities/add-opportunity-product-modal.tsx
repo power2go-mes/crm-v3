@@ -155,7 +155,7 @@ export function AddOpportunityProductModal({
               value={productId}
               onChange={(e) => handleProductSelect(e.target.value)}
               disabled={!!item}
-              className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
+              className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-indigo-100 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
             >
               {allProducts.map((p: ProductRecord) => (
                 <option key={p.id} value={p.id}>
@@ -177,7 +177,7 @@ export function AddOpportunityProductModal({
                 required
                 value={quantity}
                 onChange={(e) => setQuantity(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
+                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-indigo-100 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
               />
             </div>
 
@@ -192,7 +192,7 @@ export function AddOpportunityProductModal({
                 required
                 value={unitPrice}
                 onChange={(e) => setUnitPrice(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
+                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-indigo-100 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
               />
             </div>
           </div>
@@ -209,7 +209,7 @@ export function AddOpportunityProductModal({
                 step="0.1"
                 value={discountPercent}
                 onChange={(e) => setDiscountPercent(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
+                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-indigo-100 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
               />
             </div>
 
@@ -224,7 +224,7 @@ export function AddOpportunityProductModal({
                 step="0.1"
                 value={taxPercent}
                 onChange={(e) => setTaxPercent(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
+                className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-indigo-100 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
               />
             </div>
           </div>
@@ -238,7 +238,7 @@ export function AddOpportunityProductModal({
               placeholder="e.g. Annual renewal discount applied"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
+              className="mt-1 w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:border-indigo-100 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
             />
           </div>
 
@@ -280,7 +280,7 @@ export function AddOpportunityProductModal({
               <div className="border-t border-slate-200 pt-1 font-bold text-slate-900 dark:border-slate-700">
                 Line Total:
               </div>
-              <div className="border-t border-slate-200 pt-1 text-right font-mono font-bold text-emerald-600 dark:border-slate-700 dark:text-emerald-400">
+              <div className="border-t border-slate-200 pt-1 text-right font-mono font-bold text-[#4361ee] dark:border-slate-700 dark:text-[#4361ee]">
                 {currency} {preview.lineTotal.toFixed(2)}
               </div>
             </div>
@@ -298,7 +298,7 @@ export function AddOpportunityProductModal({
             <button
               type="submit"
               disabled={isSubmitting}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-xs font-semibold text-white shadow-xs transition hover:bg-emerald-600 disabled:opacity-50"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-[#4361ee] px-4 py-2 text-xs font-semibold text-white shadow-xs transition hover:bg-[#4361ee] disabled:opacity-50"
             >
               {isSubmitting ? 'Saving...' : item ? 'Update Item' : 'Add to Opportunity'}
             </button>

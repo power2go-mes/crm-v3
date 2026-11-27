@@ -31,7 +31,7 @@ export function LeadHistoryAudit({ leadId }: LeadHistoryAuditProps) {
   return (
     <div className="space-y-4">
       <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-        <History className="h-3.5 w-3.5 text-emerald-600" />
+        <History className="h-3.5 w-3.5 text-[#4361ee]" />
         <span>Field Modification Audit Log ({history.length})</span>
       </h4>
 
@@ -59,7 +59,7 @@ export function LeadHistoryAudit({ leadId }: LeadHistoryAuditProps) {
                 <td className="px-4 py-3 text-slate-400 truncate max-w-[150px]">
                   {item.old_value || '—'}
                 </td>
-                <td className="px-4 py-3 text-emerald-600 font-medium truncate max-w-[150px]">
+                <td className="px-4 py-3 text-[#4361ee] font-medium truncate max-w-[150px]">
                   {item.new_value || '—'}
                 </td>
                 <td className="px-4 py-3 text-slate-400 truncate max-w-[150px]">

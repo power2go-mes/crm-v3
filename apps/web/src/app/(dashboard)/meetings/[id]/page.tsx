@@ -53,7 +53,7 @@ export default function MeetingDetailPage() {
     return (
       <PageContainer>
         <div className="flex items-center justify-center min-h-[400px]">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-200" />
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-100" />
         </div>
       </PageContainer>
     );
@@ -69,7 +69,7 @@ export default function MeetingDetailPage() {
           </p>
           <Link
             href="/meetings"
-            className="inline-flex items-center gap-1.5 mt-4 px-4 py-2 bg-emerald-600 hover:bg-emerald-600 text-white rounded-lg text-xs font-semibold transition"
+            className="inline-flex items-center gap-1.5 mt-4 px-4 py-2 bg-[#4361ee] hover:bg-[#4361ee] text-white rounded-lg text-xs font-semibold transition"
           >
             <ArrowLeft className="h-3.5 w-3.5" /> Back to Meetings
           </Link>
@@ -127,7 +127,7 @@ export default function MeetingDetailPage() {
                       href={meeting.meeting_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-600 border border-emerald-200/30 text-[11px] font-semibold transition"
+                      className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded bg-[#4361ee]/20 hover:bg-[#4361ee]/30 text-[#4361ee] border border-indigo-100/30 text-[11px] font-semibold transition"
                     >
                       <Video className="h-3 w-3" /> Join <ExternalLink className="h-2.5 w-2.5" />
                     </a>
@@ -141,7 +141,7 @@ export default function MeetingDetailPage() {
               <button
                 type="button"
                 onClick={() => setIsEditModalOpen(true)}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-600 hover:bg-emerald-600 text-white transition shadow-sm"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#4361ee] hover:bg-[#4361ee] text-white transition shadow-sm"
               >
                 <Edit2 className="h-3.5 w-3.5" /> Edit Meeting
               </button>
@@ -165,7 +165,7 @@ export default function MeetingDetailPage() {
               <select
                 value={meeting.status}
                 onChange={(e) => handleStatusChange(e.target.value)}
-                className="text-xs font-medium px-3 py-1.5 bg-slate-900 border border-slate-700 rounded-lg text-slate-200 focus:outline-none focus:ring-1 focus:ring-emerald-500 cursor-pointer"
+                className="text-xs font-medium px-3 py-1.5 bg-slate-900 border border-slate-700 rounded-lg text-slate-200 focus:outline-none focus:ring-1 focus:ring-[#4361ee] cursor-pointer"
               >
                 {MEETING_STATUSES.map((s) => (
                   <option key={s.value} value={s.value}>
@@ -218,7 +218,7 @@ export default function MeetingDetailPage() {
                       href={meeting.meeting_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-emerald-600 hover:underline"
+                      className="text-[#4361ee] hover:underline"
                     >
                       {meeting.meeting_url}
                     </a>
@@ -237,7 +237,7 @@ export default function MeetingDetailPage() {
                     relatedUrl ? (
                       <Link
                         href={relatedUrl}
-                        className="inline-flex items-center gap-1 text-emerald-600 hover:text-emerald-600 font-medium underline transition text-xs"
+                        className="inline-flex items-center gap-1 text-[#4361ee] hover:text-[#4361ee] font-medium underline transition text-xs"
                       >
                         <span className="capitalize">{meeting.related_to_type}</span> ({meeting.related_to_id.slice(0, 8)}...)
                         <ExternalLink className="h-3 w-3" />

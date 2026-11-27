@@ -23,7 +23,7 @@ export function LeadStatusBadge({ status, className = '' }: LeadStatusBadgeProps
       label = 'Contacted';
       break;
     case 'qualified':
-      style = 'bg-emerald-50 text-emerald-600 border-emerald-100 font-semibold';
+      style = 'bg-[#eef2ff] text-[#4361ee] border-emerald-100 font-semibold';
       label = 'Qualified';
       break;
     case 'proposal':

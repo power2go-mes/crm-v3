@@ -13,7 +13,7 @@ import { useAuth } from '@/components/providers/auth-provider';
 function MesCollapseIcon({ isCollapsed }: { isCollapsed: boolean }) {
   if (isCollapsed) {
     return (
-      <div className="w-8 h-8 rounded-full border-2 border-slate-700 flex items-center justify-center text-slate-700 hover:border-emerald-600 hover:text-emerald-600 transition shadow-2xs">
+      <div className="w-8 h-8 rounded-full border-2 border-slate-700 flex items-center justify-center text-slate-700 hover:border-[#4361ee] hover:text-[#4361ee] transition shadow-2xs">
         <svg
           className="w-4 h-4"
           viewBox="0 0 24 24"

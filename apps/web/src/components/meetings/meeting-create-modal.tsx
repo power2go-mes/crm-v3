@@ -90,7 +90,7 @@ export function MeetingCreateModal({
       <div className="relative w-full max-w-xl bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
         <div className="px-6 py-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 bg-emerald-600/10 text-emerald-600 rounded-lg">
+            <div className="p-2 bg-[#4361ee]/10 text-[#4361ee] rounded-lg">
               <Calendar className="h-5 w-5" />
             </div>
             <div>
@@ -124,7 +124,7 @@ export function MeetingCreateModal({
               value={formData.subject}
               onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
               placeholder="e.g. Solution Architecture Review & Demo"
-              className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
             />
           </div>
 
@@ -138,7 +138,7 @@ export function MeetingCreateModal({
                 required
                 value={formData.start_time}
                 onChange={(e) => setFormData({ ...formData, start_time: e.target.value })}
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               />
             </div>
 
@@ -151,7 +151,7 @@ export function MeetingCreateModal({
                 required
                 value={formData.end_time}
                 onChange={(e) => setFormData({ ...formData, end_time: e.target.value })}
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               />
             </div>
 
@@ -162,7 +162,7 @@ export function MeetingCreateModal({
               <select
                 value={formData.assigned_to_id}
                 onChange={(e) => setFormData({ ...formData, assigned_to_id: e.target.value })}
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               >
                 <option value="">Unassigned</option>
                 {users.map((u) => (
@@ -180,7 +180,7 @@ export function MeetingCreateModal({
               <select
                 value={formData.status}
                 onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               >
                 {MEETING_STATUSES.map((s) => (
                   <option key={s.value} value={s.value}>
@@ -197,7 +197,7 @@ export function MeetingCreateModal({
               <select
                 value={formData.provider}
                 onChange={(e) => setFormData({ ...formData, provider: e.target.value })}
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               >
                 {MEETING_PROVIDERS.map((p) => (
                   <option key={p.value} value={p.value}>
@@ -216,7 +216,7 @@ export function MeetingCreateModal({
                 value={formData.meeting_url}
                 onChange={(e) => setFormData({ ...formData, meeting_url: e.target.value })}
                 placeholder="https://meet.google.com/... or zoom.us/j/..."
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 text-xs"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee] text-xs"
               />
             </div>
 
@@ -229,7 +229,7 @@ export function MeetingCreateModal({
                 value={formData.location}
                 onChange={(e) => setFormData({ ...formData, location: e.target.value })}
                 placeholder="e.g. Conference Room A, HQ Floor 4"
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               />
             </div>
 
@@ -240,7 +240,7 @@ export function MeetingCreateModal({
               <select
                 value={formData.related_to_type}
                 onChange={(e) => setFormData({ ...formData, related_to_type: e.target.value })}
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               >
                 <option value="">None (Internal Meeting)</option>
                 <option value="lead">Lead</option>
@@ -260,7 +260,7 @@ export function MeetingCreateModal({
                   value={formData.related_to_id}
                   onChange={(e) => setFormData({ ...formData, related_to_id: e.target.value })}
                   placeholder={`UUID of the related ${formData.related_to_type}`}
-                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 font-mono text-xs"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee] font-mono text-xs"
                 />
               </div>
             )}
@@ -274,7 +274,7 @@ export function MeetingCreateModal({
                 value={formData.external_participants}
                 onChange={(e) => setFormData({ ...formData, external_participants: e.target.value })}
                 placeholder="client.lead@enterprise.com, partner@tech.co (comma-separated)"
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               />
             </div>
           </div>
@@ -288,7 +288,7 @@ export function MeetingCreateModal({
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
               placeholder="Key objectives, agenda topics, materials to prepare..."
-              className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
             />
           </div>
 
@@ -304,7 +304,7 @@ export function MeetingCreateModal({
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-5 py-2 bg-emerald-600 hover:bg-emerald-600 text-white rounded-lg font-semibold shadow-sm transition disabled:opacity-50"
+              className="px-5 py-2 bg-[#4361ee] hover:bg-[#4361ee] text-white rounded-lg font-semibold shadow-sm transition disabled:opacity-50"
             >
               {isSubmitting ? 'Scheduling...' : 'Schedule Meeting'}
             </button>

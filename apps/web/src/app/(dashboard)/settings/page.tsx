@@ -58,7 +58,7 @@ function SettingsContent() {
             <button
               disabled={company.isPending || company.isError || !company.data}
               onClick={() => setIsEditModalOpen(true)}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3.5 py-2 text-xs font-semibold text-white shadow-xs transition hover:bg-emerald-600"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-[#4361ee] px-3.5 py-2 text-xs font-semibold text-white shadow-xs transition hover:bg-[#4361ee]"
             >
               <Settings className="h-4 w-4" />
               <span>Edit Company Settings</span>
@@ -145,7 +145,7 @@ function SettingsContent() {
               onClick={() => setActiveTab('company')}
               className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
                 activeTab === 'company'
-                  ? 'border-emerald-200 text-emerald-600'
+                  ? 'border-indigo-100 text-[#4361ee]'
                   : 'border-transparent text-slate-400 hover:text-slate-200'
               }`}
             >
@@ -158,7 +158,7 @@ function SettingsContent() {
               onClick={() => setActiveTab('regions')}
               className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
                 activeTab === 'regions'
-                  ? 'border-emerald-200 text-emerald-600'
+                  ? 'border-indigo-100 text-[#4361ee]'
                   : 'border-transparent text-slate-400 hover:text-slate-200'
               }`}
             >
@@ -171,7 +171,7 @@ function SettingsContent() {
               onClick={() => setActiveTab('fields')}
               className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
                 activeTab === 'fields'
-                  ? 'border-emerald-200 text-emerald-600'
+                  ? 'border-indigo-100 text-[#4361ee]'
                   : 'border-transparent text-slate-400 hover:text-slate-200'
               }`}
             >
@@ -184,7 +184,7 @@ function SettingsContent() {
               onClick={() => setActiveTab('audit')}
               className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
                 activeTab === 'audit'
-                  ? 'border-emerald-200 text-emerald-600'
+                  ? 'border-indigo-100 text-[#4361ee]'
                   : 'border-transparent text-slate-400 hover:text-slate-200'
               }`}
             >
@@ -208,7 +208,7 @@ function SettingsContent() {
               <div className="space-y-4 rounded-xl border border-slate-200 bg-white p-6 shadow-xs">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="rounded-lg bg-emerald-50 p-2.5 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-400">
+                    <div className="rounded-lg bg-[#eef2ff] p-2.5 text-[#4361ee] dark:bg-emerald-950/40 dark:text-[#4361ee]">
                       <Building2 className="h-5 w-5" />
                     </div>
                     <div>
@@ -241,7 +241,7 @@ function SettingsContent() {
                   </div>
                   <div className="space-y-1 rounded-lg border border-slate-100 bg-slate-50 p-3 dark:bg-slate-800/50">
                     <span className="font-medium text-slate-400">Multi-Tenancy Mode</span>
-                    <p className="flex items-center gap-1.5 text-sm font-bold text-emerald-700 dark:text-emerald-400">
+                    <p className="flex items-center gap-1.5 text-sm font-bold text-[#4361ee] dark:text-[#4361ee]">
                       <CheckCircle2 className="h-4 w-4" /> Single-Company Architecture
                     </p>
                   </div>

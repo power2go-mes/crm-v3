@@ -43,15 +43,15 @@ export default function UsersPage() {
   const getRoleBadgeColor = (roleId: string) => {
     switch (roleId) {
       case 'SUPER_ADMIN':
-        return 'bg-emerald-50 text-emerald-800 dark:bg-emerald-600/30 dark:text-emerald-600';
+        return 'bg-[#eef2ff] text-[#4361ee] dark:bg-[#4361ee]/30 dark:text-[#4361ee]';
       case 'HEAD_OF_SALES':
-        return 'bg-emerald-50 text-emerald-800 dark:bg-emerald-600/30 dark:text-emerald-600';
+        return 'bg-[#eef2ff] text-[#4361ee] dark:bg-[#4361ee]/30 dark:text-[#4361ee]';
       case 'RSM':
-        return 'bg-emerald-50 text-emerald-800 dark:bg-emerald-600/30 dark:text-emerald-600';
+        return 'bg-[#eef2ff] text-[#4361ee] dark:bg-[#4361ee]/30 dark:text-[#4361ee]';
       case 'SSM':
-        return 'bg-emerald-50 text-emerald-800 dark:bg-emerald-600/30 dark:text-emerald-600';
+        return 'bg-[#eef2ff] text-[#4361ee] dark:bg-[#4361ee]/30 dark:text-[#4361ee]';
       case 'ASM':
-        return 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300';
+        return 'bg-[#eef2ff] text-[#4361ee] dark:bg-emerald-900/30 dark:text-emerald-300';
       case 'BDO':
       default:
         return 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300';
@@ -90,7 +90,7 @@ export default function UsersPage() {
           </div>
           <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
             <span className="text-xs font-medium text-slate-500">Active Employees</span>
-            <p className="mt-1 text-2xl font-bold text-emerald-600 dark:text-emerald-400">
+            <p className="mt-1 text-2xl font-bold text-[#4361ee] dark:text-[#4361ee]">
               {activeCount}
             </p>
           </div>
@@ -106,7 +106,7 @@ export default function UsersPage() {
             <select
               value={selectedRole}
               onChange={(e) => setSelectedRole(e.target.value)}
-              className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
+              className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs shadow-sm focus:border-indigo-100 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
             >
               <option value="all">All Roles</option>
               <option value="SUPER_ADMIN">Super Administrator</option>
@@ -120,7 +120,7 @@ export default function UsersPage() {
             <select
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value as any)}
-              className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
+              className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs shadow-sm focus:border-indigo-100 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
             >
               <option value="all">All Statuses</option>
               <option value="active">Active Only</option>
@@ -132,7 +132,7 @@ export default function UsersPage() {
               placeholder="Search by name, email, title..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="rounded-lg border border-slate-300 px-3 py-1.5 text-xs shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 sm:w-64"
+              className="rounded-lg border border-slate-300 px-3 py-1.5 text-xs shadow-sm focus:border-indigo-100 focus:outline-none dark:border-slate-700 dark:bg-slate-800 sm:w-64"
             />
           </div>
 
@@ -156,7 +156,7 @@ export default function UsersPage() {
 
           {isLoading ? (
             <div className="flex h-48 items-center justify-center">
-              <div className="h-8 w-8 animate-spin rounded-full border-4 border-emerald-200 border-t-transparent" />
+              <div className="h-8 w-8 animate-spin rounded-full border-4 border-indigo-100 border-t-transparent" />
             </div>
           ) : isError ? (
             <div className="py-8 text-center text-sm text-red-600">
@@ -236,7 +236,7 @@ export default function UsersPage() {
                       onClick={() => handleToggleStatus(u)}
                       className={`rounded-full px-2.5 py-0.5 text-xs font-semibold transition ${
                         u.is_active
-                          ? 'bg-emerald-100 text-emerald-800 hover:bg-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-300'
+                          ? 'bg-[#eef2ff] text-[#4361ee] hover:bg-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-300'
                           : 'bg-rose-100 text-rose-800 hover:bg-rose-200 dark:bg-rose-900/30 dark:text-rose-300'
                       }`}
                     >

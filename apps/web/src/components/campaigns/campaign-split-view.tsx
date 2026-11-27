@@ -42,11 +42,11 @@ export function CampaignSplitView({
   const getStatusBadge = (status: string) => {
     switch (status?.toLowerCase()) {
       case 'completed':
-        return <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-emerald-100 text-emerald-800">Completed</span>;
+        return <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-[#eef2ff] text-[#4361ee]">Completed</span>;
       case 'in_progress':
         return <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-800">In Progress</span>;
       case 'planned':
-        return <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-emerald-50 text-emerald-800">Planned</span>;
+        return <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-[#eef2ff] text-[#4361ee]">Planned</span>;
       case 'aborted':
         return <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800">Aborted</span>;
       default:
@@ -91,7 +91,7 @@ export function CampaignSplitView({
                 onClick={() => handleSelect(c)}
                 className={`p-3.5 cursor-pointer transition text-left ${
                   isSelected
-                    ? 'bg-emerald-50/70 border-l-4 border-emerald-200'
+                    ? 'bg-[#eef2ff]/70 border-l-4 border-indigo-100'
                     : 'hover:bg-slate-50 border-l-4 border-transparent'
                 }`}
               >
@@ -152,7 +152,7 @@ export function CampaignSplitView({
                 )}
                 <Link
                   href={`/campaigns/${activeCampaign.id}`}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-600 text-white text-xs font-semibold rounded-lg shadow-xs transition"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#4361ee] hover:bg-[#4361ee] text-white text-xs font-semibold rounded-lg shadow-xs transition"
                 >
                   <span>Full View</span>
                   <ExternalLink className="h-3.5 w-3.5" />
@@ -164,7 +164,7 @@ export function CampaignSplitView({
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
                 <span className="text-[11px] font-medium text-slate-500 uppercase tracking-wider block">Expected Revenue</span>
-                <span className="text-base font-bold text-emerald-600 mt-1 block">
+                <span className="text-base font-bold text-[#4361ee] mt-1 block">
                   ${Number(activeCampaign.expected_revenue || 0).toLocaleString()}
                 </span>
               </div>

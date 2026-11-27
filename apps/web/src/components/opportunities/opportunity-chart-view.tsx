@@ -265,7 +265,7 @@ export function OpportunityChartView({
         ) : isError ? (
           <p role="alert" className="text-red-600">
             Opportunity chart unavailable.{' '}
-            <button onClick={() => void refetch()} className="underline text-emerald-800">
+            <button onClick={() => void refetch()} className="underline text-[#4361ee]">
               Retry
             </button>
           </p>

@@ -110,7 +110,7 @@ function ImportScreen() {
   function go(next: number) { router.push(`/settings/imports?job=${jobId}&step=${next}`); }
   const valid = importRunInput.safeParse(draft);
   return <PageContainer>
-    <Link href="/settings" className="text-sm text-emerald-800">Settings</Link>
+    <Link href="/settings" className="text-sm text-[#4361ee]">Settings</Link>
     <PageHeader title="Import Data" subtitle="Upload, map, review and import your records." />
     <PermissionGate action="imports.view" showAccessDenied>
       <nav className="mb-5 flex gap-5 border-b pb-3" aria-label="Import sections"><Link href="/settings/imports" aria-current={!history ? 'page' : undefined}>Import Data</Link><Link href="/settings/imports?tab=history" aria-current={history ? 'page' : undefined}>Import History</Link></nav>
@@ -120,7 +120,7 @@ function ImportScreen() {
         {jobs.isLoading ? <p role="status">Loading import history…</p> : <div className="overflow-x-auto"><table className="w-full text-left text-sm"><thead><tr>{['Import Name', 'Module', 'Original Filename', 'Status', 'Success Rate', 'Created', 'Files'].map(label => <th className="p-2" key={label}>{label}</th>)}</tr></thead><tbody>{jobs.data?.rows.map(row => {
           const summary = row.result as unknown as ImportResult | null;
           const inProgress = row.status === 'ready' && !!summary?.processed_rows;
-          return <tr key={row.id} className="border-t"><td className="p-2"><Link className="text-emerald-800" href={`/settings/imports?job=${row.id}&step=${inProgress || row.status !== 'ready' ? 4 : 2}`}>{row.import_name}</Link></td><td className="p-2">Leads</td><td className="p-2">{row.filename}</td><td className="p-2">{inProgress ? 'in progress' : row.status}</td><td className="p-2">{summary ? `${summary.success_rate}%` : '—'}</td><td className="p-2">{new Date(row.created_at).toLocaleString()}</td><td className="flex gap-3 p-2"><a href={`/api/imports?id=${row.id}`}>Original</a>{!!summary?.error_count && <a href={`/api/imports?id=${row.id}&errors=1`}>Errors</a>}</td></tr>;
+          return <tr key={row.id} className="border-t"><td className="p-2"><Link className="text-[#4361ee]" href={`/settings/imports?job=${row.id}&step=${inProgress || row.status !== 'ready' ? 4 : 2}`}>{row.import_name}</Link></td><td className="p-2">Leads</td><td className="p-2">{row.filename}</td><td className="p-2">{inProgress ? 'in progress' : row.status}</td><td className="p-2">{summary ? `${summary.success_rate}%` : '—'}</td><td className="p-2">{new Date(row.created_at).toLocaleString()}</td><td className="flex gap-3 p-2"><a href={`/api/imports?id=${row.id}`}>Original</a>{!!summary?.error_count && <a href={`/api/imports?id=${row.id}&errors=1`}>Errors</a>}</td></tr>;
         })}</tbody></table>{jobs.data?.count === 0 && <p>No import history found.</p>}</div>}
         <nav aria-label="Import history pagination" className="mt-4 flex gap-4"><button disabled={historyPage === 1} onClick={() => setHistoryPage(historyPage - 1)}>Previous</button><span>Page {historyPage}</span><button disabled={historyPage * 20 >= (jobs.data?.count ?? 0)} onClick={() => setHistoryPage(historyPage + 1)}>Next</button></nav>
       </> : <>
@@ -131,9 +131,9 @@ function ImportScreen() {
           <label className="block">Import Name<input required maxLength={100} value={name} onChange={event => setName(event.target.value)} className="mt-1 block w-full rounded border p-2" /></label>
           <label className="block">Upload File<input type="file" accept=".csv,text/csv" required onChange={event => setFile(event.target.files?.[0] ?? null)} className="mt-1 block" /></label>
           <p className="text-sm text-slate-600">Current support: UTF-8 CSV, up to 2 MB, 1,000 rows and 50 columns. Processing saves progress in 250-row batches.</p>
-          <a className="block text-sm text-emerald-800" href="/api/imports?template=leads">Download Template</a>
+          <a className="block text-sm text-[#4361ee]" href="/api/imports?template=leads">Download Template</a>
           {upload.error && <p role="alert" className="text-red-700">{upload.error.message}</p>}
-          <button disabled={!canRun || upload.isPending} className="rounded bg-emerald-600 px-4 py-2 text-white">{upload.isPending ? 'Uploading…' : 'Next'}</button>
+          <button disabled={!canRun || upload.isPending} className="rounded bg-[#4361ee] px-4 py-2 text-white">{upload.isPending ? 'Uploading…' : 'Next'}</button>
         </form> : job.isLoading ? <p role="status">Loading import…</p> : job.isError ? <p role="alert">{job.error.message} <button onClick={() => void job.refetch()}>Retry</button></p> : (job.data?.completed_at || result?.complete) && result ? <section className="space-y-4 rounded border p-5">
           <h2 className="text-lg font-semibold">Import Results — {job.data?.import_name}</h2><p>{result.created_count} created · {result.updated_count} updated · {result.error_count} errors · {result.total_rows} rows</p><p>{result.success_rate}% success · {result.duration_seconds.toFixed(3)} seconds</p>
           <div className="flex gap-4"><a href={`/api/imports?id=${jobId}`}>Download Imported File</a>{result.error_count > 0 && <a href={`/api/imports?id=${jobId}&errors=1`}>Download Error File</a>}<Link href="/settings/imports">Import Another File</Link></div>
@@ -149,7 +149,7 @@ function ImportScreen() {
           {step === 4 && <><h2 className="text-lg">Review Import</h2><p>Module: Leads · File: {job.data?.filename} · Rows: {total}</p><p>Mapped fields: {Object.keys(draft.mapping).length} · Mapped columns: {new Set(Object.values(draft.mapping)).size} · Unmapped columns: {headers.length - new Set(Object.values(draft.mapping)).size}</p><p>Mode: {draft.mode} · Match fields: {draft.match.join(', ') || 'None'}</p><p className="text-sm">Valid rows will be imported; invalid rows will be reported separately. Converted Leads and owner reassignment are excluded from this import.</p></>}
           {result && !result.complete && <p role="status">Processed {result.processed_rows} of {result.total_rows} rows · {result.created_count} created · {result.updated_count} updated · {result.error_count} errors. You can resume this import later.</p>}
           {run.error && <p role="alert" className="text-red-700">{run.error.message}</p>}
-          <div className="flex gap-4"><Link href="/settings/imports">Cancel</Link>{step > 1 && <button disabled={run.isPending} onClick={() => go(step - 1)}>Back</button>}{step < 4 ? <button disabled={(step >= 2 && !Object.keys(draft.mapping).length) || (step === 3 && !valid.success)} className="rounded bg-emerald-600 px-4 py-2 text-white" onClick={() => go(step + 1)}>Next</button> : <button disabled={!canRun || !valid.success || run.isPending} className="rounded bg-emerald-600 px-4 py-2 text-white" onClick={() => run.mutate()}>{run.isPending ? 'Processing…' : result?.processed_rows ? 'Resume Import' : 'Import'}</button>}</div>
+          <div className="flex gap-4"><Link href="/settings/imports">Cancel</Link>{step > 1 && <button disabled={run.isPending} onClick={() => go(step - 1)}>Back</button>}{step < 4 ? <button disabled={(step >= 2 && !Object.keys(draft.mapping).length) || (step === 3 && !valid.success)} className="rounded bg-[#4361ee] px-4 py-2 text-white" onClick={() => go(step + 1)}>Next</button> : <button disabled={!canRun || !valid.success || run.isPending} className="rounded bg-[#4361ee] px-4 py-2 text-white" onClick={() => run.mutate()}>{run.isPending ? 'Processing…' : result?.processed_rows ? 'Resume Import' : 'Import'}</button>}</div>
         </section>}
       </>}
     </PermissionGate>

@@ -69,12 +69,12 @@ const STAGE_THEMES: Record<
     emptyText: 'No leads in outreach',
   },
   qualified: {
-    pillBg: 'bg-emerald-50',
-    pillText: 'text-emerald-600',
+    pillBg: 'bg-[#eef2ff]',
+    pillText: 'text-[#4361ee]',
     pillBorder: 'border-emerald-100',
-    headerAccent: 'bg-emerald-500',
+    headerAccent: 'bg-[#4361ee]',
     headerBg: 'bg-gradient-to-r from-emerald-50/70 to-white',
-    cardBorderHover: 'hover:border-emerald-400',
+    cardBorderHover: 'hover:border-indigo-300',
     icon: CheckCircle2,
     accentColor: '#10b981',
     emptyText: 'No qualified prospects',
@@ -140,7 +140,7 @@ function getAvatarProps(name: string) {
     : 'U';
 
   const hues = [
-    'bg-emerald-100 text-emerald-800 border-emerald-200',
+    'bg-[#eef2ff] text-[#4361ee] border-indigo-100',
     'bg-blue-100 text-blue-800 border-blue-200',
     'bg-indigo-100 text-indigo-800 border-indigo-200',
     'bg-purple-100 text-purple-800 border-purple-200',
@@ -234,7 +234,7 @@ export function LeadKanbanBoard({
               {groupedLeads.qualified?.length || 0}
             </p>
           </div>
-          <div className="h-10 w-10 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
+          <div className="h-10 w-10 rounded-2xl bg-[#eef2ff] text-[#4361ee] flex items-center justify-center font-bold">
             <CheckCircle2 className="h-5 w-5" />
           </div>
         </div>

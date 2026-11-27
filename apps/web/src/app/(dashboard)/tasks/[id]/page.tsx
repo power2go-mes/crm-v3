@@ -52,7 +52,7 @@ export default function TaskDetailPage() {
     return (
       <PageContainer>
         <div className="flex items-center justify-center min-h-[400px]">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-200" />
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-100" />
         </div>
       </PageContainer>
     );
@@ -68,7 +68,7 @@ export default function TaskDetailPage() {
           </p>
           <Link
             href="/tasks"
-            className="inline-flex items-center gap-1.5 mt-4 px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs font-semibold transition"
+            className="inline-flex items-center gap-1.5 mt-4 px-4 py-2 bg-[#3a5bf0] hover:bg-emerald-800 text-white rounded-lg text-xs font-semibold transition"
           >
             <ArrowLeft className="h-3.5 w-3.5" /> Back to Tasks
           </Link>
@@ -154,14 +154,14 @@ export default function TaskDetailPage() {
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 transition"
               >
                 <CheckCircle2
-                  className={`h-4 w-4 ${task.status === 'completed' ? 'text-emerald-400' : 'text-slate-400'}`}
+                  className={`h-4 w-4 ${task.status === 'completed' ? 'text-[#4361ee]' : 'text-slate-400'}`}
                 />
                 {task.status === 'completed' ? 'Mark Incomplete' : 'Mark Completed'}
               </button>
               <button
                 type="button"
                 onClick={() => setIsEditModalOpen(true)}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-700 hover:bg-emerald-800 text-white transition shadow-sm"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#3a5bf0] hover:bg-emerald-800 text-white transition shadow-sm"
               >
                 <Edit2 className="h-3.5 w-3.5" /> Edit Task
               </button>
@@ -185,7 +185,7 @@ export default function TaskDetailPage() {
               <select
                 value={task.status}
                 onChange={(e) => handleStatusChange(e.target.value)}
-                className="text-xs font-medium px-3 py-1.5 bg-slate-900 border border-slate-700 rounded-lg text-slate-200 focus:outline-none focus:ring-1 focus:ring-emerald-500 cursor-pointer"
+                className="text-xs font-medium px-3 py-1.5 bg-slate-900 border border-slate-700 rounded-lg text-slate-200 focus:outline-none focus:ring-1 focus:ring-[#4361ee] cursor-pointer"
               >
                 {TASK_STATUSES.map((s) => (
                   <option key={s.value} value={s.value}>
@@ -238,7 +238,7 @@ export default function TaskDetailPage() {
                     relatedUrl ? (
                       <Link
                         href={relatedUrl}
-                        className="inline-flex items-center gap-1 text-emerald-700 hover:text-emerald-800 font-medium underline transition text-sm"
+                        className="inline-flex items-center gap-1 text-[#4361ee] hover:text-[#4361ee] font-medium underline transition text-sm"
                       >
                         <span className="capitalize">{task.related_to_type}</span> ({task.related_to_id.slice(0, 8)}...)
                         <ExternalLink className="h-3 w-3" />

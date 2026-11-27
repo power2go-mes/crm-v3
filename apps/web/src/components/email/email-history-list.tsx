@@ -32,7 +32,7 @@ export function EmailHistoryList({ relatedToType, relatedToId }: EmailHistoryLis
       case 'delivered':
       case 'provider_accepted':
         return (
-          <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300">
+          <span className="inline-flex items-center gap-1 rounded-full bg-[#eef2ff] px-2 py-0.5 text-[10px] font-semibold text-[#4361ee] dark:bg-emerald-950/40 dark:text-emerald-300">
             <CheckCircle className="h-3 w-3" />
             {status === 'provider_accepted' ? 'Accepted by Provider' : 'Sent'}
           </span>

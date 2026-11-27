@@ -87,7 +87,7 @@ export function ContactCreateModal({
         {/* Header */}
         <div className="px-6 py-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 bg-emerald-600/10 text-emerald-600 rounded-lg">
+            <div className="p-2 bg-[#4361ee]/10 text-[#4361ee] rounded-lg">
               <UserPlus className="h-5 w-5" />
             </div>
             <div>
@@ -123,7 +123,7 @@ export function ContactCreateModal({
                 value={formData.first_name}
                 onChange={(e) => setFormData({ ...formData, first_name: e.target.value })}
                 placeholder="Jane"
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               />
             </div>
 
@@ -137,7 +137,7 @@ export function ContactCreateModal({
                 value={formData.last_name}
                 onChange={(e) => setFormData({ ...formData, last_name: e.target.value })}
                 placeholder="Doe"
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               />
             </div>
 
@@ -154,7 +154,7 @@ export function ContactCreateModal({
                     relationships: val ? [{ account_id: val, role_id: null }] : [],
                   });
                 }}
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               >
                 <option value="">No Account (Individual)</option>
                 {accounts.map((acc) => (
@@ -172,7 +172,7 @@ export function ContactCreateModal({
               <select
                 value={formData.parent_contact_id || ''}
                 onChange={(e) => setFormData({ ...formData, parent_contact_id: e.target.value || null })}
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               >
                 <option value="">None (Top-Level Contact)</option>
                 {existingContacts.map((c) => (
@@ -189,7 +189,7 @@ export function ContactCreateModal({
                   type="checkbox"
                   checked={Boolean(formData.is_primary)}
                   onChange={(e) => setFormData({ ...formData, is_primary: e.target.checked })}
-                  className="rounded border-slate-700 bg-white text-emerald-800 focus:ring-emerald-500 h-4 w-4"
+                  className="rounded border-slate-700 bg-white text-[#4361ee] focus:ring-[#4361ee] h-4 w-4"
                 />
                 <span className="font-semibold text-xs text-slate-300">Mark as Primary Contact</span>
               </label>
@@ -204,7 +204,7 @@ export function ContactCreateModal({
                 value={formData.title || ''}
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                 placeholder="VP of Sales"
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               />
             </div>
 
@@ -217,7 +217,7 @@ export function ContactCreateModal({
                 value={formData.email || ''}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 placeholder="jane.doe@example.com"
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               />
             </div>
 
@@ -230,7 +230,7 @@ export function ContactCreateModal({
                 value={formData.contact_number || ''}
                 onChange={(e) => setFormData({ ...formData, contact_number: e.target.value })}
                 placeholder="+1-555-0101"
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               />
             </div>
 
@@ -245,7 +245,7 @@ export function ContactCreateModal({
                   setFormData({ ...formData, secondary_contact_number: e.target.value })
                 }
                 placeholder="+1-555-0102"
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               />
             </div>
           </div>
@@ -263,7 +263,7 @@ export function ContactCreateModal({
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-5 py-2 bg-emerald-600 hover:bg-emerald-600 text-white rounded-lg font-semibold shadow-sm transition disabled:opacity-50"
+              className="px-5 py-2 bg-[#4361ee] hover:bg-[#4361ee] text-white rounded-lg font-semibold shadow-sm transition disabled:opacity-50"
             >
               {isSubmitting ? 'Saving...' : 'Save Contact'}
             </button>

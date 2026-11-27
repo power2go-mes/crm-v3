@@ -96,7 +96,7 @@ export function CustomFieldsManager() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-white border border-slate-200 rounded-xl shadow-xs">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-lg bg-emerald-50 text-emerald-600 border border-emerald-200">
+          <div className="p-2.5 rounded-lg bg-[#eef2ff] text-[#4361ee] border border-indigo-100">
             <Database className="h-5 w-5" />
           </div>
           <div>
@@ -111,7 +111,7 @@ export function CustomFieldsManager() {
           <button
             type="button"
             onClick={() => { setEditingId(null); setKey(''); setLabel(''); setType('small_text'); setRequired(false); setPosition(0); setChoiceText(''); setError(''); setIsCreating(!isCreating); }}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-semibold shadow-xs transition"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#4361ee] hover:bg-[#3a5bf0] text-white rounded-lg text-xs font-semibold shadow-xs transition"
           >
             <Plus className="h-3.5 w-3.5" />
             <span>Add Custom Field</span>
@@ -128,7 +128,7 @@ export function CustomFieldsManager() {
             onClick={() => setActiveModule(m)}
             className={`px-3 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wider transition ${
               activeModule === m
-                ? 'bg-emerald-600 text-white shadow-xs'
+                ? 'bg-[#4361ee] text-white shadow-xs'
                 : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 bg-white border border-slate-200'
             }`}
           >
@@ -167,7 +167,7 @@ export function CustomFieldsManager() {
                 value={module}
                 disabled={!!editingId}
                 onChange={(e) => setModule(e.target.value)}
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 capitalize focus:outline-hidden focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 capitalize focus:outline-hidden focus:border-[#4361ee] focus:ring-1 focus:ring-[#4361ee]"
               >
                 <option value="leads">Leads</option>
                 <option value="accounts">Accounts</option>
@@ -192,7 +192,7 @@ export function CustomFieldsManager() {
                   }
                 }}
                 placeholder="e.g. Contract Expiration Date"
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-hidden focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-hidden focus:border-[#4361ee] focus:ring-1 focus:ring-[#4361ee]"
               />
             </div>
 
@@ -207,7 +207,7 @@ export function CustomFieldsManager() {
                 disabled={!!editingId}
                 onChange={(e) => setKey(e.target.value)}
                 placeholder="e.g. contract_expiration_date"
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 font-mono focus:outline-hidden focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 font-mono focus:outline-hidden focus:border-[#4361ee] focus:ring-1 focus:ring-[#4361ee]"
               />
             </div>
 
@@ -218,7 +218,7 @@ export function CustomFieldsManager() {
               <select
                 value={type}
                 onChange={(e) => setType(e.target.value)}
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-hidden focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-hidden focus:border-[#4361ee] focus:ring-1 focus:ring-[#4361ee]"
               >
                 <option value="small_text">Short Text (255 chars)</option>
                 <option value="large_text">Long Text / Paragraph</option>
@@ -236,7 +236,7 @@ export function CustomFieldsManager() {
                 id="reqCheck"
                 checked={required}
                 onChange={(e) => setRequired(e.target.checked)}
-                className="h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
+                className="h-4 w-4 rounded border-slate-300 text-[#4361ee] focus:ring-[#4361ee]"
               />
               <label htmlFor="reqCheck" className="text-xs text-slate-700 font-medium">
                 Mandatory Field
@@ -252,7 +252,7 @@ export function CustomFieldsManager() {
                 value={choiceText}
                 onChange={(e) => setChoiceText(e.target.value)}
                 placeholder="Option 1, Option 2, Option 3"
-                className="mt-1 block w-full rounded-lg border border-slate-300 bg-white p-2.5 text-slate-900 focus:outline-hidden focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+                className="mt-1 block w-full rounded-lg border border-slate-300 bg-white p-2.5 text-slate-900 focus:outline-hidden focus:border-[#4361ee] focus:ring-1 focus:ring-[#4361ee]"
               />
             </label>
           )}
@@ -266,7 +266,7 @@ export function CustomFieldsManager() {
               required
               value={position}
               onChange={(e) => setPosition(e.target.valueAsNumber)}
-              className="mt-1 block w-40 rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:outline-hidden focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+              className="mt-1 block w-40 rounded-lg border border-slate-300 bg-white p-2 text-slate-900 focus:outline-hidden focus:border-[#4361ee] focus:ring-1 focus:ring-[#4361ee]"
             />
           </label>
 
@@ -283,7 +283,7 @@ export function CustomFieldsManager() {
             <button
               type="submit"
               disabled={createMutation.isPending}
-              className="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold rounded-lg shadow-xs disabled:opacity-50 transition"
+              className="px-4 py-1.5 bg-[#4361ee] hover:bg-[#3a5bf0] text-white text-xs font-semibold rounded-lg shadow-xs disabled:opacity-50 transition"
             >
               {createMutation.isPending ? 'Saving...' : editingId ? 'Save' : 'Register Field'}
             </button>
@@ -318,7 +318,7 @@ export function CustomFieldsManager() {
                     <span className="font-mono text-[11px] text-slate-500">({field.key})</span>
                   </div>
                   <span className="text-[11px] text-slate-500">
-                    Type: <span className="text-emerald-700 font-medium">{field.type}</span> •{' '}
+                    Type: <span className="text-[#4361ee] font-medium">{field.type}</span> •{' '}
                     {field.is_custom ? 'Custom Dynamic Field' : 'Core System Field'}
                   </span>
                 </div>
@@ -369,7 +369,7 @@ export function CustomFieldsManager() {
                 <span
                   className={`text-[10px] font-bold uppercase px-1.5 py-0.5 rounded ${
                     field.is_custom
-                      ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                      ? 'bg-[#eef2ff] text-[#4361ee] border border-indigo-100'
                       : 'bg-slate-100 text-slate-600 border border-slate-200'
                   }`}
                 >

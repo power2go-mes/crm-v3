@@ -43,7 +43,7 @@ export function LeadConvertedRecords({ lead }: { lead: LeadWithRelations }) {
         {related.data?.records.length ? <ul className="grid gap-3 sm:grid-cols-3">
           {related.data.records.map(record => <li key={record.path} className="rounded-lg border p-4">
             <div className="text-sm text-slate-600">{record.label}</div>
-            <Link className="text-emerald-800 hover:underline" href={`/${record.path}/${record.id}`}>{record.name || record.label}</Link>
+            <Link className="text-[#4361ee] hover:underline" href={`/${record.path}/${record.id}`}>{record.name || record.label}</Link>
           </li>)}
         </ul> : !related.data?.failed && <p>No conversion records are available to view.</p>}
       </>}

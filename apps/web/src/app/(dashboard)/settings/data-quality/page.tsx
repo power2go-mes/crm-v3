@@ -140,10 +140,10 @@ export default function DataQualityPage() {
   return (
     <PageContainer>
       <div className="flex items-center justify-between mb-2 text-xs">
-        <Link href="/settings" className="text-slate-500 hover:text-emerald-800 transition flex items-center gap-1">
+        <Link href="/settings" className="text-slate-500 hover:text-[#4361ee] transition flex items-center gap-1">
           <span>Settings</span>
           <span>›</span>
-          <span className="text-emerald-800 font-medium">Data Quality &amp; Deduplication</span>
+          <span className="text-[#4361ee] font-medium">Data Quality &amp; Deduplication</span>
         </Link>
       </div>
 
@@ -154,7 +154,7 @@ export default function DataQualityPage() {
           <button
             onClick={handleScanNow}
             disabled={isScanning}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-emerald-600 hover:bg-emerald-600 text-white rounded-lg text-xs font-semibold shadow-xs transition disabled:opacity-50"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[#4361ee] hover:bg-[#4361ee] text-white rounded-lg text-xs font-semibold shadow-xs transition disabled:opacity-50"
           >
             <RefreshCw className={`h-3.5 w-3.5 ${isScanning ? 'animate-spin' : ''}`} />
             <span>{isScanning ? 'Scanning...' : 'Scan for Duplicates'}</span>
@@ -170,7 +170,7 @@ export default function DataQualityPage() {
             onClick={() => setActiveTab('accounts')}
             className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
               activeTab === 'accounts'
-                ? 'border-emerald-200 text-emerald-800 dark:text-emerald-600'
+                ? 'border-indigo-100 text-[#4361ee] dark:text-[#4361ee]'
                 : 'border-transparent text-slate-500 hover:text-slate-700'
             }`}
           >
@@ -183,7 +183,7 @@ export default function DataQualityPage() {
             onClick={() => setActiveTab('contacts')}
             className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
               activeTab === 'contacts'
-                ? 'border-emerald-200 text-emerald-800 dark:text-emerald-600'
+                ? 'border-indigo-100 text-[#4361ee] dark:text-[#4361ee]'
                 : 'border-transparent text-slate-500 hover:text-slate-700'
             }`}
           >
@@ -196,7 +196,7 @@ export default function DataQualityPage() {
             onClick={() => setActiveTab('logs')}
             className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
               activeTab === 'logs'
-                ? 'border-emerald-200 text-emerald-800 dark:text-emerald-600'
+                ? 'border-indigo-100 text-[#4361ee] dark:text-[#4361ee]'
                 : 'border-transparent text-slate-500 hover:text-slate-700'
             }`}
           >
@@ -209,7 +209,7 @@ export default function DataQualityPage() {
             onClick={() => setActiveTab('rules')}
             className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
               activeTab === 'rules'
-                ? 'border-emerald-200 text-emerald-800 dark:text-emerald-600'
+                ? 'border-indigo-100 text-[#4361ee] dark:text-[#4361ee]'
                 : 'border-transparent text-slate-500 hover:text-slate-700'
             }`}
           >
@@ -223,7 +223,7 @@ export default function DataQualityPage() {
           <div className="space-y-4">
             {accountDuplicates.length === 0 ? (
               <div className="p-12 text-center bg-white border border-slate-200 rounded-2xl shadow-xs">
-                <CheckCircle2 className="h-10 w-10 text-emerald-500 mx-auto mb-2" />
+                <CheckCircle2 className="h-10 w-10 text-[#4361ee] mx-auto mb-2" />
                 <h3 className="text-base font-bold text-slate-900">
                   Zero Account Duplicates Detected
                 </h3>
@@ -283,7 +283,7 @@ export default function DataQualityPage() {
                           victim: dup.victim,
                         })
                       }
-                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold shadow-xs transition shrink-0 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#4361ee] hover:bg-[#3a5bf0] text-white rounded-xl text-xs font-semibold shadow-xs transition shrink-0 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white"
                     >
                       <GitMerge className="h-4 w-4" />
                       <span>Review &amp; Merge</span>
@@ -300,7 +300,7 @@ export default function DataQualityPage() {
           <div className="space-y-4">
             {contactDuplicates.length === 0 ? (
               <div className="p-12 text-center bg-white border border-slate-200 rounded-2xl shadow-xs">
-                <CheckCircle2 className="h-10 w-10 text-emerald-500 mx-auto mb-2" />
+                <CheckCircle2 className="h-10 w-10 text-[#4361ee] mx-auto mb-2" />
                 <h3 className="text-base font-bold text-slate-900">
                   Zero Contact Duplicates Detected
                 </h3>
@@ -360,7 +360,7 @@ export default function DataQualityPage() {
                           victim: dup.victim,
                         })
                       }
-                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold shadow-xs transition shrink-0 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#4361ee] hover:bg-[#3a5bf0] text-white rounded-xl text-xs font-semibold shadow-xs transition shrink-0 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white"
                     >
                       <GitMerge className="h-4 w-4" />
                       <span>Review &amp; Merge</span>
@@ -389,7 +389,7 @@ export default function DataQualityPage() {
                   <div key={log.id} className="p-4 space-y-1">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-emerald-50 text-emerald-800 dark:bg-emerald-600/40 dark:text-emerald-600">
+                        <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-[#eef2ff] text-[#4361ee] dark:bg-[#4361ee]/40 dark:text-[#4361ee]">
                           {log.entity_type}
                         </span>
                         <span className="font-semibold text-slate-900">
@@ -444,10 +444,10 @@ export default function DataQualityPage() {
                   </div>
 
                   <div className="flex items-center gap-3">
-                    <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                    <span className="text-xs font-semibold text-[#4361ee] dark:text-[#4361ee]">
                       Weight: {rule.threshold}%
                     </span>
-                    <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300">
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#eef2ff] text-[#4361ee] dark:bg-emerald-950/40 dark:text-emerald-300">
                       Active
                     </span>
                   </div>

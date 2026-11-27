@@ -269,7 +269,7 @@ export function ListToolbar({
                             : 'text-slate-700 hover:bg-slate-50 font-medium'
                         }`}
                       >
-                        <LayoutGrid className="h-4 w-4 text-emerald-500" />
+                        <LayoutGrid className="h-4 w-4 text-[#4361ee]" />
                         <span>Card Grid</span>
                       </button>
                       <button

@@ -61,7 +61,7 @@ export function AccountCreateModal({ isOpen, onClose, onSubmit }: AccountCreateM
         {/* Header */}
         <div className="px-6 py-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 bg-emerald-600/10 text-emerald-600 rounded-lg">
+            <div className="p-2 bg-[#4361ee]/10 text-[#4361ee] rounded-lg">
               <Building2 className="h-5 w-5" />
             </div>
             <div>
@@ -97,7 +97,7 @@ export function AccountCreateModal({ isOpen, onClose, onSubmit }: AccountCreateM
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 placeholder="Acme Corporation"
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 text-sm"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee] text-sm"
               />
             </div>
 
@@ -108,7 +108,7 @@ export function AccountCreateModal({ isOpen, onClose, onSubmit }: AccountCreateM
               <select
                 value={formData.account_source || ''}
                 onChange={(e) => setFormData({ ...formData, account_source: e.target.value })}
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               >
                 {ACCOUNT_SOURCES.map((s) => (
                   <option key={s.value} value={s.value}>
@@ -125,7 +125,7 @@ export function AccountCreateModal({ isOpen, onClose, onSubmit }: AccountCreateM
               <select
                 value={formData.industry || ''}
                 onChange={(e) => setFormData({ ...formData, industry: e.target.value })}
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               >
                 {ACCOUNT_INDUSTRIES.map((ind) => (
                   <option key={ind.value} value={ind.value}>
@@ -150,7 +150,7 @@ export function AccountCreateModal({ isOpen, onClose, onSubmit }: AccountCreateM
                   })
                 }
                 placeholder="1000000"
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               />
             </div>
 
@@ -163,7 +163,7 @@ export function AccountCreateModal({ isOpen, onClose, onSubmit }: AccountCreateM
                 value={formData.contact_number || ''}
                 onChange={(e) => setFormData({ ...formData, contact_number: e.target.value })}
                 placeholder="+1-555-0100"
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               />
             </div>
 
@@ -176,7 +176,7 @@ export function AccountCreateModal({ isOpen, onClose, onSubmit }: AccountCreateM
                 value={formData.website || ''}
                 onChange={(e) => setFormData({ ...formData, website: e.target.value })}
                 placeholder="https://acme.com"
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               />
             </div>
 
@@ -195,7 +195,7 @@ export function AccountCreateModal({ isOpen, onClose, onSubmit }: AccountCreateM
                   })
                 }
                 placeholder="250"
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               />
             </div>
 
@@ -208,7 +208,7 @@ export function AccountCreateModal({ isOpen, onClose, onSubmit }: AccountCreateM
                 value={formData.billing_address || ''}
                 onChange={(e) => setFormData({ ...formData, billing_address: e.target.value })}
                 placeholder="123 Corporate Way, City, State, Zip"
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 resize-none"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee] resize-none"
               />
             </div>
 
@@ -221,7 +221,7 @@ export function AccountCreateModal({ isOpen, onClose, onSubmit }: AccountCreateM
                 value={formData.shipping_address || ''}
                 onChange={(e) => setFormData({ ...formData, shipping_address: e.target.value })}
                 placeholder="456 Logistics Blvd, City, State, Zip"
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 resize-none"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee] resize-none"
               />
             </div>
           </div>
@@ -239,7 +239,7 @@ export function AccountCreateModal({ isOpen, onClose, onSubmit }: AccountCreateM
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-5 py-2 bg-emerald-600 hover:bg-emerald-600 text-white rounded-lg font-semibold shadow-sm transition disabled:opacity-50"
+              className="px-5 py-2 bg-[#4361ee] hover:bg-[#4361ee] text-white rounded-lg font-semibold shadow-sm transition disabled:opacity-50"
             >
               {isSubmitting ? 'Saving...' : 'Save Account'}
             </button>

@@ -103,7 +103,7 @@ export function LeadConvertModal({
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200">
           <div className="flex items-center gap-2.5">
-            <div className="p-1.5 bg-emerald-100 text-emerald-700 rounded-lg">
+            <div className="p-1.5 bg-[#eef2ff] text-[#4361ee] rounded-lg">
               <ShieldCheck className="h-5 w-5" />
             </div>
             <div>
@@ -131,7 +131,7 @@ export function LeadConvertModal({
         {/* Success Modal View */}
         {conversionResult ? (
           <div className="p-6 text-center space-y-4">
-            <div className="mx-auto h-12 w-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center">
+            <div className="mx-auto h-12 w-12 rounded-full bg-[#eef2ff] text-[#4361ee] flex items-center justify-center">
               <Check className="h-6 w-6 stroke-[3]" />
             </div>
             <h3 className="text-base font-bold text-slate-900">Lead Converted Successfully!</h3>
@@ -142,7 +142,7 @@ export function LeadConvertModal({
             <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 text-xs text-left space-y-2 max-w-md mx-auto">
               <div className="flex items-center justify-between">
                 <span className="font-semibold text-slate-700 flex items-center gap-1.5">
-                  <Building2 className="h-4 w-4 text-emerald-800" /> Account:
+                  <Building2 className="h-4 w-4 text-[#4361ee]" /> Account:
                 </span>
                 <span className="text-slate-900 font-medium">
                   {accountAction === 'create_new' ? accountName : 'Linked Existing Account'}
@@ -150,7 +150,7 @@ export function LeadConvertModal({
               </div>
               <div className="flex items-center justify-between">
                 <span className="font-semibold text-slate-700 flex items-center gap-1.5">
-                  <User className="h-4 w-4 text-emerald-800" /> Contact:
+                  <User className="h-4 w-4 text-[#4361ee]" /> Contact:
                 </span>
                 <span className="text-slate-900 font-medium">
                   {contactAction === 'create_new'
@@ -161,7 +161,7 @@ export function LeadConvertModal({
               {opportunityAction === 'create_new' && (
                 <div className="flex items-center justify-between">
                   <span className="font-semibold text-slate-700 flex items-center gap-1.5">
-                    <TrendingUp className="h-4 w-4 text-emerald-600" /> Opportunity:
+                    <TrendingUp className="h-4 w-4 text-[#4361ee]" /> Opportunity:
                   </span>
                   <span className="text-slate-900 font-medium">{opportunityName}</span>
                 </div>
@@ -171,7 +171,7 @@ export function LeadConvertModal({
             <button
               type="button"
               onClick={onClose}
-              className="mt-4 px-5 py-2 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-600 rounded-md transition shadow-xs"
+              className="mt-4 px-5 py-2 text-xs font-semibold text-white bg-[#4361ee] hover:bg-[#4361ee] rounded-md transition shadow-xs"
             >
               Done & Return to Leads
             </button>
@@ -188,7 +188,7 @@ export function LeadConvertModal({
             <div className="border border-slate-200 rounded-lg p-4 bg-slate-50/50 space-y-3">
               <div className="flex items-center justify-between">
                 <span className="font-bold text-slate-900 uppercase tracking-wider flex items-center gap-1.5">
-                  <Building2 className="h-4 w-4 text-emerald-800" />
+                  <Building2 className="h-4 w-4 text-[#4361ee]" />
                   <span>Account</span>
                 </span>
                 <div className="flex items-center gap-4">
@@ -199,7 +199,7 @@ export function LeadConvertModal({
                       value="create_new"
                       checked={accountAction === 'create_new'}
                       onChange={() => { setAccountAction('create_new'); setSelectedOpportunityId(''); }}
-                      className="text-emerald-800 focus:ring-emerald-500"
+                      className="text-[#4361ee] focus:ring-[#4361ee]"
                     />
                     <span>Create New</span>
                   </label>
@@ -211,7 +211,7 @@ export function LeadConvertModal({
                         value="select_existing"
                         checked={accountAction === 'select_existing'}
                         onChange={() => setAccountAction('select_existing')}
-                        className="text-emerald-800 focus:ring-emerald-500"
+                        className="text-[#4361ee] focus:ring-[#4361ee]"
                       />
                       <span>Select Existing</span>
                     </label>
@@ -229,7 +229,7 @@ export function LeadConvertModal({
                     required
                     value={accountName}
                     onChange={(e) => setAccountName(e.target.value)}
-                    className="w-full px-3 py-1.5 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
+                    className="w-full px-3 py-1.5 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-[#4361ee]"
                   />
                 </div>
               ) : (
@@ -240,7 +240,7 @@ export function LeadConvertModal({
                   <select
                     value={selectedAccountId}
                     onChange={(e) => { setSelectedAccountId(e.target.value); setSelectedOpportunityId(''); }}
-                    className="w-full px-3 py-1.5 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
+                    className="w-full px-3 py-1.5 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-[#4361ee]"
                   >
                     <option value="">Select Account</option>
                     {existingAccounts.map((a) => (
@@ -257,7 +257,7 @@ export function LeadConvertModal({
             <div className="border border-slate-200 rounded-lg p-4 bg-slate-50/50 space-y-3">
               <div className="flex items-center justify-between">
                 <span className="font-bold text-slate-900 uppercase tracking-wider flex items-center gap-1.5">
-                  <User className="h-4 w-4 text-emerald-800" />
+                  <User className="h-4 w-4 text-[#4361ee]" />
                   <span>Contact</span>
                 </span>
                 <div className="flex items-center gap-4">
@@ -268,7 +268,7 @@ export function LeadConvertModal({
                       value="create_new"
                       checked={contactAction === 'create_new'}
                       onChange={() => setContactAction('create_new')}
-                      className="text-emerald-800 focus:ring-emerald-500"
+                      className="text-[#4361ee] focus:ring-[#4361ee]"
                     />
                     <span>Create New</span>
                   </label>
@@ -280,7 +280,7 @@ export function LeadConvertModal({
                         value="select_existing"
                         checked={contactAction === 'select_existing'}
                         onChange={() => setContactAction('select_existing')}
-                        className="text-emerald-800 focus:ring-emerald-500"
+                        className="text-[#4361ee] focus:ring-[#4361ee]"
                       />
                       <span>Select Existing</span>
                     </label>
@@ -299,7 +299,7 @@ export function LeadConvertModal({
                       required
                       value={contactFirstName}
                       onChange={(e) => setContactFirstName(e.target.value)}
-                      className="w-full px-3 py-1.5 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
+                      className="w-full px-3 py-1.5 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-[#4361ee]"
                     />
                   </div>
                   <div>
@@ -311,7 +311,7 @@ export function LeadConvertModal({
                       required
                       value={contactLastName}
                       onChange={(e) => setContactLastName(e.target.value)}
-                      className="w-full px-3 py-1.5 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
+                      className="w-full px-3 py-1.5 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-[#4361ee]"
                     />
                   </div>
                 </div>
@@ -323,7 +323,7 @@ export function LeadConvertModal({
                   <select
                     value={selectedContactId}
                     onChange={(e) => setSelectedContactId(e.target.value)}
-                    className="w-full px-3 py-1.5 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
+                    className="w-full px-3 py-1.5 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-[#4361ee]"
                   >
                     <option value="">Select Contact</option>
                     {existingContacts.map((c) => (
@@ -340,7 +340,7 @@ export function LeadConvertModal({
             <div className="border border-slate-200 rounded-lg p-4 bg-slate-50/50 space-y-3">
               <div className="flex items-center justify-between">
                 <span className="font-bold text-slate-900 uppercase tracking-wider flex items-center gap-1.5">
-                  <TrendingUp className="h-4 w-4 text-emerald-600" />
+                  <TrendingUp className="h-4 w-4 text-[#4361ee]" />
                   <span>Opportunity</span>
                 </span>
                 <div className="flex items-center gap-3">
@@ -351,7 +351,7 @@ export function LeadConvertModal({
                       value="create_new"
                       checked={opportunityAction === 'create_new'}
                       onChange={() => setOpportunityAction('create_new')}
-                      className="text-emerald-800 focus:ring-emerald-500"
+                      className="text-[#4361ee] focus:ring-[#4361ee]"
                     />
                     <span>Create New</span>
                   </label>
@@ -362,7 +362,7 @@ export function LeadConvertModal({
                       value="select_existing"
                       checked={opportunityAction === 'select_existing'}
                       onChange={() => setOpportunityAction('select_existing')}
-                      className="text-emerald-800 focus:ring-emerald-500"
+                      className="text-[#4361ee] focus:ring-[#4361ee]"
                     />
                     <span>Select Existing</span>
                   </label>
@@ -380,7 +380,7 @@ export function LeadConvertModal({
                       required
                       value={opportunityName}
                       onChange={(e) => setOpportunityName(e.target.value)}
-                      className="w-full px-3 py-1.5 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
+                      className="w-full px-3 py-1.5 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-[#4361ee]"
                     />
                   </div>
                   <div className="grid grid-cols-2 gap-3">
@@ -394,7 +394,7 @@ export function LeadConvertModal({
                         value={opportunityAmount}
                         onChange={(e) => setOpportunityAmount(e.target.value)}
                         placeholder="2500000"
-                        className="w-full px-3 py-1.5 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
+                        className="w-full px-3 py-1.5 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-[#4361ee]"
                       />
                     </div>
                     <div>
@@ -405,7 +405,7 @@ export function LeadConvertModal({
                         type="date"
                         value={opportunityCloseDate}
                         onChange={(e) => setOpportunityCloseDate(e.target.value)}
-                        className="w-full px-3 py-1.5 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-emerald-500"
+                        className="w-full px-3 py-1.5 bg-white border border-slate-300 rounded text-xs focus:ring-1 focus:ring-[#4361ee]"
                       />
                     </div>
                   </div>
@@ -435,7 +435,7 @@ export function LeadConvertModal({
                 type="button"
                 onClick={handleExecuteConvert}
                 disabled={isSubmitting}
-                className="inline-flex items-center gap-1.5 px-5 py-2 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-600 rounded-md transition shadow-xs"
+                className="inline-flex items-center gap-1.5 px-5 py-2 text-xs font-semibold text-white bg-[#4361ee] hover:bg-[#4361ee] rounded-md transition shadow-xs"
               >
                 <Check className="h-3.5 w-3.5" />
                 <span>{isSubmitting ? 'Converting...' : 'Convert'}</span>

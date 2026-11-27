@@ -116,12 +116,12 @@ export default function ActivitiesHubPage() {
           icon = <CheckSquare className="w-3.5 h-3.5 text-amber-700" />;
           label = 'Task';
         } else if (act.activity_type === 'log_call') {
-          badgeClass = 'bg-emerald-100 text-emerald-800 border-emerald-200';
-          icon = <PhoneCall className="w-3.5 h-3.5 text-emerald-700" />;
+          badgeClass = 'bg-[#eef2ff] text-[#4361ee] border-indigo-100';
+          icon = <PhoneCall className="w-3.5 h-3.5 text-[#4361ee]" />;
           label = 'Call';
         } else if (act.activity_type === 'meeting') {
-          badgeClass = 'bg-emerald-50 text-emerald-800 border-emerald-200';
-          icon = <Video className="w-3.5 h-3.5 text-emerald-800" />;
+          badgeClass = 'bg-[#eef2ff] text-[#4361ee] border-indigo-100';
+          icon = <Video className="w-3.5 h-3.5 text-[#4361ee]" />;
           label = 'Meeting';
         }
 
@@ -143,7 +143,7 @@ export default function ActivitiesHubPage() {
 
         return (
           <div className="flex flex-col">
-            <Link href={detailHref} className="font-semibold text-emerald-800 hover:text-emerald-800 hover:underline">
+            <Link href={detailHref} className="font-semibold text-[#4361ee] hover:text-[#4361ee] hover:underline">
               {act.subject}
             </Link>
             {act.description && (
@@ -170,11 +170,11 @@ export default function ActivitiesHubPage() {
             }
             className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold transition ${
               isCompleted
-                ? 'bg-emerald-100 text-emerald-800 hover:bg-emerald-200'
+                ? 'bg-[#eef2ff] text-[#4361ee] hover:bg-emerald-200'
                 : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
             }`}
           >
-            {isCompleted ? <CheckCircle2 className="w-3 h-3 text-emerald-600" /> : <Clock className="w-3 h-3 text-slate-400" />}
+            {isCompleted ? <CheckCircle2 className="w-3 h-3 text-[#4361ee]" /> : <Clock className="w-3 h-3 text-slate-400" />}
             {act.status ? act.status.replace(/_/g, ' ') : 'Open'}
           </button>
         );
@@ -249,7 +249,7 @@ export default function ActivitiesHubPage() {
                 onClick={() => setIsCallModalOpen(true)}
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-white border border-slate-300 rounded-lg shadow-xs hover:bg-slate-50 transition"
               >
-                <PhoneCall className="w-3.5 h-3.5 text-emerald-600" />
+                <PhoneCall className="w-3.5 h-3.5 text-[#4361ee]" />
                 Log Call
               </button>
               <button
@@ -257,13 +257,13 @@ export default function ActivitiesHubPage() {
                 onClick={() => setIsMeetingModalOpen(true)}
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-white border border-slate-300 rounded-lg shadow-xs hover:bg-slate-50 transition"
               >
-                <Video className="w-3.5 h-3.5 text-emerald-800" />
+                <Video className="w-3.5 h-3.5 text-[#4361ee]" />
                 Schedule Meeting
               </button>
               <button
                 type="button"
                 onClick={() => setIsTaskModalOpen(true)}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg shadow-xs transition"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-[#4361ee] hover:bg-[#3a5bf0] rounded-lg shadow-xs transition"
               >
                 <Plus className="w-3.5 h-3.5" />
                 New Task
@@ -278,7 +278,7 @@ export default function ActivitiesHubPage() {
               onClick={() => { setActiveTab('all'); setPage(1); }}
               className={`pb-3 text-sm font-semibold transition border-b-2 ${
                 activeTab === 'all'
-                  ? 'border-emerald-600 text-emerald-700 font-bold'
+                  ? 'border-[#4361ee] text-[#4361ee] font-bold'
                   : 'border-transparent text-slate-500 hover:text-slate-800'
               }`}
             >
@@ -289,7 +289,7 @@ export default function ActivitiesHubPage() {
               onClick={() => { setActiveTab('task'); setPage(1); }}
               className={`pb-3 text-sm font-semibold transition border-b-2 flex items-center gap-1.5 ${
                 activeTab === 'task'
-                  ? 'border-emerald-600 text-emerald-700 font-bold'
+                  ? 'border-[#4361ee] text-[#4361ee] font-bold'
                   : 'border-transparent text-slate-500 hover:text-slate-800'
               }`}
             >
@@ -301,7 +301,7 @@ export default function ActivitiesHubPage() {
               onClick={() => { setActiveTab('log_call'); setPage(1); }}
               className={`pb-3 text-sm font-semibold transition border-b-2 flex items-center gap-1.5 ${
                 activeTab === 'log_call'
-                  ? 'border-emerald-600 text-emerald-700 font-bold'
+                  ? 'border-[#4361ee] text-[#4361ee] font-bold'
                   : 'border-transparent text-slate-500 hover:text-slate-800'
               }`}
             >
@@ -313,7 +313,7 @@ export default function ActivitiesHubPage() {
               onClick={() => { setActiveTab('meeting'); setPage(1); }}
               className={`pb-3 text-sm font-semibold transition border-b-2 flex items-center gap-1.5 ${
                 activeTab === 'meeting'
-                  ? 'border-emerald-600 text-emerald-700 font-bold'
+                  ? 'border-[#4361ee] text-[#4361ee] font-bold'
                   : 'border-transparent text-slate-500 hover:text-slate-800'
               }`}
             >
@@ -331,7 +331,7 @@ export default function ActivitiesHubPage() {
                 <select
                   value={statusFilter}
                   onChange={(e) => { setStatusFilter(e.target.value); setPage(1); }}
-                  className="px-2.5 py-1.5 text-xs bg-slate-50 border border-slate-300 rounded-lg text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="px-2.5 py-1.5 text-xs bg-slate-50 border border-slate-300 rounded-lg text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#4361ee]"
                 >
                   <option value="all">All Statuses</option>
                   <option value="not_started">Not Started</option>
@@ -349,7 +349,7 @@ export default function ActivitiesHubPage() {
                   placeholder="Search activities by subject..."
                   value={search}
                   onChange={(e) => { setSearch(e.target.value); setPage(1); }}
-                  className="w-full pl-9 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-300 rounded-lg text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="w-full pl-9 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-300 rounded-lg text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#4361ee]"
                 />
               </div>
             </div>

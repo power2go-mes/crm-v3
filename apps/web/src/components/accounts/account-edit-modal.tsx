@@ -58,7 +58,7 @@ export function AccountEditModal({ isOpen, onClose, account, onSubmit }: Account
         {/* Header */}
         <div className="px-6 py-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 bg-emerald-600/10 text-emerald-600 rounded-lg">
+            <div className="p-2 bg-[#4361ee]/10 text-[#4361ee] rounded-lg">
               <Building2 className="h-5 w-5" />
             </div>
             <div>
@@ -93,7 +93,7 @@ export function AccountEditModal({ isOpen, onClose, account, onSubmit }: Account
                 required
                 value={formData.name || ''}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 text-sm"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee] text-sm"
               />
             </div>
 
@@ -104,7 +104,7 @@ export function AccountEditModal({ isOpen, onClose, account, onSubmit }: Account
               <select
                 value={formData.account_source || ''}
                 onChange={(e) => setFormData({ ...formData, account_source: e.target.value })}
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               >
                 {ACCOUNT_SOURCES.map((s) => (
                   <option key={s.value} value={s.value}>
@@ -121,7 +121,7 @@ export function AccountEditModal({ isOpen, onClose, account, onSubmit }: Account
               <select
                 value={formData.industry || ''}
                 onChange={(e) => setFormData({ ...formData, industry: e.target.value })}
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               >
                 {ACCOUNT_INDUSTRIES.map((ind) => (
                   <option key={ind.value} value={ind.value}>
@@ -145,7 +145,7 @@ export function AccountEditModal({ isOpen, onClose, account, onSubmit }: Account
                     annual_revenue: e.target.value ? Number(e.target.value) : undefined,
                   })
                 }
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               />
             </div>
 
@@ -157,7 +157,7 @@ export function AccountEditModal({ isOpen, onClose, account, onSubmit }: Account
                 type="tel"
                 value={formData.contact_number || ''}
                 onChange={(e) => setFormData({ ...formData, contact_number: e.target.value })}
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               />
             </div>
 
@@ -169,7 +169,7 @@ export function AccountEditModal({ isOpen, onClose, account, onSubmit }: Account
                 type="text"
                 value={formData.website || ''}
                 onChange={(e) => setFormData({ ...formData, website: e.target.value })}
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               />
             </div>
 
@@ -187,7 +187,7 @@ export function AccountEditModal({ isOpen, onClose, account, onSubmit }: Account
                     no_of_employees: e.target.value ? Number(e.target.value) : undefined,
                   })
                 }
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               />
             </div>
 
@@ -199,7 +199,7 @@ export function AccountEditModal({ isOpen, onClose, account, onSubmit }: Account
                 rows={2}
                 value={formData.billing_address || ''}
                 onChange={(e) => setFormData({ ...formData, billing_address: e.target.value })}
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 resize-none"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee] resize-none"
               />
             </div>
 
@@ -211,7 +211,7 @@ export function AccountEditModal({ isOpen, onClose, account, onSubmit }: Account
                 rows={2}
                 value={formData.shipping_address || ''}
                 onChange={(e) => setFormData({ ...formData, shipping_address: e.target.value })}
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 resize-none"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee] resize-none"
               />
             </div>
           </div>
@@ -229,7 +229,7 @@ export function AccountEditModal({ isOpen, onClose, account, onSubmit }: Account
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-5 py-2 bg-emerald-600 hover:bg-emerald-600 text-white rounded-lg font-semibold shadow-sm transition disabled:opacity-50"
+              className="px-5 py-2 bg-[#4361ee] hover:bg-[#4361ee] text-white rounded-lg font-semibold shadow-sm transition disabled:opacity-50"
             >
               {isSubmitting ? 'Saving...' : 'Update Account'}
             </button>

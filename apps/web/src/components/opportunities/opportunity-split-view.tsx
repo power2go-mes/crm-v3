@@ -78,7 +78,7 @@ export function OpportunitySplitView({
                 onClick={() => handleSelect(opp)}
                 className={`p-3.5 cursor-pointer transition text-left ${
                   isSelected
-                    ? 'bg-emerald-50/70 border-l-4 border-emerald-200'
+                    ? 'bg-[#eef2ff]/70 border-l-4 border-indigo-100'
                     : 'hover:bg-slate-50 border-l-4 border-transparent'
                 }`}
               >
@@ -132,7 +132,7 @@ export function OpportunitySplitView({
                 )}
                 <Link
                   href={`/opportunities/${activeOpp.id}`}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-600 text-white text-xs font-semibold rounded-lg shadow-xs transition"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#4361ee] hover:bg-[#4361ee] text-white text-xs font-semibold rounded-lg shadow-xs transition"
                 >
                   <span>Full View</span>
                   <ExternalLink className="h-3.5 w-3.5" />
@@ -144,13 +144,13 @@ export function OpportunitySplitView({
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
                 <span className="text-[11px] font-medium text-slate-500 uppercase tracking-wider block">Deal Amount</span>
-                <span className="text-base font-bold text-emerald-600 mt-1 block">
+                <span className="text-base font-bold text-[#4361ee] mt-1 block">
                   ${Number(activeOpp.amount || 0).toLocaleString()}
                 </span>
               </div>
               <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
                 <span className="text-[11px] font-medium text-slate-500 uppercase tracking-wider block">Probability</span>
-                <span className="text-base font-bold text-emerald-800 mt-1 block">
+                <span className="text-base font-bold text-[#4361ee] mt-1 block">
                   {activeOpp.probability || 0}%
                 </span>
               </div>

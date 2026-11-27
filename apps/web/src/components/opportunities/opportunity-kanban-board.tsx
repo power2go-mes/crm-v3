@@ -86,10 +86,10 @@ const STAGE_THEMES: Record<
     emptyText: 'No deals in negotiation',
   },
   closed_won: {
-    pillBg: 'bg-emerald-50',
-    pillText: 'text-emerald-700',
-    pillBorder: 'border-emerald-200/80',
-    headerAccent: 'bg-emerald-600',
+    pillBg: 'bg-[#eef2ff]',
+    pillText: 'text-[#4361ee]',
+    pillBorder: 'border-indigo-100/80',
+    headerAccent: 'bg-[#4361ee]',
     icon: CheckCircle2,
     accentColor: '#059669',
     emptyText: 'No won deals yet',
@@ -118,7 +118,7 @@ function getAvatarProps(name: string) {
   const clean = name.trim().toUpperCase();
   const initials = clean ? clean.split(' ').map((n) => n[0]).slice(0, 2).join('') : 'U';
   const hues = [
-    'bg-emerald-100 text-emerald-800 border-emerald-200',
+    'bg-[#eef2ff] text-[#4361ee] border-indigo-100',
     'bg-blue-100 text-blue-800 border-blue-200',
     'bg-indigo-100 text-indigo-800 border-indigo-200',
     'bg-purple-100 text-purple-800 border-purple-200',
@@ -215,7 +215,7 @@ export function OpportunityKanbanBoard({
               {grouped.closed_won?.length || 0}
             </p>
           </div>
-          <div className="h-10 w-10 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
+          <div className="h-10 w-10 rounded-2xl bg-[#eef2ff] text-[#4361ee] flex items-center justify-center font-bold">
             <CheckCircle2 className="h-5 w-5" />
           </div>
         </div>
@@ -261,7 +261,7 @@ export function OpportunityKanbanBoard({
                   </div>
 
                   {totalAmount > 0 && (
-                    <span className="text-[11px] font-bold text-emerald-600 shrink-0">
+                    <span className="text-[11px] font-bold text-[#4361ee] shrink-0">
                       ${(totalAmount / 1000).toFixed(0)}k
                     </span>
                   )}
@@ -298,8 +298,8 @@ export function OpportunityKanbanBoard({
                         }}
                         className={`group relative p-3.5 bg-white hover:bg-slate-50/50 border rounded-xl shadow-xs hover:shadow-md transition-all duration-150 cursor-pointer flex flex-col gap-2.5 ${
                           isSelected
-                            ? 'border-emerald-500 ring-2 ring-emerald-500/10'
-                            : 'border-slate-200/80 hover:border-emerald-400'
+                            ? 'border-[#4361ee] ring-2 ring-[#4361ee]/10'
+                            : 'border-slate-200/80 hover:border-indigo-300'
                         }`}
                       >
                         {/* Header: Deal Name + Link */}
@@ -307,11 +307,11 @@ export function OpportunityKanbanBoard({
                           <Link
                             href={`/opportunities/${opp.id}`}
                             onClick={(e) => e.stopPropagation()}
-                            className="font-bold text-sm text-slate-900 group-hover:text-emerald-700 transition line-clamp-1 flex items-center gap-1.5 flex-1 min-w-0"
+                            className="font-bold text-sm text-slate-900 group-hover:text-[#4361ee] transition line-clamp-1 flex items-center gap-1.5 flex-1 min-w-0"
                             title={opp.name}
                           >
                             <span className="truncate">{opp.name}</span>
-                            <ArrowRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity shrink-0 text-emerald-600" />
+                            <ArrowRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity shrink-0 text-[#4361ee]" />
                           </Link>
 
                           {opp.probability !== undefined && (
@@ -358,8 +358,8 @@ export function OpportunityKanbanBoard({
                         {/* Footer: Amount + Rep Avatar */}
                         <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs gap-2">
                           {formattedAmt ? (
-                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md font-bold text-emerald-700 bg-emerald-50/80 border border-emerald-200/60 text-[11px]">
-                              <DollarSign className="h-3 w-3 -mr-0.5 text-emerald-600" />
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md font-bold text-[#4361ee] bg-[#eef2ff]/80 border border-indigo-100/60 text-[11px]">
+                              <DollarSign className="h-3 w-3 -mr-0.5 text-[#4361ee]" />
                               {formattedAmt}
                             </span>
                           ) : (

@@ -183,11 +183,11 @@ export default function OpportunityDetailPage({ params }: OpportunityDetailPageP
       <div className="flex items-center justify-between mb-4 text-sm">
         <Link
           href="/opportunities"
-          className="inline-flex items-center gap-1.5 text-slate-600 hover:text-emerald-800 transition"
+          className="inline-flex items-center gap-1.5 text-slate-600 hover:text-[#4361ee] transition"
         >
           <span>Opportunities</span>
           <span aria-hidden="true">›</span>
-          <span className="text-emerald-800 font-medium">{opp.name}</span>
+          <span className="text-[#4361ee] font-medium">{opp.name}</span>
         </Link>
       </div>
 
@@ -253,7 +253,7 @@ export default function OpportunityDetailPage({ params }: OpportunityDetailPageP
               type="button"
               disabled={isReopening}
               onClick={handleReopenDeal}
-              className="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold shadow-xs transition shrink-0 disabled:opacity-50"
+              className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#4361ee] hover:bg-[#3a5bf0] text-white rounded-xl text-xs font-semibold shadow-xs transition shrink-0 disabled:opacity-50"
             >
               <RotateCcw className="h-3.5 w-3.5" />
               <span>{isReopening ? 'Reopening...' : 'Reopen Opportunity'}</span>
@@ -276,7 +276,7 @@ export default function OpportunityDetailPage({ params }: OpportunityDetailPageP
                   <Clock className="h-3 w-3 text-slate-400" />
                   Age: {opp.opportunity_age_days ?? 0}d
                 </span>
-                <span className="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 font-medium">
+                <span className="px-2 py-0.5 rounded-md bg-[#eef2ff] text-[#4361ee] font-medium">
                   In Stage: {opp.days_in_stage ?? 0}d
                 </span>
               </div>
@@ -296,7 +296,7 @@ export default function OpportunityDetailPage({ params }: OpportunityDetailPageP
                 <span className="w-36 inline-block text-slate-600">Account</span>
                 <span className="text-slate-900">
                   : {opp.account ? (
-                    <Link href={`/accounts/${opp.account.id}`} className="text-emerald-800 hover:underline">
+                    <Link href={`/accounts/${opp.account.id}`} className="text-[#4361ee] hover:underline">
                       {opp.account.name}
                     </Link>
                   ) : (
@@ -310,7 +310,7 @@ export default function OpportunityDetailPage({ params }: OpportunityDetailPageP
               </div>
               <div>
                 <span className="w-36 inline-block text-slate-600">Amount</span>
-                <span className="text-slate-900 font-semibold text-emerald-600">
+                <span className="text-slate-900 font-semibold text-[#4361ee]">
                   : ${Number(opp.amount || 0).toLocaleString()}
                 </span>
               </div>
@@ -342,7 +342,7 @@ export default function OpportunityDetailPage({ params }: OpportunityDetailPageP
             <button
               type="button"
               onClick={() => setIsEmailModalOpen(true)}
-              className="px-3 py-2 bg-emerald-600 hover:bg-emerald-600 text-white text-xs font-semibold rounded-lg transition inline-flex items-center gap-1.5 shadow-xs"
+              className="px-3 py-2 bg-[#4361ee] hover:bg-[#4361ee] text-white text-xs font-semibold rounded-lg transition inline-flex items-center gap-1.5 shadow-xs"
               title="Compose and log sales email"
             >
               <Send className="h-3.5 w-3.5" />
@@ -389,7 +389,7 @@ export default function OpportunityDetailPage({ params }: OpportunityDetailPageP
           onClick={() => setActiveTab('details')}
           className={`px-4 py-3 text-sm font-medium transition border-b-2 flex items-center gap-2 ${
             activeTab === 'details'
-              ? 'border-emerald-200 text-emerald-800'
+              ? 'border-indigo-100 text-[#4361ee]'
               : 'border-transparent text-slate-600 hover:text-slate-900'
           }`}
         >
@@ -402,7 +402,7 @@ export default function OpportunityDetailPage({ params }: OpportunityDetailPageP
           onClick={() => setActiveTab('products')}
           className={`px-4 py-3 text-sm font-medium transition border-b-2 flex items-center gap-2 ${
             activeTab === 'products'
-              ? 'border-emerald-200 text-emerald-800'
+              ? 'border-indigo-100 text-[#4361ee]'
               : 'border-transparent text-slate-600 hover:text-slate-900'
           }`}
         >
@@ -415,7 +415,7 @@ export default function OpportunityDetailPage({ params }: OpportunityDetailPageP
           onClick={() => setActiveTab('quotes')}
           className={`px-4 py-3 text-sm font-medium transition border-b-2 flex items-center gap-2 ${
             activeTab === 'quotes'
-              ? 'border-emerald-200 text-emerald-800'
+              ? 'border-indigo-100 text-[#4361ee]'
               : 'border-transparent text-slate-600 hover:text-slate-900'
           }`}
         >
@@ -428,7 +428,7 @@ export default function OpportunityDetailPage({ params }: OpportunityDetailPageP
           onClick={() => setActiveTab('activity')}
           className={`px-4 py-3 text-sm font-medium transition border-b-2 flex items-center gap-2 ${
             activeTab === 'activity'
-              ? 'border-emerald-200 text-emerald-800'
+              ? 'border-indigo-100 text-[#4361ee]'
               : 'border-transparent text-slate-600 hover:text-slate-900'
           }`}
         >
@@ -441,7 +441,7 @@ export default function OpportunityDetailPage({ params }: OpportunityDetailPageP
           onClick={() => setActiveTab('emails')}
           className={`px-4 py-3 text-sm font-medium transition border-b-2 flex items-center gap-2 ${
             activeTab === 'emails'
-              ? 'border-emerald-200 text-emerald-800'
+              ? 'border-indigo-100 text-[#4361ee]'
               : 'border-transparent text-slate-600 hover:text-slate-900'
           }`}
         >
@@ -454,7 +454,7 @@ export default function OpportunityDetailPage({ params }: OpportunityDetailPageP
           onClick={() => setActiveTab('related')}
           className={`px-4 py-3 text-sm font-medium transition border-b-2 flex items-center gap-2 ${
             activeTab === 'related'
-              ? 'border-emerald-200 text-emerald-800'
+              ? 'border-indigo-100 text-[#4361ee]'
               : 'border-transparent text-slate-600 hover:text-slate-900'
           }`}
         >
@@ -467,7 +467,7 @@ export default function OpportunityDetailPage({ params }: OpportunityDetailPageP
           onClick={() => setActiveTab('notes')}
           className={`px-4 py-3 text-sm font-medium transition border-b-2 flex items-center gap-2 ${
             activeTab === 'notes'
-              ? 'border-emerald-200 text-emerald-800'
+              ? 'border-indigo-100 text-[#4361ee]'
               : 'border-transparent text-slate-600 hover:text-slate-900'
           }`}
         >
@@ -480,7 +480,7 @@ export default function OpportunityDetailPage({ params }: OpportunityDetailPageP
           onClick={() => setActiveTab('history')}
           className={`px-4 py-3 text-sm font-medium transition border-b-2 flex items-center gap-2 ${
             activeTab === 'history'
-              ? 'border-emerald-200 text-emerald-800'
+              ? 'border-indigo-100 text-[#4361ee]'
               : 'border-transparent text-slate-600 hover:text-slate-900'
           }`}
         >
@@ -519,7 +519,7 @@ export default function OpportunityDetailPage({ params }: OpportunityDetailPageP
                 <span className="block text-slate-500 uppercase tracking-wider text-[10px]">Account Name</span>
                 <span className="font-semibold text-slate-900 text-sm mt-0.5 block">
                   {opp.account ? (
-                    <Link href={`/accounts/${opp.account.id}`} className="text-emerald-800 hover:underline">
+                    <Link href={`/accounts/${opp.account.id}`} className="text-[#4361ee] hover:underline">
                       {opp.account.name}
                     </Link>
                   ) : (
@@ -574,7 +574,7 @@ export default function OpportunityDetailPage({ params }: OpportunityDetailPageP
             <div className="p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
               <div>
                 <span className="block text-slate-500 uppercase tracking-wider text-[10px]">Deal Amount</span>
-                <span className="font-bold text-emerald-600 text-sm mt-0.5 block">
+                <span className="font-bold text-[#4361ee] text-sm mt-0.5 block">
                   ${Number(opp.amount || 0).toLocaleString()}
                 </span>
               </div>
@@ -586,7 +586,7 @@ export default function OpportunityDetailPage({ params }: OpportunityDetailPageP
               </div>
               <div>
                 <span className="block text-slate-500 uppercase tracking-wider text-[10px]">Weighted Expected Value</span>
-                <span className="font-bold text-emerald-800 text-sm mt-0.5 block">
+                <span className="font-bold text-[#4361ee] text-sm mt-0.5 block">
                   ${expectedRevenue.toLocaleString()}
                 </span>
               </div>
@@ -643,7 +643,7 @@ export default function OpportunityDetailPage({ params }: OpportunityDetailPageP
             <button
               type="button"
               onClick={() => setIsEmailModalOpen(true)}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3.5 py-1.5 text-xs font-semibold text-white shadow-xs hover:bg-emerald-600"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-[#4361ee] px-3.5 py-1.5 text-xs font-semibold text-white shadow-xs hover:bg-[#4361ee]"
             >
               <Send className="h-3.5 w-3.5" />
               <span>Compose Email</span>
@@ -673,7 +673,7 @@ export default function OpportunityDetailPage({ params }: OpportunityDetailPageP
               value={noteContent}
               onChange={(e) => setNoteContent(e.target.value)}
               placeholder="Add a deal note or negotiation log..."
-              className="flex-1 p-3 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              className="flex-1 p-3 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#4361ee]"
               rows={3}
             />
           </div>
@@ -688,7 +688,7 @@ export default function OpportunityDetailPage({ params }: OpportunityDetailPageP
                 ]);
                 setNoteContent('');
               }}
-              className="px-4 py-2 bg-emerald-600 hover:bg-emerald-600 text-white text-xs font-semibold rounded-lg transition"
+              className="px-4 py-2 bg-[#4361ee] hover:bg-[#4361ee] text-white text-xs font-semibold rounded-lg transition"
             >
               Add Note
             </button>
@@ -736,7 +736,7 @@ export default function OpportunityDetailPage({ params }: OpportunityDetailPageP
                       <p className="text-slate-600 italic">{item.lost_reason_details}</p>
                     )}
                     {item.reopened_at && (
-                      <div className="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-emerald-700 font-medium">
+                      <div className="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-[#4361ee] font-medium">
                         <span className="inline-flex items-center gap-1">
                           <RotateCcw className="h-3 w-3" />
                           Reopened: {item.reopen_reason || 'Reopened'}

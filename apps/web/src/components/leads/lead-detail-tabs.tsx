@@ -27,7 +27,7 @@ export function LeadDetailTabs({ lead, onEdit }: LeadDetailTabsProps) {
         ] as const).map(([id, label]) => (
           <button key={id} type="button" aria-pressed={activeTab === id}
             onClick={() => setActiveTab(id)}
-            className={`whitespace-nowrap border-b-2 px-4 py-3 text-sm font-medium ${activeTab === id ? 'border-emerald-200 text-emerald-800' : 'border-transparent text-slate-700 hover:text-emerald-800'}`}>
+            className={`whitespace-nowrap border-b-2 px-4 py-3 text-sm font-medium ${activeTab === id ? 'border-indigo-100 text-[#4361ee]' : 'border-transparent text-slate-700 hover:text-[#4361ee]'}`}>
             {label}
           </button>
         ))}

@@ -108,7 +108,7 @@ export default function ExportPage() {
   const canRunJob = format === 'csv' && selected.length === 1 && selected[0] === 'leads';
   const busy = download.isPending || createJob.isPending || processJob.isPending;
   return <PageContainer>
-    <Link href="/settings" className="text-sm text-emerald-800">Settings</Link>
+    <Link href="/settings" className="text-sm text-[#4361ee]">Settings</Link>
     <PageHeader title="Export Data" subtitle="Select modules, columns and an export format." />
     <PermissionGate action="exports.view" showAccessDenied>
       {catalog.isLoading && <p role="status">Loading export modules…</p>}
@@ -126,7 +126,7 @@ export default function ExportPage() {
         {download.error && <p role="alert" className="text-red-700">{download.error.message}</p>}
         {notice && <p role="status" className="text-green-800">{notice}</p>}
         {jobProgress && <p role="status">{jobProgress}</p>}
-        <button disabled={busy || !selected.length || fields.isFetching || fields.isError || selected.some(module => !columns[module]?.length)} className="rounded bg-emerald-600 px-5 py-2 text-white">{busy ? 'Exporting…' : canRunJob ? 'Start Resumable CSV Export' : 'Export'}</button>
+        <button disabled={busy || !selected.length || fields.isFetching || fields.isError || selected.some(module => !columns[module]?.length)} className="rounded bg-[#4361ee] px-5 py-2 text-white">{busy ? 'Exporting…' : canRunJob ? 'Start Resumable CSV Export' : 'Export'}</button>
       </form>
       <section className="mt-8 space-y-3">
         <h2 className="text-lg font-semibold">Recent lead CSV exports</h2>

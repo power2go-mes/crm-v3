@@ -220,7 +220,7 @@ export default function EmailSettingsPage() {
             onClick={() => setActiveTab('accounts')}
             className={`flex items-center gap-2 border-b-2 px-5 py-3 text-xs font-semibold uppercase tracking-wider transition ${
               activeTab === 'accounts'
-                ? 'border-emerald-600 text-emerald-700'
+                ? 'border-[#4361ee] text-[#4361ee]'
                 : 'border-transparent text-slate-500 hover:text-slate-800'
             }`}
           >
@@ -231,7 +231,7 @@ export default function EmailSettingsPage() {
             onClick={() => setActiveTab('templates')}
             className={`flex items-center gap-2 border-b-2 px-5 py-3 text-xs font-semibold uppercase tracking-wider transition ${
               activeTab === 'templates'
-                ? 'border-emerald-600 text-emerald-700'
+                ? 'border-[#4361ee] text-[#4361ee]'
                 : 'border-transparent text-slate-500 hover:text-slate-800'
             }`}
           >
@@ -249,7 +249,7 @@ export default function EmailSettingsPage() {
               <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs">
                 <div className="flex items-center justify-between">
                   <h3 className="text-sm font-bold text-slate-900">Google Workspace / Gmail</h3>
-                  <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10px] font-bold text-emerald-700 border border-emerald-200">
+                  <span className="rounded-full bg-[#eef2ff] px-2.5 py-0.5 text-[10px] font-bold text-[#4361ee] border border-indigo-100">
                     App Password
                   </span>
                 </div>
@@ -259,7 +259,7 @@ export default function EmailSettingsPage() {
                 <div className="mt-4">
                   <button
                     onClick={() => handleOpenConnect('google')}
-                    className="w-full rounded-lg bg-emerald-600 px-3 py-2 text-xs font-semibold text-white hover:bg-emerald-700 transition"
+                    className="w-full rounded-lg bg-[#4361ee] px-3 py-2 text-xs font-semibold text-white hover:bg-[#3a5bf0] transition"
                   >
                     Connect Google / Gmail
                   </button>
@@ -326,7 +326,7 @@ export default function EmailSettingsPage() {
                   {accounts.map((acc) => (
                     <div key={acc.id} className="flex flex-wrap items-center justify-between gap-4 p-4">
                       <div className="flex items-center gap-3">
-                        <div className="rounded-xl bg-emerald-50 p-2.5 text-emerald-700 border border-emerald-200">
+                        <div className="rounded-xl bg-[#eef2ff] p-2.5 text-[#4361ee] border border-indigo-100">
                           <Mail className="h-4 w-4" />
                         </div>
                         <div>
@@ -348,7 +348,7 @@ export default function EmailSettingsPage() {
                         <span
                           className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[10px] font-semibold border ${
                             acc.auth_status === 'connected'
-                              ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
+                              ? 'bg-[#eef2ff] text-[#4361ee] border-indigo-100'
                               : 'bg-orange-50 text-orange-700 border-orange-200'
                           }`}
                         >
@@ -364,7 +364,7 @@ export default function EmailSettingsPage() {
                         <button
                           type="button"
                           onClick={() => handleOpenTestModal(acc)}
-                          className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-lg transition"
+                          className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold text-[#4361ee] bg-[#eef2ff] hover:bg-[#eef2ff] border border-indigo-100 rounded-lg transition"
                           title="Send a real test email to verify credentials"
                         >
                           <Send className="h-3.5 w-3.5" />
@@ -407,7 +407,7 @@ export default function EmailSettingsPage() {
               </p>
               <button
                 onClick={handleOpenCreateTemplate}
-                className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3.5 py-2 text-xs font-semibold text-white shadow-xs hover:bg-emerald-700 transition"
+                className="inline-flex items-center gap-1.5 rounded-lg bg-[#4361ee] px-3.5 py-2 text-xs font-semibold text-white shadow-xs hover:bg-[#3a5bf0] transition"
               >
                 <Plus className="h-4 w-4" />
                 <span>New Template</span>
@@ -423,7 +423,7 @@ export default function EmailSettingsPage() {
                 >
                   <div>
                     <div className="flex items-center justify-between">
-                      <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold text-emerald-700 border border-emerald-200">
+                      <span className="rounded-full bg-[#eef2ff] px-2 py-0.5 text-[10px] font-semibold text-[#4361ee] border border-indigo-100">
                         {tpl.category}
                       </span>
                       {tpl.is_shared && (
@@ -466,7 +466,7 @@ export default function EmailSettingsPage() {
             <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl border border-slate-200">
               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                 <div className="flex items-center gap-2.5">
-                  <div className="p-2 bg-emerald-50 text-emerald-600 rounded-lg border border-emerald-200">
+                  <div className="p-2 bg-[#eef2ff] text-[#4361ee] rounded-lg border border-indigo-100">
                     <KeyRound className="h-5 w-5" />
                   </div>
                   <div>
@@ -499,7 +499,7 @@ export default function EmailSettingsPage() {
                     value={accountEmail}
                     onChange={(e) => setAccountEmail(e.target.value)}
                     placeholder="e.g. yourname@gmail.com"
-                    className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                    className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
                   />
                 </div>
 
@@ -513,7 +513,7 @@ export default function EmailSettingsPage() {
                     value={appPassword}
                     onChange={(e) => setAppPassword(e.target.value)}
                     placeholder="e.g. 16-character Google App Password (abcd efgh ijkl mnop)"
-                    className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                    className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
                   />
                   <p className="mt-1 text-[11px] text-slate-500">
                     {connectProvider === 'google'
@@ -531,7 +531,7 @@ export default function EmailSettingsPage() {
                     value={accountDisplayName}
                     onChange={(e) => setAccountDisplayName(e.target.value)}
                     placeholder="e.g. Abdullah Rashid (Sales)"
-                    className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                    className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
                   />
                 </div>
 
@@ -544,7 +544,7 @@ export default function EmailSettingsPage() {
                       type="text"
                       value={smtpHost}
                       onChange={(e) => setSmtpHost(e.target.value)}
-                      className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                      className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
                     />
                   </div>
                   <div>
@@ -555,7 +555,7 @@ export default function EmailSettingsPage() {
                       type="text"
                       value={smtpPort}
                       onChange={(e) => setSmtpPort(e.target.value)}
-                      className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                      className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
                     />
                   </div>
                 </div>
@@ -574,7 +574,7 @@ export default function EmailSettingsPage() {
                   <button
                     type="submit"
                     disabled={isSaving}
-                    className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-semibold shadow-xs transition"
+                    className="px-4 py-2 bg-[#4361ee] hover:bg-[#3a5bf0] text-white rounded-lg font-semibold shadow-xs transition"
                   >
                     {isSaving ? 'Saving...' : editingAccountId ? 'Update Credentials' : 'Connect Mailbox'}
                   </button>
@@ -590,7 +590,7 @@ export default function EmailSettingsPage() {
             <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl border border-slate-200">
               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                 <div className="flex items-center gap-2.5">
-                  <div className="p-2 bg-emerald-50 text-emerald-600 rounded-lg border border-emerald-200">
+                  <div className="p-2 bg-[#eef2ff] text-[#4361ee] rounded-lg border border-indigo-100">
                     <Send className="h-5 w-5" />
                   </div>
                   <div>
@@ -614,12 +614,12 @@ export default function EmailSettingsPage() {
                   <div
                     className={`p-3 rounded-lg border flex items-start gap-2 ${
                       testResult.success
-                        ? 'bg-emerald-50 border-emerald-200 text-emerald-800'
+                        ? 'bg-[#eef2ff] border-indigo-100 text-[#4361ee]'
                         : 'bg-red-50 border-red-200 text-red-800'
                     }`}
                   >
                     {testResult.success ? (
-                      <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
+                      <CheckCircle2 className="h-4 w-4 text-[#4361ee] shrink-0 mt-0.5" />
                     ) : (
                       <AlertTriangle className="h-4 w-4 text-red-600 shrink-0 mt-0.5" />
                     )}
@@ -645,7 +645,7 @@ export default function EmailSettingsPage() {
                       App Password / Password
                     </label>
                     {testModalAccount.encrypted_tokens?.app_password && (
-                      <span className="text-[10px] text-emerald-600 font-semibold flex items-center gap-1">
+                      <span className="text-[10px] text-[#4361ee] font-semibold flex items-center gap-1">
                         <Check className="h-3 w-3" /> Stored Credential Ready
                       </span>
                     )}
@@ -655,7 +655,7 @@ export default function EmailSettingsPage() {
                     value={testPasswordInput}
                     onChange={(e) => setTestPasswordInput(e.target.value)}
                     placeholder={testModalAccount.encrypted_tokens?.app_password ? "Using stored password (type to override)" : "Enter your App Password to test"}
-                    className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                    className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
                   />
                   <p className="mt-1 text-[11px] text-slate-500">
                     {testModalAccount.encrypted_tokens?.app_password
@@ -674,7 +674,7 @@ export default function EmailSettingsPage() {
                     value={testRecipient}
                     onChange={(e) => setTestRecipient(e.target.value)}
                     placeholder="e.g. yourpersonal@gmail.com"
-                    className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                    className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
                   />
                   <p className="mt-1 text-[11px] text-slate-500">
                     A verification email will be dispatched to this address.
@@ -692,7 +692,7 @@ export default function EmailSettingsPage() {
                   <button
                     type="submit"
                     disabled={isSendingTest}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-semibold shadow-xs transition disabled:opacity-50"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#4361ee] hover:bg-[#3a5bf0] text-white rounded-lg font-semibold shadow-xs transition disabled:opacity-50"
                   >
                     {isSendingTest ? (
                       <>
@@ -732,7 +732,7 @@ export default function EmailSettingsPage() {
                       value={templateName}
                       onChange={(e) => setTemplateName(e.target.value)}
                       placeholder="e.g. Initial Pricing Proposal"
-                      className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                      className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
                     />
                   </div>
                   <div>
@@ -740,7 +740,7 @@ export default function EmailSettingsPage() {
                     <select
                       value={templateCategory}
                       onChange={(e) => setTemplateCategory(e.target.value as EmailTemplateCategory)}
-                      className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                      className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
                     >
                       {EMAIL_TEMPLATE_CATEGORIES.map((c) => (
                         <option key={c.id} value={c.id}>
@@ -761,7 +761,7 @@ export default function EmailSettingsPage() {
                     value={templateSubject}
                     onChange={(e) => setTemplateSubject(e.target.value)}
                     placeholder="Proposal for {{account.name}}"
-                    className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                    className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
                   />
                 </div>
 
@@ -775,7 +775,7 @@ export default function EmailSettingsPage() {
                     value={templateBody}
                     onChange={(e) => setTemplateBody(e.target.value)}
                     placeholder="Hi {{contact.first_name}},\n\nThank you for speaking with us today..."
-                    className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-xs font-mono text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                    className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-xs font-mono text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
                   />
                 </div>
 
@@ -785,7 +785,7 @@ export default function EmailSettingsPage() {
                       type="checkbox"
                       checked={templateIsShared}
                       onChange={(e) => setTemplateIsShared(e.target.checked)}
-                      className="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
+                      className="rounded border-slate-300 text-[#4361ee] focus:ring-[#4361ee]"
                     />
                     Share template with entire sales organization
                   </label>
@@ -801,7 +801,7 @@ export default function EmailSettingsPage() {
                     <button
                       type="submit"
                       disabled={isSavingTemplate}
-                      className="rounded-lg bg-emerald-600 px-4 py-1.5 text-xs font-semibold text-white shadow-xs hover:bg-emerald-700 transition"
+                      className="rounded-lg bg-[#4361ee] px-4 py-1.5 text-xs font-semibold text-white shadow-xs hover:bg-[#3a5bf0] transition"
                     >
                       {isSavingTemplate ? 'Saving...' : 'Save Template'}
                     </button>

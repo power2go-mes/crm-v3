@@ -287,7 +287,7 @@ ${inputsHtml}
                         <span
                           className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${
                             form.is_active
-                              ? 'bg-emerald-100 text-emerald-800'
+                              ? 'bg-[#eef2ff] text-[#4361ee]'
                               : 'bg-slate-100 text-slate-500'
                           }`}
                         >
@@ -323,7 +323,7 @@ ${inputsHtml}
                         className={`text-xs px-2.5 py-1.5 rounded-lg border font-medium transition ${
                           form.is_active
                             ? 'border-slate-200 text-slate-600 hover:bg-slate-100'
-                            : 'border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-100'
+                            : 'border-indigo-100 bg-[#eef2ff] text-[#4361ee] hover:bg-[#eef2ff]'
                         }`}
                       >
                         {form.is_active ? 'Deactivate' : 'Activate'}
@@ -474,7 +474,7 @@ ${inputsHtml}
               </div>
 
               {/* Code preview block */}
-              <div className="relative rounded-xl bg-slate-900 p-3 text-[11px] text-emerald-400 font-mono overflow-x-auto max-h-48 border border-slate-200">
+              <div className="relative rounded-xl bg-slate-900 p-3 text-[11px] text-[#4361ee] font-mono overflow-x-auto max-h-48 border border-slate-200">
                 <pre>{generateEmbedSnippet(selectedForm)}</pre>
               </div>
 

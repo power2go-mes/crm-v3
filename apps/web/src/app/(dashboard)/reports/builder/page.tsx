@@ -281,7 +281,7 @@ function CustomReportBuilderContent() {
 
         <div className="flex flex-wrap items-center gap-2">
           {savedSuccess && (
-            <span className="flex items-center gap-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+            <span className="flex items-center gap-1 text-xs font-semibold text-[#4361ee] dark:text-[#4361ee]">
               <Check className="h-4 w-4" /> Saved!
             </span>
           )}
@@ -302,7 +302,7 @@ function CustomReportBuilderContent() {
           <button
             onClick={handleSave}
             disabled={isSaving}
-            className="flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-emerald-600 disabled:opacity-50"
+            className="flex items-center gap-1.5 rounded-lg bg-[#4361ee] px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-[#4361ee] disabled:opacity-50"
           >
             <Save className="h-4 w-4" /> {isSaving ? 'Saving...' : 'Save Report'}
           </button>
@@ -326,7 +326,7 @@ function CustomReportBuilderContent() {
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="mt-1 w-full rounded-md border border-slate-300 px-3 py-1.5 text-xs focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
+                  className="mt-1 w-full rounded-md border border-slate-300 px-3 py-1.5 text-xs focus:border-indigo-100 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
                   placeholder="e.g. Q4 Stalled Enterprise Pipeline"
                 />
               </div>
@@ -338,7 +338,7 @@ function CustomReportBuilderContent() {
                   rows={2}
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  className="mt-1 w-full rounded-md border border-slate-300 px-3 py-1.5 text-xs focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
+                  className="mt-1 w-full rounded-md border border-slate-300 px-3 py-1.5 text-xs focus:border-indigo-100 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
                   placeholder="Short description of report purpose..."
                 />
               </div>
@@ -348,7 +348,7 @@ function CustomReportBuilderContent() {
                   id="is_shared"
                   checked={isShared}
                   onChange={(e) => setIsShared(e.target.checked)}
-                  className="h-4 w-4 rounded border-slate-300 text-emerald-800 focus:ring-emerald-500"
+                  className="h-4 w-4 rounded border-slate-300 text-[#4361ee] focus:ring-[#4361ee]"
                 />
                 <label htmlFor="is_shared" className="flex items-center gap-1 text-xs text-slate-700 dark:text-slate-300">
                   <Share2 className="h-3.5 w-3.5 text-slate-400" />
@@ -371,7 +371,7 @@ function CustomReportBuilderContent() {
                   onClick={() => handleModuleChange(mod.id)}
                   className={`rounded-lg border px-3 py-2 text-left text-xs font-medium transition-colors ${
                     primaryModule === mod.id
-                      ? 'border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-200 dark:bg-emerald-600/30 dark:text-emerald-600'
+                      ? 'border-indigo-100 bg-[#eef2ff] text-[#4361ee] dark:border-indigo-100 dark:bg-[#4361ee]/30 dark:text-[#4361ee]'
                       : 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700'
                   }`}
                 >
@@ -390,7 +390,7 @@ function CustomReportBuilderContent() {
               <button
                 type="button"
                 onClick={() => setSelectedColumns(availableColumns.map((c) => c.key))}
-                className="text-[11px] text-emerald-800 hover:underline dark:text-emerald-600"
+                className="text-[11px] text-[#4361ee] hover:underline dark:text-[#4361ee]"
               >
                 Select All
               </button>
@@ -408,7 +408,7 @@ function CustomReportBuilderContent() {
                       type="checkbox"
                       checked={checked}
                       onChange={() => toggleColumn(col.key)}
-                      className="h-3.5 w-3.5 rounded border-slate-300 text-emerald-800 focus:ring-emerald-500"
+                      className="h-3.5 w-3.5 rounded border-slate-300 text-[#4361ee] focus:ring-[#4361ee]"
                     />
                   </label>
                 );
@@ -440,7 +440,7 @@ function CustomReportBuilderContent() {
                         onClick={() => setChartType(ct.id as ReportChartType)}
                         className={`flex flex-col items-center gap-1 rounded-lg border p-2 text-center text-xs font-medium transition-colors ${
                           chartType === ct.id
-                            ? 'border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-200 dark:bg-emerald-600/30 dark:text-emerald-600'
+                            ? 'border-indigo-100 bg-[#eef2ff] text-[#4361ee] dark:border-indigo-100 dark:bg-[#4361ee]/30 dark:text-[#4361ee]'
                             : 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300'
                         }`}
                       >
@@ -460,7 +460,7 @@ function CustomReportBuilderContent() {
                   <select
                     value={groupByField}
                     onChange={(e) => setGroupByField(e.target.value)}
-                    className="mt-1 w-full rounded-md border border-slate-300 px-3 py-1.5 text-xs focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
+                    className="mt-1 w-full rounded-md border border-slate-300 px-3 py-1.5 text-xs focus:border-indigo-100 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
                   >
                     <option value="">None</option>
                     {availableColumns.map((col) => (
@@ -480,7 +480,7 @@ function CustomReportBuilderContent() {
                   <select
                     value={sortField}
                     onChange={(e) => setSortField(e.target.value)}
-                    className="mt-1 w-full rounded-md border border-slate-300 px-2 py-1.5 text-xs focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
+                    className="mt-1 w-full rounded-md border border-slate-300 px-2 py-1.5 text-xs focus:border-indigo-100 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
                   >
                     {availableColumns.map((col) => (
                       <option key={col.key} value={col.key}>
@@ -496,7 +496,7 @@ function CustomReportBuilderContent() {
                   <select
                     value={sortDirection}
                     onChange={(e) => setSortDirection(e.target.value as 'asc' | 'desc')}
-                    className="mt-1 w-full rounded-md border border-slate-300 px-2 py-1.5 text-xs focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
+                    className="mt-1 w-full rounded-md border border-slate-300 px-2 py-1.5 text-xs focus:border-indigo-100 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
                   >
                     <option value="desc">Descending (Z-A / Newest)</option>
                     <option value="asc">Ascending (A-Z / Oldest)</option>
@@ -515,7 +515,7 @@ function CustomReportBuilderContent() {
               <button
                 type="button"
                 onClick={addFilter}
-                className="flex items-center gap-1 text-[11px] font-medium text-emerald-800 hover:text-emerald-800 dark:text-emerald-600"
+                className="flex items-center gap-1 text-[11px] font-medium text-[#4361ee] hover:text-[#4361ee] dark:text-[#4361ee]"
               >
                 <Plus className="h-3 w-3" /> Add Filter
               </button>
@@ -576,7 +576,7 @@ function CustomReportBuilderContent() {
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="rounded bg-emerald-50 px-2 py-0.5 text-xs font-semibold uppercase tracking-wider text-emerald-800 dark:bg-emerald-600/40 dark:text-emerald-600">
+                  <span className="rounded bg-[#eef2ff] px-2 py-0.5 text-xs font-semibold uppercase tracking-wider text-[#4361ee] dark:bg-[#4361ee]/40 dark:text-[#4361ee]">
                     Live Preview
                   </span>
                   <span className="text-xs text-slate-500">
@@ -594,7 +594,7 @@ function CustomReportBuilderContent() {
                   disabled={isExecuting}
                   className="flex items-center gap-1 rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
                 >
-                  <Play className="h-3.5 w-3.5 text-emerald-600" />
+                  <Play className="h-3.5 w-3.5 text-[#4361ee]" />
                   {isExecuting ? 'Running...' : 'Re-run Query'}
                 </button>
               </div>
@@ -641,7 +641,7 @@ function CustomReportBuilderContent() {
                     </div>
                     <div className="mt-1 h-2 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
                       <div
-                        className="h-full bg-emerald-600 transition-all duration-300 dark:bg-emerald-600"
+                        className="h-full bg-[#4361ee] transition-all duration-300 dark:bg-[#4361ee]"
                         style={{ width: `${Math.min(item.percent, 100)}%` }}
                       />
                     </div>
@@ -659,7 +659,7 @@ function CustomReportBuilderContent() {
 
             {isExecuting && (
               <div className="flex h-48 items-center justify-center">
-                <div className="h-6 w-6 animate-spin rounded-full border-2 border-emerald-200 border-t-transparent" />
+                <div className="h-6 w-6 animate-spin rounded-full border-2 border-indigo-100 border-t-transparent" />
               </div>
             )}
 

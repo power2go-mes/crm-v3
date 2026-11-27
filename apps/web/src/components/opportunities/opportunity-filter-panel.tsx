@@ -80,7 +80,7 @@ export function OpportunityFilterPanel({
                   key={stg.id}
                   className={`flex items-center justify-between px-2.5 py-1.5 rounded border text-xs cursor-pointer transition ${
                     isChecked
-                      ? 'bg-emerald-50 border-emerald-200 text-emerald-800 font-medium'
+                      ? 'bg-[#eef2ff] border-indigo-100 text-[#4361ee] font-medium'
                       : 'border-slate-200 hover:bg-slate-50 text-slate-600'
                   }`}
                 >
@@ -89,7 +89,7 @@ export function OpportunityFilterPanel({
                       type="checkbox"
                       checked={isChecked}
                       onChange={() => toggleStage(stg.name)}
-                      className="rounded text-emerald-800 focus:ring-emerald-500 h-3.5 w-3.5"
+                      className="rounded text-[#4361ee] focus:ring-[#4361ee] h-3.5 w-3.5"
                     />
                     <span>{stg.name}</span>
                   </div>
@@ -111,7 +111,7 @@ export function OpportunityFilterPanel({
                   key={type.id}
                   className={`flex items-center gap-2 px-2.5 py-1.5 rounded border text-xs cursor-pointer transition ${
                     isChecked
-                      ? 'bg-emerald-50 border-emerald-200 text-emerald-800 font-medium'
+                      ? 'bg-[#eef2ff] border-indigo-100 text-[#4361ee] font-medium'
                       : 'border-slate-200 hover:bg-slate-50 text-slate-600'
                   }`}
                 >
@@ -119,7 +119,7 @@ export function OpportunityFilterPanel({
                     type="checkbox"
                     checked={isChecked}
                     onChange={() => toggleType(type.id)}
-                    className="rounded text-emerald-800 focus:ring-emerald-500 h-3.5 w-3.5"
+                    className="rounded text-[#4361ee] focus:ring-[#4361ee] h-3.5 w-3.5"
                   />
                   <span>{type.label}</span>
                 </label>
@@ -139,7 +139,7 @@ export function OpportunityFilterPanel({
                   key={src.id}
                   className={`flex items-center gap-2 px-2 py-1.5 rounded border text-xs cursor-pointer transition ${
                     isChecked
-                      ? 'bg-emerald-50 border-emerald-200 text-emerald-800 font-medium'
+                      ? 'bg-[#eef2ff] border-indigo-100 text-[#4361ee] font-medium'
                       : 'border-slate-200 hover:bg-slate-50 text-slate-600'
                   }`}
                 >
@@ -147,7 +147,7 @@ export function OpportunityFilterPanel({
                     type="checkbox"
                     checked={isChecked}
                     onChange={() => toggleSource(src.id)}
-                    className="rounded text-emerald-800 focus:ring-emerald-500 h-3.5 w-3.5"
+                    className="rounded text-[#4361ee] focus:ring-[#4361ee] h-3.5 w-3.5"
                   />
                   <span className="truncate">{src.label}</span>
                 </label>
@@ -171,7 +171,7 @@ export function OpportunityFilterPanel({
                 onChange={(e) =>
                   setLocalFilters({ ...localFilters, closeDateFrom: e.target.value || null })
                 }
-                className="w-full text-xs px-2 py-1.5 border border-slate-300 rounded bg-slate-50 text-slate-700 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full text-xs px-2 py-1.5 border border-slate-300 rounded bg-slate-50 text-slate-700 focus:bg-white focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               />
             </div>
             <div>
@@ -182,7 +182,7 @@ export function OpportunityFilterPanel({
                 onChange={(e) =>
                   setLocalFilters({ ...localFilters, closeDateTo: e.target.value || null })
                 }
-                className="w-full text-xs px-2 py-1.5 border border-slate-300 rounded bg-slate-50 text-slate-700 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full text-xs px-2 py-1.5 border border-slate-300 rounded bg-slate-50 text-slate-700 focus:bg-white focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               />
             </div>
           </div>
@@ -207,7 +207,7 @@ export function OpportunityFilterPanel({
                     minAmount: e.target.value ? Number(e.target.value) : null,
                   })
                 }
-                className="w-full text-xs px-2 py-1.5 border border-slate-300 rounded bg-slate-50 text-slate-700 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full text-xs px-2 py-1.5 border border-slate-300 rounded bg-slate-50 text-slate-700 focus:bg-white focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               />
             </div>
             <div>
@@ -222,7 +222,7 @@ export function OpportunityFilterPanel({
                     maxAmount: e.target.value ? Number(e.target.value) : null,
                   })
                 }
-                className="w-full text-xs px-2 py-1.5 border border-slate-300 rounded bg-slate-50 text-slate-700 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full text-xs px-2 py-1.5 border border-slate-300 rounded bg-slate-50 text-slate-700 focus:bg-white focus:outline-none focus:ring-1 focus:ring-[#4361ee]"
               />
             </div>
           </div>
@@ -266,7 +266,7 @@ export function OpportunityFilterPanel({
               onApplyFilters(localFilters);
               onClose();
             }}
-            className="flex items-center gap-1.5 px-4 py-1.5 bg-emerald-600 hover:bg-emerald-600 text-white font-medium rounded shadow-xs transition"
+            className="flex items-center gap-1.5 px-4 py-1.5 bg-[#4361ee] hover:bg-[#4361ee] text-white font-medium rounded shadow-xs transition"
           >
             <Check className="h-3.5 w-3.5" />
             <span>Apply</span>

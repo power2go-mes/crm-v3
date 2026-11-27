@@ -62,7 +62,7 @@ export function CampaignPipelineBar({
               ? 'bg-rose-100 text-rose-700 font-medium'
               : 'bg-[#d5e4fa] text-[#3777ee] font-medium';
           } else if (isCompleted) {
-            stageStyle = 'bg-[#def5df] text-[#22c55e] font-medium hover:bg-emerald-100';
+            stageStyle = 'bg-[#def5df] text-[#22c55e] font-medium hover:bg-[#eef2ff]';
           }
 
           return (
@@ -73,7 +73,7 @@ export function CampaignPipelineBar({
               onClick={() => handleStageClick(stage.id)}
               className={`flex-1 flex items-center justify-center gap-1.5 py-3 px-3 text-base transition cursor-pointer disabled:cursor-not-allowed [clip-path:polygon(0_0,calc(100%_-_24px)_0,100%_50%,calc(100%_-_24px)_100%,0_100%,24px_50%)] first:[clip-path:polygon(0_0,calc(100%_-_24px)_0,100%_50%,calc(100%_-_24px)_100%,0_100%)] ${stageStyle}`}
             >
-              {isCompleted ? <Check className="h-3.5 w-3.5 text-emerald-600" /> : null}
+              {isCompleted ? <Check className="h-3.5 w-3.5 text-[#4361ee]" /> : null}
               <span>{stage.name}</span>
             </button>
           );

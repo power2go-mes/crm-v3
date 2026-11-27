@@ -34,15 +34,15 @@ export default function SalesPerformancePage() {
   const getRoleBadgeColor = (roleId: string) => {
     switch (roleId) {
       case 'SUPER_ADMIN':
-        return 'bg-emerald-50 text-emerald-800 dark:bg-emerald-600/30 dark:text-emerald-600';
+        return 'bg-[#eef2ff] text-[#4361ee] dark:bg-[#4361ee]/30 dark:text-[#4361ee]';
       case 'HEAD_OF_SALES':
-        return 'bg-emerald-50 text-emerald-800 dark:bg-emerald-600/30 dark:text-emerald-600';
+        return 'bg-[#eef2ff] text-[#4361ee] dark:bg-[#4361ee]/30 dark:text-[#4361ee]';
       case 'RSM':
-        return 'bg-emerald-50 text-emerald-800 dark:bg-emerald-600/30 dark:text-emerald-600';
+        return 'bg-[#eef2ff] text-[#4361ee] dark:bg-[#4361ee]/30 dark:text-[#4361ee]';
       case 'SSM':
-        return 'bg-emerald-50 text-emerald-800 dark:bg-emerald-600/30 dark:text-emerald-600';
+        return 'bg-[#eef2ff] text-[#4361ee] dark:bg-[#4361ee]/30 dark:text-[#4361ee]';
       case 'ASM':
-        return 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300';
+        return 'bg-[#eef2ff] text-[#4361ee] dark:bg-emerald-900/30 dark:text-emerald-300';
       case 'BDO':
       default:
         return 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300';
@@ -50,15 +50,15 @@ export default function SalesPerformancePage() {
   };
 
   const getAttainmentColor = (pct: number) => {
-    if (pct >= 100) return 'text-emerald-600 dark:text-emerald-400';
-    if (pct >= 75) return 'text-emerald-800 dark:text-emerald-600';
+    if (pct >= 100) return 'text-[#4361ee] dark:text-[#4361ee]';
+    if (pct >= 75) return 'text-[#4361ee] dark:text-[#4361ee]';
     if (pct >= 50) return 'text-amber-600 dark:text-amber-400';
     return 'text-rose-600 dark:text-rose-400';
   };
 
   const getProgressBarColor = (pct: number) => {
-    if (pct >= 100) return 'bg-emerald-500';
-    if (pct >= 75) return 'bg-emerald-600';
+    if (pct >= 100) return 'bg-[#4361ee]';
+    if (pct >= 75) return 'bg-[#4361ee]';
     if (pct >= 50) return 'bg-amber-500';
     return 'bg-rose-500';
   };
@@ -76,7 +76,7 @@ export default function SalesPerformancePage() {
                 onClick={() => setPeriodType('monthly')}
                 className={`px-3 py-1.5 rounded-md font-semibold transition ${
                   periodType === 'monthly'
-                    ? 'bg-white text-emerald-800 shadow-xs dark:bg-slate-800 dark:text-emerald-600'
+                    ? 'bg-white text-[#4361ee] shadow-xs dark:bg-slate-800 dark:text-[#4361ee]'
                     : 'text-slate-600 hover:text-slate-900 '
                 }`}
               >
@@ -87,7 +87,7 @@ export default function SalesPerformancePage() {
                 onClick={() => setPeriodType('quarterly')}
                 className={`px-3 py-1.5 rounded-md font-semibold transition ${
                   periodType === 'quarterly'
-                    ? 'bg-white text-emerald-800 shadow-xs dark:bg-slate-800 dark:text-emerald-600'
+                    ? 'bg-white text-[#4361ee] shadow-xs dark:bg-slate-800 dark:text-[#4361ee]'
                     : 'text-slate-600 hover:text-slate-900 '
                 }`}
               >
@@ -97,7 +97,7 @@ export default function SalesPerformancePage() {
 
             <Link
               href="/settings/sales-targets"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-semibold shadow-xs transition dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#4361ee] hover:bg-[#3a5bf0] text-white rounded-lg text-xs font-semibold shadow-xs transition dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white"
             >
               <Target className="h-3.5 w-3.5" />
               <span>Manage Quotas</span>
@@ -109,7 +109,7 @@ export default function SalesPerformancePage() {
       <PermissionGate action="sales_performance.view" showAccessDenied>
         {isLoading && (
           <div className="flex h-64 items-center justify-center">
-            <div className="h-8 w-8 animate-spin rounded-full border-4 border-emerald-200 border-t-transparent" />
+            <div className="h-8 w-8 animate-spin rounded-full border-4 border-indigo-100 border-t-transparent" />
           </div>
         )}
 
@@ -131,7 +131,7 @@ export default function SalesPerformancePage() {
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 lg:grid-cols-4">
               <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
                 <span className="text-xs font-medium text-slate-500">Total Closed Won</span>
-                <p className="mt-1 text-2xl font-bold text-emerald-600 dark:text-emerald-400">
+                <p className="mt-1 text-2xl font-bold text-[#4361ee] dark:text-[#4361ee]">
                   ${performance.totalTeamWon.toLocaleString()}
                 </p>
                 <span className="text-xs text-slate-400">
@@ -162,7 +162,7 @@ export default function SalesPerformancePage() {
 
               <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
                 <span className="text-xs font-medium text-slate-500">Open Pipeline</span>
-                <p className="mt-1 text-2xl font-bold text-emerald-800 dark:text-emerald-600">
+                <p className="mt-1 text-2xl font-bold text-[#4361ee] dark:text-[#4361ee]">
                   ${performance.totalOpenPipeline.toLocaleString()}
                 </p>
                 <span className="text-xs text-slate-400">Supporting remaining target</span>
@@ -175,7 +175,7 @@ export default function SalesPerformancePage() {
                 <select
                   value={selectedRole}
                   onChange={(e) => setSelectedRole(e.target.value)}
-                  className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
+                  className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs shadow-sm focus:border-indigo-100 focus:outline-none dark:border-slate-700 dark:bg-slate-800"
                 >
                   <option value="all">All Roles in Hierarchy</option>
                   <option value="HEAD_OF_SALES">Head of Sales</option>
@@ -190,7 +190,7 @@ export default function SalesPerformancePage() {
                   placeholder="Filter representative..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  className="rounded-lg border border-slate-300 px-3 py-1.5 text-xs shadow-sm focus:border-emerald-200 focus:outline-none dark:border-slate-700 dark:bg-slate-800 sm:w-64"
+                  className="rounded-lg border border-slate-300 px-3 py-1.5 text-xs shadow-sm focus:border-indigo-100 focus:outline-none dark:border-slate-700 dark:bg-slate-800 sm:w-64"
                 />
               </div>
 
@@ -203,7 +203,7 @@ export default function SalesPerformancePage() {
                 </button>
                 <button
                   onClick={() => exportLeaderboardToCSV(filteredReps)}
-                  className="rounded-lg bg-emerald-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-emerald-600"
+                  className="rounded-lg bg-[#4361ee] px-3 py-1.5 text-xs font-medium text-white hover:bg-[#4361ee]"
                 >
                   ↓ Export Leaderboard
                 </button>
@@ -267,7 +267,7 @@ export default function SalesPerformancePage() {
                     id: 'wonRevenue',
                     header: 'Closed Won',
                     cell: (r) => (
-                      <span className="font-semibold text-emerald-600 dark:text-emerald-400">
+                      <span className="font-semibold text-[#4361ee] dark:text-[#4361ee]">
                         ${r.wonRevenue.toLocaleString()}
                         <span className="ml-1 text-xs text-slate-400 font-normal">
                           ({r.wonDealsCount} won)

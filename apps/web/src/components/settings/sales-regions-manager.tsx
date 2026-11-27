@@ -79,7 +79,7 @@ export function SalesRegionsManager() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-white border border-slate-200 rounded-xl shadow-xs">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-lg bg-emerald-50 text-emerald-600 border border-emerald-200">
+          <div className="p-2.5 rounded-lg bg-[#eef2ff] text-[#4361ee] border border-indigo-100">
             <MapPin className="h-5 w-5" />
           </div>
           <div>
@@ -94,7 +94,7 @@ export function SalesRegionsManager() {
           <button
             type="button"
             onClick={() => setIsCreating(!isCreating)}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-semibold shadow-xs transition"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#4361ee] hover:bg-[#3a5bf0] text-white rounded-lg text-xs font-semibold shadow-xs transition"
           >
             <Plus className="h-3.5 w-3.5" />
             <span>Add Sales Region</span>
@@ -129,7 +129,7 @@ export function SalesRegionsManager() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="e.g. Asia Pacific or Western Territory"
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-xs text-slate-900 focus:outline-hidden focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-xs text-slate-900 focus:outline-hidden focus:border-[#4361ee] focus:ring-1 focus:ring-[#4361ee]"
               />
             </div>
             <div>
@@ -143,7 +143,7 @@ export function SalesRegionsManager() {
                 value={code}
                 onChange={(e) => setCode(e.target.value)}
                 placeholder="e.g. APAC, NA-WEST, EMEA"
-                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-xs text-slate-900 uppercase focus:outline-hidden focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-xs text-slate-900 uppercase focus:outline-hidden focus:border-[#4361ee] focus:ring-1 focus:ring-[#4361ee]"
               />
             </div>
           </div>
@@ -161,7 +161,7 @@ export function SalesRegionsManager() {
             <button
               type="submit"
               disabled={createMutation.isPending}
-              className="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold rounded-lg shadow-xs disabled:opacity-50 transition"
+              className="px-4 py-1.5 bg-[#4361ee] hover:bg-[#3a5bf0] text-white text-xs font-semibold rounded-lg shadow-xs disabled:opacity-50 transition"
             >
               {createMutation.isPending ? 'Saving...' : 'Save Region'}
             </button>
@@ -207,7 +207,7 @@ export function SalesRegionsManager() {
                 <span
                   className={`inline-flex items-center gap-1 text-[11px] font-bold uppercase px-2 py-0.5 rounded ${
                     reg.is_active
-                      ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                      ? 'bg-[#eef2ff] text-[#4361ee] border border-indigo-100'
                       : 'bg-slate-100 text-slate-600 border border-slate-200'
                   }`}
                 >

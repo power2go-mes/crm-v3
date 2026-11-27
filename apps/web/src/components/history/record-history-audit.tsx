@@ -65,7 +65,7 @@ export function RecordHistoryAudit({ module, recordId }: RecordHistoryAuditProps
           </h3>
         </div>
         <div className="flex items-center gap-1.5 text-[11px] text-slate-500">
-          <ShieldCheck className="h-3.5 w-3.5 text-emerald-500" />
+          <ShieldCheck className="h-3.5 w-3.5 text-[#4361ee]" />
           <span>Immutable System Audit Trail</span>
         </div>
       </div>
@@ -96,10 +96,10 @@ export function RecordHistoryAudit({ module, recordId }: RecordHistoryAuditProps
         {history.map((item) => {
           const actionBadgeColor =
             item.action === 'create'
-              ? 'bg-emerald-950/60 text-emerald-400 border-emerald-800'
+              ? 'bg-emerald-950/60 text-[#4361ee] border-emerald-800'
               : item.action === 'delete'
                 ? 'bg-red-950/60 text-red-400 border-red-800'
-                : 'bg-emerald-600/60 text-emerald-600 border-emerald-200';
+                : 'bg-[#4361ee]/60 text-[#4361ee] border-indigo-100';
 
           return (
             <div
@@ -137,7 +137,7 @@ export function RecordHistoryAudit({ module, recordId }: RecordHistoryAuditProps
                         className="p-2.5 rounded-lg bg-slate-50 border border-slate-200 flex flex-wrap items-center justify-between gap-2 text-xs"
                       >
                         <div className="flex items-center gap-1.5 font-medium text-slate-300">
-                          <Tag className="h-3.5 w-3.5 text-emerald-600" />
+                          <Tag className="h-3.5 w-3.5 text-[#4361ee]" />
                           <span>{ch.label || ch.field}</span>
                         </div>
                         <div className="flex items-center gap-2 text-xs">

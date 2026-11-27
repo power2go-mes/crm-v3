@@ -89,7 +89,7 @@ export function CampaignKanbanBoard({
       {/* Board Summary */}
       <div className="flex flex-wrap items-center justify-between gap-3 px-1">
         <div className="flex items-center gap-2">
-          <div className="flex items-center justify-center h-7 w-7 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+          <div className="flex items-center justify-center h-7 w-7 rounded-lg bg-[#eef2ff] text-[#4361ee] border border-indigo-100/60">
             <Layers className="h-3.5 w-3.5" />
           </div>
           <div>
@@ -107,7 +107,7 @@ export function CampaignKanbanBoard({
         {totalExpectedRevenue > 0 && (
           <div className="flex items-center gap-2 px-3 py-1 bg-white rounded-full border border-slate-200/80 shadow-2xs text-xs font-semibold text-slate-700">
             <span className="text-slate-400 uppercase text-[10px] tracking-wide font-bold">Total Expected Revenue:</span>
-            <span className="text-emerald-600 font-bold">
+            <span className="text-[#4361ee] font-bold">
               ${(totalExpectedRevenue / 1000).toLocaleString(undefined, { maximumFractionDigits: 1 })}k
             </span>
           </div>
@@ -152,7 +152,7 @@ export function CampaignKanbanBoard({
                   </div>
 
                   {statusRevenue > 0 && (
-                    <span className="text-[11px] font-bold text-emerald-600 shrink-0">
+                    <span className="text-[11px] font-bold text-[#4361ee] shrink-0">
                       ${(statusRevenue / 1000).toFixed(0)}k
                     </span>
                   )}
@@ -185,19 +185,19 @@ export function CampaignKanbanBoard({
                         }}
                         className={`group relative p-3.5 bg-white hover:bg-slate-50/50 border rounded-xl shadow-xs hover:shadow-md transition-all duration-150 cursor-pointer flex flex-col gap-2.5 ${
                           isSelected
-                            ? 'border-emerald-500 ring-2 ring-emerald-500/10'
-                            : 'border-slate-200/80 hover:border-emerald-400'
+                            ? 'border-[#4361ee] ring-2 ring-[#4361ee]/10'
+                            : 'border-slate-200/80 hover:border-indigo-300'
                         }`}
                       >
                         <div className="flex items-start justify-between gap-1.5">
                           <Link
                             href={`/campaigns/${camp.id}`}
                             onClick={(e) => e.stopPropagation()}
-                            className="font-bold text-sm text-slate-900 group-hover:text-emerald-700 transition line-clamp-1 flex items-center gap-1.5 flex-1 min-w-0"
+                            className="font-bold text-sm text-slate-900 group-hover:text-[#4361ee] transition line-clamp-1 flex items-center gap-1.5 flex-1 min-w-0"
                             title={camp.campaign_name}
                           >
                             <span className="truncate">{camp.campaign_name}</span>
-                            <ArrowRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity shrink-0 text-emerald-600" />
+                            <ArrowRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity shrink-0 text-[#4361ee]" />
                           </Link>
 
                           {camp.campaign_type && (
@@ -221,8 +221,8 @@ export function CampaignKanbanBoard({
                         {/* Footer */}
                         <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs gap-2">
                           {formattedRev ? (
-                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md font-bold text-emerald-700 bg-emerald-50/80 border border-emerald-200/60 text-[11px]">
-                              <DollarSign className="h-3 w-3 -mr-0.5 text-emerald-600" />
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md font-bold text-[#4361ee] bg-[#eef2ff]/80 border border-indigo-100/60 text-[11px]">
+                              <DollarSign className="h-3 w-3 -mr-0.5 text-[#4361ee]" />
                               {formattedRev} exp
                             </span>
                           ) : (

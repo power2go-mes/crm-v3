@@ -106,15 +106,15 @@ export default function SalesTargetsPage() {
   const getRoleBadgeColor = (roleId: string) => {
     switch (roleId) {
       case 'SUPER_ADMIN':
-        return 'bg-emerald-50 text-emerald-800 dark:bg-emerald-600/30 dark:text-emerald-600';
+        return 'bg-[#eef2ff] text-[#4361ee] dark:bg-[#4361ee]/30 dark:text-[#4361ee]';
       case 'HEAD_OF_SALES':
-        return 'bg-emerald-50 text-emerald-800 dark:bg-emerald-600/30 dark:text-emerald-600';
+        return 'bg-[#eef2ff] text-[#4361ee] dark:bg-[#4361ee]/30 dark:text-[#4361ee]';
       case 'RSM':
-        return 'bg-emerald-50 text-emerald-800 dark:bg-emerald-600/30 dark:text-emerald-600';
+        return 'bg-[#eef2ff] text-[#4361ee] dark:bg-[#4361ee]/30 dark:text-[#4361ee]';
       case 'SSM':
-        return 'bg-emerald-50 text-emerald-800 dark:bg-emerald-600/30 dark:text-emerald-600';
+        return 'bg-[#eef2ff] text-[#4361ee] dark:bg-[#4361ee]/30 dark:text-[#4361ee]';
       case 'ASM':
-        return 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300';
+        return 'bg-[#eef2ff] text-[#4361ee] dark:bg-emerald-900/30 dark:text-emerald-300';
       case 'BDO':
       default:
         return 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300';
@@ -124,10 +124,10 @@ export default function SalesTargetsPage() {
   return (
     <PageContainer>
       <div className="flex items-center justify-between mb-2 text-xs">
-        <Link href="/settings" className="text-slate-500 hover:text-emerald-800 transition flex items-center gap-1">
+        <Link href="/settings" className="text-slate-500 hover:text-[#4361ee] transition flex items-center gap-1">
           <span>Settings</span>
           <span>›</span>
-          <span className="text-emerald-800 font-medium">Sales Targets &amp; Quotas</span>
+          <span className="text-[#4361ee] font-medium">Sales Targets &amp; Quotas</span>
         </Link>
       </div>
 
@@ -139,7 +139,7 @@ export default function SalesTargetsPage() {
             <button
               onClick={handleSaveAll}
               disabled={Object.keys(editingQuotas).length === 0 || upsertMutation.isPending}
-              className="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-600 hover:bg-emerald-600 text-white rounded-lg text-xs font-semibold shadow-xs transition disabled:opacity-50"
+              className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#4361ee] hover:bg-[#4361ee] text-white rounded-lg text-xs font-semibold shadow-xs transition disabled:opacity-50"
             >
               <Save className="h-3.5 w-3.5" />
               <span>
@@ -163,7 +163,7 @@ export default function SalesTargetsPage() {
                 onClick={() => setPeriodType('monthly')}
                 className={`px-3 py-1.5 rounded-md text-xs font-semibold transition ${
                   periodType === 'monthly'
-                    ? 'bg-white text-emerald-800 shadow-xs dark:bg-slate-800 dark:text-emerald-600'
+                    ? 'bg-white text-[#4361ee] shadow-xs dark:bg-slate-800 dark:text-[#4361ee]'
                     : 'text-slate-600 hover:text-slate-900 '
                 }`}
               >
@@ -174,7 +174,7 @@ export default function SalesTargetsPage() {
                 onClick={() => setPeriodType('quarterly')}
                 className={`px-3 py-1.5 rounded-md text-xs font-semibold transition ${
                   periodType === 'quarterly'
-                    ? 'bg-white text-emerald-800 shadow-xs dark:bg-slate-800 dark:text-emerald-600'
+                    ? 'bg-white text-[#4361ee] shadow-xs dark:bg-slate-800 dark:text-[#4361ee]'
                     : 'text-slate-600 hover:text-slate-900 '
                 }`}
               >
@@ -240,8 +240,8 @@ export default function SalesTargetsPage() {
 
         {/* Feedback Alerts */}
         {saveSuccess && (
-          <div className="mb-4 p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-800 flex items-center gap-2 dark:bg-emerald-950/40 dark:border-emerald-900 dark:text-emerald-300">
-            <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600" />
+          <div className="mb-4 p-3 bg-[#eef2ff] border border-indigo-100 rounded-xl text-xs text-[#4361ee] flex items-center gap-2 dark:bg-emerald-950/40 dark:border-emerald-900 dark:text-emerald-300">
+            <CheckCircle2 className="h-4 w-4 shrink-0 text-[#4361ee]" />
             <span>Sales quotas successfully updated and synced with forecast leaderboards.</span>
           </div>
         )}
@@ -275,7 +275,7 @@ export default function SalesTargetsPage() {
 
           <div className="p-4 bg-white border border-slate-200 rounded-xl shadow-xs">
             <span className="text-xs text-slate-500 font-medium">Total Team Quota</span>
-            <p className="mt-1 text-lg font-bold text-emerald-800 dark:text-emerald-600">
+            <p className="mt-1 text-lg font-bold text-[#4361ee] dark:text-[#4361ee]">
               ${(performance?.totalTeamQuota || 0).toLocaleString()}
             </p>
             <span className="text-[11px] text-slate-400">
@@ -285,7 +285,7 @@ export default function SalesTargetsPage() {
 
           <div className="p-4 bg-white border border-slate-200 rounded-xl shadow-xs">
             <span className="text-xs text-slate-500 font-medium">Closed Won Revenue</span>
-            <p className="mt-1 text-lg font-bold text-emerald-600 dark:text-emerald-400">
+            <p className="mt-1 text-lg font-bold text-[#4361ee] dark:text-[#4361ee]">
               ${(performance?.totalTeamWon || 0).toLocaleString()}
             </p>
             <span className="text-[11px] text-slate-400">No double-counting splits</span>
@@ -293,7 +293,7 @@ export default function SalesTargetsPage() {
 
           <div className="p-4 bg-white border border-slate-200 rounded-xl shadow-xs">
             <span className="text-xs text-slate-500 font-medium">Overall Attainment</span>
-            <p className="mt-1 text-lg font-bold text-emerald-800 dark:text-emerald-600">
+            <p className="mt-1 text-lg font-bold text-[#4361ee] dark:text-[#4361ee]">
               {performance?.overallAttainment || 0}%
             </p>
             <span className="text-[11px] text-slate-400">Total won vs quota pacing</span>
@@ -342,7 +342,7 @@ export default function SalesTargetsPage() {
                       <tr
                         key={rep.id}
                         className={`hover:bg-slate-50/70 transition dark:hover:bg-slate-800/40 ${
-                          isDirty ? 'bg-emerald-50/40 dark:bg-emerald-600/20' : ''
+                          isDirty ? 'bg-[#eef2ff]/40 dark:bg-[#4361ee]/20' : ''
                         }`}
                       >
                         <td className="py-3 px-4">
@@ -369,7 +369,7 @@ export default function SalesTargetsPage() {
                           {rep.managerName || <span className="text-slate-400 italic">None</span>}
                         </td>
 
-                        <td className="py-3 px-4 font-semibold text-emerald-600 dark:text-emerald-400">
+                        <td className="py-3 px-4 font-semibold text-[#4361ee] dark:text-[#4361ee]">
                           ${rep.wonRevenue.toLocaleString()}
                         </td>
 
@@ -382,7 +382,7 @@ export default function SalesTargetsPage() {
                                   ${currentQuota.toLocaleString()}
                                 </span>
                                 {rep.quotaId ? (
-                                  <span className="text-[10px] text-emerald-600 bg-emerald-50 dark:bg-emerald-950/40 dark:text-emerald-400 px-1.5 py-0.5 rounded border border-emerald-200 dark:border-emerald-900 font-medium">
+                                  <span className="text-[10px] text-[#4361ee] bg-[#eef2ff] dark:bg-emerald-950/40 dark:text-[#4361ee] px-1.5 py-0.5 rounded border border-indigo-100 dark:border-emerald-900 font-medium">
                                     Saved
                                   </span>
                                 ) : (
@@ -404,19 +404,19 @@ export default function SalesTargetsPage() {
                                   onChange={(e) =>
                                     handleQuotaChange(rep.id, Number(e.target.value) || 0)
                                   }
-                                  className={`w-full px-2.5 py-1 text-xs rounded-lg border bg-white dark:bg-slate-800 text-slate-900  font-medium focus:ring-1 focus:ring-emerald-500 ${
+                                  className={`w-full px-2.5 py-1 text-xs rounded-lg border bg-white dark:bg-slate-800 text-slate-900  font-medium focus:ring-1 focus:ring-[#4361ee] ${
                                     isDirty
-                                      ? 'border-emerald-200 ring-1 ring-blue-500'
+                                      ? 'border-indigo-100 ring-1 ring-blue-500'
                                       : 'border-slate-300 dark:border-slate-700'
                                   }`}
                                 />
                               </div>
                               {isDirty ? (
-                                <span className="text-[10px] text-emerald-800 bg-emerald-50 dark:bg-emerald-600/40 dark:text-emerald-600 px-1.5 py-0.5 rounded border border-emerald-200 dark:border-emerald-200 font-medium shrink-0">
+                                <span className="text-[10px] text-[#4361ee] bg-[#eef2ff] dark:bg-[#4361ee]/40 dark:text-[#4361ee] px-1.5 py-0.5 rounded border border-indigo-100 dark:border-indigo-100 font-medium shrink-0">
                                   Staged
                                 </span>
                               ) : rep.quotaId ? (
-                                <span className="text-[10px] text-emerald-600 bg-emerald-50 dark:bg-emerald-950/40 dark:text-emerald-400 px-1.5 py-0.5 rounded border border-emerald-200 dark:border-emerald-900 font-medium shrink-0">
+                                <span className="text-[10px] text-[#4361ee] bg-[#eef2ff] dark:bg-emerald-950/40 dark:text-[#4361ee] px-1.5 py-0.5 rounded border border-indigo-100 dark:border-emerald-900 font-medium shrink-0">
                                   Saved
                                 </span>
                               ) : (
@@ -433,9 +433,9 @@ export default function SalesTargetsPage() {
                             <span
                               className={`font-bold ${
                                 calculatedAttainment >= 100
-                                  ? 'text-emerald-600 dark:text-emerald-400'
+                                  ? 'text-[#4361ee] dark:text-[#4361ee]'
                                   : calculatedAttainment >= 75
-                                  ? 'text-emerald-800 dark:text-emerald-600'
+                                  ? 'text-[#4361ee] dark:text-[#4361ee]'
                                   : calculatedAttainment >= 50
                                   ? 'text-amber-600 dark:text-amber-400'
                                   : 'text-rose-600 dark:text-rose-400'
@@ -447,9 +447,9 @@ export default function SalesTargetsPage() {
                               <div
                                 className={`h-full rounded-full ${
                                   calculatedAttainment >= 100
-                                    ? 'bg-emerald-500'
+                                    ? 'bg-[#4361ee]'
                                     : calculatedAttainment >= 75
-                                    ? 'bg-emerald-600'
+                                    ? 'bg-[#4361ee]'
                                     : calculatedAttainment >= 50
                                     ? 'bg-amber-500'
                                     : 'bg-rose-500'

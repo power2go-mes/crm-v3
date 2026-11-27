@@ -56,7 +56,7 @@ export function RecordDuplicatesDrawer({
           {/* Header */}
           <div className="p-5 border-b border-slate-200 flex items-center justify-between bg-slate-50">
             <div className="flex items-center gap-2.5">
-              <div className="p-2 bg-emerald-50 text-emerald-800 rounded-xl dark:bg-emerald-600/40 dark:text-emerald-600">
+              <div className="p-2 bg-[#eef2ff] text-[#4361ee] rounded-xl dark:bg-[#4361ee]/40 dark:text-[#4361ee]">
                 <GitMerge className="h-4 w-4" />
               </div>
               <div>
@@ -80,12 +80,12 @@ export function RecordDuplicatesDrawer({
           <div className="p-5 flex-1 overflow-y-auto space-y-4">
             {isLoading ? (
               <div className="py-12 text-center space-y-3">
-                <div className="h-6 w-6 border-2 border-emerald-200 border-t-transparent rounded-full animate-spin mx-auto" />
+                <div className="h-6 w-6 border-2 border-indigo-100 border-t-transparent rounded-full animate-spin mx-auto" />
                 <p className="text-xs text-slate-500">Scanning matching rules against database...</p>
               </div>
             ) : candidates.length === 0 ? (
               <div className="py-12 text-center space-y-2">
-                <CheckCircle2 className="h-8 w-8 text-emerald-500 mx-auto" />
+                <CheckCircle2 className="h-8 w-8 text-[#4361ee] mx-auto" />
                 <h4 className="text-sm font-semibold text-slate-800">
                   No Potential Duplicates Found
                 </h4>
@@ -136,7 +136,7 @@ export function RecordDuplicatesDrawer({
                     <button
                       type="button"
                       onClick={() => setSelectedCandidate(cand)}
-                      className="w-full mt-2 inline-flex items-center justify-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-600 text-white rounded-lg text-xs font-semibold shadow-xs transition"
+                      className="w-full mt-2 inline-flex items-center justify-center gap-1.5 px-3 py-1.5 bg-[#4361ee] hover:bg-[#4361ee] text-white rounded-lg text-xs font-semibold shadow-xs transition"
                     >
                       <GitMerge className="h-3.5 w-3.5" />
                       <span>Review &amp; Merge</span>

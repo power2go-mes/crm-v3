@@ -22,7 +22,7 @@ export function LoginHistory({ team = false, userId }: { team?: boolean; userId?
   const columns: ColumnDef<HistoryRow>[] = [
     { id: 'browser', header: 'Browser', width: '250px', cell: row => <span title={row.user_agent ?? undefined}>{browserLabel(row.user_agent)}</span> },
     { id: 'login_at', header: 'Login Time', width: '125px', cell: row => formatLoginTime(row.login_at) },
-    { id: 'active', header: 'Is Active', width: '80px', cell: row => <span role="img" aria-label={sessionIsActive(row) ? 'Active' : 'Inactive'}>{sessionIsActive(row) ? <CheckCircle className="h-4 w-4 text-green-600" aria-hidden="true" /> : <XCircle className="h-4 w-4 text-red-600" aria-hidden="true" />}</span> },
+    { id: 'active', header: 'Is Active', width: '80px', cell: row => <span role="img" aria-label={sessionIsActive(row) ? 'Active' : 'Inactive'}>{sessionIsActive(row) ? <CheckCircle className="h-4 w-4 text-[#4361ee]" aria-hidden="true" /> : <XCircle className="h-4 w-4 text-red-600" aria-hidden="true" />}</span> },
     { id: 'ip', header: 'IP', width: '100px', accessorKey: 'ip' },
     { id: 'status', header: 'Status', width: '100px', cell: row => sessionIsActive(row) ? 'Login' : 'Logout' },
   ];

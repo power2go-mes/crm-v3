@@ -75,8 +75,8 @@ export default function DepartmentsPage() {
     </div> },
   ];
   return <PageContainer>
-    <Link href="/settings" className="text-sm text-emerald-800">Settings</Link>
-    <PageHeader title="Departments" subtitle="Organize employees into departments across your company." actions={!trash && hasPermission('departments.create') ? <button className="rounded bg-emerald-600 px-4 py-2 text-white" onClick={e => open(null, e.currentTarget)}><Plus className="mr-1 inline h-4 w-4" />New</button> : undefined} />
+    <Link href="/settings" className="text-sm text-[#4361ee]">Settings</Link>
+    <PageHeader title="Departments" subtitle="Organize employees into departments across your company." actions={!trash && hasPermission('departments.create') ? <button className="rounded bg-[#4361ee] px-4 py-2 text-white" onClick={e => open(null, e.currentTarget)}><Plus className="mr-1 inline h-4 w-4" />New</button> : undefined} />
     <PermissionGate action="departments.view" showAccessDenied>
       <div className="mb-4 flex flex-wrap items-center gap-3">
         <label className="text-sm">Search <input className="rounded border p-2" value={search} onChange={e => { setSearch(e.target.value); setPage(1); }} /></label>
@@ -95,7 +95,7 @@ export default function DepartmentsPage() {
         <label className="mb-4 block text-sm">Department Name <span aria-hidden="true">*</span><input autoFocus required maxLength={50} value={name} onChange={e => setName(e.target.value)} className="mt-1 block w-full rounded border p-2" /></label>
         <label className="mb-4 block text-sm">Description<textarea value={description} onChange={e => setDescription(e.target.value)} className="mt-1 block w-full rounded border p-2" /></label>
         {save.error && <p role="alert" className="text-red-700">{save.error.message}</p>}
-        <div className="mt-5 flex justify-end gap-3"><button type="button" disabled={save.isPending} onClick={close}>Cancel</button>{editing === null && <button type="submit" value="new" disabled={save.isPending || !name.trim()} className="rounded border border-emerald-200 px-4 py-2 text-emerald-800">Save &amp; New</button>}<button type="submit" value="save" disabled={save.isPending || !name.trim()} className="rounded bg-emerald-600 px-4 py-2 text-white">{save.isPending ? 'Saving…' : 'Save'}</button></div>
+        <div className="mt-5 flex justify-end gap-3"><button type="button" disabled={save.isPending} onClick={close}>Cancel</button>{editing === null && <button type="submit" value="new" disabled={save.isPending || !name.trim()} className="rounded border border-indigo-100 px-4 py-2 text-[#4361ee]">Save &amp; New</button>}<button type="submit" value="save" disabled={save.isPending || !name.trim()} className="rounded bg-[#4361ee] px-4 py-2 text-white">{save.isPending ? 'Saving…' : 'Save'}</button></div>
       </form>
     </dialog>
   </PageContainer>;

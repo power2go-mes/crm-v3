@@ -107,7 +107,7 @@ export default function McpSettingsPage() {
             disabled={isGenerating || isLoading}
             className="inline-flex items-center gap-2 px-4 py-2.5 bg-white text-slate-900 hover:bg-slate-100 rounded-xl font-bold text-xs shadow-sm transition disabled:opacity-50 shrink-0 cursor-pointer"
           >
-            <RotateCw className={`h-4 w-4 text-emerald-600 ${isGenerating ? 'animate-spin' : ''}`} />
+            <RotateCw className={`h-4 w-4 text-[#4361ee] ${isGenerating ? 'animate-spin' : ''}`} />
             <span>{token ? 'Rotate MCP Token' : 'Generate MCP Token'}</span>
           </button>
         </div>
@@ -123,7 +123,7 @@ export default function McpSettingsPage() {
         <div className="rounded-2xl border border-slate-200/80 bg-white p-6 shadow-xs space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <div className="h-8 w-8 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200/60 flex items-center justify-center">
+              <div className="h-8 w-8 rounded-lg bg-[#eef2ff] text-[#4361ee] border border-indigo-100/60 flex items-center justify-center">
                 <Key className="h-4 w-4" />
               </div>
               <div>
@@ -142,7 +142,7 @@ export default function McpSettingsPage() {
             </div>
 
             {token && (
-              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[#eef2ff] text-[#4361ee] border border-indigo-100/60">
                 <ShieldCheck className="h-3 w-3" />
                 Active
               </span>
@@ -161,7 +161,7 @@ export default function McpSettingsPage() {
                 <button
                   type="button"
                   onClick={() => copyToClipboard(token, 'token')}
-                  className="absolute right-1.5 top-1.5 inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs shadow-2xs transition cursor-pointer"
+                  className="absolute right-1.5 top-1.5 inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-[#4361ee] hover:bg-[#3a5bf0] text-white font-semibold text-xs shadow-2xs transition cursor-pointer"
                 >
                   {copiedToken ? (
                     <>
@@ -179,14 +179,14 @@ export default function McpSettingsPage() {
 
               <div className="flex flex-wrap items-center justify-between gap-2 pt-2 text-xs text-slate-500 border-t border-slate-100">
                 <div className="flex items-center gap-1.5 text-slate-600">
-                  <ShieldCheck className="h-4 w-4 text-emerald-600" />
+                  <ShieldCheck className="h-4 w-4 text-[#4361ee]" />
                   <span>Bound to: <strong className="text-slate-800">{user?.email}</strong></span>
                 </div>
                 <button
                   type="button"
                   onClick={handleGenerateToken}
                   disabled={isGenerating}
-                  className="text-xs text-slate-600 hover:text-emerald-700 font-semibold underline underline-offset-2 transition"
+                  className="text-xs text-slate-600 hover:text-[#4361ee] font-semibold underline underline-offset-2 transition"
                 >
                   Rotate this token now
                 </button>
@@ -198,7 +198,7 @@ export default function McpSettingsPage() {
                 <Key className="h-5 w-5" />
               </div>
               <p className="text-xs text-slate-600 font-medium">
-                Click <strong className="text-emerald-700">Generate MCP Token</strong> above to generate a secure agent credential.
+                Click <strong className="text-[#4361ee]">Generate MCP Token</strong> above to generate a secure agent credential.
               </p>
             </div>
           )}
@@ -226,7 +226,7 @@ export default function McpSettingsPage() {
             >
               {copiedConfig ? (
                 <>
-                  <Check className="h-3.5 w-3.5 text-emerald-600" />
+                  <Check className="h-3.5 w-3.5 text-[#4361ee]" />
                   <span>Config Copied!</span>
                 </>
               ) : (

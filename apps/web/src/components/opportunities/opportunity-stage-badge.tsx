@@ -16,23 +16,22 @@ export function OpportunityStageBadge({ stage, className = '' }: OpportunityStag
   const isWon = norm === 'closed_won';
   const isLost = norm === 'closed_lost';
 
-  // Strict Tri-Color Design: White base (60%) + Green (30%) + Orange (10%)
-  // Text remains dark slate/black for high contrast readability
-  let style = 'bg-white text-emerald-800 border-emerald-300';
+  // CRMHUB Blue Color System
+  let style = 'bg-[#f8faff] text-[#4361ee] border-indigo-100';
   if (isWon) {
-    style = 'bg-emerald-600 text-white border-emerald-600 font-bold';
+    style = 'bg-[#4361ee] text-white border-[#4361ee] font-bold shadow-2xs';
   } else if (isLost) {
-    style = 'bg-white text-orange-900 border-orange-400 font-medium';
+    style = 'bg-rose-50 text-rose-600 border-rose-100 font-semibold';
   } else if (norm === 'qualification') {
-    style = 'bg-emerald-50 text-emerald-800 border-emerald-300';
+    style = 'bg-[#eef2ff] text-[#4361ee] border-indigo-200/80 font-semibold';
   } else if (norm === 'needs_analysis') {
-    style = 'bg-white text-slate-800 border-slate-300';
+    style = 'bg-purple-50 text-purple-600 border-purple-100 font-semibold';
   } else if (norm === 'proposal_quote') {
-    style = 'bg-orange-50 text-orange-800 border-orange-300';
+    style = 'bg-sky-50 text-sky-600 border-sky-100 font-semibold';
   } else if (norm === 'negotiation') {
-    style = 'bg-orange-500 text-white border-orange-500 font-bold';
+    style = 'bg-amber-50 text-amber-600 border-amber-100 font-semibold';
   } else if (norm === 'prospecting') {
-    style = 'bg-white text-emerald-700 border-emerald-200';
+    style = 'bg-[#eef2ff] text-[#4361ee] border-indigo-100 font-semibold';
   }
 
   return (

@@ -130,7 +130,7 @@ export default function CallsPage() {
       accessorKey: 'subject',
       cell: (c) => (
         <div className="flex items-start gap-2.5">
-          <div className="mt-0.5 p-1 rounded bg-slate-800 text-emerald-600">
+          <div className="mt-0.5 p-1 rounded bg-slate-800 text-[#4361ee]">
             {c.call_type === 'inbound' ? (
               <PhoneIncoming className="h-3.5 w-3.5" />
             ) : (
@@ -141,7 +141,7 @@ export default function CallsPage() {
             <button
               type="button"
               onClick={() => setViewingCall(c)}
-              className="font-semibold text-slate-100 hover:text-emerald-600 text-left transition"
+              className="font-semibold text-slate-100 hover:text-[#4361ee] text-left transition"
             >
               {c.subject}
             </button>
@@ -240,7 +240,7 @@ export default function CallsPage() {
             type="button"
             onClick={() => setViewingCall(c)}
             title="View Details"
-            className="p-1.5 rounded hover:bg-slate-800 text-slate-400 hover:text-emerald-600 transition"
+            className="p-1.5 rounded hover:bg-slate-800 text-slate-400 hover:text-[#4361ee] transition"
           >
             <Eye className="h-3.5 w-3.5" />
           </button>
@@ -273,7 +273,7 @@ export default function CallsPage() {
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>
               <h1 className="text-2xl font-bold tracking-tight text-white flex items-center gap-2.5">
-                <div className="p-2 bg-emerald-600/10 text-emerald-600 rounded-xl border border-emerald-200/20">
+                <div className="p-2 bg-[#4361ee]/10 text-[#4361ee] rounded-xl border border-indigo-100/20">
                   <PhoneCall className="h-6 w-6" />
                 </div>
                 Calls & Customer Communications
@@ -289,7 +289,7 @@ export default function CallsPage() {
                 type="button"
                 onClick={() => setSelectedType('all')}
                 className={`px-3 py-1.5 rounded-md font-medium transition ${
-                  selectedType === 'all' ? 'bg-emerald-600 text-white' : 'text-slate-400 hover:text-slate-200'
+                  selectedType === 'all' ? 'bg-[#4361ee] text-white' : 'text-slate-400 hover:text-slate-200'
                 }`}
               >
                 All Calls
@@ -298,7 +298,7 @@ export default function CallsPage() {
                 type="button"
                 onClick={() => setSelectedType('outbound')}
                 className={`px-3 py-1.5 rounded-md font-medium transition ${
-                  selectedType === 'outbound' ? 'bg-emerald-600 text-white' : 'text-slate-400 hover:text-slate-200'
+                  selectedType === 'outbound' ? 'bg-[#4361ee] text-white' : 'text-slate-400 hover:text-slate-200'
                 }`}
               >
                 Outbound
@@ -307,7 +307,7 @@ export default function CallsPage() {
                 type="button"
                 onClick={() => setSelectedType('inbound')}
                 className={`px-3 py-1.5 rounded-md font-medium transition ${
-                  selectedType === 'inbound' ? 'bg-emerald-600 text-white' : 'text-slate-400 hover:text-slate-200'
+                  selectedType === 'inbound' ? 'bg-[#4361ee] text-white' : 'text-slate-400 hover:text-slate-200'
                 }`}
               >
                 Inbound

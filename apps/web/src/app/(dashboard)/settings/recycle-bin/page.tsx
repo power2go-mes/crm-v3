@@ -153,19 +153,19 @@ export default function RecycleBinPage() {
     switch (model) {
       case 'leads':
         return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#eef2ff] text-[#4361ee] border border-indigo-100">
             <UserCheck className="h-3 w-3" /> Lead
           </span>
         );
       case 'accounts':
         return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-800 border border-emerald-200">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#eef2ff] text-[#4361ee] border border-indigo-100">
             <Building2 className="h-3 w-3" /> Account
           </span>
         );
       case 'contacts':
         return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-800 border border-cyan-200">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#eef2ff] text-[#4361ee] border border-cyan-200">
             <Users className="h-3 w-3" /> Contact
           </span>
         );
@@ -177,13 +177,13 @@ export default function RecycleBinPage() {
         );
       case 'activities':
         return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-800 border border-emerald-200">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#eef2ff] text-[#4361ee] border border-indigo-100">
             <CheckSquare className="h-3 w-3" /> Activity
           </span>
         );
       case 'departments':
         return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-800 border border-emerald-200">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#eef2ff] text-[#4361ee] border border-indigo-100">
             <Layers className="h-3 w-3" /> Department
           </span>
         );
@@ -249,9 +249,9 @@ export default function RecycleBinPage() {
 
           {/* Bulk Action Banner */}
           {selectedIds.length > 0 && (
-            <div className="flex items-center justify-between bg-emerald-50 border border-emerald-200 p-3.5 rounded-xl animate-in fade-in duration-150">
-              <div className="flex items-center gap-2 text-xs font-medium text-emerald-800">
-                <CheckCircle2 className="h-4 w-4 text-emerald-800" />
+            <div className="flex items-center justify-between bg-[#eef2ff] border border-indigo-100 p-3.5 rounded-xl animate-in fade-in duration-150">
+              <div className="flex items-center gap-2 text-xs font-medium text-[#4361ee]">
+                <CheckCircle2 className="h-4 w-4 text-[#4361ee]" />
                 <span>{selectedIds.length} records selected</span>
               </div>
               <div className="flex items-center gap-2">
@@ -260,7 +260,7 @@ export default function RecycleBinPage() {
                     type="button"
                     onClick={handleBulkRestore}
                     disabled={restoreMutation.isPending}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 text-white text-xs font-semibold hover:bg-emerald-700 shadow-xs transition"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#4361ee] text-white text-xs font-semibold hover:bg-[#3a5bf0] shadow-xs transition"
                   >
                     <RotateCcw className="h-3.5 w-3.5" />
                     <span>Restore Selected</span>
@@ -357,9 +357,9 @@ export default function RecycleBinPage() {
                                 onClick={() => restoreMutation.mutate(item.id)}
                                 disabled={restoreMutation.isPending}
                                 title="Restore this record"
-                                className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-100 hover:text-emerald-700 transition font-medium"
+                                className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-100 hover:text-[#4361ee] transition font-medium"
                               >
-                                <RotateCcw className="h-3.5 w-3.5 text-emerald-600" />
+                                <RotateCcw className="h-3.5 w-3.5 text-[#4361ee]" />
                                 <span>Restore</span>
                               </button>
                             )}

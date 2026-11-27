@@ -23,7 +23,7 @@ interface ContactKanbanBoardProps {
 
 // Canonical contact stages/categories for Kanban grouping
 const CONTACT_COLUMNS = [
-  { id: 'primary', name: 'Primary Contacts', color: '#10b981', badge: 'bg-emerald-50 text-emerald-700 border-emerald-200' },
+  { id: 'primary', name: 'Primary Contacts', color: '#10b981', badge: 'bg-[#eef2ff] text-[#4361ee] border-indigo-100' },
   { id: 'direct', name: 'Direct / Decision Makers', color: '#6366f1', badge: 'bg-indigo-50 text-indigo-700 border-indigo-200' },
   { id: 'associated', name: 'Account Associated', color: '#0ea5e9', badge: 'bg-sky-50 text-sky-700 border-sky-200' },
   { id: 'general', name: 'General Inquiries', color: '#f59e0b', badge: 'bg-amber-50 text-amber-700 border-amber-200' },
@@ -53,7 +53,7 @@ function getAvatarProps(name: string) {
   const clean = name.trim().toUpperCase();
   const initials = clean ? clean.split(' ').map((n) => n[0]).slice(0, 2).join('') : 'U';
   const hues = [
-    'bg-emerald-100 text-emerald-800 border-emerald-200',
+    'bg-[#eef2ff] text-[#4361ee] border-indigo-100',
     'bg-blue-100 text-blue-800 border-blue-200',
     'bg-indigo-100 text-indigo-800 border-indigo-200',
     'bg-purple-100 text-purple-800 border-purple-200',
@@ -80,7 +80,7 @@ export function ContactKanbanBoard({
     return (
       <div className="flex h-96 w-full items-center justify-center">
         <div className="flex flex-col items-center gap-3">
-          <div className="h-9 w-9 animate-spin rounded-full border-2 border-emerald-600 border-t-transparent" />
+          <div className="h-9 w-9 animate-spin rounded-full border-2 border-[#4361ee] border-t-transparent" />
           <p className="text-xs font-medium text-slate-400">Loading contacts pipeline...</p>
         </div>
       </div>
@@ -92,7 +92,7 @@ export function ContactKanbanBoard({
       {/* Kanban Pipeline Subheader Bar */}
       <div className="flex items-center justify-between px-3 py-2 bg-white rounded-xl border border-slate-200/80 shadow-2xs text-xs text-slate-600">
         <div className="flex items-center gap-2 font-medium">
-          <Users className="h-4 w-4 text-emerald-600" />
+          <Users className="h-4 w-4 text-[#4361ee]" />
           <span className="font-semibold text-slate-900">Contact Network</span>
           <span className="text-slate-400">•</span>
           <span>{contacts.length} total contacts across {CONTACT_COLUMNS.length} segments</span>
@@ -151,7 +151,7 @@ export function ContactKanbanBoard({
                         onMouseLeave={() => setActiveCardId(null)}
                         className={`group relative bg-white rounded-xl border p-3.5 shadow-2xs hover:shadow-md transition-all duration-150 cursor-pointer ${
                           activeCardId === c.id
-                            ? 'border-emerald-400 ring-2 ring-emerald-500/10'
+                            ? 'border-indigo-300 ring-2 ring-[#4361ee]/10'
                             : 'border-slate-200 hover:border-slate-300'
                         }`}
                       >
@@ -167,7 +167,7 @@ export function ContactKanbanBoard({
                               <Link
                                 href={`/contacts/${c.id}`}
                                 onClick={(e) => e.stopPropagation()}
-                                className="block font-semibold text-xs text-slate-900 group-hover:text-emerald-600 transition truncate"
+                                className="block font-semibold text-xs text-slate-900 group-hover:text-[#4361ee] transition truncate"
                               >
                                 {fullName}
                               </Link>
@@ -227,7 +227,7 @@ export function ContactKanbanBoard({
                           <Link
                             href={`/contacts/${c.id}`}
                             onClick={(e) => e.stopPropagation()}
-                            className="inline-flex items-center gap-1 text-[11px] font-medium text-emerald-600 hover:text-emerald-700 group-hover:translate-x-0.5 transition"
+                            className="inline-flex items-center gap-1 text-[11px] font-medium text-[#4361ee] hover:text-[#4361ee] group-hover:translate-x-0.5 transition"
                           >
                             <span>View</span>
                             <ArrowRight className="h-3 w-3" />

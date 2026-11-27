@@ -154,11 +154,11 @@ export default function CampaignsPage() {
   const getStatusBadge = (status: string) => {
     switch (status?.toLowerCase()) {
       case 'completed':
-        return <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-emerald-100 text-emerald-800">Completed</span>;
+        return <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-[#eef2ff] text-[#4361ee]">Completed</span>;
       case 'in_progress':
         return <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-800">In Progress</span>;
       case 'planned':
-        return <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-emerald-50 text-emerald-800">Planned</span>;
+        return <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-[#eef2ff] text-[#4361ee]">Planned</span>;
       case 'aborted':
         return <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800">Aborted</span>;
       default:
@@ -174,12 +174,12 @@ export default function CampaignsPage() {
       accessorKey: 'campaign_name',
       cell: (c) => (
         <div className="flex items-center gap-2">
-          <div className="p-1.5 bg-emerald-50 text-emerald-800 rounded-lg">
+          <div className="p-1.5 bg-[#eef2ff] text-[#4361ee] rounded-lg">
             <Megaphone className="h-4 w-4" />
           </div>
           <Link
             href={`/campaigns/${c.id}`}
-            className="font-medium text-slate-900 hover:text-emerald-800 transition"
+            className="font-medium text-slate-900 hover:text-[#4361ee] transition"
           >
             {c.campaign_name}
           </Link>
@@ -206,7 +206,7 @@ export default function CampaignsPage() {
       sortable: true,
       cell: (c) =>
         c.status === 'in_progress' || c.status === 'planned' ? (
-          <span className="inline-flex items-center gap-1 text-emerald-600 font-medium text-xs">
+          <span className="inline-flex items-center gap-1 text-[#4361ee] font-medium text-xs">
             <CheckCircle2 className="h-3.5 w-3.5" /> Yes
           </span>
         ) : (
@@ -283,7 +283,7 @@ export default function CampaignsPage() {
               type="button"
               title="Edit Campaign"
               onClick={() => setEditingCampaign(c as unknown as CampaignRecord)}
-              className="p-1.5 rounded hover:bg-slate-100 text-slate-400 hover:text-emerald-800 transition"
+              className="p-1.5 rounded hover:bg-slate-100 text-slate-400 hover:text-[#4361ee] transition"
             >
               <Edit2 className="h-3.5 w-3.5" />
             </button>
@@ -387,7 +387,7 @@ export default function CampaignsPage() {
                 {campaigns.map((c) => (
                   <article key={c.id} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
                     <div className="flex items-start justify-between gap-2">
-                      <Link href={`/campaigns/${c.id}`} className="text-base font-semibold text-slate-900 hover:text-emerald-800 transition truncate">
+                      <Link href={`/campaigns/${c.id}`} className="text-base font-semibold text-slate-900 hover:text-[#4361ee] transition truncate">
                         {c.campaign_name}
                       </Link>
                       {getStatusBadge(c.status)}
@@ -401,7 +401,7 @@ export default function CampaignsPage() {
                     <div className="mt-4 grid grid-cols-2 gap-2 text-xs border-t border-slate-100 pt-3">
                       <div>
                         <span className="text-slate-400 block text-[10px] uppercase">Exp. Revenue</span>
-                        <span className="font-semibold text-emerald-600 text-sm">
+                        <span className="font-semibold text-[#4361ee] text-sm">
                           ${Number(c.expected_revenue || 0).toLocaleString()}
                         </span>
                       </div>
@@ -413,14 +413,14 @@ export default function CampaignsPage() {
                       </div>
                     </div>
                     <div className="mt-4 flex justify-end gap-3 border-t border-slate-100 pt-3 text-sm">
-                      <Link href={`/campaigns/${c.id}`} className="text-emerald-800 hover:text-emerald-800 font-medium">
+                      <Link href={`/campaigns/${c.id}`} className="text-[#4361ee] hover:text-[#4361ee] font-medium">
                         View
                       </Link>
                       {hasPermission('campaigns.update') && (
                         <button
                           type="button"
                           onClick={() => setEditingCampaign(c as unknown as CampaignRecord)}
-                          className="text-emerald-800 hover:text-emerald-800 font-medium"
+                          className="text-[#4361ee] hover:text-[#4361ee] font-medium"
                         >
                           Edit
                         </button>

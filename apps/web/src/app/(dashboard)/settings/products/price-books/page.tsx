@@ -112,7 +112,7 @@ export default function PriceBooksPage() {
                   setEditingBook(null);
                   setBookModalOpen(true);
                 }}
-                className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3.5 py-1.5 text-xs font-semibold text-white shadow-xs transition hover:bg-emerald-600"
+                className="inline-flex items-center gap-1.5 rounded-lg bg-[#4361ee] px-3.5 py-1.5 text-xs font-semibold text-white shadow-xs transition hover:bg-[#4361ee]"
               >
                 <Plus className="h-4 w-4" />
                 <span>New Price Book</span>
@@ -147,7 +147,7 @@ export default function PriceBooksPage() {
                       onClick={() => setSelectedBookId(book.id)}
                       className={`cursor-pointer rounded-xl border p-4 transition ${
                         isSelected
-                          ? 'border-emerald-200 bg-emerald-50/50 dark:border-emerald-200/50 dark:bg-emerald-600/20 shadow-xs'
+                          ? 'border-indigo-100 bg-[#eef2ff]/50 dark:border-indigo-100/50 dark:bg-[#4361ee]/20 shadow-xs'
                           : 'border-slate-200 bg-white hover:border-slate-300  '
                       }`}
                     >
@@ -158,7 +158,7 @@ export default function PriceBooksPage() {
                               {book.name}
                             </h4>
                             {book.is_standard && (
-                              <span className="rounded bg-emerald-50 px-1.5 py-0.5 text-[10px] font-bold uppercase text-emerald-800 dark:bg-emerald-600/40 dark:text-emerald-600">
+                              <span className="rounded bg-[#eef2ff] px-1.5 py-0.5 text-[10px] font-bold uppercase text-[#4361ee] dark:bg-[#4361ee]/40 dark:text-[#4361ee]">
                                 Standard
                               </span>
                             )}
@@ -175,7 +175,7 @@ export default function PriceBooksPage() {
                       <div className="mt-3 flex items-center justify-between text-[11px] text-slate-500">
                         <span className="flex items-center gap-1">
                           {book.is_active ? (
-                            <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
+                            <span className="inline-block h-2 w-2 rounded-full bg-[#4361ee]" />
                           ) : (
                             <span className="inline-block h-2 w-2 rounded-full bg-slate-400" />
                           )}
@@ -209,14 +209,14 @@ export default function PriceBooksPage() {
                           {currentBook.name}
                         </h2>
                         {currentBook.is_standard && (
-                          <span className="rounded bg-emerald-50 px-2 py-0.5 text-xs font-semibold text-emerald-800 dark:bg-emerald-600/40 dark:text-emerald-600">
+                          <span className="rounded bg-[#eef2ff] px-2 py-0.5 text-xs font-semibold text-[#4361ee] dark:bg-[#4361ee]/40 dark:text-[#4361ee]">
                             Base Catalog
                           </span>
                         )}
                         <span
                           className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${
                             currentBook.is_active
-                              ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-400'
+                              ? 'bg-[#eef2ff] text-[#4361ee] dark:bg-emerald-950/40 dark:text-[#4361ee]'
                               : 'bg-slate-100 text-slate-600 dark:bg-slate-800 '
                           }`}
                         >
@@ -263,7 +263,7 @@ export default function PriceBooksPage() {
                             setEditingEntry(null);
                             setEntryModalOpen(true);
                           }}
-                          className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3.5 py-1.5 text-xs font-semibold text-white shadow-xs hover:bg-emerald-600"
+                          className="inline-flex items-center gap-1.5 rounded-lg bg-[#4361ee] px-3.5 py-1.5 text-xs font-semibold text-white shadow-xs hover:bg-[#4361ee]"
                         >
                           <Plus className="h-4 w-4" />
                           <span>Add Product Entry</span>
@@ -309,7 +309,7 @@ export default function PriceBooksPage() {
                       placeholder="Search entries in this price book..."
                       value={entrySearch}
                       onChange={(e) => setEntrySearch(e.target.value)}
-                      className="w-full rounded-lg border border-slate-300 bg-white py-1.5 pl-9 pr-3 text-xs text-slate-900 placeholder:text-slate-400 focus:border-emerald-200 focus:outline-none focus:ring-1 focus:ring-emerald-500 dark:border-slate-700"
+                      className="w-full rounded-lg border border-slate-300 bg-white py-1.5 pl-9 pr-3 text-xs text-slate-900 placeholder:text-slate-400 focus:border-indigo-100 focus:outline-none focus:ring-1 focus:ring-[#4361ee] dark:border-slate-700"
                     />
                   </div>
                 </div>
@@ -365,7 +365,7 @@ export default function PriceBooksPage() {
                               <span
                                 className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold ${
                                   entry.is_active
-                                    ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-400'
+                                    ? 'bg-[#eef2ff] text-[#4361ee] dark:bg-emerald-950/40 dark:text-[#4361ee]'
                                     : 'bg-slate-100 text-slate-600 dark:bg-slate-800 '
                                 }`}
                               >

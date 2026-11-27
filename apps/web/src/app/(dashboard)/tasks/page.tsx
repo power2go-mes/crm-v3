@@ -137,19 +137,19 @@ export default function TasksPage() {
               toggleMutation.mutateAsync({ id: t.id, currentStatus: t.status });
             }}
             title={t.status === 'completed' ? 'Mark Incomplete' : 'Mark Complete'}
-            className="mt-0.5 text-slate-400 hover:text-emerald-400 transition"
+            className="mt-0.5 text-slate-400 hover:text-[#4361ee] transition"
           >
             {t.status === 'completed' ? (
-              <CheckCircle2 className="h-4 w-4 text-emerald-400 fill-emerald-500/20" />
+              <CheckCircle2 className="h-4 w-4 text-[#4361ee] fill-emerald-500/20" />
             ) : (
-              <div className="h-4 w-4 rounded border border-slate-600 hover:border-emerald-400" />
+              <div className="h-4 w-4 rounded border border-slate-600 hover:border-indigo-300" />
             )}
           </button>
           <div>
             <button
               type="button"
               onClick={() => setViewingTask(t)}
-              className={`font-semibold hover:text-emerald-600 text-left transition ${
+              className={`font-semibold hover:text-[#4361ee] text-left transition ${
                 t.status === 'completed' ? 'line-through text-slate-500' : 'text-slate-100'
               }`}
             >
@@ -189,7 +189,7 @@ export default function TasksPage() {
             <select
               value={t.status}
               onChange={(e) => updateMutation.mutateAsync({ id: t.id, updates: { status: e.target.value } })}
-              className="text-[11px] font-medium px-2 py-0.5 bg-white border border-slate-300 rounded text-slate-800 focus:outline-none focus:ring-1 focus:ring-emerald-500 cursor-pointer"
+              className="text-[11px] font-medium px-2 py-0.5 bg-white border border-slate-300 rounded text-slate-800 focus:outline-none focus:ring-1 focus:ring-[#4361ee] cursor-pointer"
             >
               {TASK_STATUSES.map((s) => (
                 <option key={s.value} value={s.value}>
@@ -246,7 +246,7 @@ export default function TasksPage() {
             type="button"
             onClick={() => setViewingTask(t)}
             title="View Details"
-            className="p-1.5 rounded hover:bg-slate-800 text-slate-400 hover:text-emerald-600 transition"
+            className="p-1.5 rounded hover:bg-slate-800 text-slate-400 hover:text-[#4361ee] transition"
           >
             <Eye className="h-3.5 w-3.5" />
           </button>
@@ -279,7 +279,7 @@ export default function TasksPage() {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
               <h1 className="text-2xl font-bold tracking-tight text-slate-900 flex items-center gap-2.5">
-                <CheckSquare className="h-6 w-6 text-emerald-800" />
+                <CheckSquare className="h-6 w-6 text-[#4361ee]" />
                 <span>Tasks & Follow-ups</span>
               </h1>
               <p className="text-xs text-slate-400 mt-1">
@@ -303,7 +303,7 @@ export default function TasksPage() {
                   }}
                   className={`px-3 py-1.5 rounded-lg font-medium transition ${
                     selectedStatus === tab.id
-                      ? 'bg-emerald-600 text-white shadow-xs'
+                      ? 'bg-[#4361ee] text-white shadow-xs'
                       : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >

@@ -33,7 +33,7 @@ export function SystemAuditLogViewer() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-white border border-slate-200 rounded-xl shadow-xs">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-lg bg-emerald-50 text-emerald-600 border border-emerald-200">
+          <div className="p-2.5 rounded-lg bg-[#eef2ff] text-[#4361ee] border border-indigo-100">
             <History className="h-5 w-5" />
           </div>
           <div>
@@ -49,7 +49,7 @@ export function SystemAuditLogViewer() {
           <select
             value={selectedModule}
             onChange={(e) => { setSelectedModule(e.target.value); setPage(1); }}
-            className="px-3 py-1.5 bg-white border border-slate-300 rounded-lg text-xs text-slate-900 capitalize focus:outline-hidden focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+            className="px-3 py-1.5 bg-white border border-slate-300 rounded-lg text-xs text-slate-900 capitalize focus:outline-hidden focus:border-[#4361ee] focus:ring-1 focus:ring-[#4361ee]"
           >
             <option value="all">All Modules</option>
             <option value="leads">Leads</option>
@@ -79,10 +79,10 @@ export function SystemAuditLogViewer() {
           {logs.map((log) => {
             const actionColor =
               log.action === 'create'
-                ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
+                ? 'bg-[#eef2ff] text-[#4361ee] border-indigo-100'
                 : log.action === 'delete'
                   ? 'bg-red-50 text-red-700 border-red-200'
-                  : 'bg-emerald-50 text-emerald-700 border-emerald-200';
+                  : 'bg-[#eef2ff] text-[#4361ee] border-indigo-100';
 
             return (
               <div

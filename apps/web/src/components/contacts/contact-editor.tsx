@@ -45,6 +45,6 @@ export function ContactEditor({ initial = {}, onCancel }: { initial?: Fields; on
     </fieldset>
     {error && <p role="alert">{error}</p>}
     <button type="button" disabled={pending} onClick={onCancel} className="border rounded px-3 py-2 mr-2">Cancel</button>
-    <button disabled={pending} className="rounded bg-emerald-600 text-white px-3 py-2">{pending ? 'Saving...' : 'Save'}</button>
+    <button disabled={pending} className="rounded bg-[#4361ee] text-white px-3 py-2">{pending ? 'Saving...' : 'Save'}</button>
   </form>;
 }

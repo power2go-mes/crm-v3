@@ -63,8 +63,8 @@ export default function FieldRequirementsPage() {
     { id: 'actions', header: 'Actions', cell: row => hasPermission('settings.update') && <div className="flex gap-3"><button aria-label={`Edit ${row.label}`} onClick={e => open(row, e.currentTarget)}><Pencil className="h-4 w-4" /></button><button disabled={remove.isPending} aria-label={`Delete ${row.label}`} onClick={() => { if (window.confirm(`Delete the requirement override for ${row.label}? The original requirement will apply.`)) remove.mutate(row.id); }}><Trash2 className="h-4 w-4" /></button></div> },
   ];
   return <PageContainer>
-    <Link href="/settings" className="text-sm text-emerald-800">Settings</Link>
-    <PageHeader title="Field Requirements" subtitle="Choose which fields your team must fill in when creating or editing records." actions={hasPermission('settings.update') ? <button className="rounded bg-emerald-600 px-4 py-2 text-white" onClick={e => open(null, e.currentTarget)}><Plus className="mr-1 inline h-4 w-4" />New</button> : undefined} />
+    <Link href="/settings" className="text-sm text-[#4361ee]">Settings</Link>
+    <PageHeader title="Field Requirements" subtitle="Choose which fields your team must fill in when creating or editing records." actions={hasPermission('settings.update') ? <button className="rounded bg-[#4361ee] px-4 py-2 text-white" onClick={e => open(null, e.currentTarget)}><Plus className="mr-1 inline h-4 w-4" />New</button> : undefined} />
     <PermissionGate action="settings.view" showAccessDenied>
       <label className="mb-4 block text-sm">Search <input value={search} onChange={e => setSearch(e.target.value)} className="rounded border p-2" /></label>
       {notice && <p role="status" className="mb-3 text-green-800">{notice}</p>}
@@ -80,7 +80,7 @@ export default function FieldRequirementsPage() {
         <p className="mt-2 text-sm text-slate-600">When enabled the field must be filled in. When disabled the field becomes optional on create and edit forms.</p>
         {selected?.required && !selected.relaxable && <p className="mt-2 text-sm">This field cannot be made optional.</p>}
         {save.error && <p role="alert" className="text-red-700">{save.error.message}</p>}
-        <div className="mt-5 flex justify-end gap-3"><button type="button" onClick={close} disabled={save.isPending}>Cancel</button>{editing === null && <button type="submit" value="new" disabled={save.isPending || !field} className="rounded border border-emerald-200 px-4 py-2 text-emerald-800">Save &amp; New</button>}<button type="submit" value="save" className="rounded bg-emerald-600 px-4 py-2 text-white" disabled={save.isPending || !field}>{save.isPending ? 'Saving…' : 'Save'}</button></div>
+        <div className="mt-5 flex justify-end gap-3"><button type="button" onClick={close} disabled={save.isPending}>Cancel</button>{editing === null && <button type="submit" value="new" disabled={save.isPending || !field} className="rounded border border-indigo-100 px-4 py-2 text-[#4361ee]">Save &amp; New</button>}<button type="submit" value="save" className="rounded bg-[#4361ee] px-4 py-2 text-white" disabled={save.isPending || !field}>{save.isPending ? 'Saving…' : 'Save'}</button></div>
       </form>
     </dialog>
   </PageContainer>;

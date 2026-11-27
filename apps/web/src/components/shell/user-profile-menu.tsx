@@ -51,13 +51,13 @@ export function UserProfileMenu() {
   const getRoleBadgeStyle = (code: string) => {
     switch (code) {
       case 'SUPER_ADMIN':
-        return 'bg-emerald-50 text-emerald-800 border-emerald-200';
+        return 'bg-[#eef2ff] text-[#4361ee] border-indigo-100';
       case 'HEAD_OF_SALES':
-        return 'bg-emerald-50 text-emerald-800 border-emerald-200';
+        return 'bg-[#eef2ff] text-[#4361ee] border-indigo-100';
       case 'RSM':
       case 'SSM':
       case 'ASM':
-        return 'bg-emerald-50 text-emerald-700 border-emerald-200';
+        return 'bg-[#eef2ff] text-[#4361ee] border-indigo-100';
       case 'BDO':
         return 'bg-amber-50 text-amber-700 border-amber-200';
       default:
@@ -73,9 +73,9 @@ export function UserProfileMenu() {
         aria-expanded={isOpen}
         aria-haspopup="true"
         aria-label="User profile menu"
-        className="flex h-10 items-center space-x-2 pl-2 pr-3 rounded-xl border border-slate-200 hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white transition-all text-left"
+        className="flex h-10 items-center space-x-2 pl-2 pr-3 rounded-xl border border-slate-200 hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#4361ee] bg-white transition-all text-left"
       >
-        <div className="w-7 h-7 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
+        <div className="w-7 h-7 rounded-lg bg-[#4361ee] text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
           {initials || <User className="h-4 w-4" />}
         </div>
         <div className="hidden sm:block text-left min-w-0 max-w-[130px]">
@@ -120,7 +120,7 @@ export function UserProfileMenu() {
           </div>
 
           <div className="p-1.5">
-            <Link href="/my-settings/mcp" onClick={() => setIsOpen(false)} className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 transition"><Bot className="h-4 w-4 text-emerald-600" />AI & MCP Agent Access</Link>
+            <Link href="/my-settings/mcp" onClick={() => setIsOpen(false)} className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-[#eef2ff] hover:text-[#4361ee] transition"><Bot className="h-4 w-4 text-[#4361ee]" />AI & MCP Agent Access</Link>
             <Link href="/my-settings/password" onClick={() => setIsOpen(false)} className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-50"><User className="h-4 w-4" />Password Management</Link>
             {(hasPermission('login_history.view_own') || hasPermission('login_history.view_team')) && <Link href="/my-settings/login-history" onClick={() => setIsOpen(false)} className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-50">My Login History</Link>}
             <button

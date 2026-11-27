@@ -28,7 +28,7 @@ export const TASK_PRIORITIES = [
 
 export const TASK_STATUSES = [
   { value: 'not_started', label: 'Not Started', color: 'text-slate-700 bg-slate-100 border border-slate-200' },
-  { value: 'in_progress', label: 'In Progress', color: 'text-emerald-700 bg-emerald-50 border border-emerald-200' },
-  { value: 'completed', label: 'Completed', color: 'text-emerald-700 bg-emerald-50 border border-emerald-200' },
+  { value: 'in_progress', label: 'In Progress', color: 'text-[#4361ee] bg-[#eef2ff] border border-indigo-100' },
+  { value: 'completed', label: 'Completed', color: 'text-[#4361ee] bg-[#eef2ff] border border-indigo-100' },
   { value: 'cancelled', label: 'Cancelled', color: 'text-rose-700 bg-rose-50 border border-rose-200' },
 ] as const;

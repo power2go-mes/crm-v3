@@ -95,19 +95,19 @@ export default function CalendarPage() {
                 href="/settings/calendar"
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-white border border-slate-300 rounded-lg shadow-xs hover:bg-slate-50 transition"
               >
-                <CalendarIcon className="w-3.5 h-3.5 text-emerald-800" />
+                <CalendarIcon className="w-3.5 h-3.5 text-[#4361ee]" />
                 Sync Settings
               </Link>
               <Link
                 href="/meetings"
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-white border border-slate-300 rounded-lg shadow-xs hover:bg-slate-50 transition"
               >
-                <Video className="w-3.5 h-3.5 text-emerald-800" />
+                <Video className="w-3.5 h-3.5 text-[#4361ee]" />
                 Schedule Meeting
               </Link>
               <Link
                 href="/tasks"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg shadow-xs transition"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-[#4361ee] hover:bg-[#3a5bf0] rounded-lg shadow-xs transition"
               >
                 <Plus className="w-3.5 h-3.5" />
                 New Task
@@ -153,7 +153,7 @@ export default function CalendarPage() {
                 onClick={() => setFilterType('all')}
                 className={`px-3 py-1.5 rounded-lg transition ${
                   filterType === 'all'
-                    ? 'bg-emerald-600 text-white font-bold shadow-xs'
+                    ? 'bg-[#4361ee] text-white font-bold shadow-xs'
                     : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                 }`}
               >
@@ -164,8 +164,8 @@ export default function CalendarPage() {
                 onClick={() => setFilterType('meeting')}
                 className={`inline-flex items-center gap-1 px-3 py-1.5 rounded-lg transition ${
                   filterType === 'meeting'
-                    ? 'bg-emerald-600 text-white font-bold'
-                    : 'bg-emerald-50 text-emerald-800 hover:bg-emerald-50'
+                    ? 'bg-[#4361ee] text-white font-bold'
+                    : 'bg-[#eef2ff] text-[#4361ee] hover:bg-[#eef2ff]'
                 }`}
               >
                 <Video className="w-3 h-3" />
@@ -188,8 +188,8 @@ export default function CalendarPage() {
                 onClick={() => setFilterType('log_call')}
                 className={`inline-flex items-center gap-1 px-3 py-1.5 rounded-lg transition ${
                   filterType === 'log_call'
-                    ? 'bg-emerald-600 text-white font-bold'
-                    : 'bg-emerald-50 text-emerald-700 hover:bg-emerald-100'
+                    ? 'bg-[#4361ee] text-white font-bold'
+                    : 'bg-[#eef2ff] text-[#4361ee] hover:bg-[#eef2ff]'
                 }`}
               >
                 <PhoneCall className="w-3 h-3" />
@@ -230,14 +230,14 @@ export default function CalendarPage() {
                   <div
                     key={`day-${day}`}
                     className={`min-h-28 p-2 flex flex-col justify-between transition hover:bg-slate-50/60 ${
-                      isCurrentToday ? 'bg-emerald-50/40 ring-1 ring-inset ring-emerald-400' : ''
+                      isCurrentToday ? 'bg-[#eef2ff]/40 ring-1 ring-inset ring-emerald-400' : ''
                     }`}
                   >
                     <div className="flex items-center justify-between">
                       <span
                         className={`text-xs font-semibold ${
                           isCurrentToday
-                            ? 'h-6 w-6 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold'
+                            ? 'h-6 w-6 rounded-full bg-[#4361ee] text-white flex items-center justify-center font-bold'
                             : 'text-slate-700'
                         }`}
                       >
@@ -254,13 +254,13 @@ export default function CalendarPage() {
                         let pillClass = 'bg-slate-100 text-slate-700';
                         let linkHref = `/tasks/${act.id}`;
                         if (act.activity_type === 'meeting') {
-                          pillClass = 'bg-emerald-50 text-emerald-800 hover:bg-emerald-600';
+                          pillClass = 'bg-[#eef2ff] text-[#4361ee] hover:bg-[#4361ee]';
                           linkHref = `/meetings/${act.id}`;
                         } else if (act.activity_type === 'task') {
                           pillClass = 'bg-amber-100 text-amber-800 hover:bg-amber-200';
                           linkHref = `/tasks/${act.id}`;
                         } else if (act.activity_type === 'log_call') {
-                          pillClass = 'bg-emerald-100 text-emerald-800 hover:bg-emerald-200';
+                          pillClass = 'bg-[#eef2ff] text-[#4361ee] hover:bg-emerald-200';
                           linkHref = `/calls/${act.id}`;
                         }
 
