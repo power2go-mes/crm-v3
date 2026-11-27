@@ -86,32 +86,53 @@ export function CampaignKanbanBoard({
 
   return (
     <div className="space-y-4">
-      {/* Board Summary */}
-      <div className="flex flex-wrap items-center justify-between gap-3 px-1">
-        <div className="flex items-center gap-2">
-          <div className="flex items-center justify-center h-7 w-7 rounded-lg bg-[#eef2ff] text-[#4361ee] border border-indigo-100/60">
-            <Layers className="h-3.5 w-3.5" />
-          </div>
+      {/* Board Summary Metric Strip with CRMHUB Pill & Hero Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-2">
+        <div className="bg-white rounded-3xl p-5 border border-slate-100 shadow-2xs flex items-center justify-between">
           <div>
-            <div className="flex items-baseline gap-2">
-              <span className="text-sm font-semibold text-slate-900">
-                Marketing Campaigns Pipeline
-              </span>
-              <span className="text-xs text-slate-500 font-medium">
-                {campaigns.length} total campaign{campaigns.length === 1 ? '' : 's'} across {CAMPAIGN_STATUSES.length} stages
-              </span>
-            </div>
+            <p className="text-xs font-semibold text-slate-400">Total Campaigns</p>
+            <p className="text-2xl font-black text-slate-900 mt-1">{campaigns.length}</p>
+          </div>
+          <div className="h-10 w-10 rounded-2xl bg-[#eef2ff] text-[#4361ee] flex items-center justify-center font-bold">
+            <Megaphone className="h-5 w-5" />
           </div>
         </div>
 
-        {totalExpectedRevenue > 0 && (
-          <div className="flex items-center gap-2 px-3 py-1 bg-white rounded-full border border-slate-200/80 shadow-2xs text-xs font-semibold text-slate-700">
-            <span className="text-slate-400 uppercase text-[10px] tracking-wide font-bold">Total Expected Revenue:</span>
-            <span className="text-[#4361ee] font-bold">
+        <div className="bg-gradient-to-tr from-[#3a5bf0] to-[#4361ee] rounded-3xl p-5 text-white shadow-xl shadow-indigo-500/25 flex items-center justify-between">
+          <div>
+            <p className="text-xs font-semibold text-indigo-100">Expected Revenue</p>
+            <p className="text-2xl font-black text-white mt-1">
               ${(totalExpectedRevenue / 1000).toLocaleString(undefined, { maximumFractionDigits: 1 })}k
-            </span>
+            </p>
           </div>
-        )}
+          <div className="h-10 w-10 rounded-2xl bg-white/20 backdrop-blur-xs flex items-center justify-center">
+            <DollarSign className="h-5 w-5 text-white" />
+          </div>
+        </div>
+
+        <div className="bg-white rounded-3xl p-5 border border-slate-100 shadow-2xs flex items-center justify-between">
+          <div>
+            <p className="text-xs font-semibold text-slate-400">Active Campaigns</p>
+            <p className="text-2xl font-black text-slate-900 mt-1">
+              {grouped.active?.length || 0}
+            </p>
+          </div>
+          <div className="h-10 w-10 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center font-bold">
+            <PlayCircle className="h-5 w-5" />
+          </div>
+        </div>
+
+        <div className="bg-white rounded-3xl p-5 border border-slate-100 shadow-2xs flex items-center justify-between">
+          <div>
+            <p className="text-xs font-semibold text-slate-400">Completed</p>
+            <p className="text-2xl font-black text-slate-900 mt-1">
+              {grouped.completed?.length || 0}
+            </p>
+          </div>
+          <div className="h-10 w-10 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold">
+            <CheckCircle2 className="h-5 w-5" />
+          </div>
+        </div>
       </div>
 
       {/* Mobile Horizontal Snap Carousel / Desktop Multi-Column Grid */}

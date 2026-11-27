@@ -88,14 +88,53 @@ export function ContactKanbanBoard({
   }
 
   return (
-    <div className="w-full flex flex-col gap-3">
-      {/* Kanban Pipeline Subheader Bar */}
-      <div className="flex items-center justify-between px-3 py-2 bg-white rounded-xl border border-slate-200/80 shadow-2xs text-xs text-slate-600">
-        <div className="flex items-center gap-2 font-medium">
-          <Users className="h-4 w-4 text-[#4361ee]" />
-          <span className="font-semibold text-slate-900">Contact Network</span>
-          <span className="text-slate-400">•</span>
-          <span>{contacts.length} total contacts across {CONTACT_COLUMNS.length} segments</span>
+    <div className="w-full flex flex-col gap-4">
+      {/* Board Summary Metric Strip with CRMHUB Pill & Hero Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-2">
+        <div className="bg-white rounded-3xl p-5 border border-slate-100 shadow-2xs flex items-center justify-between">
+          <div>
+            <p className="text-xs font-semibold text-slate-400">Total Contacts</p>
+            <p className="text-2xl font-black text-slate-900 mt-1">{contacts.length}</p>
+          </div>
+          <div className="h-10 w-10 rounded-2xl bg-[#eef2ff] text-[#4361ee] flex items-center justify-center font-bold">
+            <Users className="h-5 w-5" />
+          </div>
+        </div>
+
+        <div className="bg-gradient-to-tr from-[#3a5bf0] to-[#4361ee] rounded-3xl p-5 text-white shadow-xl shadow-indigo-500/25 flex items-center justify-between">
+          <div>
+            <p className="text-xs font-semibold text-indigo-100">Primary Contacts</p>
+            <p className="text-2xl font-black text-white mt-1">
+              {grouped.primary?.length || 0}
+            </p>
+          </div>
+          <div className="h-10 w-10 rounded-2xl bg-white/20 backdrop-blur-xs flex items-center justify-center">
+            <Star className="h-5 w-5 text-white" />
+          </div>
+        </div>
+
+        <div className="bg-white rounded-3xl p-5 border border-slate-100 shadow-2xs flex items-center justify-between">
+          <div>
+            <p className="text-xs font-semibold text-slate-400">Decision Makers</p>
+            <p className="text-2xl font-black text-slate-900 mt-1">
+              {grouped.direct?.length || 0}
+            </p>
+          </div>
+          <div className="h-10 w-10 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold">
+            <ShieldCheck className="h-5 w-5" />
+          </div>
+        </div>
+
+        <div className="bg-white rounded-3xl p-5 border border-slate-100 shadow-2xs flex items-center justify-between">
+          <div>
+            <p className="text-xs font-semibold text-slate-400">Account Associated</p>
+            <p className="text-2xl font-black text-slate-900 mt-1">
+              {grouped.associated?.length || 0}
+            </p>
+          </div>
+          <div className="h-10 w-10 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center font-bold">
+            <Building2 className="h-5 w-5" />
+          </div>
         </div>
       </div>
 
