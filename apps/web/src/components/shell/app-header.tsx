@@ -18,7 +18,7 @@ export function AppHeader({
   isDesktopCollapsed,
 }: AppHeaderProps) {
   return (
-    <header className="min-h-16 h-16 bg-white border-b border-slate-100/90 sticky top-0 z-30 shadow-2xs px-4 sm:px-8">
+    <header className="min-h-16 h-16 bg-white border-b border-slate-100/90 sticky top-0 z-30 shadow-2xs px-4 sm:px-6 lg:px-8">
       <div className="flex h-full w-full items-center justify-between gap-4">
         {/* Left Side: Mobile Menu Button & Search Bar */}
         <div className="flex items-center gap-3 sm:gap-6 min-w-0 flex-1">
@@ -27,7 +27,7 @@ export function AppHeader({
             type="button"
             onClick={onOpenMobileNav}
             aria-label="Open mobile navigation"
-            className="md:hidden flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 transition"
+            className="lg:hidden flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 transition"
           >
             <Menu className="h-4 w-4" />
           </button>
@@ -37,7 +37,7 @@ export function AppHeader({
             type="button"
             onClick={onToggleDesktopSidebar}
             aria-label={isDesktopCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-            className="hidden md:flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-slate-100 bg-[#f8faff] text-slate-500 hover:text-[#4361ee] hover:border-indigo-100 transition"
+            className="hidden lg:flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-slate-100 bg-[#f8faff] text-slate-500 hover:text-[#4361ee] hover:border-indigo-100 transition"
           >
             {isDesktopCollapsed ? (
               <PanelLeftOpen className="h-4 w-4" />

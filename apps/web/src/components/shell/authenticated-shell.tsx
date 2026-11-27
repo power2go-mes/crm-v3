@@ -42,7 +42,7 @@ export function AuthenticatedShell({ children }: AuthenticatedShellProps) {
   return (
     <div className="flex h-screen w-full bg-[#f4f6fa] text-slate-800 overflow-hidden">
       {/* Desktop Fixed/Sticky Sidebar */}
-      <div className={`hidden md:flex h-full shrink-0 ${isCollapsed ? 'z-40' : 'z-20'}`}>
+      <div className={`hidden lg:flex h-full shrink-0 ${isCollapsed ? 'z-40' : 'z-20'}`}>
         <ApplicationSidebar
           isCollapsed={isCollapsed}
           onToggleCollapse={toggleCollapse}
@@ -65,7 +65,7 @@ export function AuthenticatedShell({ children }: AuthenticatedShellProps) {
         />
 
         {/* Scrollable Main Viewport */}
-        <main className="flex-1 overflow-y-auto">
+        <main className="min-w-0 flex-1 overflow-y-auto">
           {children}
         </main>
       </div>

@@ -37,15 +37,15 @@ export function ConfirmationDialog({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-xs p-4 animate-fade-in">
-      <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200">
+      <div className="bg-white rounded-2xl max-w-md w-full p-4 sm:p-6 shadow-2xl border border-slate-200">
         <div className="flex items-start justify-between mb-4">
-          <div className="flex items-center gap-3">
+          <div className="flex min-w-0 items-center gap-3">
             <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${
               variant === 'danger' ? 'bg-red-100 text-red-600' : 'bg-amber-100 text-amber-600'
             }`}>
               <AlertCircle className="h-5 w-5" />
             </div>
-            <h3 className="text-base font-bold text-slate-900">{title}</h3>
+            <h3 className="min-w-0 break-words text-base font-bold text-slate-900">{title}</h3>
           </div>
           <button
             onClick={onCancel}
@@ -61,7 +61,7 @@ export function ConfirmationDialog({
           {message}
         </p>
 
-        <div className="flex items-center justify-end gap-3 pt-2 border-t border-slate-100">
+        <div className="flex flex-wrap items-center justify-end gap-3 pt-2 border-t border-slate-100">
           <button
             type="button"
             onClick={onCancel}

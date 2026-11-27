@@ -86,13 +86,13 @@ export function ListToolbar({
 
   return (
     <div className="bg-white border-b border-slate-100 px-4 sm:px-6 py-3.5 transition-colors rounded-t-3xl shadow-2xs">
-      <div className="flex flex-wrap items-center justify-between gap-3">
+      <div className="flex min-w-0 flex-wrap items-center justify-between gap-3">
         {/* Left Side: Title + View Type Selector */}
         {(title || onViewTypeChange) && (
-          <div className="flex items-center gap-3 min-w-0">
-            <div>
-              <div className="flex items-center gap-2">
-                {title && <h1 className="text-lg font-bold text-slate-900 tracking-tight">{title}</h1>}
+          <div className="flex min-w-0 items-center gap-3">
+            <div className="min-w-0">
+              <div className="flex min-w-0 flex-wrap items-center gap-2">
+                {title && <h1 className="break-words text-lg font-bold text-slate-900 tracking-tight">{title}</h1>}
                 {onViewTypeChange && (
                   <div className="relative">
                     <select
@@ -145,7 +145,7 @@ export function ListToolbar({
         )}
 
         {/* Right Side: Search + Control Icons + New Button */}
-        <div className="flex items-center gap-2 flex-wrap ml-auto">
+        <div className="flex w-full items-center gap-2 flex-wrap sm:w-auto sm:ml-auto">
           {/* Search Input with 500ms debounce */}
           <div className="relative w-full sm:w-56 md:w-64 order-last sm:order-first mt-2 sm:mt-0">
             <input

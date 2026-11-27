@@ -56,7 +56,7 @@ export function CampaignSplitView({
 
   if (isLoading) {
     return (
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 h-[700px] animate-pulse">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 min-h-[480px] lg:h-[700px] animate-pulse">
         <div className="lg:col-span-5 bg-white border border-slate-200 rounded-xl p-4 space-y-3">
           {Array.from({ length: 6 }).map((_, i) => (
             <div key={i} className="h-16 bg-slate-100 rounded-lg" />
@@ -76,13 +76,13 @@ export function CampaignSplitView({
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 h-[750px]">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 h-auto min-h-[736px] lg:h-[750px]">
       {/* Left List Pane */}
-      <div className="lg:col-span-5 bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col shadow-xs">
+      <div className="lg:col-span-5 h-[360px] bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col shadow-xs lg:h-auto">
         <div className="p-3 bg-slate-50 border-b border-slate-200 text-xs font-semibold text-slate-700 uppercase tracking-wider flex items-center justify-between">
           <span>Campaigns ({campaigns.length})</span>
         </div>
-        <div className="flex-1 overflow-y-auto divide-y divide-slate-100">
+        <div className="min-h-0 flex-1 overflow-y-auto divide-y divide-slate-100">
           {campaigns.map((c) => {
             const isSelected = c.id === activeCampaign?.id;
             return (
@@ -124,7 +124,7 @@ export function CampaignSplitView({
       </div>
 
       {/* Right Detail Preview Pane */}
-      <div className="lg:col-span-7 bg-white border border-slate-200 rounded-xl p-6 overflow-y-auto shadow-xs flex flex-col justify-between">
+      <div className="lg:col-span-7 min-h-[360px] bg-white border border-slate-200 rounded-xl p-6 overflow-y-auto shadow-xs flex flex-col justify-between">
         {activeCampaign ? (
           <div className="space-y-6">
             {/* Header */}

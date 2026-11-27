@@ -33,7 +33,7 @@ export function MobileNavigationDrawer({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 md:hidden animate-fade-in">
+    <div className="fixed inset-0 z-50 lg:hidden animate-fade-in">
       {/* Backdrop */}
       <div
         className="fixed inset-0 bg-black/20 backdrop-blur-xs transition-opacity"
@@ -43,7 +43,7 @@ export function MobileNavigationDrawer({
 
       {/* Drawer Panel */}
       <div className="fixed inset-y-0 left-0 flex max-w-full z-50">
-        <div className="relative w-72 bg-white flex flex-col shadow-2xl">
+        <div className="relative w-72 max-w-[calc(100vw_-_1rem)] bg-white flex flex-col shadow-2xl">
           {/* Close button */}
           <button
             type="button"

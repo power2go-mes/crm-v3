@@ -39,14 +39,14 @@ export function PaginationBar({
   return (
     <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-3.5 bg-white border-t border-slate-100 text-xs text-slate-500 rounded-b-3xl">
       {/* Records Count & Page Size Selector */}
-      <div className="flex items-center gap-3">
+      <div className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-2">
         <span>
           Showing <span className="font-bold text-slate-800">{startRecord}</span> to{' '}
           <span className="font-bold text-slate-800">{endRecord}</span> of{' '}
           <span className="font-bold text-slate-800">{totalCount}</span> entries
         </span>
 
-        <div className="flex items-center gap-1.5 ml-2">
+        <div className="flex items-center gap-1.5 sm:ml-2">
           <label htmlFor="pageSizeSelect" className="text-slate-400">
             Per page:
           </label>

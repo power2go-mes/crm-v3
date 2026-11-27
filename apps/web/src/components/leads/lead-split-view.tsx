@@ -51,7 +51,7 @@ export function LeadSplitView({
 
   if (isLoading) {
     return (
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 h-[700px] animate-pulse">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 min-h-[480px] lg:h-[700px] animate-pulse">
         <div className="lg:col-span-5 bg-white border border-slate-200 rounded-xl p-4 space-y-3">
           {Array.from({ length: 6 }).map((_, i) => (
             <div key={i} className="h-16 bg-slate-800/60 rounded-lg" />
@@ -71,13 +71,13 @@ export function LeadSplitView({
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 min-h-[650px]">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 min-h-[736px] lg:min-h-[650px]">
       {/* Left Pane: List */}
-      <div className="lg:col-span-5 bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-2xs flex flex-col max-h-[720px]">
+      <div className="lg:col-span-5 bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-2xs flex h-[360px] flex-col max-h-[720px] lg:h-auto">
         <div className="p-4 bg-[#f8faff] border-b border-slate-100 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-wider">
           <span>Leads ({leads.length})</span>
         </div>
-        <div className="divide-y divide-slate-100 overflow-y-auto flex-1">
+        <div className="min-h-0 divide-y divide-slate-100 overflow-y-auto flex-1">
           {leads.map((lead) => {
             const isSelected = lead.id === activeLead?.id;
             const leadName = `${lead.first_name || ''} ${lead.last_name || ''}`.trim() || 'Untitled Lead';
@@ -114,7 +114,7 @@ export function LeadSplitView({
       </div>
 
       {/* Right Pane: Detail Quick Preview */}
-      <div className="lg:col-span-7 bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-2xs flex flex-col">
+      <div className="lg:col-span-7 min-h-[360px] bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-2xs flex flex-col">
         {activeLead ? (
           <div className="flex flex-col h-full">
             {/* Header */}
