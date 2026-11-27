@@ -73,11 +73,11 @@ export function LeadSplitView({
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 min-h-[650px]">
       {/* Left Pane: List */}
-      <div className="lg:col-span-5 bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col max-h-[720px]">
-        <div className="p-3 bg-slate-950/70 border-b border-slate-800 flex items-center justify-between text-xs font-semibold text-slate-400 uppercase tracking-wider">
+      <div className="lg:col-span-5 bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-2xs flex flex-col max-h-[720px]">
+        <div className="p-4 bg-[#f8faff] border-b border-slate-100 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-wider">
           <span>Leads ({leads.length})</span>
         </div>
-        <div className="divide-y divide-slate-800/60 overflow-y-auto flex-1">
+        <div className="divide-y divide-slate-100 overflow-y-auto flex-1">
           {leads.map((lead) => {
             const isSelected = lead.id === activeLead?.id;
             const leadName = `${lead.first_name || ''} ${lead.last_name || ''}`.trim() || 'Untitled Lead';
@@ -86,13 +86,13 @@ export function LeadSplitView({
               <div
                 key={lead.id}
                 onClick={() => handleSelect(lead)}
-                className={`p-3.5 transition cursor-pointer flex items-center justify-between gap-3 ${
-                  isSelected ? 'bg-emerald-600/40 border-l-4 border-emerald-200' : 'hover:bg-slate-800/40'
+                className={`p-4 transition cursor-pointer flex items-center justify-between gap-3 ${
+                  isSelected ? 'bg-[#eef2ff]/80 border-l-4 border-[#4361ee]' : 'hover:bg-slate-50'
                 }`}
               >
                 <div className="min-w-0 flex-1">
-                  <div className="font-medium text-sm text-slate-100 truncate">{leadName}</div>
-                  <div className="text-xs text-slate-400 truncate flex items-center gap-1.5 mt-0.5">
+                  <div className="font-bold text-sm text-slate-800 truncate">{leadName}</div>
+                  <div className="text-xs text-slate-400 truncate flex items-center gap-1.5 mt-0.5 font-medium">
                     {lead.company_name && <span>{lead.company_name}</span>}
                     {lead.company_name && lead.email && <span>•</span>}
                     {lead.email && <span className="truncate">{lead.email}</span>}
@@ -102,7 +102,7 @@ export function LeadSplitView({
                 <div className="flex flex-col items-end gap-1 flex-shrink-0">
                   <LeadStatusBadge status={lead.status} />
                   {lead.annual_revenue && (
-                    <span className="text-[11px] font-semibold text-emerald-400">
+                    <span className="text-[11px] font-bold text-[#4361ee]">
                       ${Number(lead.annual_revenue).toLocaleString()}
                     </span>
                   )}
@@ -114,21 +114,21 @@ export function LeadSplitView({
       </div>
 
       {/* Right Pane: Detail Quick Preview */}
-      <div className="lg:col-span-7 bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col">
+      <div className="lg:col-span-7 bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-2xs flex flex-col">
         {activeLead ? (
           <div className="flex flex-col h-full">
             {/* Header */}
-            <div className="p-5 bg-slate-950/60 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3">
+            <div className="p-5 bg-[#f8faff] border-b border-slate-100 flex flex-wrap items-center justify-between gap-3">
               <div>
-                <div className="flex items-center gap-2">
-                  <h3 className="text-lg font-bold text-white">
+                <div className="flex items-center gap-2.5">
+                  <h3 className="text-lg font-bold text-slate-900">
                     {`${activeLead.first_name || ''} ${activeLead.last_name || ''}`.trim() || 'Untitled Lead'}
                   </h3>
                   <LeadStatusBadge status={activeLead.status} />
                 </div>
                 {activeLead.company_name && (
-                  <p className="text-xs text-slate-400 flex items-center gap-1 mt-1">
-                    <Building2 className="h-3.5 w-3.5 text-slate-500" />
+                  <p className="text-xs text-slate-500 font-medium flex items-center gap-1 mt-1">
+                    <Building2 className="h-3.5 w-3.5 text-slate-400" />
                     <span>{activeLead.company_name}</span>
                   </p>
                 )}
@@ -139,7 +139,7 @@ export function LeadSplitView({
                 <button
                   type="button"
                   onClick={() => onEditLead?.(activeLead)}
-                  className="px-2.5 py-1.5 rounded-lg border border-slate-700 bg-slate-800 hover:bg-slate-700 text-xs font-medium text-slate-200 transition inline-flex items-center gap-1.5"
+                  className="px-3 py-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-700 transition inline-flex items-center gap-1.5 shadow-2xs"
                 >
                   <Edit2 className="h-3.5 w-3.5" />
                   <span>Edit</span>
@@ -149,7 +149,7 @@ export function LeadSplitView({
                   <button
                     type="button"
                     onClick={() => onConvertLead?.(activeLead)}
-                    className="px-2.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-xs font-medium text-white transition inline-flex items-center gap-1.5 shadow-sm"
+                    className="px-3.5 py-1.5 rounded-xl bg-[#4361ee] hover:bg-[#3a5bf0] text-xs font-bold text-white transition inline-flex items-center gap-1.5 shadow-md shadow-indigo-500/20"
                   >
                     <Shuffle className="h-3.5 w-3.5" />
                     <span>Convert</span>

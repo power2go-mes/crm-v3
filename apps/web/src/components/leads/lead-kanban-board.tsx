@@ -31,7 +31,7 @@ interface LeadKanbanBoardProps {
   onStageChange?: (leadId: string, newStage: string) => Promise<void> | void;
 }
 
-// Stage styling metadata: brand-consistent colors, badges, and accents
+// Stage styling metadata: modern CRMHUB colors, rounded badges, and soft tinted headers
 const STAGE_THEMES: Record<
   string,
   {
@@ -47,22 +47,22 @@ const STAGE_THEMES: Record<
   }
 > = {
   new: {
-    pillBg: 'bg-blue-50',
-    pillText: 'text-blue-700',
-    pillBorder: 'border-blue-200/80',
-    headerAccent: 'bg-blue-500',
-    headerBg: 'bg-gradient-to-r from-blue-50/60 to-transparent',
-    cardBorderHover: 'hover:border-blue-400',
+    pillBg: 'bg-[#eef2ff]',
+    pillText: 'text-[#4361ee]',
+    pillBorder: 'border-indigo-100',
+    headerAccent: 'bg-[#4361ee]',
+    headerBg: 'bg-gradient-to-r from-indigo-50/70 to-white',
+    cardBorderHover: 'hover:border-[#4361ee]/60',
     icon: Sparkles,
-    accentColor: '#3b82f6',
+    accentColor: '#4361ee',
     emptyText: 'No new incoming leads',
   },
   contacted: {
     pillBg: 'bg-purple-50',
-    pillText: 'text-purple-700',
-    pillBorder: 'border-purple-200/80',
+    pillText: 'text-purple-600',
+    pillBorder: 'border-purple-100',
     headerAccent: 'bg-purple-500',
-    headerBg: 'bg-gradient-to-r from-purple-50/60 to-transparent',
+    headerBg: 'bg-gradient-to-r from-purple-50/70 to-white',
     cardBorderHover: 'hover:border-purple-400',
     icon: PhoneCall,
     accentColor: '#8b5cf6',
@@ -70,10 +70,10 @@ const STAGE_THEMES: Record<
   },
   qualified: {
     pillBg: 'bg-emerald-50',
-    pillText: 'text-emerald-700',
-    pillBorder: 'border-emerald-200/80',
+    pillText: 'text-emerald-600',
+    pillBorder: 'border-emerald-100',
     headerAccent: 'bg-emerald-500',
-    headerBg: 'bg-gradient-to-r from-emerald-50/60 to-transparent',
+    headerBg: 'bg-gradient-to-r from-emerald-50/70 to-white',
     cardBorderHover: 'hover:border-emerald-400',
     icon: CheckCircle2,
     accentColor: '#10b981',
@@ -81,10 +81,10 @@ const STAGE_THEMES: Record<
   },
   proposal: {
     pillBg: 'bg-amber-50',
-    pillText: 'text-amber-700',
-    pillBorder: 'border-amber-200/80',
+    pillText: 'text-amber-600',
+    pillBorder: 'border-amber-100',
     headerAccent: 'bg-amber-500',
-    headerBg: 'bg-gradient-to-r from-amber-50/60 to-transparent',
+    headerBg: 'bg-gradient-to-r from-amber-50/70 to-white',
     cardBorderHover: 'hover:border-amber-400',
     icon: FileText,
     accentColor: '#f59e0b',
@@ -92,24 +92,24 @@ const STAGE_THEMES: Record<
   },
   lost: {
     pillBg: 'bg-rose-50',
-    pillText: 'text-rose-700',
-    pillBorder: 'border-rose-200/80',
+    pillText: 'text-rose-600',
+    pillBorder: 'border-rose-100',
     headerAccent: 'bg-rose-500',
-    headerBg: 'bg-gradient-to-r from-rose-50/60 to-transparent',
+    headerBg: 'bg-gradient-to-r from-rose-50/70 to-white',
     cardBorderHover: 'hover:border-rose-400',
     icon: XCircle,
     accentColor: '#ef4444',
     emptyText: 'No lost leads',
   },
   convert: {
-    pillBg: 'bg-teal-50',
-    pillText: 'text-teal-700',
-    pillBorder: 'border-teal-200/80',
-    headerAccent: 'bg-teal-600',
-    headerBg: 'bg-gradient-to-r from-teal-50/60 to-transparent',
-    cardBorderHover: 'hover:border-teal-400',
+    pillBg: 'bg-cyan-50',
+    pillText: 'text-cyan-600',
+    pillBorder: 'border-cyan-100',
+    headerAccent: 'bg-cyan-500',
+    headerBg: 'bg-gradient-to-r from-cyan-50/70 to-white',
+    cardBorderHover: 'hover:border-cyan-400',
     icon: TrendingUp,
-    accentColor: '#0d9488',
+    accentColor: '#06b6d4',
     emptyText: 'Ready to convert',
   },
 };
@@ -205,16 +205,16 @@ export function LeadKanbanBoard({
     <div className="space-y-4">
       {/* Board Summary Metric Strip */}
       <div className="flex flex-wrap items-center justify-between gap-3 px-1">
-        <div className="flex items-center gap-2">
-          <div className="flex items-center justify-center h-7 w-7 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200/60">
-            <Layers className="h-3.5 w-3.5" />
+        <div className="flex items-center gap-2.5">
+          <div className="flex items-center justify-center h-8 w-8 rounded-xl bg-[#eef2ff] text-[#4361ee] shadow-2xs">
+            <Layers className="h-4 w-4" />
           </div>
           <div>
             <div className="flex items-baseline gap-2">
-              <span className="text-sm font-semibold text-slate-900">
+              <span className="text-sm font-bold text-slate-800">
                 Kanban Pipeline
               </span>
-              <span className="text-xs text-slate-500 font-medium">
+              <span className="text-xs text-slate-400 font-medium">
                 {totalLeadsCount} active lead{totalLeadsCount === 1 ? '' : 's'} across {CANONICAL_LEAD_STAGES.length} stages
               </span>
             </div>
@@ -222,9 +222,9 @@ export function LeadKanbanBoard({
         </div>
 
         {totalPipelineRevenue > 0 && (
-          <div className="flex items-center gap-2 px-3 py-1 bg-white rounded-full border border-slate-200/80 shadow-2xs text-xs font-semibold text-slate-700">
+          <div className="flex items-center gap-2 px-3.5 py-1.5 bg-white rounded-full border border-slate-100 shadow-2xs text-xs font-semibold text-slate-700">
             <span className="text-slate-400 uppercase text-[10px] tracking-wide font-bold">Total Pipeline:</span>
-            <span className="text-emerald-600 font-bold">
+            <span className="text-[#4361ee] font-extrabold">
               ${(totalPipelineRevenue / 1000).toLocaleString(undefined, { maximumFractionDigits: 1 })}k
             </span>
           </div>
@@ -245,22 +245,22 @@ export function LeadKanbanBoard({
           return (
             <div
               key={stage.id}
-              className="flex flex-col bg-slate-50/80 border border-slate-200/80 rounded-2xl overflow-hidden shadow-2xs hover:shadow-xs transition-all duration-200 shrink-0 w-[85vw] sm:w-auto min-w-[280px] sm:min-w-0 snap-center"
+              className="flex flex-col bg-[#f8faff] border border-slate-100/90 rounded-3xl overflow-hidden shadow-2xs hover:shadow-xs transition-all duration-200 shrink-0 w-[85vw] sm:w-auto min-w-[280px] sm:min-w-0 snap-center"
             >
               {/* Column Header */}
               <div
-                className={`p-3.5 border-b border-slate-200/80 bg-white/95 backdrop-blur-xs relative overflow-hidden`}
+                className={`p-3.5 border-b border-slate-100 bg-white relative overflow-hidden`}
               >
-                {/* Stage top accent line */}
+                {/* Stage top accent bar */}
                 <div
-                  className="absolute top-0 left-0 right-0 h-1"
+                  className="absolute top-0 left-0 right-0 h-1.5 rounded-t-full"
                   style={{ backgroundColor: stage.color || theme.accentColor }}
                 />
 
-                <div className="flex items-center justify-between gap-2 pt-0.5">
+                <div className="flex items-center justify-between gap-2 pt-1">
                   <div className="flex items-center gap-2 min-w-0">
                     <div
-                      className={`h-6 w-6 rounded-md flex items-center justify-center text-xs font-semibold ${theme.pillBg} ${theme.pillText} border ${theme.pillBorder} shrink-0`}
+                      className={`h-7 w-7 rounded-xl flex items-center justify-center text-xs font-bold ${theme.pillBg} ${theme.pillText} shrink-0`}
                     >
                       <StageIcon className="h-3.5 w-3.5" />
                     </div>
@@ -269,7 +269,7 @@ export function LeadKanbanBoard({
                         <span className="font-bold text-xs uppercase tracking-wider text-slate-800 truncate">
                           {stage.name}
                         </span>
-                        <span className="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-slate-100 text-slate-600 border border-slate-200/60">
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#f4f6fa] text-slate-500">
                           {stageLeads.length}
                         </span>
                       </div>
@@ -277,7 +277,7 @@ export function LeadKanbanBoard({
                   </div>
 
                   {totalRevenue > 0 && (
-                    <span className="text-[11px] font-bold text-emerald-600 shrink-0">
+                    <span className="text-[11px] font-bold text-[#4361ee] shrink-0">
                       ${(totalRevenue / 1000).toFixed(0)}k
                     </span>
                   )}
@@ -287,11 +287,11 @@ export function LeadKanbanBoard({
               {/* Column Body / Cards List */}
               <div className="p-2.5 space-y-2.5 flex-1 overflow-y-auto max-h-[calc(100vh-270px)]">
                 {stageLeads.length === 0 ? (
-                  <div className="h-36 border border-dashed border-slate-200/90 rounded-xl bg-white/40 flex flex-col items-center justify-center gap-2 p-4 text-center">
-                    <div className="h-8 w-8 rounded-full bg-slate-100/80 flex items-center justify-center text-slate-400">
+                  <div className="h-36 border border-dashed border-slate-200/80 rounded-2xl bg-white/50 flex flex-col items-center justify-center gap-2 p-4 text-center">
+                    <div className="h-8 w-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-400">
                       <Inbox className="h-4 w-4" />
                     </div>
-                    <span className="text-xs font-medium text-slate-400">
+                    <span className="text-xs font-semibold text-slate-400">
                       {theme.emptyText}
                     </span>
                   </div>
@@ -318,10 +318,10 @@ export function LeadKanbanBoard({
                           setActiveCardId(lead.id);
                           onLeadClick?.(lead);
                         }}
-                        className={`group relative p-3.5 bg-white hover:bg-slate-50/50 border rounded-xl shadow-xs hover:shadow-md transition-all duration-150 cursor-pointer flex flex-col gap-2.5 ${
+                        className={`group relative p-3.5 bg-white hover:bg-slate-50/70 border rounded-2xl shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-150 cursor-pointer flex flex-col gap-2.5 ${
                           isSelected
-                            ? 'border-emerald-500 ring-2 ring-emerald-500/10'
-                            : `border-slate-200/80 ${theme.cardBorderHover}`
+                            ? 'border-[#4361ee] ring-2 ring-[#4361ee]/20'
+                            : `border-slate-100 ${theme.cardBorderHover}`
                         }`}
                       >
                         {/* Card Header: Primary Title + Quick Link Arrow */}
@@ -330,21 +330,21 @@ export function LeadKanbanBoard({
                             <Link
                               href={`/leads/${lead.id}`}
                               onClick={(e) => e.stopPropagation()}
-                              className="font-bold text-sm text-slate-900 group-hover:text-emerald-700 transition line-clamp-1 flex items-center gap-1.5"
+                              className="font-bold text-xs sm:text-sm text-slate-800 group-hover:text-[#4361ee] transition line-clamp-1 flex items-center gap-1.5"
                               title={primaryTitle}
                             >
                               <span className="truncate">{primaryTitle}</span>
-                              <ArrowRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity shrink-0 text-emerald-600" />
+                              <ArrowRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity shrink-0 text-[#4361ee]" />
                             </Link>
                             {hasSubTitle && (
-                              <p className="text-[11px] text-slate-500 truncate mt-0.5 font-medium">
+                              <p className="text-[11px] text-slate-400 truncate mt-0.5 font-medium">
                                 {fullName}
                               </p>
                             )}
                           </div>
 
                           {lead.lead_source && (
-                            <span className="text-[9.5px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 shrink-0 border border-slate-200/50">
+                            <span className="text-[9.5px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#f4f6fa] text-slate-500 shrink-0">
                               {lead.lead_source.replace(/_/g, ' ')}
                             </span>
                           )}
@@ -360,7 +360,7 @@ export function LeadKanbanBoard({
 
                         {/* Contact Channels (Email / Phone) */}
                         {(lead.email || lead.phone) && (
-                          <div className="space-y-1 text-xs text-slate-500 bg-slate-50/60 p-2 rounded-lg border border-slate-100">
+                          <div className="space-y-1 text-xs text-slate-500 bg-[#f8faff] p-2 rounded-xl border border-slate-100">
                             {lead.email && (
                               <div className="flex items-center gap-1.5 truncate">
                                 <Mail className="h-3 w-3 text-slate-400 shrink-0" />
@@ -382,12 +382,12 @@ export function LeadKanbanBoard({
                         <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs gap-2">
                           {/* Deal Value Pill */}
                           {formattedRev ? (
-                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md font-bold text-emerald-700 bg-emerald-50/80 border border-emerald-200/60 text-[11px]">
-                              <DollarSign className="h-3 w-3 -mr-0.5 text-emerald-600" />
+                            <span className="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-lg font-bold text-[#4361ee] bg-[#eef2ff] text-[11px]">
+                              <DollarSign className="h-3 w-3 -mr-0.5" />
                               {formattedRev}
                             </span>
                           ) : (
-                            <span className="text-[11px] text-slate-400 italic">
+                            <span className="text-[11px] text-slate-300 italic">
                               No revenue recorded
                             </span>
                           )}
@@ -407,7 +407,7 @@ export function LeadKanbanBoard({
                               >
                                 {avatar.initials}
                               </div>
-                              <span className="text-[11px] text-slate-600 font-medium truncate">
+                              <span className="text-[11px] text-slate-600 font-semibold truncate">
                                 {repName}
                               </span>
                             </div>
