@@ -83,23 +83,22 @@ export function OpportunityCreateModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/20 backdrop-blur-xs animate-fadeIn">
-      <div className="relative w-full max-w-lg bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs animate-fadeIn">
+      <div className="relative w-full max-w-lg bg-white border border-slate-100 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
         {/* Header */}
-        <div className="px-6 py-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
-          <div className="flex items-center gap-2.5">
-            <div className="p-2 bg-[#4361ee]/10 text-[#4361ee] rounded-lg">
+        <div className="px-6 sm:px-8 py-5 border-b border-slate-100 flex items-center justify-between bg-[#f8faff]">
+          <div className="flex items-center gap-3">
+            <div className="h-10 w-10 rounded-2xl bg-[#eef2ff] text-[#4361ee] flex items-center justify-center font-bold shadow-2xs">
               <TrendingUp className="h-5 w-5" />
             </div>
             <div>
-              <h3 className="text-base font-bold text-slate-900">Create New Opportunity</h3>
-              <p className="text-xs text-slate-400">Track deal value, stages, and forecast timelines.</p>
+              <h3 className="font-bold text-base text-slate-900">New Opportunity</h3>
+              <p className="text-xs text-slate-400 font-medium">Add a deal to your revenue pipeline</p>
             </div>
           </div>
           <button
-            type="button"
             onClick={onClose}
-            className="p-1.5 text-slate-400 hover:text-slate-700 rounded-lg hover:bg-slate-100 transition"
+            className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-xl transition"
           >
             <X className="h-5 w-5" />
           </button>

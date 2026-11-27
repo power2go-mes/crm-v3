@@ -175,18 +175,31 @@ export function LeadCreateModal({
   ];
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/20 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto animate-in fade-in duration-150">
-      <div className="bg-white rounded-xl shadow-2xl w-full max-w-2xl overflow-hidden border border-slate-200">
+    <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto animate-in fade-in duration-150">
+      <div className="bg-white rounded-3xl shadow-2xl w-full max-w-2xl overflow-hidden border border-slate-100">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200">
+        <div className="flex items-center justify-between px-6 sm:px-8 py-5 border-b border-slate-100 bg-[#f8faff]">
           <div>
             <h2 className="text-base font-bold text-slate-900 tracking-tight">{duplicateDraft ? 'Duplicate Lead' : 'Create Lead'}</h2>
-            <label className="text-xs text-slate-500">Form layout <select value={mode} disabled={isSubmitting} onChange={e => setMode(e.target.value as 'single' | 'wizard')}><option value="single">Single-step</option><option value="wizard">Multi-step</option></select></label>
-            {mode === 'wizard' && <p className="text-xs text-slate-500">Step {step} of 4: {stepTitles[step - 1]}</p>}
+            <div className="flex items-center gap-2 mt-1">
+              <label className="text-xs text-slate-400 font-medium flex items-center gap-1.5">
+                Layout:
+                <select
+                  value={mode}
+                  disabled={isSubmitting}
+                  onChange={e => setMode(e.target.value as 'single' | 'wizard')}
+                  className="bg-white border border-slate-200/80 rounded-lg px-2 py-0.5 text-xs text-slate-700 outline-none focus:ring-1 focus:ring-[#4361ee]"
+                >
+                  <option value="single">Single-step</option>
+                  <option value="wizard">Multi-step</option>
+                </select>
+              </label>
+              {mode === 'wizard' && <span className="text-xs text-slate-400">• Step {step} of 4: {stepTitles[step - 1]}</span>}
+            </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1 text-slate-400 hover:text-slate-600 rounded transition"
+            className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-xl transition"
           >
             <X className="h-5 w-5" />
           </button>
