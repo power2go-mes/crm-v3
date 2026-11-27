@@ -25,12 +25,12 @@ export function BulkActionBar({
   if (selectedCount === 0) return null;
 
   return (
-    <div className="flex items-center gap-2 flex-wrap px-4 sm:px-6 py-2 bg-slate-50 border-b border-slate-200 text-xs transition animate-in fade-in duration-150">
+    <div className="flex items-center gap-2.5 flex-wrap px-5 py-3 bg-[#eef2ff] border-b border-indigo-100/70 text-xs text-[#4361ee] font-semibold transition animate-in fade-in duration-150 rounded-t-3xl">
       {/* Select All on Page / All Records */}
       <button
         type="button"
         onClick={onSelectAll}
-        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 text-emerald-700 border border-emerald-300 hover:bg-emerald-600 hover:text-white rounded-md font-medium transition"
+        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-[#4361ee] text-white rounded-xl shadow-2xs font-bold transition hover:bg-[#3a5bf0]"
       >
         <Check className="h-3.5 w-3.5" />
         <span>Select All ({totalCount})</span>
@@ -40,7 +40,7 @@ export function BulkActionBar({
       <button
         type="button"
         onClick={onClearSelection}
-        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-600 hover:text-white rounded-md font-medium transition"
+        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white text-slate-700 border border-slate-200/80 hover:bg-slate-50 rounded-xl font-semibold transition"
       >
         <X className="h-3.5 w-3.5" />
         <span>Unselect ({selectedCount})</span>
@@ -51,7 +51,7 @@ export function BulkActionBar({
         <button
           type="button"
           onClick={onExportSelected}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-sky-50 text-sky-700 border border-sky-300 hover:bg-sky-600 hover:text-white rounded-md font-medium transition"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white text-[#4361ee] border border-indigo-200 hover:bg-indigo-50 rounded-xl font-semibold transition"
         >
           <Download className="h-3.5 w-3.5" />
           <span>Export Selected</span>
@@ -63,7 +63,7 @@ export function BulkActionBar({
         <button
           type="button"
           onClick={onBulkDelete}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white text-slate-700 border border-slate-300 hover:bg-slate-100 rounded-md font-medium transition ml-auto"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-rose-50 text-rose-600 border border-rose-200 hover:bg-rose-100 rounded-xl font-semibold transition ml-auto"
         >
           <Trash2 className="h-3.5 w-3.5" />
           <span>Bulk Delete</span>

@@ -37,41 +37,41 @@ export function PaginationBar({
   }
 
   return (
-    <div className="flex flex-wrap items-center justify-between gap-3 px-4 sm:px-6 py-3 bg-white border-t border-slate-200 text-xs text-slate-600">
+    <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-3.5 bg-white border-t border-slate-100 text-xs text-slate-500 rounded-b-3xl">
       {/* Records Count & Page Size Selector */}
       <div className="flex items-center gap-3">
         <span>
-          Showing <span className="font-semibold text-slate-900">{startRecord}</span> to{' '}
-          <span className="font-semibold text-slate-900">{endRecord}</span> of{' '}
-          <span className="font-semibold text-slate-900">{totalCount}</span> entries
+          Showing <span className="font-bold text-slate-800">{startRecord}</span> to{' '}
+          <span className="font-bold text-slate-800">{endRecord}</span> of{' '}
+          <span className="font-bold text-slate-800">{totalCount}</span> entries
         </span>
 
         <div className="flex items-center gap-1.5 ml-2">
-          <label htmlFor="pageSizeSelect" className="text-slate-500">
+          <label htmlFor="pageSizeSelect" className="text-slate-400">
             Per page:
           </label>
           <select
             id="pageSizeSelect"
             value={pageSize}
             onChange={(e) => onPageSizeChange(Number(e.target.value))}
-            className="text-xs font-medium text-slate-700 bg-slate-50 border border-slate-300 rounded px-2 py-1 focus:outline-none focus:ring-1 focus:ring-emerald-500 cursor-pointer"
+            className="text-xs font-semibold text-slate-700 bg-[#f8faff] border border-slate-200/70 rounded-lg px-2.5 py-1 focus:outline-none focus:ring-1 focus:ring-[#4361ee] cursor-pointer"
           >
             <option value={10}>10</option>
+            <option value={20}>20</option>
             <option value={25}>25</option>
             <option value={50}>50</option>
-            <option value={100}>100</option>
           </select>
         </div>
       </div>
 
-      {/* Navigation Buttons */}
+      {/* Page Numbers with CRMHUB Blue Active State */}
       <div className="flex items-center gap-1">
         <button
           type="button"
           onClick={() => onPageChange(currentPage - 1)}
           disabled={currentPage <= 1}
-          className="p-1.5 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded disabled:opacity-40 disabled:hover:bg-transparent transition cursor-pointer"
-          title="Previous page"
+          aria-label="Previous page"
+          className="p-1.5 rounded-lg border border-slate-100 hover:bg-slate-50 text-slate-500 disabled:opacity-40 transition"
         >
           <ChevronLeft className="h-4 w-4" />
         </button>
@@ -79,20 +79,20 @@ export function PaginationBar({
         {pages.map((p, idx) =>
           typeof p === 'number' ? (
             <button
-              key={idx}
+              key={`page-${p}`}
               type="button"
               onClick={() => onPageChange(p)}
-              className={`min-w-[28px] h-7 px-2 flex items-center justify-center rounded font-medium transition cursor-pointer ${
-                currentPage === p
-                  ? 'bg-emerald-600 text-white font-semibold shadow-xs'
-                  : 'text-slate-700 hover:bg-slate-100'
+              className={`h-7 w-7 rounded-lg text-xs font-bold transition-all ${
+                p === currentPage
+                  ? 'bg-[#4361ee] text-white shadow-2xs'
+                  : 'text-slate-600 hover:bg-slate-50'
               }`}
             >
               {p}
             </button>
           ) : (
-            <span key={idx} className="px-1 text-slate-400">
-              {p}
+            <span key={`dots-${idx}`} className="px-1 text-slate-300">
+              ...
             </span>
           )
         )}
@@ -101,8 +101,8 @@ export function PaginationBar({
           type="button"
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage >= totalPages}
-          className="p-1.5 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded disabled:opacity-40 disabled:hover:bg-transparent transition cursor-pointer"
-          title="Next page"
+          aria-label="Next page"
+          className="p-1.5 rounded-lg border border-slate-100 hover:bg-slate-50 text-slate-500 disabled:opacity-40 transition"
         >
           <ChevronRight className="h-4 w-4" />
         </button>

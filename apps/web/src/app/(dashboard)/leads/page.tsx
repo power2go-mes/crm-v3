@@ -326,7 +326,7 @@ export default function LeadsPage() {
           </p>}
 
           {/* Main Toolbar with integrated rounded styling */}
-          <div className="rounded-2xl border border-slate-200/80 bg-white shadow-xs">
+          <div className="rounded-3xl border border-slate-100 bg-white shadow-2xs overflow-hidden">
             <ListToolbar
               title="Leads"
               subtitle={viewMode === 'chart' ? undefined : 'Manage acquisition opportunities, qualification status, and rep assignments.'}

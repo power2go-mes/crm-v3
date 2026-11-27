@@ -298,7 +298,8 @@ export default function ContactsPage() {
     <PageContainer maxWidth="full">
       <PermissionGate action="contacts.view" showAccessDenied>
         <div className="space-y-4">
-          <ListToolbar
+          <div className="rounded-3xl border border-slate-100 bg-white shadow-2xs overflow-hidden">
+            <ListToolbar
             title="Contacts"
             subtitle="Manage people, decision-makers, and key stakeholder relationships."
             viewType={viewType}
@@ -322,6 +323,7 @@ export default function ContactsPage() {
             newButtonLabel="New Contact"
             canCreate={true}
           />
+          </div>
 
           <BulkActionBar
             selectedCount={selectedIds.length}
