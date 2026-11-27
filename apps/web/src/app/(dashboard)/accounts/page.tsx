@@ -307,7 +307,7 @@ export default function AccountsPage() {
     <PageContainer maxWidth="full">
       <PermissionGate action="accounts.view" showAccessDenied>
         <div className="space-y-4">
-          <div className="rounded-3xl border border-slate-100 bg-white shadow-2xs overflow-hidden">
+          <div className="relative z-30 rounded-3xl border border-slate-100 bg-white shadow-2xs">
             <ListToolbar
               title="Accounts"
               subtitle="Manage organizations, client companies, and institutional customer profiles."

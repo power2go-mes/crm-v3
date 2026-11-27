@@ -308,7 +308,7 @@ export default function CampaignsPage() {
     <PageContainer maxWidth="full">
       <PermissionGate action="campaigns.view" showAccessDenied>
         <div className="space-y-4">
-          <div className="rounded-3xl border border-slate-100 bg-white shadow-2xs overflow-hidden">
+          <div className="relative z-30 rounded-3xl border border-slate-100 bg-white shadow-2xs">
             <ListToolbar
               title="Campaigns"
               subtitle="Plan marketing initiatives, track budgets, and evaluate campaign ROI."

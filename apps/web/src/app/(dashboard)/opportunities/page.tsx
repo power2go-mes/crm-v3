@@ -333,7 +333,7 @@ export default function OpportunitiesPage() {
     <PageContainer maxWidth="full">
       <PermissionGate action="opportunities.view" showAccessDenied>
         <div className="space-y-4">
-          <div className="rounded-3xl border border-slate-100 bg-white shadow-2xs overflow-hidden">
+          <div className="relative z-30 rounded-3xl border border-slate-100 bg-white shadow-2xs">
             <ListToolbar
               title="Opportunities"
               subtitle="Track sales pipeline stages, deal probabilities, and expected close revenue."

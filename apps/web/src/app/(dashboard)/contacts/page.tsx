@@ -298,7 +298,7 @@ export default function ContactsPage() {
     <PageContainer maxWidth="full">
       <PermissionGate action="contacts.view" showAccessDenied>
         <div className="space-y-4">
-          <div className="rounded-3xl border border-slate-100 bg-white shadow-2xs overflow-hidden">
+          <div className="relative z-30 rounded-3xl border border-slate-100 bg-white shadow-2xs">
             <ListToolbar
             title="Contacts"
             subtitle="Manage people, decision-makers, and key stakeholder relationships."
