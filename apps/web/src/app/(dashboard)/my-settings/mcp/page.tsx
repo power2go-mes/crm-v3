@@ -89,14 +89,14 @@ export default function McpSettingsPage() {
 
       <div className="space-y-6">
         {/* Banner */}
-        <div className="rounded-2xl bg-gradient-to-r from-emerald-600 via-teal-600 to-slate-800 p-6 text-white shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="rounded-2xl bg-gradient-to-r from-[#3a5bf0] via-[#4361ee] to-slate-900 p-6 text-white shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="space-y-1">
             <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/20 text-xs font-bold uppercase tracking-wider">
               <Bot className="h-3.5 w-3.5" />
               <span>Model Context Protocol 2025-03-26</span>
             </div>
             <h2 className="text-xl font-bold">Personal Agent Key</h2>
-            <p className="text-xs text-emerald-100 max-w-xl">
+            <p className="text-xs text-indigo-100 max-w-xl">
               Connect AI coding assistants and autonomous agents directly to FINLONEXA CRM. The AI will only see and perform what your account ({profile?.email || user?.email}) is authorized to do.
             </p>
           </div>

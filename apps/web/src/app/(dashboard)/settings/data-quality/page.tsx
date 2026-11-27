@@ -447,7 +447,7 @@ export default function DataQualityPage() {
                     <span className="text-xs font-semibold text-[#4361ee] dark:text-[#4361ee]">
                       Weight: {rule.threshold}%
                     </span>
-                    <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#eef2ff] text-[#4361ee] dark:bg-emerald-950/40 dark:text-emerald-300">
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#eef2ff] text-[#4361ee] dark:bg-indigo-950/40 dark:text-[#4361ee]">
                       Active
                     </span>
                   </div>

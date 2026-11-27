@@ -230,7 +230,7 @@ export default function CalendarPage() {
                   <div
                     key={`day-${day}`}
                     className={`min-h-28 p-2 flex flex-col justify-between transition hover:bg-slate-50/60 ${
-                      isCurrentToday ? 'bg-[#eef2ff]/40 ring-1 ring-inset ring-emerald-400' : ''
+                      isCurrentToday ? 'bg-[#eef2ff]/40 ring-1 ring-inset ring-[#4361ee]' : ''
                     }`}
                   >
                     <div className="flex items-center justify-between">
@@ -260,7 +260,7 @@ export default function CalendarPage() {
                           pillClass = 'bg-amber-100 text-amber-800 hover:bg-amber-200';
                           linkHref = `/tasks/${act.id}`;
                         } else if (act.activity_type === 'log_call') {
-                          pillClass = 'bg-[#eef2ff] text-[#4361ee] hover:bg-emerald-200';
+                          pillClass = 'bg-[#eef2ff] text-[#4361ee] hover:bg-indigo-100';
                           linkHref = `/calls/${act.id}`;
                         }
 

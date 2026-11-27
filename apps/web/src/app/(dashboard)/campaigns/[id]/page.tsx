@@ -335,7 +335,7 @@ export default function CampaignDetailPage({ params }: CampaignDetailPageProps) 
           <Layers className="h-3.5 w-3.5" />
           <span>Related Lists</span>
           {opportunities.length > 0 && (
-            <span className="h-2 w-2 rounded-full bg-emerald-400" />
+            <span className="h-2 w-2 rounded-full bg-[#4361ee]" />
           )}
         </button>
 

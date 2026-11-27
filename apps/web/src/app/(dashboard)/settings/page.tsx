@@ -70,13 +70,13 @@ function SettingsContent() {
       <PermissionGate action="settings.view" showAccessDenied>
         <div className="space-y-6">
           {/* Quick Nav to Role Manager Banner */}
-          <div className="flex flex-col items-start justify-between gap-4 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 p-6 text-white shadow-sm sm:flex-row sm:items-center">
+          <div className="flex flex-col items-start justify-between gap-4 rounded-2xl bg-gradient-to-r from-[#3a5bf0] to-[#4361ee] p-6 text-white shadow-sm sm:flex-row sm:items-center">
             <div>
               <div className="mb-2 inline-flex items-center gap-1.5 rounded-full bg-white/20 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">
                 Active System Manager
               </div>
               <h3 className="text-lg font-bold">Dynamic Role & Permission Manager</h3>
-              <p className="mt-1 max-w-xl text-xs text-emerald-100">
+              <p className="mt-1 max-w-xl text-xs text-indigo-100">
                 Configure module action permissions across canonical and custom roles. Enforce sales hierarchy and BDO restrictions in real time.
               </p>
             </div>
@@ -208,7 +208,7 @@ function SettingsContent() {
               <div className="space-y-4 rounded-xl border border-slate-200 bg-white p-6 shadow-xs">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="rounded-lg bg-[#eef2ff] p-2.5 text-[#4361ee] dark:bg-emerald-950/40 dark:text-[#4361ee]">
+                    <div className="rounded-lg bg-[#eef2ff] p-2.5 text-[#4361ee] dark:bg-indigo-950/40 dark:text-[#4361ee]">
                       <Building2 className="h-5 w-5" />
                     </div>
                     <div>

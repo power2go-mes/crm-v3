@@ -160,7 +160,7 @@ export default function AutomationSettingsPage() {
                         <span
                           className={`rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
                             rule.is_active
-                              ? 'bg-[#eef2ff] text-[#4361ee] dark:bg-emerald-950/40 dark:text-[#4361ee]'
+                              ? 'bg-[#eef2ff] text-[#4361ee] dark:bg-indigo-950/40 dark:text-[#4361ee]'
                               : 'bg-slate-100 text-slate-600 dark:bg-slate-800 '
                           }`}
                         >
@@ -193,7 +193,7 @@ export default function AutomationSettingsPage() {
                         className={`inline-flex items-center gap-1 rounded-lg border px-3 py-1.5 text-xs font-semibold ${
                           rule.is_active
                             ? 'border-slate-300 text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300'
-                            : 'border-indigo-200 bg-[#eef2ff] text-[#4361ee] hover:bg-[#eef2ff] dark:border-emerald-800 dark:bg-emerald-950/40'
+                            : 'border-indigo-200 bg-[#eef2ff] text-[#4361ee] hover:bg-[#eef2ff] dark:border-indigo-850 dark:bg-indigo-950/40'
                         }`}
                       >
                         {rule.is_active ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}
@@ -249,7 +249,7 @@ export default function AutomationSettingsPage() {
                       <span
                         className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold ${
                           log.status === 'success'
-                            ? 'bg-[#eef2ff] text-[#4361ee] dark:bg-emerald-950/40 dark:text-[#4361ee]'
+                            ? 'bg-[#eef2ff] text-[#4361ee] dark:bg-indigo-950/40 dark:text-[#4361ee]'
                             : 'bg-red-50 text-red-700 dark:bg-red-950/40 dark:text-red-400'
                         }`}
                       >

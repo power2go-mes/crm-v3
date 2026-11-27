@@ -71,9 +71,9 @@ const STAGE_THEMES: Record<
   qualified: {
     pillBg: 'bg-[#eef2ff]',
     pillText: 'text-[#4361ee]',
-    pillBorder: 'border-emerald-100',
+    pillBorder: 'border-indigo-100',
     headerAccent: 'bg-[#4361ee]',
-    headerBg: 'bg-gradient-to-r from-emerald-50/70 to-white',
+    headerBg: 'bg-gradient-to-r from-indigo-50/70 to-white',
     cardBorderHover: 'hover:border-indigo-300',
     icon: CheckCircle2,
     accentColor: '#10b981',

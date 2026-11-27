@@ -84,7 +84,7 @@ export default function DepartmentsPage() {
         {showColumns && <label className="text-sm"><input type="checkbox" checked={showDescription} onChange={e => { setShowDescription(e.target.checked); localStorage.setItem(`crm:${user?.id}:departments:description`, String(e.target.checked)); }} /> Description</label>}
         {hasPermission('departments.restore') && <button className="rounded border p-2 text-sm" onClick={() => { setTrash(!trash); setPage(1); }}>{trash ? 'Back to Departments' : 'Deleted Departments'}</button>}
       </div>
-      {notice && <p role="status" className="mb-3 text-green-800">{notice}</p>}
+      {notice && <p role="status" className="mb-3 text-[#4361ee]">{notice}</p>}
       {deletion.error && <p role="alert" className="mb-3 text-red-700">{deletion.error.message}</p>}
       {list.isError ? <p role="alert">{list.error.message} <button onClick={() => void list.refetch()}>Retry</button></p> : <DataGrid columns={columns} data={list.data?.rows ?? []} keyExtractor={row => row.id} isLoading={list.isLoading} sortField={sort} sortDirection={ascending ? 'asc' : 'desc'} onSort={field => { if (field === 'department_name' || field === 'description') { setSort(field); setAscending(field === sort ? !ascending : true); setPage(1); } }} emptyState={<p>{trash ? 'No deleted Departments.' : 'No Departments found.'}</p>} />}
       <nav aria-label="Department pagination" className="mt-4 flex items-center gap-4 text-sm"><button disabled={page === 1} onClick={() => setPage(page - 1)}>Previous</button><span>Page {page} · {list.data?.count ?? 0} Departments</span><button disabled={page * 20 >= (list.data?.count ?? 0)} onClick={() => setPage(page + 1)}>Next</button></nav>

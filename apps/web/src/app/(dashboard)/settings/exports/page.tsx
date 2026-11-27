@@ -124,7 +124,7 @@ export default function ExportPage() {
         {selected.length > 1 && <p className="text-sm text-slate-600">Multiple module files will be downloaded together in a ZIP archive.</p>}
         {canRunJob && <p className="text-sm text-slate-600">Lead CSVs process in resumable batches of 250, up to 100,000 leads or 50 MB. Resume interrupted jobs below.</p>}
         {download.error && <p role="alert" className="text-red-700">{download.error.message}</p>}
-        {notice && <p role="status" className="text-green-800">{notice}</p>}
+        {notice && <p role="status" className="text-[#4361ee]">{notice}</p>}
         {jobProgress && <p role="status">{jobProgress}</p>}
         <button disabled={busy || !selected.length || fields.isFetching || fields.isError || selected.some(module => !columns[module]?.length)} className="rounded bg-[#4361ee] px-5 py-2 text-white">{busy ? 'Exporting…' : canRunJob ? 'Start Resumable CSV Export' : 'Export'}</button>
       </form>

@@ -51,7 +51,7 @@ export default function UsersPage() {
       case 'SSM':
         return 'bg-[#eef2ff] text-[#4361ee] dark:bg-[#4361ee]/30 dark:text-[#4361ee]';
       case 'ASM':
-        return 'bg-[#eef2ff] text-[#4361ee] dark:bg-emerald-900/30 dark:text-emerald-300';
+        return 'bg-[#eef2ff] text-[#4361ee] dark:bg-indigo-900/30 dark:text-indigo-200';
       case 'BDO':
       default:
         return 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300';
@@ -236,7 +236,7 @@ export default function UsersPage() {
                       onClick={() => handleToggleStatus(u)}
                       className={`rounded-full px-2.5 py-0.5 text-xs font-semibold transition ${
                         u.is_active
-                          ? 'bg-[#eef2ff] text-[#4361ee] hover:bg-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-300'
+                          ? 'bg-[#eef2ff] text-[#4361ee] hover:bg-indigo-100 dark:bg-indigo-900/30 dark:text-indigo-200'
                           : 'bg-rose-100 text-rose-800 hover:bg-rose-200 dark:bg-rose-900/30 dark:text-rose-300'
                       }`}
                     >

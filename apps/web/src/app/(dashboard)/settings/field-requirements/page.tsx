@@ -67,7 +67,7 @@ export default function FieldRequirementsPage() {
     <PageHeader title="Field Requirements" subtitle="Choose which fields your team must fill in when creating or editing records." actions={hasPermission('settings.update') ? <button className="rounded bg-[#4361ee] px-4 py-2 text-white" onClick={e => open(null, e.currentTarget)}><Plus className="mr-1 inline h-4 w-4" />New</button> : undefined} />
     <PermissionGate action="settings.view" showAccessDenied>
       <label className="mb-4 block text-sm">Search <input value={search} onChange={e => setSearch(e.target.value)} className="rounded border p-2" /></label>
-      {notice && <p role="status" className="mb-3 text-green-800">{notice}</p>}
+      {notice && <p role="status" className="mb-3 text-[#4361ee]">{notice}</p>}
       {remove.error && <p role="alert" className="text-red-700">{remove.error.message}</p>}
       {query.isError ? <p role="alert">{query.error.message} <button onClick={() => void query.refetch()}>Retry</button></p> : <DataGrid columns={columns} data={rows} keyExtractor={row => row.id} isLoading={query.isLoading} emptyState={<p>No Field Requirements found.</p>} />}
     </PermissionGate>

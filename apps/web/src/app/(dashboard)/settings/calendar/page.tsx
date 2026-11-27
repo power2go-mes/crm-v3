@@ -146,7 +146,7 @@ export default function CalendarSettingsPage() {
             <div className="flex items-start gap-3">
               <ShieldCheck className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#4361ee]" />
               <div className="flex-1">
-                <h3 className="text-sm font-semibold text-emerald-900">
+                <h3 className="text-sm font-semibold text-indigo-950">
                   Direct Calendar Sync Engine Active
                 </h3>
                 <p className="mt-1 text-xs text-[#4361ee]">

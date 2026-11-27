@@ -68,7 +68,7 @@ export default function TaskDetailPage() {
           </p>
           <Link
             href="/tasks"
-            className="inline-flex items-center gap-1.5 mt-4 px-4 py-2 bg-[#3a5bf0] hover:bg-emerald-800 text-white rounded-lg text-xs font-semibold transition"
+            className="inline-flex items-center gap-1.5 mt-4 px-4 py-2 bg-[#3a5bf0] hover:bg-[#3a5bf0] text-white rounded-lg text-xs font-semibold transition"
           >
             <ArrowLeft className="h-3.5 w-3.5" /> Back to Tasks
           </Link>
@@ -161,7 +161,7 @@ export default function TaskDetailPage() {
               <button
                 type="button"
                 onClick={() => setIsEditModalOpen(true)}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#3a5bf0] hover:bg-emerald-800 text-white transition shadow-sm"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#3a5bf0] hover:bg-[#3a5bf0] text-white transition shadow-sm"
               >
                 <Edit2 className="h-3.5 w-3.5" /> Edit Task
               </button>

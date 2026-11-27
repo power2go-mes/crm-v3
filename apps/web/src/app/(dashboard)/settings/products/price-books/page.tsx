@@ -216,7 +216,7 @@ export default function PriceBooksPage() {
                         <span
                           className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${
                             currentBook.is_active
-                              ? 'bg-[#eef2ff] text-[#4361ee] dark:bg-emerald-950/40 dark:text-[#4361ee]'
+                              ? 'bg-[#eef2ff] text-[#4361ee] dark:bg-indigo-950/40 dark:text-[#4361ee]'
                               : 'bg-slate-100 text-slate-600 dark:bg-slate-800 '
                           }`}
                         >
@@ -365,7 +365,7 @@ export default function PriceBooksPage() {
                               <span
                                 className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold ${
                                   entry.is_active
-                                    ? 'bg-[#eef2ff] text-[#4361ee] dark:bg-emerald-950/40 dark:text-[#4361ee]'
+                                    ? 'bg-[#eef2ff] text-[#4361ee] dark:bg-indigo-950/40 dark:text-[#4361ee]'
                                     : 'bg-slate-100 text-slate-600 dark:bg-slate-800 '
                                 }`}
                               >

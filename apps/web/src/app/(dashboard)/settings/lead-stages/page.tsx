@@ -134,7 +134,7 @@ export default function LeadStagesPage() {
 
       <PermissionGate action="leads.view" showAccessDenied>
         {successMessage && (
-          <div className="mb-4 p-3 bg-[#eef2ff] border border-indigo-100 rounded-xl text-xs text-[#4361ee] flex items-center gap-2 dark:bg-emerald-950/40 dark:border-emerald-900 dark:text-emerald-300">
+          <div className="mb-4 p-3 bg-[#eef2ff] border border-indigo-100 rounded-xl text-xs text-[#4361ee] flex items-center gap-2 dark:bg-indigo-950/40 dark:border-indigo-900 dark:text-[#4361ee]">
             <CheckCircle2 className="h-4 w-4 shrink-0 text-[#4361ee]" />
             <span>{successMessage}</span>
           </div>
@@ -211,7 +211,7 @@ export default function LeadStagesPage() {
 
                       <td className="py-3.5 px-4">
                         {stage.is_final ? (
-                          <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#eef2ff] text-[#4361ee] dark:bg-emerald-950/40 dark:text-[#4361ee] border border-indigo-100 dark:border-emerald-900">
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#eef2ff] text-[#4361ee] dark:bg-indigo-950/40 dark:text-[#4361ee] border border-indigo-100 dark:border-indigo-900">
                             Conversion Stage
                           </span>
                         ) : stage.id === 'lost' ? (

@@ -105,7 +105,7 @@ export default function MyJobsPage() {
             }
             className={`p-1.5 rounded-lg transition ${
               isDone
-                ? 'bg-[#eef2ff] text-[#4361ee] hover:bg-emerald-200'
+                ? 'bg-[#eef2ff] text-[#4361ee] hover:bg-indigo-100'
                 : 'bg-slate-100 text-slate-400 hover:text-[#4361ee] hover:bg-slate-200'
             }`}
             title={isDone ? 'Mark as Not Started' : 'Mark as Completed'}

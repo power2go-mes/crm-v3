@@ -170,7 +170,7 @@ export default function ActivitiesHubPage() {
             }
             className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold transition ${
               isCompleted
-                ? 'bg-[#eef2ff] text-[#4361ee] hover:bg-emerald-200'
+                ? 'bg-[#eef2ff] text-[#4361ee] hover:bg-indigo-100'
                 : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
             }`}
           >

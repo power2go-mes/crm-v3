@@ -159,7 +159,7 @@ export function EmailComposerModal({
             className={`mx-6 mt-4 flex items-center gap-2 rounded-lg p-3 text-xs font-medium ${
               statusMessage.type === 'error'
                 ? 'bg-red-50 text-red-700 dark:bg-red-950/40 dark:text-red-400'
-                : 'bg-[#eef2ff] text-[#4361ee] dark:bg-emerald-950/40 dark:text-[#4361ee]'
+                : 'bg-[#eef2ff] text-[#4361ee] dark:bg-indigo-950/40 dark:text-[#4361ee]'
             }`}
           >
             {statusMessage.type === 'error' ? (

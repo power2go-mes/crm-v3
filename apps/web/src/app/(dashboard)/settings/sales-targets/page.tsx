@@ -114,7 +114,7 @@ export default function SalesTargetsPage() {
       case 'SSM':
         return 'bg-[#eef2ff] text-[#4361ee] dark:bg-[#4361ee]/30 dark:text-[#4361ee]';
       case 'ASM':
-        return 'bg-[#eef2ff] text-[#4361ee] dark:bg-emerald-900/30 dark:text-emerald-300';
+        return 'bg-[#eef2ff] text-[#4361ee] dark:bg-indigo-900/30 dark:text-[#4361ee]';
       case 'BDO':
       default:
         return 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300';
@@ -240,7 +240,7 @@ export default function SalesTargetsPage() {
 
         {/* Feedback Alerts */}
         {saveSuccess && (
-          <div className="mb-4 p-3 bg-[#eef2ff] border border-indigo-100 rounded-xl text-xs text-[#4361ee] flex items-center gap-2 dark:bg-emerald-950/40 dark:border-emerald-900 dark:text-emerald-300">
+          <div className="mb-4 p-3 bg-[#eef2ff] border border-indigo-100 rounded-xl text-xs text-[#4361ee] flex items-center gap-2 dark:bg-indigo-950/40 dark:border-indigo-900 dark:text-[#4361ee]">
             <CheckCircle2 className="h-4 w-4 shrink-0 text-[#4361ee]" />
             <span>Sales quotas successfully updated and synced with forecast leaderboards.</span>
           </div>
@@ -382,7 +382,7 @@ export default function SalesTargetsPage() {
                                   ${currentQuota.toLocaleString()}
                                 </span>
                                 {rep.quotaId ? (
-                                  <span className="text-[10px] text-[#4361ee] bg-[#eef2ff] dark:bg-emerald-950/40 dark:text-[#4361ee] px-1.5 py-0.5 rounded border border-indigo-100 dark:border-emerald-900 font-medium">
+                                  <span className="text-[10px] text-[#4361ee] bg-[#eef2ff] dark:bg-indigo-950/40 dark:text-[#4361ee] px-1.5 py-0.5 rounded border border-indigo-100 dark:border-indigo-900 font-medium">
                                     Saved
                                   </span>
                                 ) : (
@@ -416,7 +416,7 @@ export default function SalesTargetsPage() {
                                   Staged
                                 </span>
                               ) : rep.quotaId ? (
-                                <span className="text-[10px] text-[#4361ee] bg-[#eef2ff] dark:bg-emerald-950/40 dark:text-[#4361ee] px-1.5 py-0.5 rounded border border-indigo-100 dark:border-emerald-900 font-medium shrink-0">
+                                <span className="text-[10px] text-[#4361ee] bg-[#eef2ff] dark:bg-indigo-950/40 dark:text-[#4361ee] px-1.5 py-0.5 rounded border border-indigo-100 dark:border-indigo-900 font-medium shrink-0">
                                   Saved
                                 </span>
                               ) : (

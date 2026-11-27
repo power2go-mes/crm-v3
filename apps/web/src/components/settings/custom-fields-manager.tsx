@@ -292,7 +292,7 @@ export function CustomFieldsManager() {
       )}
 
       {/* Field Registry List */}
-      {notice && <p role="status" className="text-sm text-green-700">{notice}</p>}
+      {notice && <p role="status" className="text-sm text-[#4361ee]">{notice}</p>}
       {loadError && <p role="alert" className="text-sm text-red-700">{loadError.message} <button onClick={() => void refetch()}>Retry</button></p>}
       {archive.error && <p role="alert" className="text-sm text-red-700">{archive.error.message}</p>}
       <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">

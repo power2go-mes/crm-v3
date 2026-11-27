@@ -311,7 +311,7 @@ export default function LeadAssignmentPage() {
 
       <PermissionGate action="leads.view" showAccessDenied>
         {successMessage && (
-          <div className="mb-4 p-3 bg-[#eef2ff] border border-indigo-100 rounded-xl text-xs text-[#4361ee] flex items-center gap-2 dark:bg-emerald-950/40 dark:border-emerald-900 dark:text-emerald-300">
+          <div className="mb-4 p-3 bg-[#eef2ff] border border-indigo-100 rounded-xl text-xs text-[#4361ee] flex items-center gap-2 dark:bg-indigo-950/40 dark:border-indigo-900 dark:text-[#4361ee]">
             <CheckCircle2 className="h-4 w-4 shrink-0 text-[#4361ee]" />
             <span>{successMessage}</span>
           </div>
@@ -361,7 +361,7 @@ export default function LeadAssignmentPage() {
                         <span
                           className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${
                             rule.is_active
-                              ? 'bg-[#eef2ff] text-[#4361ee] dark:bg-emerald-950/40 dark:text-[#4361ee] border border-indigo-100 dark:border-emerald-900'
+                              ? 'bg-[#eef2ff] text-[#4361ee] dark:bg-indigo-950/40 dark:text-[#4361ee] border border-indigo-100 dark:border-indigo-900'
                               : 'bg-slate-100 text-slate-500 dark:bg-slate-800  border border-slate-200 dark:border-slate-700'
                           }`}
                         >
@@ -400,7 +400,7 @@ export default function LeadAssignmentPage() {
                             <RotateCw className="h-3 w-3" /> Round-Robin ({rule.round_robin_user_ids?.length || 0} reps)
                           </span>
                         ) : (
-                          <span className="inline-flex items-center gap-1 font-semibold text-[#4361ee] bg-[#eef2ff] px-2 py-0.5 rounded-md border border-indigo-100 dark:bg-emerald-950/40 dark:border-emerald-900 dark:text-emerald-300">
+                          <span className="inline-flex items-center gap-1 font-semibold text-[#4361ee] bg-[#eef2ff] px-2 py-0.5 rounded-md border border-indigo-100 dark:bg-indigo-950/40 dark:border-indigo-900 dark:text-[#4361ee]">
                             <UserCheck className="h-3 w-3" />
                             {rule.assigned_user
                               ? `${rule.assigned_user.first_name || ''} ${rule.assigned_user.last_name || ''}`.trim() || rule.assigned_user.email
@@ -449,7 +449,7 @@ export default function LeadAssignmentPage() {
                             className={`text-xs px-2.5 py-1 rounded-lg border font-medium transition ${
                               rule.is_active
                                 ? 'border-slate-200 text-slate-600 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800'
-                                : 'border-indigo-100 bg-[#eef2ff] text-[#4361ee] hover:bg-[#eef2ff] dark:bg-emerald-950/40 dark:border-emerald-900 dark:text-emerald-300'
+                                : 'border-indigo-100 bg-[#eef2ff] text-[#4361ee] hover:bg-[#eef2ff] dark:bg-indigo-950/40 dark:border-indigo-900 dark:text-[#4361ee]'
                             }`}
                           >
                             {rule.is_active ? 'Disable' : 'Enable'}

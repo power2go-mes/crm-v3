@@ -96,7 +96,7 @@ export function RecordHistoryAudit({ module, recordId }: RecordHistoryAuditProps
         {history.map((item) => {
           const actionBadgeColor =
             item.action === 'create'
-              ? 'bg-emerald-950/60 text-[#4361ee] border-emerald-800'
+              ? 'bg-indigo-950/60 text-[#4361ee] border-indigo-800'
               : item.action === 'delete'
                 ? 'bg-red-950/60 text-red-400 border-red-800'
                 : 'bg-[#4361ee]/60 text-[#4361ee] border-indigo-100';
@@ -145,7 +145,7 @@ export function RecordHistoryAudit({ module, recordId }: RecordHistoryAuditProps
                             {formatValue(ch.old)}
                           </span>
                           <ArrowRight className="h-3.5 w-3.5 text-slate-500" />
-                          <span className="px-2 py-0.5 rounded bg-emerald-950/60 text-emerald-300 border border-emerald-800 font-semibold">
+                          <span className="px-2 py-0.5 rounded bg-indigo-950/60 text-indigo-200 border border-indigo-800 font-semibold">
                             {formatValue(ch.new)}
                           </span>
                         </div>

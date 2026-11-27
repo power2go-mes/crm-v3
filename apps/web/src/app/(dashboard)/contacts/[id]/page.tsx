@@ -157,7 +157,7 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
             <button
               type="button"
               onClick={() => setIsEmailModalOpen(true)}
-              className="px-3 py-2 bg-[#3a5bf0] hover:bg-emerald-800 text-white text-xs font-semibold rounded-lg transition inline-flex items-center gap-1.5 shadow-xs"
+              className="px-3 py-2 bg-[#3a5bf0] hover:bg-[#3a5bf0] text-white text-xs font-semibold rounded-lg transition inline-flex items-center gap-1.5 shadow-xs"
               title="Compose and log email to contact"
             >
               <Send className="h-3.5 w-3.5" />
@@ -370,7 +370,7 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
               <button
                 type="button"
                 onClick={() => setIsEmailModalOpen(true)}
-                className="px-3 py-1.5 bg-[#3a5bf0] hover:bg-emerald-800 text-white rounded-lg text-xs font-semibold inline-flex items-center gap-1.5 transition"
+                className="px-3 py-1.5 bg-[#3a5bf0] hover:bg-[#3a5bf0] text-white rounded-lg text-xs font-semibold inline-flex items-center gap-1.5 transition"
               >
                 <Send className="h-3.5 w-3.5" />
                 <span>Compose Email</span>
@@ -395,7 +395,7 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
               </div>
               <Link
                 href={`/accounts/${contact.account.id}`}
-                className="px-3.5 py-1.5 bg-[#3a5bf0] hover:bg-emerald-800 text-white rounded-lg text-xs font-semibold inline-flex items-center gap-1.5 transition"
+                className="px-3.5 py-1.5 bg-[#3a5bf0] hover:bg-[#3a5bf0] text-white rounded-lg text-xs font-semibold inline-flex items-center gap-1.5 transition"
               >
                 <span>View Full Account</span>
                 <ExternalLink className="h-3.5 w-3.5" />
