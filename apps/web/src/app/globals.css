@@ -30,18 +30,100 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Minimal page redirecting & transition animations */
+/* Restrained route entrance for the shared CRM page container. */
 .page-transition {
-  animation: page-enter 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: page-enter 0.48s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 @keyframes page-enter {
-  0% {
-    opacity: 0.6;
+  from {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+    filter: blur(4px);
   }
-  100% {
+  to {
     opacity: 1;
+    transform: none;
+    filter: none;
   }
+}
+
+@keyframes content-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes scroll-reveal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+@keyframes skeleton-sheen {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -120% 0;
+  }
+}
+
+@keyframes loader-aura {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(67, 97, 238, 0);
+  }
+  50% {
+    box-shadow: 0 0 16px 3px rgba(67, 97, 238, 0.24);
+  }
+}
+
+.crm-loading-spinner {
+  animation: spin 1s linear infinite, loader-aura 2.4s ease-in-out infinite;
+}
+
+@supports (animation-timeline: view()) {
+  .page-transition section,
+  .page-transition article,
+  .page-transition .grid > *,
+  .page-transition [data-scroll-reveal] {
+    animation: scroll-reveal linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 32%;
+  }
+}
+
+.page-transition > * {
+  animation: content-enter 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.page-transition > :nth-child(1) { animation-delay: 40ms; }
+.page-transition > :nth-child(2) { animation-delay: 90ms; }
+.page-transition > :nth-child(3) { animation-delay: 140ms; }
+.page-transition > :nth-child(4) { animation-delay: 190ms; }
+
+.crm-loading-skeleton .bg-slate-100,
+.crm-loading-skeleton .bg-slate-200 {
+  background-image: linear-gradient(
+    110deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.58) 46%,
+    transparent 62%
+  );
+  background-size: 220% 100%;
+  animation: skeleton-sheen 1.8s ease-in-out infinite;
 }
 
 /* Subtle route loading indicator */
@@ -68,5 +150,21 @@ body {
   .no-scrollbar {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-transition,
+  .page-transition > *,
+  .page-transition section,
+  .page-transition article,
+  .page-transition .grid > *,
+  .page-transition [data-scroll-reveal],
+  .crm-loading-skeleton .bg-slate-100,
+  .crm-loading-skeleton .bg-slate-200,
+  .crm-loading-spinner {
+    animation: none !important;
+    filter: none !important;
+    transform: none !important;
   }
 }
