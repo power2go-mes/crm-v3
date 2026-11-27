@@ -78,7 +78,7 @@ export function ApplicationSidebar({
       } ${className}`}
     >
       {/* Brand Header */}
-      <div className={`shrink-0 p-4 border-b border-slate-100 bg-white ${isCollapsed ? 'flex justify-center' : ''}`}>
+      <div className={`shrink-0 p-5 border-b border-slate-100/80 bg-white ${isCollapsed ? 'flex justify-center' : ''}`}>
         <Link
           href="/"
           onClick={onNavigate}
@@ -87,16 +87,16 @@ export function ApplicationSidebar({
             isCollapsed ? 'justify-center' : ''
           }`}
         >
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-emerald-600 text-white shadow-xs group-hover:bg-emerald-700 transition">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-tr from-[#3a5bf0] to-[#4361ee] text-white shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-200">
             <Building2 className="h-5 w-5" />
           </div>
           {!isCollapsed && (
             <div className="flex flex-col min-w-0">
-              <span className="text-sm font-bold tracking-tight leading-none text-slate-900 truncate">
+              <span className="text-base font-extrabold tracking-tight leading-none text-slate-900 truncate">
                 FINLONEXA
               </span>
-              <span className="text-[9px] font-extrabold text-orange-600 uppercase tracking-widest leading-normal">
-                CRM v3
+              <span className="text-[10px] font-bold text-[#4361ee] uppercase tracking-wider mt-0.5">
+                CRM PLATFORM
               </span>
             </div>
           )}

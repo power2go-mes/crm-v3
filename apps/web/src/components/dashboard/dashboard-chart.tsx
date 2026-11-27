@@ -8,9 +8,46 @@ export function DashboardChart({chart,register}:{chart:ChartData;register:(id:st
  const observer=new ResizeObserver(()=>{if(instance)instance.resize();else void initialize();});
  async function initialize(){if(disposed||instance||!element||element.clientWidth===0||element.clientHeight===0)return;const echarts=await import('echarts');if(disposed||instance||!element.clientWidth||!element.clientHeight)return;instance=echarts.init(element);register(chart.id,instance);
  const circular=chart.kind==='pie'||chart.kind==='donut';
- instance.setOption({color:['#a5b4fc','#818cf8','#c4b5fd','#93c5fd','#ddd6fe','#bfdbfe'],tooltip:{trigger:circular||chart.kind==='funnel'?'item':'axis'},legend:{type:'scroll',bottom:0},grid:{left:45,right:20,top:20,bottom:70},
- ...(circular||chart.kind==='funnel'?{}:{xAxis:{type:'category',data:chart.data.map(d=>d.label),axisLabel:{interval:0,rotate:25}},yAxis:{type:'value',minInterval:1}}),
- series:[{name:chart.title,type:circular?'pie':chart.kind==='funnel'?'funnel':'bar',...(circular?{radius:chart.kind==='donut'?['40%','70%']:'65%'}:{}),data:chart.data.map(d=>({name:d.label,value:d.value})),label:{show:circular||chart.kind==='funnel'}}]});}
+ instance.setOption({
+  color: ['#4361ee', '#3a86ff', '#f72585', '#7209b7', '#4cc9f0', '#06d6a0'],
+  tooltip: {
+    trigger: circular || chart.kind === 'funnel' ? 'item' : 'axis',
+    backgroundColor: '#1e293b',
+    borderColor: '#334155',
+    textStyle: { color: '#ffffff', fontSize: 12 }
+  },
+  legend: { type: 'scroll', bottom: 0, textStyle: { color: '#64748b', fontSize: 11 } },
+  grid: { left: 45, right: 20, top: 20, bottom: 70 },
+  ...(circular || chart.kind === 'funnel'
+    ? {}
+    : {
+        xAxis: {
+          type: 'category',
+          data: chart.data.map(d => d.label),
+          axisLine: { lineStyle: { color: '#e2e8f0' } },
+          axisLabel: { color: '#94a3b8', fontSize: 11, interval: 0, rotate: 20 },
+        },
+        yAxis: {
+          type: 'value',
+          minInterval: 1,
+          splitLine: { lineStyle: { color: '#f1f5f9', type: 'dashed' } },
+          axisLabel: { color: '#94a3b8', fontSize: 11 },
+        },
+      }),
+  series: [
+    {
+      name: chart.title,
+      type: circular ? 'pie' : chart.kind === 'funnel' ? 'funnel' : 'bar',
+      smooth: true,
+      itemStyle: {
+        borderRadius: circular ? 0 : [6, 6, 0, 0],
+      },
+      ...(circular ? { radius: chart.kind === 'donut' ? ['50%', '75%'] : '65%' } : {}),
+      data: chart.data.map(d => ({ name: d.label, value: d.value })),
+      label: { show: circular || chart.kind === 'funnel' },
+    },
+  ],
+ });}
  observer.observe(element);void initialize();return()=>{disposed=true;observer.disconnect();register(chart.id,null);instance?.dispose();};
  },[chart,register]);
  const empty:Record<string,string>={'accounts.account_type':'No accounts found.','leads.lead_source':'No leads found.','leads.status':'No leads found.','campaigns.campaign_type':'No campaigns found.','opportunities.lead_source':'No opportunities found.'};

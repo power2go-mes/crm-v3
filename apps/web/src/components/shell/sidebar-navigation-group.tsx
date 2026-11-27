@@ -41,20 +41,20 @@ export function SidebarNavigationGroup({
             onClick={onNavigate}
             title={single.label}
             aria-current={isActive ? 'page' : undefined}
-            className={`flex items-center justify-center w-11 h-11 rounded-2xl transition-all duration-150 ${
+            className={`flex items-center justify-center w-11 h-11 rounded-2xl transition-all duration-200 ${
               isActive
-                ? 'bg-emerald-50 text-emerald-600 border border-emerald-300 font-bold shadow-2xs'
-                : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'
+                ? 'bg-[#4361ee] text-white shadow-md shadow-indigo-500/25 font-bold'
+                : 'text-slate-400 hover:bg-slate-50 hover:text-slate-800'
             }`}
           >
             <NavIcon
               name={single.iconName}
-              className={`w-5 h-5 shrink-0 ${isActive ? 'text-emerald-600' : 'text-slate-500'}`}
+              className={`w-5 h-5 shrink-0 ${isActive ? 'text-white' : 'text-slate-400'}`}
             />
           </Link>
           <div
             role="tooltip"
-            className="absolute left-full top-1/2 -translate-y-1/2 ml-3 px-3 py-1.5 bg-white text-slate-800 text-xs font-semibold rounded-xl shadow-xl border border-slate-200 opacity-0 pointer-events-none group-hover/pop:opacity-100 transition-opacity z-50 whitespace-nowrap"
+            className="absolute left-full top-1/2 -translate-y-1/2 ml-3 px-3 py-1.5 bg-slate-900 text-white text-xs font-semibold rounded-xl shadow-xl opacity-0 pointer-events-none group-hover/pop:opacity-100 transition-opacity z-50 whitespace-nowrap"
           >
             {single.label}
           </div>
@@ -75,22 +75,22 @@ export function SidebarNavigationGroup({
         <button
           type="button"
           onClick={() => setIsFlyoutOpen(!isFlyoutOpen)}
-          className={`flex items-center justify-center w-11 h-11 rounded-2xl transition-all duration-150 ${
+          className={`flex items-center justify-center w-11 h-11 rounded-2xl transition-all duration-200 ${
             hasGroupActiveItem
-              ? 'bg-emerald-50 text-emerald-600 border border-emerald-300 font-bold shadow-2xs'
-              : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'
+              ? 'bg-[#4361ee] text-white shadow-md shadow-indigo-500/25 font-bold'
+              : 'text-slate-400 hover:bg-slate-50 hover:text-slate-800'
           }`}
         >
           <NavIcon
             name={groupIcon}
-            className={`w-5 h-5 shrink-0 ${hasGroupActiveItem ? 'text-emerald-600' : 'text-slate-500'}`}
+            className={`w-5 h-5 shrink-0 ${hasGroupActiveItem ? 'text-white' : 'text-slate-400'}`}
           />
         </button>
 
         {/* Hover / Click Flyout Card with transparent bridge to prevent pointer flicker */}
         {isFlyoutOpen && (
           <div className="absolute left-full top-0 pl-3 z-50 animate-in fade-in duration-150">
-            <div className="w-56 bg-white rounded-2xl shadow-2xl border border-slate-200 p-3 space-y-1.5">
+            <div className="w-56 bg-white rounded-2xl shadow-xl border border-slate-100 p-3 space-y-1.5">
               <div className="text-[11px] font-bold text-slate-400 px-2 uppercase tracking-wider mb-1">
                 {group.title || primaryItem.label}
               </div>
@@ -106,7 +106,7 @@ export function SidebarNavigationGroup({
                     }}
                     className={`block px-3 py-2 rounded-xl text-xs font-semibold transition-all ${
                       isActive
-                        ? 'bg-amber-50 text-emerald-600 border border-amber-300 font-bold shadow-2xs'
+                        ? 'bg-[#eef2ff] text-[#4361ee] font-bold'
                         : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
                     }`}
                   >
@@ -130,17 +130,17 @@ export function SidebarNavigationGroup({
         <Link
           href={single.href}
           onClick={onNavigate}
-          className={`w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition-all ${
+          className={`w-full flex items-center space-x-3 px-4 py-3 rounded-2xl text-xs font-semibold transition-all duration-150 ${
             isActive
-              ? 'bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold'
-              : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+              ? 'bg-[#4361ee] text-white shadow-md shadow-indigo-500/25 font-bold'
+              : 'text-slate-500 hover:bg-[#f8faff] hover:text-slate-800'
           }`}
         >
           <NavIcon
             name={single.iconName}
-            className={`w-4 h-4 shrink-0 ${isActive ? 'text-emerald-600' : 'text-slate-500'}`}
+            className={`w-4 h-4 shrink-0 ${isActive ? 'text-white' : 'text-slate-400'}`}
           />
-          <span className="font-semibold text-slate-800">{single.label}</span>
+          <span className={`truncate ${isActive ? 'font-bold text-white' : 'font-medium text-slate-700'}`}>{single.label}</span>
         </Link>
       </div>
     );
@@ -152,18 +152,18 @@ export function SidebarNavigationGroup({
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-bold transition-all ${
+        className={`w-full flex items-center justify-between px-4 py-2.5 rounded-2xl text-xs font-bold transition-all duration-150 ${
           hasGroupActiveItem
-            ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
-            : 'text-slate-700 hover:bg-slate-50'
+            ? 'bg-[#eef2ff] text-[#4361ee]'
+            : 'text-slate-600 hover:bg-slate-50'
         }`}
       >
         <div className="flex items-center space-x-3">
           <NavIcon
             name={group.items[0].iconName}
-            className={`w-4 h-4 shrink-0 ${hasGroupActiveItem ? 'text-emerald-600' : 'text-slate-500'}`}
+            className={`w-4 h-4 shrink-0 ${hasGroupActiveItem ? 'text-[#4361ee]' : 'text-slate-400'}`}
           />
-          <span className="font-bold text-slate-800">{group.title}</span>
+          <span className="font-semibold text-slate-800">{group.title}</span>
         </div>
         {isOpen ? (
           <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
@@ -174,7 +174,7 @@ export function SidebarNavigationGroup({
 
       {/* Sub-items List */}
       {isOpen && (
-        <div className="pl-4 pr-1 py-1 space-y-1">
+        <div className="pl-4 pr-1 py-1 space-y-1 border-l-2 border-slate-100 ml-4 my-1">
           {group.items.map((item) => {
             const isActive = isNavItemActive(pathname, item);
             return (
@@ -182,13 +182,16 @@ export function SidebarNavigationGroup({
                 key={item.id}
                 href={item.href}
                 onClick={onNavigate}
-                className={`block w-full px-3.5 py-2 rounded-xl text-xs font-medium transition-all ${
+                className={`relative flex items-center w-full px-3.5 py-2 rounded-xl text-xs font-medium transition-all ${
                   isActive
-                    ? 'bg-amber-50 text-emerald-700 border border-amber-300 font-bold shadow-2xs'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                    ? 'bg-[#eef2ff] text-[#4361ee] font-bold shadow-2xs'
+                    : 'text-slate-500 hover:text-slate-900 hover:bg-slate-50'
                 }`}
               >
-                {item.label}
+                {isActive && (
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#4361ee] mr-2 shrink-0" />
+                )}
+                <span className="truncate">{item.label}</span>
               </Link>
             );
           })}
