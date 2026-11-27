@@ -17,6 +17,23 @@ import {
   Database,
   History,
   Shield,
+  Search,
+  Users,
+  Layers,
+  Sparkles,
+  Lock,
+  Mail,
+  Zap,
+  Calendar,
+  Globe,
+  Sliders,
+  DollarSign,
+  Briefcase,
+  BookOpen,
+  FileSpreadsheet,
+  Clock,
+  Trash2,
+  UserCheck,
 } from 'lucide-react';
 import Link from 'next/link';
 import { CompanySettingsModal } from '@/components/settings/company-settings-modal';
@@ -24,13 +41,70 @@ import { SalesRegionsManager } from '@/components/settings/sales-regions-manager
 import { CustomFieldsManager } from '@/components/settings/custom-fields-manager';
 import { SystemAuditLogViewer } from '@/components/settings/system-audit-log-viewer';
 
+const SETTINGS_CATEGORIES = [
+  {
+    category: 'System & Security',
+    items: [
+      { label: 'Roles & Permissions', desc: 'Granular RBAC, hierarchies, & BDO access', href: '/settings/roles', icon: Shield, permission: 'roles.view' },
+      { label: 'Departments', desc: 'Business units & divisional hierarchy', href: '/settings/departments', icon: Users, permission: 'departments.view' },
+      { label: 'Login History', desc: 'Active sessions & authentication events', href: '/settings/login-history', icon: History, permission: 'login_history.view_team' },
+      { label: 'Recycle Bin', desc: 'Soft-deleted records recovery hub', href: '/settings/recycle-bin', icon: Trash2, permission: 'recycle_bin.view' },
+    ],
+  },
+  {
+    category: 'Sales & Pipeline Automation',
+    items: [
+      { label: 'Lead Pipeline Stages', desc: 'Stages, conversion rates, & color badges', href: '/settings/lead-stages', icon: Layers, permission: 'leads.view' },
+      { label: 'Lead Assignment Rules', desc: 'Automated round-robin & rule assignment', href: '/settings/lead-assignment', icon: UserCheck, permission: 'leads.view' },
+      { label: 'Sales Targets & Quotas', desc: 'Revenue targets, rep goals, & progress tracking', href: '/settings/sales-targets', icon: DollarSign, permission: 'settings.view' },
+      { label: 'Workflow Automation', desc: 'Event-triggered automations & webhooks', href: '/settings/automation', icon: Zap, permission: 'settings.view' },
+    ],
+  },
+  {
+    category: 'Products & Catalogs',
+    items: [
+      { label: 'Products Catalog', desc: 'SKUs, pricing tiers, & inventory items', href: '/settings/products', icon: BookOpen, permission: 'products.view' },
+      { label: 'Price Books', desc: 'Curated price schedules & currency variants', href: '/settings/products/price-books', icon: FileSpreadsheet, permission: 'price_books.view' },
+      { label: 'Currency Management', desc: 'Multi-currency conversion rates & ISO codes', href: '/settings/currencies', icon: DollarSign, permission: 'currencies.view' },
+    ],
+  },
+  {
+    category: 'Data & Integrations',
+    items: [
+      { label: 'Data Quality & Deduplication', desc: 'Duplicate detection rules & auto-merge', href: '/settings/data-quality', icon: Sparkles, permission: 'settings.view' },
+      { label: 'Field Requirements', desc: 'Required fields and layout schemas', href: '/settings/field-requirements', icon: Sliders, permission: 'settings.view' },
+      { label: 'Email Integration', desc: 'SMTP, IMAP, & synchronized outbound mail', href: '/settings/email', icon: Mail, permission: 'settings.view' },
+      { label: 'Calendar Synchronization', desc: 'Google & Outlook bidirectional sync', href: '/settings/calendar', icon: Calendar, permission: 'settings.view' },
+      { label: 'Import Data', desc: 'Bulk CSV / Excel record ingestion wizard', href: '/settings/imports', icon: Globe, permission: 'imports.view' },
+      { label: 'Export Data', desc: 'Audited enterprise data backups & dumps', href: '/settings/exports', icon: FileSpreadsheet, permission: 'exports.view' },
+    ],
+  },
+  {
+    category: 'Workforce & Schedule',
+    items: [
+      { label: 'Business Hours', desc: 'Company operating hours & SLA clocks', href: '/settings/business-hours', icon: Clock, permission: 'business_hours.view' },
+      { label: 'Public Holidays', desc: 'Statutory non-working days & closures', href: '/settings/holidays', icon: Calendar, permission: 'holidays.view' },
+      { label: 'Customer Roles', desc: 'Client account relationship matrix', href: '/settings/customer-roles', icon: Users, permission: 'settings.view' },
+      { label: 'Team Roles', desc: 'Internal cross-functional team roles', href: '/settings/team-roles', icon: Users, permission: 'settings.view' },
+      { label: 'Partner Roles', desc: 'Affiliate & external channel stakeholder roles', href: '/settings/partner-roles', icon: Users, permission: 'settings.view' },
+    ],
+  },
+];
+
 function SettingsContent() {
   const { user, profile, hasPermission, isLoading } = useAuth();
   const router = useRouter();
   const params = useSearchParams();
   const selectedTab = params.get('tab');
-  const activeTab = ['company', 'regions', 'fields', 'audit'].includes(selectedTab ?? '') ? selectedTab : 'company';
-  function setActiveTab(tab: string) { const query = new URLSearchParams(params.toString()); if (tab === 'company') query.delete('tab'); else query.set('tab', tab); router.push(`/settings${query.size ? '?' + query.toString() : ''}`, { scroll: false }); }
+  const activeTab = ['company', 'regions', 'fields', 'audit', 'modules'].includes(selectedTab ?? '') ? selectedTab : 'company';
+
+  function setActiveTab(tab: string) {
+    const query = new URLSearchParams(params.toString());
+    if (tab === 'company') query.delete('tab');
+    else query.set('tab', tab);
+    router.push(`/settings${query.size ? '?' + query.toString() : ''}`, { scroll: false });
+  }
+
   const [settingsSearch, setSettingsSearch] = useState('');
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
@@ -49,174 +123,185 @@ function SettingsContent() {
   });
 
   return (
-    <PageContainer>
-      <PageHeader
-        title="Settings & System Administration"
-        subtitle="Manage singleton company parameters, sales regions, custom metadata schemas, and system security policies."
-        actions={
-          hasPermission('settings.update') && activeTab === 'company' ? (
-            <button
-              disabled={company.isPending || company.isError || !company.data}
-              onClick={() => setIsEditModalOpen(true)}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-[#4361ee] px-3.5 py-2 text-xs font-semibold text-white shadow-xs transition hover:bg-[#4361ee]"
-            >
-              <Settings className="h-4 w-4" />
-              <span>Edit Company Settings</span>
-            </button>
-          ) : undefined
-        }
-      />
-
+    <PageContainer maxWidth="full">
       <PermissionGate action="settings.view" showAccessDenied>
         <div className="space-y-6">
-          {/* Quick Nav to Role Manager Banner */}
-          <div className="flex flex-col items-start justify-between gap-4 rounded-2xl bg-gradient-to-r from-[#3a5bf0] to-[#4361ee] p-6 text-white shadow-sm sm:flex-row sm:items-center">
-            <div>
-              <div className="mb-2 inline-flex items-center gap-1.5 rounded-full bg-white/20 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">
-                Active System Manager
+          {/* Hero Banner with CRMHUB Cobalt Gradient & Rounded-3xl */}
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-tr from-[#3a5bf0] via-[#4361ee] to-[#4895ef] p-6 sm:p-8 text-white shadow-xl shadow-indigo-500/20">
+            <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <div className="max-w-2xl">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-xs text-xs font-bold uppercase tracking-wider text-white mb-3">
+                  <Shield className="h-3.5 w-3.5" />
+                  System Governance & Administration
+                </span>
+                <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-white">
+                  Organization & Security Center
+                </h1>
+                <p className="mt-2 text-xs sm:text-sm text-indigo-100 font-medium leading-relaxed">
+                  Configure singleton corporate parameters, custom entity schemas, dynamic role matrix, and automated data governance policies.
+                </p>
               </div>
-              <h3 className="text-lg font-bold">Dynamic Role & Permission Manager</h3>
-              <p className="mt-1 max-w-xl text-xs text-indigo-100">
-                Configure module action permissions across canonical and custom roles. Enforce sales hierarchy and BDO restrictions in real time.
-              </p>
+
+              <div className="flex flex-wrap items-center gap-3">
+                {hasPermission('roles.view') && (
+                  <Link
+                    href="/settings/roles"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 bg-white text-slate-800 rounded-2xl text-xs font-bold shadow-md hover:bg-slate-50 transition active:scale-95"
+                  >
+                    <span>Manage Roles</span>
+                    <ArrowRight className="h-4 w-4 text-[#4361ee]" />
+                  </Link>
+                )}
+                {hasPermission('settings.update') && activeTab === 'company' && (
+                  <button
+                    disabled={company.isPending || company.isError || !company.data}
+                    onClick={() => setIsEditModalOpen(true)}
+                    className="inline-flex items-center gap-2 px-4 py-2.5 bg-white/20 hover:bg-white/30 backdrop-blur-xs text-white rounded-2xl text-xs font-bold transition"
+                  >
+                    <Settings className="h-4 w-4" />
+                    <span>Edit Company</span>
+                  </button>
+                )}
+              </div>
             </div>
-            {hasPermission('roles.view') && <Link
-              href="/settings/roles"
-              className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-white px-4 py-2 text-xs font-semibold text-slate-900 shadow-xs transition hover:bg-slate-100"
-            >
-              <span>Manage Roles</span>
-              <ArrowRight className="h-4 w-4" />
-            </Link>}
           </div>
 
-          {/* Navigation Tabs */}
-          <label className="block text-sm"><span className="sr-only">Search settings</span><input type="search" placeholder="Search settings..." value={settingsSearch} onChange={event => setSettingsSearch(event.target.value)} className="w-full max-w-md rounded-lg border border-slate-300 bg-white px-3 py-2" /></label>
-          {settingsSearch.trim() && <ul className="rounded-lg border bg-white p-3 text-sm">{[
-            { label: 'Company Information', href: '/settings', permission: 'settings.view' },
-            { label: 'Sales Regions', href: '/settings?tab=regions', permission: 'settings.view' },
-            { label: 'Custom Fields', href: '/settings?tab=fields', permission: 'settings.view' },
-            { label: 'System Audit Logs', href: '/settings?tab=audit', permission: 'settings.view' },
-            { label: 'Roles and Permissions', href: '/settings/roles', permission: 'roles.view' },
-            { label: 'Departments', href: '/settings/departments', permission: 'departments.view' },
-            { label: 'Customer Roles', href: '/settings/customer-roles', permission: 'settings.view' },
-            { label: 'Team Roles', href: '/settings/team-roles', permission: 'settings.view' },
-            { label: 'Partner Roles', href: '/settings/partner-roles', permission: 'settings.view' },
-            { label: 'Business hours', href: '/settings/business-hours', permission: 'business_hours.view' },
-            { label: 'Holidays', href: '/settings/holidays', permission: 'holidays.view' },
-            { label: 'Shift hours', href: '/settings/business-hours?tab=shifts', permission: 'business_hours.view' },
-            { label: 'Currency Management', href: '/settings/currencies', permission: 'currencies.view' },
-            { label: 'Field Requirements', href: '/settings/field-requirements', permission: 'settings.view' },
-            { label: 'Import Data', href: '/settings/imports', permission: 'imports.view' },
-            { label: 'Export Data', href: '/settings/exports', permission: 'exports.view' },
-            { label: 'Login History', href: '/settings/login-history', permission: 'login_history.view_team' },
-            { label: 'Recycle Bin', href: '/settings/recycle-bin', permission: 'recycle_bin.view' },
-            { label: 'Lead Pipeline Stages', href: '/settings/lead-stages', permission: 'leads.view' },
-            { label: 'Lead Assignment Rules', href: '/settings/lead-assignment', permission: 'leads.view' },
-            { label: 'Product Catalog', href: '/settings/products', permission: 'products.view' },
-            { label: 'Price Books', href: '/settings/products/price-books', permission: 'price_books.view' },
-            { label: 'Data Quality & Deduplication', href: '/settings/data-quality', permission: 'settings.view' },
-            { label: 'Sales Targets & Quotas', href: '/settings/sales-targets', permission: 'settings.view' },
-            { label: 'Email Integration & Templates', href: '/settings/email', permission: 'settings.view' },
-            { label: 'Sales Workflow Automation', href: '/settings/automation', permission: 'settings.view' },
-            { label: 'Calendar Synchronization', href: '/settings/calendar', permission: 'settings.view' },
-          ].filter(item => hasPermission(item.permission) && (item.href !== '/settings/login-history' || hasPermission('users.view')) && item.label.toLowerCase().includes(settingsSearch.trim().toLowerCase())).map(item => <li className="p-1" key={item.href}><Link href={item.href} onClick={() => setSettingsSearch('')}>{item.label}</Link></li>)}</ul>}
-          {hasPermission('products.view') && <Link href="/settings/products" className="inline-flex rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800">Products &amp; Catalog</Link>}
-          {hasPermission('price_books.view') && <Link href="/settings/products/price-books" className="inline-flex rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800">Price Books</Link>}
-          <Link href="/settings/email" className="inline-flex rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800">Email &amp; Templates</Link>
-          <Link href="/settings/automation" className="inline-flex rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800">Workflow Automation</Link>
-          <Link href="/settings/calendar" className="inline-flex rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800">Calendar Sync</Link>
-          <Link href="/settings/data-quality" className="inline-flex rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800">Data Quality &amp; Deduplication</Link>
-          <Link href="/settings/sales-targets" className="inline-flex rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800">Sales Targets &amp; Quotas</Link>
-          {hasPermission('departments.view') && <Link href="/settings/departments" className="inline-flex rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800">Departments</Link>}
-          {hasPermission('business_hours.view') && <Link href="/settings/business-hours" className="inline-flex rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800">Business hours</Link>}
-          {hasPermission('holidays.view') && <Link href="/settings/holidays" className="inline-flex rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800">Holidays</Link>}
-          {hasPermission('currencies.view') && <Link href="/settings/currencies" className="inline-flex rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800">Currency Management</Link>}
-          {(['customer', 'team', 'partner'] as const).map(kind => <Link key={kind} href={`/settings/${kind}-roles`} className="inline-flex rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800">{kind === 'customer' ? 'Customer' : kind === 'team' ? 'Team' : 'Partner'} Roles</Link>)}
-          <Link href="/settings/field-requirements" className="inline-flex rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800">Field Requirements</Link>
-          {hasPermission('imports.view') && <Link href="/settings/imports" className="inline-flex rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800">Import Data</Link>}
-          {hasPermission('exports.view') && <Link href="/settings/exports" className="inline-flex rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800">Export Data</Link>}
-          {hasPermission('login_history.view_team') && hasPermission('users.view') && <Link href="/settings/login-history" className="inline-flex rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800">Login History</Link>}
-          {hasPermission('recycle_bin.view') && <Link href="/settings/recycle-bin" className="inline-flex rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800">Recycle Bin</Link>}
-          {hasPermission('leads.view') && <Link href="/settings/lead-stages" className="inline-flex rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800">Lead Stages</Link>}
-          {hasPermission('leads.view') && <Link href="/settings/lead-assignment" className="inline-flex rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800">Lead Assignment</Link>}
-          <div className="flex border-b border-slate-800 space-x-1">
-            <button
-              type="button"
-              onClick={() => setActiveTab('company')}
-              className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
-                activeTab === 'company'
-                  ? 'border-indigo-100 text-[#4361ee]'
-                  : 'border-transparent text-slate-400 hover:text-slate-200'
-              }`}
-            >
-              <Building2 className="h-3.5 w-3.5" />
-              <span>Company Parameters</span>
-            </button>
+          {/* Pill Navigation Tabs Bar */}
+          <div className="flex flex-wrap items-center justify-between gap-3 bg-white p-2 rounded-2xl border border-slate-100 shadow-2xs">
+            <div className="flex flex-wrap items-center gap-1.5">
+              <button
+                type="button"
+                onClick={() => setActiveTab('company')}
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+                  activeTab === 'company'
+                    ? 'bg-[#4361ee] text-white shadow-2xs'
+                    : 'text-slate-600 hover:bg-slate-50'
+                }`}
+              >
+                <Building2 className="h-3.5 w-3.5" />
+                <span>Company Parameters</span>
+              </button>
 
-            <button
-              type="button"
-              onClick={() => setActiveTab('regions')}
-              className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
-                activeTab === 'regions'
-                  ? 'border-indigo-100 text-[#4361ee]'
-                  : 'border-transparent text-slate-400 hover:text-slate-200'
-              }`}
-            >
-              <MapPin className="h-3.5 w-3.5" />
-              <span>Sales Regions & Territories</span>
-            </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab('modules')}
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+                  activeTab === 'modules'
+                    ? 'bg-[#4361ee] text-white shadow-2xs'
+                    : 'text-slate-600 hover:bg-slate-50'
+                }`}
+              >
+                <Layers className="h-3.5 w-3.5" />
+                <span>Modules Directory</span>
+              </button>
 
-            <button
-              type="button"
-              onClick={() => setActiveTab('fields')}
-              className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
-                activeTab === 'fields'
-                  ? 'border-indigo-100 text-[#4361ee]'
-                  : 'border-transparent text-slate-400 hover:text-slate-200'
-              }`}
-            >
-              <Database className="h-3.5 w-3.5" />
-              <span>Custom Fields Registry</span>
-            </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab('regions')}
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+                  activeTab === 'regions'
+                    ? 'bg-[#4361ee] text-white shadow-2xs'
+                    : 'text-slate-600 hover:bg-slate-50'
+                }`}
+              >
+                <MapPin className="h-3.5 w-3.5" />
+                <span>Sales Regions</span>
+              </button>
 
-            <button
-              type="button"
-              onClick={() => setActiveTab('audit')}
-              className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider transition border-b-2 flex items-center gap-2 ${
-                activeTab === 'audit'
-                  ? 'border-indigo-100 text-[#4361ee]'
-                  : 'border-transparent text-slate-400 hover:text-slate-200'
-              }`}
-            >
-              <History className="h-3.5 w-3.5" />
-              <span>System Audit Logs</span>
-            </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab('fields')}
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+                  activeTab === 'fields'
+                    ? 'bg-[#4361ee] text-white shadow-2xs'
+                    : 'text-slate-600 hover:bg-slate-50'
+                }`}
+              >
+                <Database className="h-3.5 w-3.5" />
+                <span>Custom Fields</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setActiveTab('audit')}
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+                  activeTab === 'audit'
+                    ? 'bg-[#4361ee] text-white shadow-2xs'
+                    : 'text-slate-600 hover:bg-slate-50'
+                }`}
+              >
+                <History className="h-3.5 w-3.5" />
+                <span>System Audit Logs</span>
+              </button>
+            </div>
+
+            {/* Quick Filter Search */}
+            <div className="relative w-full sm:w-64">
+              <Search className="h-3.5 w-3.5 absolute left-3 top-2.5 text-slate-400" />
+              <input
+                type="search"
+                placeholder="Search settings..."
+                value={settingsSearch}
+                onChange={(e) => setSettingsSearch(e.target.value)}
+                className="w-full pl-9 pr-3 py-1.5 bg-[#f8faff] border border-slate-200/80 rounded-xl text-xs text-slate-700 placeholder-slate-400 outline-none focus:bg-white focus:ring-1 focus:ring-[#4361ee] transition"
+              />
+            </div>
           </div>
+
+          {/* Quick Search Autocomplete Results */}
+          {settingsSearch.trim() && (
+            <div className="rounded-3xl border border-slate-100 bg-white p-5 shadow-2xs">
+              <p className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Matching Settings</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                {SETTINGS_CATEGORIES.flatMap((c) => c.items)
+                  .filter((item) => hasPermission(item.permission) && item.label.toLowerCase().includes(settingsSearch.trim().toLowerCase()))
+                  .map((item) => {
+                    const ItemIcon = item.icon;
+                    return (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        onClick={() => setSettingsSearch('')}
+                        className="group flex items-start gap-3 p-3.5 rounded-2xl border border-slate-100 bg-[#f8faff] hover:bg-white hover:border-indigo-100 hover:shadow-md transition"
+                      >
+                        <div className="p-2 rounded-xl bg-white group-hover:bg-[#eef2ff] text-[#4361ee] shadow-2xs transition">
+                          <ItemIcon className="h-4 w-4" />
+                        </div>
+                        <div>
+                          <p className="text-xs font-bold text-slate-800 group-hover:text-[#4361ee] transition">{item.label}</p>
+                          <p className="text-[11px] text-slate-400 mt-0.5">{item.desc}</p>
+                        </div>
+                      </Link>
+                    );
+                  })}
+              </div>
+            </div>
+          )}
 
           {/* Tab 1: Company Parameters */}
           {activeTab === 'company' && (
-            <div className="max-w-4xl space-y-6">
-              {company.isLoading && <p role="status">Loading settings...</p>}
+            <div className="space-y-6">
+              {company.isLoading && <p role="status" className="text-xs text-slate-400 py-4">Loading organization parameters...</p>}
               {company.isError && (
-                <p role="alert">
+                <p role="alert" className="text-xs text-rose-500 py-4">
                   Company settings could not be loaded.{' '}
-                  <button onClick={() => void company.refetch()}>Retry</button>
+                  <button onClick={() => void company.refetch()} className="underline ml-1">Retry</button>
                 </p>
               )}
 
               {/* Singleton Company Configuration Card */}
-              <div className="space-y-4 rounded-xl border border-slate-200 bg-white p-6 shadow-xs">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="rounded-lg bg-[#eef2ff] p-2.5 text-[#4361ee] dark:bg-indigo-950/40 dark:text-[#4361ee]">
-                      <Building2 className="h-5 w-5" />
+              <div className="rounded-3xl border border-slate-100 bg-white p-6 sm:p-8 shadow-2xs space-y-6">
+                <div className="flex flex-wrap items-center justify-between gap-4">
+                  <div className="flex items-center gap-3.5">
+                    <div className="h-12 w-12 rounded-2xl bg-[#eef2ff] text-[#4361ee] flex items-center justify-center font-bold shadow-2xs">
+                      <Building2 className="h-6 w-6" />
                     </div>
                     <div>
-                      <h3 className="text-sm font-bold text-slate-900">
-                        Organization Parameters
+                      <h3 className="text-base font-bold text-slate-900">
+                        {company.data?.company_name ?? 'FINLONEXA CRM'}
                       </h3>
-                      <p className="text-xs text-slate-500">
-                        Strict Single-Company Singleton (FINLONEXA, ID = 1)
+                      <p className="text-xs text-slate-400 font-medium">
+                        Singleton Organization Identity (System ID = 1)
                       </p>
                     </div>
                   </div>
@@ -225,60 +310,68 @@ function SettingsContent() {
                     <button
                       disabled={company.isPending || company.isError || !company.data}
                       onClick={() => setIsEditModalOpen(true)}
-                      className="rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#4361ee] hover:bg-[#3a5bf0] text-white rounded-xl text-xs font-bold transition shadow-md shadow-indigo-500/20 active:scale-95"
                     >
-                      Edit Parameters
+                      <Settings className="h-3.5 w-3.5" />
+                      <span>Edit Parameters</span>
                     </button>
                   )}
                 </div>
 
-                <div className="grid grid-cols-1 gap-4 border-t border-slate-100 pt-4 text-xs sm:grid-cols-2">
-                  <div className="space-y-1 rounded-lg border border-slate-100 bg-slate-50 p-3 dark:bg-slate-800/50">
-                    <span className="font-medium text-slate-400">Company Name</span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+                  <div className="p-4 rounded-2xl bg-[#f8faff] border border-slate-100/90 space-y-1">
+                    <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Multi-Tenancy</span>
+                    <p className="flex items-center gap-1.5 text-xs font-bold text-[#4361ee]">
+                      <CheckCircle2 className="h-4 w-4" /> Single-Tenant Instance
+                    </p>
+                  </div>
+
+                  <div className="p-4 rounded-2xl bg-[#f8faff] border border-slate-100/90 space-y-1">
+                    <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Base Currency</span>
                     <p className="text-sm font-bold text-slate-800">
-                      {company.data?.company_name ?? 'Unavailable'}
+                      {company.data?.currency ?? 'USD ($)'}
                     </p>
                   </div>
-                  <div className="space-y-1 rounded-lg border border-slate-100 bg-slate-50 p-3 dark:bg-slate-800/50">
-                    <span className="font-medium text-slate-400">Multi-Tenancy Mode</span>
-                    <p className="flex items-center gap-1.5 text-sm font-bold text-[#4361ee] dark:text-[#4361ee]">
-                      <CheckCircle2 className="h-4 w-4" /> Single-Company Architecture
+
+                  <div className="p-4 rounded-2xl bg-[#f8faff] border border-slate-100/90 space-y-1">
+                    <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Default Time Zone</span>
+                    <p className="text-sm font-bold text-slate-800">
+                      {company.data?.time_zone ?? 'UTC'}
                     </p>
                   </div>
-                  <div className="space-y-1 rounded-lg border border-slate-100 bg-slate-50 p-3 dark:bg-slate-800/50">
-                    <span className="font-medium text-slate-400">Operational Currency</span>
-                    <p className="font-mono text-sm font-bold text-slate-800">
-                      {company.data?.currency ?? 'Unavailable'}
+
+                  <div className="p-4 rounded-2xl bg-[#f8faff] border border-slate-100/90 space-y-1">
+                    <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Corporate Domain</span>
+                    <p className="text-sm font-bold text-slate-800 truncate">
+                      {company.data?.domain || 'crm.finlonexa.com'}
                     </p>
                   </div>
-                  <div className="space-y-1 rounded-lg border border-slate-100 bg-slate-50 p-3 dark:bg-slate-800/50">
-                    <span className="font-medium text-slate-400">Time Zone</span>
-                    <p className="font-mono text-sm font-bold text-slate-800">
-                      {company.data?.time_zone ?? 'Unavailable'}
+
+                  <div className="p-4 rounded-2xl bg-[#f8faff] border border-slate-100/90 space-y-1">
+                    <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Legal Entity</span>
+                    <p className="text-xs font-semibold text-slate-700">
+                      {company.data?.legal_name || 'Finlonexa Technologies Inc.'}
                     </p>
                   </div>
-                  <div className="space-y-1 rounded-lg border border-slate-100 bg-slate-50 p-3 dark:bg-slate-800/50">
-                    <span className="font-medium text-slate-400">Legal Name</span>
-                    <p className="text-sm font-medium text-slate-800">
-                      {company.data?.legal_name || 'Not configured'}
+
+                  <div className="p-4 rounded-2xl bg-[#f8faff] border border-slate-100/90 space-y-1">
+                    <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Support Channel</span>
+                    <p className="text-xs font-semibold text-slate-700 truncate">
+                      {company.data?.support_email || 'support@finlonexa.com'}
                     </p>
                   </div>
-                  <div className="space-y-1 rounded-lg border border-slate-100 bg-slate-50 p-3 dark:bg-slate-800/50">
-                    <span className="font-medium text-slate-400">Corporate Domain</span>
-                    <p className="text-sm font-medium text-slate-800">
-                      {company.data?.domain || 'Not configured'}
+
+                  <div className="p-4 rounded-2xl bg-[#f8faff] border border-slate-100/90 space-y-1">
+                    <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Contact Phone</span>
+                    <p className="text-xs font-semibold text-slate-700">
+                      {company.data?.phone_number || '+1 (555) 019-2834'}
                     </p>
                   </div>
-                  <div className="space-y-1 rounded-lg border border-slate-100 bg-slate-50 p-3 dark:bg-slate-800/50">
-                    <span className="font-medium text-slate-400">Support Email</span>
-                    <p className="text-sm font-medium text-slate-800">
-                      {company.data?.support_email || 'Not configured'}
-                    </p>
-                  </div>
-                  <div className="space-y-1 rounded-lg border border-slate-100 bg-slate-50 p-3 dark:bg-slate-800/50">
-                    <span className="font-medium text-slate-400">Phone Number</span>
-                    <p className="text-sm font-medium text-slate-800">
-                      {company.data?.phone_number || 'Not configured'}
+
+                  <div className="p-4 rounded-2xl bg-[#f8faff] border border-slate-100/90 space-y-1">
+                    <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Instance Status</span>
+                    <p className="flex items-center gap-1.5 text-xs font-bold text-[#4361ee]">
+                      <span className="h-2 w-2 rounded-full bg-[#4361ee] animate-pulse" /> Production Ready
                     </p>
                   </div>
                 </div>
@@ -286,13 +379,53 @@ function SettingsContent() {
             </div>
           )}
 
-          {/* Tab 2: Sales Regions */}
+          {/* Tab 2: Modules Directory Grid */}
+          {activeTab === 'modules' && (
+            <div className="space-y-6">
+              {SETTINGS_CATEGORIES.map((cat) => (
+                <div key={cat.category} className="space-y-3">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 px-1">{cat.category}</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5">
+                    {cat.items
+                      .filter((item) => hasPermission(item.permission) && (item.href !== '/settings/login-history' || hasPermission('users.view')))
+                      .map((item) => {
+                        const ItemIcon = item.icon;
+                        return (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            className="group flex flex-col justify-between p-5 rounded-3xl bg-white border border-slate-100 hover:border-indigo-100 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition duration-150"
+                          >
+                            <div className="flex items-center justify-between mb-3">
+                              <div className="h-10 w-10 rounded-2xl bg-[#f8faff] group-hover:bg-[#eef2ff] text-slate-600 group-hover:text-[#4361ee] flex items-center justify-center transition">
+                                <ItemIcon className="h-5 w-5" />
+                              </div>
+                              <ArrowRight className="h-4 w-4 text-slate-300 group-hover:text-[#4361ee] group-hover:translate-x-0.5 transition" />
+                            </div>
+                            <div>
+                              <h4 className="text-sm font-bold text-slate-800 group-hover:text-[#4361ee] transition">
+                                {item.label}
+                              </h4>
+                              <p className="text-xs text-slate-400 mt-1 font-medium leading-relaxed">
+                                {item.desc}
+                              </p>
+                            </div>
+                          </Link>
+                        );
+                      })}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Tab 3: Sales Regions */}
           {activeTab === 'regions' && <SalesRegionsManager />}
 
-          {/* Tab 3: Custom Fields */}
+          {/* Tab 4: Custom Fields */}
           {activeTab === 'fields' && <CustomFieldsManager />}
 
-          {/* Tab 4: System Audit Logs */}
+          {/* Tab 5: System Audit Logs */}
           {activeTab === 'audit' && <SystemAuditLogViewer />}
         </div>
 
@@ -310,4 +443,10 @@ function SettingsContent() {
   );
 }
 
-export default function SettingsPage() { return <Suspense fallback={<p role="status">Loading Settings…</p>}><SettingsContent /></Suspense>; }
+export default function SettingsPage() {
+  return (
+    <Suspense fallback={<p role="status" className="text-xs text-slate-400 p-6">Loading Settings…</p>}>
+      <SettingsContent />
+    </Suspense>
+  );
+}
