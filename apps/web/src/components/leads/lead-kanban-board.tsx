@@ -203,36 +203,57 @@ export function LeadKanbanBoard({
 
   return (
     <div className="space-y-4">
-      {/* Board Summary Metric Strip */}
-      <div className="flex flex-wrap items-center justify-between gap-3 px-1">
-        <div className="flex items-center gap-2.5">
-          <div className="flex items-center justify-center h-8 w-8 rounded-xl bg-[#eef2ff] text-[#4361ee] shadow-2xs">
-            <Layers className="h-4 w-4" />
-          </div>
+      {/* Board Summary Metric Strip with CRMHUB Pill & Hero Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-2">
+        <div className="bg-white rounded-3xl p-5 border border-slate-100 shadow-2xs flex items-center justify-between">
           <div>
-            <div className="flex items-baseline gap-2">
-              <span className="text-sm font-bold text-slate-800">
-                Kanban Pipeline
-              </span>
-              <span className="text-xs text-slate-400 font-medium">
-                {totalLeadsCount} active lead{totalLeadsCount === 1 ? '' : 's'} across {CANONICAL_LEAD_STAGES.length} stages
-              </span>
-            </div>
+            <p className="text-xs font-semibold text-slate-400">Total Leads</p>
+            <p className="text-2xl font-black text-slate-900 mt-1">{totalLeadsCount}</p>
+          </div>
+          <div className="h-10 w-10 rounded-2xl bg-[#eef2ff] text-[#4361ee] flex items-center justify-center font-bold">
+            <Layers className="h-5 w-5" />
           </div>
         </div>
 
-        {totalPipelineRevenue > 0 && (
-          <div className="flex items-center gap-2 px-3.5 py-1.5 bg-white rounded-full border border-slate-100 shadow-2xs text-xs font-semibold text-slate-700">
-            <span className="text-slate-400 uppercase text-[10px] tracking-wide font-bold">Total Pipeline:</span>
-            <span className="text-[#4361ee] font-extrabold">
+        <div className="bg-gradient-to-tr from-[#3a5bf0] to-[#4361ee] rounded-3xl p-5 text-white shadow-xl shadow-indigo-500/25 flex items-center justify-between">
+          <div>
+            <p className="text-xs font-semibold text-indigo-100">Total Pipeline</p>
+            <p className="text-2xl font-black text-white mt-1">
               ${(totalPipelineRevenue / 1000).toLocaleString(undefined, { maximumFractionDigits: 1 })}k
-            </span>
+            </p>
           </div>
-        )}
+          <div className="h-10 w-10 rounded-2xl bg-white/20 backdrop-blur-xs flex items-center justify-center">
+            <TrendingUp className="h-5 w-5 text-white" />
+          </div>
+        </div>
+
+        <div className="bg-white rounded-3xl p-5 border border-slate-100 shadow-2xs flex items-center justify-between">
+          <div>
+            <p className="text-xs font-semibold text-slate-400">Qualified Deals</p>
+            <p className="text-2xl font-black text-slate-900 mt-1">
+              {groupedLeads.qualified?.length || 0}
+            </p>
+          </div>
+          <div className="h-10 w-10 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
+            <CheckCircle2 className="h-5 w-5" />
+          </div>
+        </div>
+
+        <div className="bg-white rounded-3xl p-5 border border-slate-100 shadow-2xs flex items-center justify-between">
+          <div>
+            <p className="text-xs font-semibold text-slate-400">Ready to Convert</p>
+            <p className="text-2xl font-black text-slate-900 mt-1">
+              {groupedLeads.convert?.length || 0}
+            </p>
+          </div>
+          <div className="h-10 w-10 rounded-2xl bg-cyan-50 text-cyan-600 flex items-center justify-center font-bold">
+            <Sparkles className="h-5 w-5" />
+          </div>
+        </div>
       </div>
 
       {/* Mobile Horizontal Snap Carousel / Desktop Multi-Column Grid */}
-      <div className="flex sm:grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3.5 min-h-[580px] overflow-x-auto pb-4 pt-1 snap-x snap-mandatory sm:snap-none -mx-4 px-4 sm:mx-0 sm:px-0">
+      <div className="flex sm:grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4 min-h-[580px] overflow-x-auto pb-4 pt-1 snap-x snap-mandatory sm:snap-none -mx-4 px-4 sm:mx-0 sm:px-0">
         {CANONICAL_LEAD_STAGES.map((stage) => {
           const stageLeads = groupedLeads[stage.id] || [];
           const totalRevenue = stageLeads.reduce(

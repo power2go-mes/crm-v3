@@ -360,27 +360,27 @@ export default function LeadsPage() {
             />
 
             {/* Sub-bar for Web-to-Lead, Quick Filters, and Recycle Bin */}
-            <div className="flex flex-wrap items-center justify-between gap-2 px-4 sm:px-6 py-2 bg-slate-50/60 border-t border-slate-100 text-xs rounded-b-2xl">
+            <div className="flex flex-wrap items-center justify-between gap-2 px-4 sm:px-6 py-2.5 bg-[#f8faff] border-t border-slate-100 text-xs">
               <div className="flex items-center gap-2">
                 <button
                   type="button"
                   onClick={() => setIsWebToLeadOpen(true)}
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-semibold transition shadow-2xs hover:border-slate-300"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200/70 bg-white hover:bg-slate-50 text-slate-700 font-semibold transition shadow-2xs"
                 >
-                  <Globe className="h-3.5 w-3.5 text-emerald-600" />
+                  <Globe className="h-3.5 w-3.5 text-[#4361ee]" />
                   <span>Web-to-Lead Forms</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => setIsFilterPanelOpen(true)}
-                  className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border transition font-semibold shadow-2xs ${
+                  className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border transition font-semibold shadow-2xs ${
                     isFilterPanelOpen || activeFilterCount > 0
-                      ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
-                      : 'bg-white hover:bg-slate-50 text-slate-700 border-slate-200 hover:border-slate-300'
+                      ? 'bg-[#eef2ff] text-[#4361ee] border-indigo-200'
+                      : 'bg-white hover:bg-slate-50 text-slate-700 border-slate-200/70'
                   }`}
                 >
-                  <Filter className="h-3.5 w-3.5 text-emerald-600" />
+                  <Filter className="h-3.5 w-3.5 text-[#4361ee]" />
                   <span>Filters {activeFilterCount > 0 ? `(${activeFilterCount})` : ''}</span>
                 </button>
               </div>
@@ -389,14 +389,14 @@ export default function LeadsPage() {
                 <button
                   type="button"
                   aria-expanded={recoveryOpen}
-                  className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border transition font-medium shadow-2xs ${
+                  className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border transition font-semibold shadow-2xs ${
                     recoveryOpen
-                      ? 'bg-slate-800 text-white border-slate-800'
-                      : 'bg-white hover:bg-slate-50 text-slate-600 border-slate-200 hover:text-slate-900'
+                      ? 'bg-[#4361ee] text-white border-[#4361ee]'
+                      : 'bg-white hover:bg-slate-50 text-slate-600 border-slate-200/70'
                   }`}
                   onClick={() => setRecoveryOpen((open) => !open)}
                 >
-                  <Trash2 className="h-3.5 w-3.5 text-slate-400" />
+                  <Trash2 className="h-3.5 w-3.5" />
                   <span>Deleted Leads</span>
                 </button>
               )}
