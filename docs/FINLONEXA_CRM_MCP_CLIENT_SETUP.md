@@ -114,4 +114,4 @@ Response:
 
 1. **Process-Local State:** Active Streamable HTTP sessions and confirmation tokens are currently in-memory. For horizontal multi-instance deployments, configure sticky routing or Redis-backed session management.
 2. **Rate Limiting:** Enforces a per-user limit of 120 requests/minute stored in-memory.
-3. **Environment Isolation:** The MCP server reads `MCP_JWT_SECRET` from its package-local `.env.local` or environment variables; never commit this secret to source control.
+3. **Environment Isolation:** The MCP server reads `MCP_JWT_SECRET` from its package-local `.env.local` or environment variables; never commit this secret to source control. For Vercel deployments, configure it as a server-side Environment Variable for every deployed environment that issues MCP broker tokens. `turbo.json` passes this variable to the build task so the production configuration check can run. Generate a unique random secret of at least 32 bytes; do not use a `NEXT_PUBLIC_` prefix.

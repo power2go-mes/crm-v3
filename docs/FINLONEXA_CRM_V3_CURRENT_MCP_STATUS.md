@@ -9,7 +9,7 @@
 |---|---|---|
 | Transport | Streamable HTTP at `/mcp` (`POST`/`GET`/`DELETE`) + Legacy SSE fallback | Verified: Streamable HTTP session lifecycle, tool discovery, execution, and DELETE cleanup pass in test suites. |
 | Authentication | Supabase user JWT or broker token; validated against Supabase Auth & JWT claims | Verified: Live authentication flow validated against disposable development project (`bpwdxslrkgmcoewkwufu`). |
-| Broker token | `POST /auth/token` validates user credentials and signs audience `finlonexa-crm-mcp` token | Verified: `MCP_JWT_SECRET` configured; token broker issues valid audience-bound JWTs. |
+| Broker token | `POST /auth/token` validates user credentials and signs audience `finlonexa-crm-mcp` token | Local token issuance was verified; the Vercel deployment log shows the required `MCP_JWT_SECRET` is not available to the build. Configure it in Vercel before deploying. |
 | Authorization | RLS-enforced PostgreSQL execution + dynamic module permissions check | Verified: 6-role isolation (Super Admin, Head of Sales, RSM, SSM, ASM, BDO) verified with live database tests. |
 | BDO scope | Live RLS policies restrict Leads/Accounts/Contacts to owner/branch scope; denies admin tools | Verified: BDO North vs BDO South cross-branch isolation verified (zero lead leakage across branches). |
 | Field masking | Dynamic column-level masking via readable views (`accounts_readable`, `contacts_readable`, `opportunities_readable`) | Verified: Non-admin users query masked views; PII/financial data masked based on caller permissions. |
